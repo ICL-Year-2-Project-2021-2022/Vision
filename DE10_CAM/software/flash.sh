@@ -1,0 +1,1 @@
+C:/intelFPGA_lite/18.1/nios2eds/nios2_command_shell.sh nios2-download D8M_Camera_Test/D8M_Camera_Test.elf -c 1 -g
