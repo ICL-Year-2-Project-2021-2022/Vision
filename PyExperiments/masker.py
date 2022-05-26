@@ -1,5 +1,4 @@
 import cv2
-import numpy
 import numpy as np
 
 def hsv_mask(image, color):
@@ -33,7 +32,7 @@ def hsv_mask(image, color):
     #Bodge for red wrapping around the coordinate system
     if color =="red":
         mask1 = cv2.inRange(hsv, lower1, upper1)
-        mask = numpy.maximum(mask, mask1)
+        mask = np.maximum(mask, mask1)
 
     cv2.imshow("Image", mask)
     cv2.waitKey(0)
