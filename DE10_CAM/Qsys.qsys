@@ -18,7 +18,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -63,7 +63,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -84,7 +84,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -115,7 +115,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -1287,18 +1287,13 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="EEE_IMGPROC_0.avalon_streaming_source"
-   end="alt_vip_itc_0.din" />
+   start="alt_vip_vfb_0.dout"
+   end="TERASIC_AUTO_FOCUS_0.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
    start="TERASIC_AUTO_FOCUS_0.dout"
-   end="EEE_IMGPROC_0.avalon_streaming_sink" />
- <connection
-   kind="avalon_streaming"
-   version="18.1"
-   start="alt_vip_vfb_0.dout"
-   end="TERASIC_AUTO_FOCUS_0.din" />
+   end="alt_vip_itc_0.din" />
  <connection kind="clock" version="18.1" start="altpll_0.c2" end="sdram.clk" />
  <connection
    kind="clock"

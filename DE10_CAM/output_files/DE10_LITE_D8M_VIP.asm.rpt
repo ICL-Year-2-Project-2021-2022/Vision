@@ -1,5 +1,5 @@
 Assembler report for DE10_LITE_D8M_VIP
-Tue May 24 13:29:57 2022
+Fri May 27 13:36:17 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -11,7 +11,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: C:/Users/micha/Desktop/DE10_LITE_D8M_VIP_16/output_files/DE10_LITE_D8M_VIP_time_limited.sof
+  6. Assembler Device Options: C:/Users/micha/Desktop/Vision/DE10_CAM/output_files/DE10_LITE_D8M_VIP_time_limited.sof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue May 24 13:29:57 2022 ;
+; Assembler Status      ; Successful - Fri May 27 13:36:17 2022 ;
 ; Revision Name         ; DE10_LITE_D8M_VIP                     ;
 ; Top-level Entity Name ; DE10_LITE_D8M_VIP                     ;
 ; Family                ; MAX 10                                ;
@@ -65,23 +65,23 @@ refer to the applicable agreement for further details.
 +--------+-------------------------------+---------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                   ;
-+---------------------------------------------------------------------------------------------+
-; File Name                                                                                   ;
-+---------------------------------------------------------------------------------------------+
-; C:/Users/micha/Desktop/DE10_LITE_D8M_VIP_16/output_files/DE10_LITE_D8M_VIP_time_limited.sof ;
-+---------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                              ;
++----------------------------------------------------------------------------------------+
+; File Name                                                                              ;
++----------------------------------------------------------------------------------------+
+; C:/Users/micha/Desktop/Vision/DE10_CAM/output_files/DE10_LITE_D8M_VIP_time_limited.sof ;
++----------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/micha/Desktop/DE10_LITE_D8M_VIP_16/output_files/DE10_LITE_D8M_VIP_time_limited.sof ;
-+----------------+------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                              ;
-+----------------+------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x008E608E                                                                                           ;
-; Checksum       ; 0x008E608E                                                                                           ;
-+----------------+------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/micha/Desktop/Vision/DE10_CAM/output_files/DE10_LITE_D8M_VIP_time_limited.sof ;
++----------------+-------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                         ;
++----------------+-------------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x008CD649                                                                                      ;
+; Checksum       ; 0x008CD649                                                                                      ;
++----------------+-------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -90,7 +90,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue May 24 13:29:50 2022
+    Info: Processing started: Fri May 27 13:36:10 2022
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off DE10_LITE_D8M_VIP -c DE10_LITE_D8M_VIP
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
@@ -98,8 +98,8 @@ Info (115030): Assembler is generating device programming files
 Info (115017): Design contains a time-limited core -- only a single, time-limited programming file can be generated
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4727 megabytes
-    Info: Processing ended: Tue May 24 13:29:57 2022
+    Info: Processing ended: Fri May 27 13:36:17 2022
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Total CPU time (on all processors): 00:00:07
 
 

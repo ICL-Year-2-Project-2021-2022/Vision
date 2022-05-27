@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="Qsys" kind="system" version="18.1" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2022.05.24.13:24:00 -->
+ <!-- 2022.05.27.13:30:29 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1653394954</value>
+  <value>1653654527</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -17522,7 +17522,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1653394954</value>
+   <value>1653654527</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -17542,7 +17542,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1653394954</value>
+   <value>1653654527</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -17558,7 +17558,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1653394954</value>
+   <value>1653654527</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -29023,38 +29023,11 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <connection
-   name="EEE_IMGPROC_0.avalon_streaming_source/alt_vip_itc_0.din"
-   kind="avalon_streaming"
-   version="18.1"
-   start="EEE_IMGPROC_0.avalon_streaming_source"
-   end="alt_vip_itc_0.din">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>EEE_IMGPROC_0</startModule>
-  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
-  <endModule>alt_vip_itc_0</endModule>
-  <endConnectionPoint>din</endConnectionPoint>
- </connection>
- <connection
-   name="TERASIC_AUTO_FOCUS_0.dout/EEE_IMGPROC_0.avalon_streaming_sink"
+   name="TERASIC_AUTO_FOCUS_0.dout/alt_vip_itc_0.din"
    kind="avalon_streaming"
    version="18.1"
    start="TERASIC_AUTO_FOCUS_0.dout"
-   end="EEE_IMGPROC_0.avalon_streaming_sink">
+   end="alt_vip_itc_0.din">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -29073,8 +29046,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>TERASIC_AUTO_FOCUS_0</startModule>
   <startConnectionPoint>dout</startConnectionPoint>
-  <endModule>EEE_IMGPROC_0</endModule>
-  <endConnectionPoint>avalon_streaming_sink</endConnectionPoint>
+  <endModule>alt_vip_itc_0</endModule>
+  <endConnectionPoint>din</endConnectionPoint>
  </connection>
  <connection
    name="altpll_0.c2/sdram.clk"
@@ -32407,7 +32380,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>1</instanceCount>
   <name>avalon_streaming</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -32455,5 +32428,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <reportVersion>18.1 625</reportVersion>
- <uniqueIdentifier>B2FC366D814D00000180F604FD25</uniqueIdentifier>
+ <uniqueIdentifier>B2FC366D814D00000181057DC7BF</uniqueIdentifier>
 </EnsembleReport>

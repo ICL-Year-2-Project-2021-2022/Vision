@@ -259,8 +259,8 @@ int main()
 //    	   if (fwrite(&word, 4, 1, ser) != 1)
 //    		   printf("Error writing to UART");
 //           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
-		   printf("\n");
-    	   printf("%08x ",word);
+		   //printf("\n");
+    	   //printf("%08x ",word);
        }
 
        //Update the bounding box colour

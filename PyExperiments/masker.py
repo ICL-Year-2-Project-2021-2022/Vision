@@ -14,12 +14,12 @@ def hsv_mask(image, color):
             lower = np.array([20, 60, 60])
             upper = np.array([40, 255, 255])
         case "green":
-            lower = np.array([70, 80, 80])
-            upper = np.array([90, 255, 255])
+            lower = np.array([50, 80, 80])
+            upper = np.array([70, 255, 255])
         case "red":
             lower = np.array([0, 80, 80])
             upper = np.array([10, 255, 255])
-            lower1 = np.array([160, 80, 80])
+            lower1 = np.array([170, 80, 80])
             upper1 = np.array([179, 255, 255])
         case "black":
             lower = np.array([0, 0, 0])
@@ -27,6 +27,9 @@ def hsv_mask(image, color):
         case "white":
             lower = np.array([180, 180, 180])
             upper = np.array([255, 255, 255])
+        case "pink":
+            lower = np.array([155, 80, 80])
+            upper = np.array([165, 255, 255])
 
 
     # Mask gen
