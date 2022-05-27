@@ -2,14 +2,17 @@ import cv2
 import numpy as np
 
 def hsv_mask(image, color):
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    if color == "black" or color == "white":
+        hsv = image
+    else:
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     # Color mask type selection
 
     match color:
         case "yellow":
-            lower = np.array([100, 60, 60])
-            upper = np.array([110, 255, 255])
+            lower = np.array([20, 60, 60])
+            upper = np.array([40, 255, 255])
         case "green":
             lower = np.array([70, 80, 80])
             upper = np.array([90, 255, 255])
@@ -20,10 +23,10 @@ def hsv_mask(image, color):
             upper1 = np.array([179, 255, 255])
         case "black":
             lower = np.array([0, 0, 0])
-            upper = np.array([179, 255, 75])
+            upper = np.array([120, 120, 120])
         case "white":
-            lower = np.array([0, 0, 150])
-            upper = np.array([179, 50, 255])
+            lower = np.array([180, 180, 180])
+            upper = np.array([255, 255, 255])
 
 
     # Mask gen
@@ -34,21 +37,21 @@ def hsv_mask(image, color):
         mask1 = cv2.inRange(hsv, lower1, upper1)
         mask = np.maximum(mask, mask1)
 
-    cv2.imshow("Image", mask)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow("Image", mask)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     # Averaging
     kernel1 = np.ones((5, 5), np.float32) / 25
     mask = cv2.filter2D(src=mask, ddepth=-1, kernel=kernel1)
 
-    cv2.imshow("Image", mask)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow("Image", mask)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     ret, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
 
-    cv2.imshow("Image", mask)
+    cv2.imshow(color, mask)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
