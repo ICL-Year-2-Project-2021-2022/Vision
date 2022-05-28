@@ -11,7 +11,7 @@ def hsv_mask(image, color):
 
     match color:
         case "yellow":
-            lower = np.array([20, 60, 60])
+            lower = np.array([20, 90, 60])
             upper = np.array([40, 255, 255])
         case "green":
             lower = np.array([50, 80, 80])
@@ -28,7 +28,7 @@ def hsv_mask(image, color):
             lower = np.array([180, 180, 180])
             upper = np.array([255, 255, 255])
         case "pink":
-            lower = np.array([155, 80, 80])
+            lower = np.array([155, 70, 80])
             upper = np.array([165, 255, 255])
 
 
@@ -54,8 +54,8 @@ def hsv_mask(image, color):
 
     ret, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
 
-    cv2.imshow(color, mask)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow(color, mask)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     return mask

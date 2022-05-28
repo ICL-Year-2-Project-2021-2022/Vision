@@ -6,11 +6,12 @@ def passable(thresh, width, grid):
     ret, grid = cv2.threshold(grid, thresh*255, 255, cv2.THRESH_BINARY)
 
     #Circular kernel and filter to avoid bumping
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (4, 4))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2*width, 2*width))
     grid = cv2.filter2D(src=grid, ddepth=-1, kernel=kernel)
 
     #Discard everything that touched a forbidden area
-    ret, passable = cv2.threshold(grid, 0, 1, cv2.THRESH_BINARY)
+    ret, passable = cv2.threshold(grid, 1, 1 , cv2.THRESH_BINARY)
+    passable = passable.astype(int)
     return passable*255
 
 def mod_bellman(src_x, src_y, dest_x, dest_y, passable):
