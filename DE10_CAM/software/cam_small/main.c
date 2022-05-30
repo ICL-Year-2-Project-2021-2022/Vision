@@ -21,7 +21,7 @@
 #define EEE_IMGPROC_ID 2
 #define EEE_IMGPROC_BBCOL 3
 
-#define EXPOSURE_INIT 0x002000
+#define EXPOSURE_INIT 0x002200
 #define EXPOSURE_STEP 0x100
 #define GAIN_INIT 0x080
 #define GAIN_STEP 0x040
@@ -88,7 +88,6 @@ void mipi_show_error_info_more(void){
 bool MIPI_Init(void){
 	bool bSuccess;
 
-
 	bSuccess = oc_i2c_init_ex(I2C_OPENCORES_MIPI_BASE, 50*1000*1000,400*1000); //I2C: 400K
 	if (!bSuccess)
 		printf("failed to init MIPI- Bridge i2c\r\n");
@@ -98,21 +97,10 @@ bool MIPI_Init(void){
 
     usleep(500*1000);
 
-//	bSuccess = oc_i2c_init_ex(I2C_OPENCORES_CAMERA_BASE, 50*1000*1000,400*1000); //I2C: 400K
-//	if (!bSuccess)
-//		printf("failed to init MIPI- Camera i2c\r\n");
-
     MipiCameraInit();
     MIPI_BIN_LEVEL(DEFAULT_LEVEL);
-//    OV8865_FOCUS_Move_to(340);
-
-//    oc_i2c_uninit(I2C_OPENCORES_CAMERA_BASE);  // Release I2C bus , due to two I2C master shared!
-
 
  	usleep(1000);
-
-
-//    oc_i2c_uninit(I2C_OPENCORES_MIPI_BASE);
 
 	return bSuccess;
 }
@@ -145,19 +133,14 @@ int main()
   // MIPI Init
    if (!MIPI_Init()){
 	  printf("MIPI_Init Init failed!\r\n");
-  }else{
-	  printf("MIPI_Init Init successfully!\r\n");
   }
 
-//   while(1){
  	    mipi_clear_error();
 	 	usleep(50*1000);
  	    mipi_clear_error();
 	 	usleep(1000*1000);
 	    mipi_show_error_info();
-//	    mipi_show_error_info_more();
 	    printf("\n");
-//   }
 
 
 #if 0  // focus sweep
@@ -182,6 +165,7 @@ int main()
 
 
 
+
     //////////////////////////////////////////////////////////
         alt_u16 bin_level = DEFAULT_LEVEL;
         alt_u8  manual_focus_step = 10;
@@ -194,6 +178,7 @@ int main()
         OV8865SetGain(gain);
         Focus_Init();
 
+
 //        FILE* ser = fopen("/dev/uart_0", "rb+");
 //        if(ser){
 //        	printf("Opened UART\n");
@@ -204,72 +189,40 @@ int main()
 
   while(1){
 
-       // touch KEY0 to trigger Auto focus
-	   if((IORD(KEY_BASE,0)&0x03) == 0x02){
 
-    	   current_focus = Focus_Window(320,240);
-       }
-	   // touch KEY1 to ZOOM
-	         if((IORD(KEY_BASE,0)&0x03) == 0x01){
-	      	   if(bin_level == 3 )bin_level = 1;
-	      	   else bin_level ++;
-	      	   printf("set bin level to %d\n",bin_level);
-	      	   MIPI_BIN_LEVEL(bin_level);
-	      	 	usleep(500000);
-
-	         }
 
 
 	#if 0
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0E){
 
-    	   current_focus = Focus_Window(320,240);
-       }
+	  // touch KEY0 to trigger Auto focus
+	   if((IORD(KEY_BASE,0)&0x03) == 0x02){
 
-       // touch KEY1 to trigger Manual focus  - step
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0D){
-
-    	   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
-    	   else current_focus = 0;
-    	   OV8865_FOCUS_Move_to(current_focus);
-
-       }
-
-       // touch KEY2 to trigger Manual focus  + step
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0B){
-    	   current_focus += manual_focus_step;
-    	   if(current_focus >1023) current_focus = 1023;
-    	   OV8865_FOCUS_Move_to(current_focus);
-       }
-
-       // touch KEY3 to ZOOM
-       if((IORD(KEY_BASE,0)&0x0F) == 0x07){
-    	   if(bin_level == 3 )bin_level = 1;
-    	   else bin_level ++;
-    	   printf("set bin level to %d\n",bin_level);
-    	   MIPI_BIN_LEVEL(bin_level);
-    	 	usleep(500000);
-
-       }
+		   current_focus = Focus_Window(320,240);
+		 }
 	#endif
 
        //Read messages from the image processor and print them on the terminal
-       while ((IORD(0x42000,EEE_IMGPROC_STATUS)>>8) & 0xff) { 	//Find out if there are words to read
-           int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer
-//    	   if (fwrite(&word, 4, 1, ser) != 1)
-//    		   printf("Error writing to UART");
-//           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
-		   //printf("\n");
-    	   //printf("%08x ",word);
-       }
-
-       //Update the bounding box colour
-       boundingBoxColour = ((boundingBoxColour + 1) & 0xff);
-       IOWR(0x42000, EEE_IMGPROC_BBCOL, (boundingBoxColour << 8) | (0xff - boundingBoxColour));
+//       while ((IORD(0x42000,EEE_IMGPROC_STATUS)>>8) & 0xff) { 	//Find out if there are words to read
+//           int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer
+////    	   if (fwrite(&word, 4, 1, ser) != 1)
+////    		   printf("Error writing to UART");
+////           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
+//		   //printf("\n");
+//    	   //printf("%08x ",word);
+//       }
+//
+//       //Update the bounding box colour
+//       boundingBoxColour = ((boundingBoxColour + 1) & 0xff);
+//       IOWR(0x42000, EEE_IMGPROC_BBCOL, (boundingBoxColour << 8) | (0xff - boundingBoxColour));
 
        //Process input commands
        int in = alt_getchar();
        switch (in) {
+		   case 'a': {
+			   //current_focus = Focus_Window(320,240);
+			   Focus_Init();
+			   printf("Autofocused/n");
+			   break;}
        	   case 'e': {
        		   exposureTime += EXPOSURE_STEP;
        		   OV8865SetExposure(exposureTime);

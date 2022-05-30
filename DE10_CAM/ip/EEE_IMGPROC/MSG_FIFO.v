@@ -78,7 +78,8 @@ module MSG_FIFO (
 				.full ());
 	defparam
 		scfifo_component.add_ram_output_register = "OFF",
-		scfifo_component.intended_device_family = "MAX 10",
+		scfifo_component.intended_device_family = "Cyclone V",
+		//scfifo_component.intended_device_family = "MAX 10",
 		scfifo_component.lpm_numwords = 256,
 		scfifo_component.lpm_showahead = "ON",
 		scfifo_component.lpm_type = "scfifo",

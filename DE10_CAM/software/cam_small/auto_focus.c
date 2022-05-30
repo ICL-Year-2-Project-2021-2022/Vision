@@ -9,6 +9,7 @@
 #include "I2C_core.h"
 #include "terasic_includes.h"
 #include "auto_focus.h"
+#include "system.h"
 
 
 /////////////////////////////////

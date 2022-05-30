@@ -5,8 +5,10 @@
   <columns>
    <connections preferredWidth="239" />
    <irq preferredWidth="34" />
+   <name preferredWidth="206" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Project,Library,Library/Interface Protocols/Serial,Library/Interface Protocols,Library/University Program/Communications,Library/University Program" />
  <window width="1920" height="1042" x="0" y="0" />
 </preferences>

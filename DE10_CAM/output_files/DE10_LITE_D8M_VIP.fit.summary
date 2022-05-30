@@ -1,12 +1,12 @@
-Fitter Status : Successful - Fri May 27 13:36:02 2022
+Fitter Status : Successful - Mon May 30 11:50:42 2022
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : DE10_LITE_D8M_VIP
 Top-level Entity Name : DE10_LITE_D8M_VIP
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 9,923 / 49,760 ( 20 % )
-    Total combinational functions : 8,385 / 49,760 ( 17 % )
+Total logic elements : 9,886 / 49,760 ( 20 % )
+    Total combinational functions : 8,383 / 49,760 ( 17 % )
     Dedicated logic registers : 6,372 / 49,760 ( 13 % )
 Total registers : 6439
 Total pins : 171 / 360 ( 48 % )
