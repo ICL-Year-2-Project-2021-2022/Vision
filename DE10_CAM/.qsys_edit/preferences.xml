@@ -3,11 +3,11 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="303" />
+   <connections preferredWidth="223" />
    <irq preferredWidth="34" />
+   <name preferredWidth="186" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Project,Library,Library/DSP/Video and Image Processing,Library/DSP" />
- <window width="1938" height="1060" x="-9" y="-9" />
+ <library expandedCategories="Library,Project" />
+ <window width="2418" height="1318" x="2391" y="-9" />
 </preferences>

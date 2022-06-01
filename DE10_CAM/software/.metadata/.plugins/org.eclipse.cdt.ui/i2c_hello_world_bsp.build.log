@@ -1,0 +1,6 @@
+11:40:50 **** Clean-only build of configuration Nios II for project i2c_hello_world_bsp ****
+make clean 
+[BSP clean complete]
+
+11:40:51 Build Finished (took 892ms)
+

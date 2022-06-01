@@ -1,0 +1,33 @@
+/* A simple program that recognizes the characters 't' and 'v' */
+#include <stdio.h>
+#include <string.h>
+int main ()
+{
+	char* msg = "Hello message from the FPGA!\n";
+	FILE* fp;
+	char prompt = 0;
+	fp = fopen ("/dev/uart_0", "r+");
+	if (fp) {
+		printf("UART detected.\n");
+		while (1) { // Loop until we receive a 'v'.
+			printf("FPGA sending\n");
+			char response_buffer[64];
+			int index = 0;
+			fwrite (msg, strlen (msg), 1, fp);
+			prompt = getc(fp);
+			printf("Printing the prompt:\n");
+			while(prompt != '\n' && prompt != 0) {
+				response_buffer[i] = prompt;
+				printf("%c", prompt);
+				prompt = getc(fp);
+			}
+			response += prompt;
+			printf("\n");
+			usleep(100000);
+		}
+		fclose (fp);
+	} else {
+		printf("UART not detected.");
+	}
+ 	return 0;
+}

@@ -99,7 +99,7 @@ module Qsys_nios2_gen2_cpu_test_bench (
   input   [  7: 0] M_bht_ptr_unfiltered;
   input   [  1: 0] M_bht_wr_data_unfiltered;
   input            M_bht_wr_en_unfiltered;
-  input   [ 18: 0] M_mem_baddr;
+  input   [ 26: 0] M_mem_baddr;
   input   [ 18: 0] M_target_pcb;
   input            M_valid;
   input   [ 31: 0] W_badaddr_reg;
@@ -116,7 +116,7 @@ module Qsys_nios2_gen2_cpu_test_bench (
   input   [ 71: 0] W_vinst;
   input            W_wr_dst_reg;
   input            clk;
-  input   [ 18: 0] d_address;
+  input   [ 26: 0] d_address;
   input   [  3: 0] d_byteenable;
   input            d_read;
   input            d_readdatavalid;
@@ -128,7 +128,7 @@ module Qsys_nios2_gen2_cpu_test_bench (
 
 
 wire             A_iw_invalid;
-reg     [ 18: 0] A_mem_baddr;
+reg     [ 26: 0] A_mem_baddr;
 reg     [ 18: 0] A_target_pcb;
 wire    [ 31: 0] A_wr_data_filtered;
 wire             A_wr_data_unfiltered_0_is_x;

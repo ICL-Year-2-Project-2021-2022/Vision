@@ -134,14 +134,14 @@ Qsys u0 (
 		.led_external_connection_export            (),            				//          led_external_connection.export
 		.sw_external_connection_export             (SW),             			//           sw_external_connection.export
 		
-		.i2c_opencores_camera_export_scl_pad_io    (CAMERA_I2C_SCL),    		//      i2c_opencores_camera_export.scl_pad_io
+		/*.i2c_opencores_camera_export_scl_pad_io    (CAMERA_I2C_SCL),    		//      i2c_opencores_camera_export.scl_pad_io
 		.i2c_opencores_camera_export_sda_pad_io    (CAMERA_I2C_SDA),    		//                                 .sda_pad_io
 		
 		.i2c_opencores_mipi_export_scl_pad_io      (MIPI_I2C_SCL),      		//        i2c_opencores_mipi_export.scl_pad_io
 		.i2c_opencores_mipi_export_sda_pad_io      (MIPI_I2C_SDA),      		//                                 .sda_pad_io
 		
 		.mipi_pwdn_n_external_connection_export    (CAMERA_PWDN_n),    			//  mipi_pwdn_n_external_connection.export
-		.mipi_reset_n_external_connection_export   (MIPI_RESET_n),   			// mipi_reset_n_external_connection.export
+		.mipi_reset_n_external_connection_export   (MIPI_RESET_n),   			// mipi_reset_n_external_connection.export*/
 		
 		.sdram_wire_addr                           (DRAM_ADDR),					//                       sdram_wire.addr
 		.sdram_wire_ba                             (DRAM_BA),					//                                 .ba
@@ -153,7 +153,7 @@ Qsys u0 (
 		.sdram_wire_ras_n                          (DRAM_RAS_N),				//                                 .ras_n
 		.sdram_wire_we_n                           (DRAM_WE_N),					//                                 .we_n
 		
-		.terasic_camera_0_conduit_end_D            ({MIPI_PIXEL_D_d[9:0], 2'b00}),//     terasic_camera_0_conduit_end.D
+		/*.terasic_camera_0_conduit_end_D            ({MIPI_PIXEL_D_d[9:0], 2'b00}),//     terasic_camera_0_conduit_end.D
 		.terasic_camera_0_conduit_end_FVAL         (MIPI_PIXEL_VS_d),         	//                                 .FVAL
 		.terasic_camera_0_conduit_end_LVAL         (MIPI_PIXEL_HS_d),         	//                                 .LVAL
 		.terasic_camera_0_conduit_end_PIXCLK       (~MIPI_PIXEL_CLK_d),        	//                                 .PIXCLK
@@ -172,11 +172,16 @@ Qsys u0 (
 		.alt_vip_itc_0_clocked_video_vid_h         (),         					//                                 .vid_h
 		.alt_vip_itc_0_clocked_video_vid_v         (),         					//                                 .vid_v
 		
-		.altpll_0_areset_conduit_export            (),            				//          altpll_0_areset_conduit.export
+		.altpll_0_areset_conduit_export            (),  d          				//          altpll_0_areset_conduit.export
 		.altpll_0_locked_conduit_export            (),            				//          altpll_0_locked_conduit.export
 		.altpll_0_phasedone_conduit_export         (),         					//       altpll_0_phasedone_conduit.export		
 		
-		.eee_imgproc_0_conduit_mode_new_signal     (SW[0]),
+		.eee_imgproc_0_conduit_mode_new_signal     (SW[0]),*/
+
+		.i2c_0_external_connection_scl_oe (ARDUINO_IO[10]), // i2c_0_external_connection_scl_oe
+		.i2c_0_external_connection_sda_oe (ARDUINO_IO[11]), // i2c_0_external_connection_sda_oe
+		.i2c_0_external_connection_scl_in (ARDUINO_IO[12]), // i2c_0_external_connection_scl_in
+		.i2c_0_external_connection_sda_in (ARDUINO_IO[13]), // i2c_0_external_connection_sda_in
 		
 		.uart_0_rx_tx_rxd                          (ARDUINO_IO[1]),                          //                     uart_0_rx_tx.rxd
 		.uart_0_rx_tx_txd                          (ARDUINO_IO[0])                           //

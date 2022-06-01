@@ -1,0 +1,27 @@
+/* A simple program that recognizes the characters 't' and 'v' */
+#include <stdio.h>
+#include <string.h>
+int main ()
+{
+	char* msg = "Detected the character 't'.\n";
+	FILE* fp;
+	char prompt = 0;
+	fp = fopen ("/dev/uart_0", "r+"); //Open file for reading and writing
+	if (fp) {
+		printf("UART detected.");
+	 while (1) { // Loop until we receive a 'v'.
+		 printf("send\n");
+		 fwrite (msg, strlen (msg), 1, fp);
+		 /*prompt = getc(fp); // Get a character from the UART.
+ 	 if (prompt == 't') { // Print a message if character is 't'.
+	 	 fwrite (msg, strlen (msg), 1, fp);
+ 	 }*/
+		 usleep(500000);
+ 	 }
+ 	 //fprintf(fp, "Closing the UART file.\n");
+ 	 fclose (fp);
+	} else {
+		printf("UART not detected.");
+	}
+ 	return 0;
+}

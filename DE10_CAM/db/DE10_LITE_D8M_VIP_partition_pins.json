@@ -72,7 +72,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "DRAM_LDQM",
+					"strict" : false
+				},
+				{
 					"name" : "DRAM_RAS_N",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_UDQM",
 					"strict" : false
 				},
 				{
@@ -133,70 +141,6 @@
 				},
 				{
 					"name" : "HEX1[6]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[0]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[1]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[2]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[3]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_G[0]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_G[1]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_G[2]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_G[3]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_HS",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[0]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[1]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[2]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[3]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_VS",
-					"strict" : false
-				},
-				{
-					"name" : "CAMERA_PWDN_n",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_RESET_n",
 					"strict" : false
 				},
 				{
@@ -272,19 +216,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "CAMERA_I2C_SCL",
+					"name" : "ARDUINO_IO[10]",
 					"strict" : false
 				},
 				{
-					"name" : "CAMERA_I2C_SDA",
+					"name" : "ARDUINO_IO[11]",
 					"strict" : false
 				},
 				{
-					"name" : "MIPI_I2C_SCL",
+					"name" : "ARDUINO_IO[12]",
 					"strict" : false
 				},
 				{
-					"name" : "MIPI_I2C_SDA",
+					"name" : "ARDUINO_IO[13]",
 					"strict" : false
 				},
 				{
@@ -300,27 +244,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[0]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_CLK",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[0]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[8]",
-					"strict" : false
-				},
-				{
 					"name" : "SW[7]",
 					"strict" : false
 				},
 				{
 					"name" : "SW[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[8]",
 					"strict" : false
 				},
 				{
@@ -352,47 +284,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "MIPI_PIXEL_HS",
+					"name" : "KEY[0]",
 					"strict" : false
 				},
 				{
-					"name" : "MIPI_PIXEL_D[4]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[3]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[2]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[1]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[0]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[5]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[6]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[7]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[8]",
-					"strict" : false
-				},
-				{
-					"name" : "MIPI_PIXEL_D[9]",
+					"name" : "SW[0]",
 					"strict" : false
 				},
 				{
