@@ -142,13 +142,11 @@ ACDS_VERSION := 18.1
 ELF := cam_small.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += hello_world_small.c
 C_SRCS += I2C_core.c
 C_SRCS += auto_focus.c
 C_SRCS += main.c
 C_SRCS += mipi_bridge_config.c
 C_SRCS += mipi_camera_config.c
-C_SRCS += queue.c
 CXX_SRCS :=
 ASM_SRCS :=
 

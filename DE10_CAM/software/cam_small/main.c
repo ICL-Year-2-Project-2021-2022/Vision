@@ -1,7 +1,7 @@
 
 
 #include <stdio.h>
-#include "sys/alt_stdio.h"_
+#include "sys/alt_stdio.h"
 #include "I2C_core.h"
 #include "terasic_includes.h"
 #include "mipi_camera_config.h"
