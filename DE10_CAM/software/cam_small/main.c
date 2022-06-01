@@ -8,6 +8,7 @@
 #include "mipi_bridge_config.h"
 #include "system.h"
 #include "auto_focus.h"
+//#include "altera_up_avalon_video_dma_controller_rgb.h"
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -24,6 +25,7 @@
 #define EXPOSURE_INIT 0x002200
 #define EXPOSURE_STEP 0x100
 #define GAIN_INIT 0x080
+#define GAIN_INIT 0x280
 #define GAIN_STEP 0x040
 #define DEFAULT_LEVEL 3
 
@@ -160,7 +162,13 @@ int main()
  	    }
 #endif
 
-
+// 	 	alt_up_video_dma_dev* dma_in = alt_up_video_dma_open_dev("dma_in");
+// 	 	alt_up_video_dma_ctrl_set_bb_addr(dma_in, 0x03000000);
+// 	 	alt_up_video_dma_ctrl_swap_buffers(dma_in);
+//
+// 	 	alt_up_video_dma_dev* dma_out = alt_up_video_dma_open_dev("dma_out");
+// 	 	alt_up_video_dma_ctrl_set_bb_addr(dma_out, 0x03000000);
+// 	 	alt_up_video_dma_ctrl_swap_buffers(dma_out);
 
 
 
@@ -256,9 +264,20 @@ int main()
        	   	   break;}
        }
 
+//       int* vidata = 0x03000000;
+//       printf("init: %x\n", vidata);
+//
 
-	   //Main loop delay
-	   usleep(10000);
+//	   //Main loop delay
+//       for(int i = 0; i<100000; i++){
+//    	   vidata[i] = 0xFFFFFF;
+//       }
+
+
+
+
+
+	   usleep(1000);
 
    };
   return 0;
