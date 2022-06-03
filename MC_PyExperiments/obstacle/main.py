@@ -2,18 +2,18 @@ import cv2
 import numpy as np
 import masker
 import locator
-import matcher
-import routing
+
 
 images = []
 positions = []
 
 ##Appended 2 images here, why 2 images?
-images.append(cv2.imread("assets/0.jpg", cv2.IMREAD_COLOR))
+images.append(cv2.imread("../assets/white_obstacle0.jpeg", cv2.IMREAD_COLOR))
+images.append(cv2.resize(cv2.imread("../assets/img1.jpg", cv2.IMREAD_COLOR),(0,0),fx=0.3,fy=0.3))
 positions.append([0,0,0])
 
 ##What is positions and why -125?
-images.append(cv2.imread("assets/125.jpg", cv2.IMREAD_COLOR))
+images.append(cv2.imread("../assets/white_obstacle2.jpeg", cv2.IMREAD_COLOR))
 positions.append([0,-125,0])
 
 # images.append(cv2.imread("assets/235.jpg", cv2.IMREAD_COLOR))
@@ -34,7 +34,7 @@ positions.append([0,-125,0])
 # cv2.destroyAllWindows()
 
 objects = []
-colors = ["red", "green", "yellow", "pink"]  #, "black", "white"
+colors = ["white"]  #, "black", "white"
 
 
 #Masking
@@ -47,7 +47,8 @@ for img in images:
         mask = masker.hsv_mask(img, color)
 
 
-        com = locator.find_com(mask)
+        com = locator.find_com(mask,color)
+        
         ##com[2] is total mass mass
         print(color, com[2], 0.001*img.shape[0]*img.shape[1])
         ## I guess here is accuracy check??? if passes accuracy, then put a circle and text
@@ -65,27 +66,3 @@ for img in images:
 
     ##img objects has center of mass for different balls
     objects.append(imgobjects)
-
-
-rays = matcher.generate_rays(objects,positions, img)
-
-side = 40
-scale = 40
-occupancy_grid = np.zeros((side, side))
-probability_grid = np.zeros((side, side))
-
-probability_grid, occupancy_grid = matcher.match_rays(rays, occupancy_grid, probability_grid, scale)
-
-passable = routing.passable(1/255,4,probability_grid)
-path = routing.mod_bellman(0,35, 5,6, passable)
-
-print("Done")
-
-
-# cv2.imshow("Image", path)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-
-
-#
-#cv2.imwrite("img.jpg", img)

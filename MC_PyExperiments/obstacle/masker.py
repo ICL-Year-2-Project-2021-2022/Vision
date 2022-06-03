@@ -2,11 +2,12 @@ import cv2
 import numpy as np
 
 def hsv_mask(image, color):
-    ## why do we separate black white and others here?
-    if color == "black" or color == "white":
-        hsv = image
-    else:
-        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+   
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    if color == "white":
+        w_height  = int(hsv.shape[0])
+        w_width = int(hsv.shape[1])
+        hsv = hsv[w_height//2:, :w_width]
 
     # Color mask type selection
     ## Gets upper and lower boudn of a color HSV
@@ -23,12 +24,9 @@ def hsv_mask(image, color):
             upper = np.array([10, 255, 255])
             lower1 = np.array([170, 80, 80])
             upper1 = np.array([179, 255, 255])
-        case "black":
-            lower = np.array([0, 0, 0])
-            upper = np.array([120, 120, 120])
         case "white":
-            lower = np.array([180, 180, 180])
-            upper = np.array([255, 255, 255])
+            lower = np.array([0, 0, 200])
+            upper = np.array([50, 80, 255])
         case "pink":
             lower = np.array([155, 70, 80])
             upper = np.array([165, 255, 255])
