@@ -28,15 +28,17 @@ def map_pixel_to_angle(object, image):
     CAMERA_HEIGHT = 110 #mm
     BALL_RADIUS = 20 #mm
 
-
+    ##relative horizontal and veritcal angel
     horizontal_angle = (position[0]/image.shape[1]-0.5)*HORIZONTAL_FOV
 
     #size estimation
     vertical_angle = -(position[1]/image.shape[0]-0.5)*VERTICAL_FOV
 
+    ##first way size estimation based on veritical angle
     #Only works for points below horizon
     est_distance_angle = np.tan(np.pi/2 + vertical_angle) * (CAMERA_HEIGHT-STAND_HEIGHT)
 
+    ## second way to estimate distance. 
     #Estimates distance based on mask size
     est_pixel_diameter = np.sqrt(4 * object[2]/ np.pi)
     est_occupied_angle = est_pixel_diameter/image.shape[1]*HORIZONTAL_FOV
