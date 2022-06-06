@@ -177,6 +177,7 @@ Qsys u0 (
 		.altpll_0_phasedone_conduit_export         (),         					//       altpll_0_phasedone_conduit.export		
 		
 		.eee_imgproc_0_conduit_mode_new_signal     (SW[0]),
+		.eee_imgproc_0_conduit_mask_readdata		 (LEDR[7:0]),
 		
 		.uart_0_rx_tx_rxd                          (ARDUINO_IO[1]),                          //                     uart_0_rx_tx.rxd
 		.uart_0_rx_tx_txd                          (ARDUINO_IO[0])                           //

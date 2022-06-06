@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="Qsys" kind="Qsys" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2022.06.01.13:51:36 -->
+ <!-- 2022.06.06.09:31:27 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1654087896</value>
+  <value>1654504287</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -102,6 +102,46 @@
    path="EEE_IMGPROC_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
+  <parameter name="IMAGE_W">
+   <type>java.math.BigInteger</type>
+   <value>640</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="IMAGE_H">
+   <type>java.math.BigInteger</type>
+   <value>480</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MESSAGE_BUF_MAX">
+   <type>int</type>
+   <value>256</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MSG_INTERVAL">
+   <type>int</type>
+   <value>6</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="BB_COL_DEFAULT">
+   <type>java.math.BigInteger</type>
+   <value>65280</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -926,6 +966,51 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>new_signal</role>
+   </port>
+  </interface>
+  <interface name="conduit_mask" kind="conduit_end" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>mask</name>
+    <direction>Output</direction>
+    <width>8</width>
+    <role>readdata</role>
    </port>
   </interface>
  </module>
@@ -17594,7 +17679,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1654087896</value>
+   <value>1654504287</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -17614,7 +17699,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1654087896</value>
+   <value>1654504287</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -17630,7 +17715,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1654087896</value>
+   <value>1654504287</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -20742,6 +20827,60 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>din</endConnectionPoint>
  </connection>
  <connection
+   name="EEE_IMGPROC_0.avalon_streaming_source/alt_vip_itc_0.din"
+   kind="avalon_streaming"
+   version="18.1"
+   start="EEE_IMGPROC_0.avalon_streaming_source"
+   end="alt_vip_itc_0.din">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>EEE_IMGPROC_0</startModule>
+  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
+  <endModule>alt_vip_itc_0</endModule>
+  <endConnectionPoint>din</endConnectionPoint>
+ </connection>
+ <connection
+   name="TERASIC_AUTO_FOCUS_0.dout/EEE_IMGPROC_0.avalon_streaming_sink"
+   kind="avalon_streaming"
+   version="18.1"
+   start="TERASIC_AUTO_FOCUS_0.dout"
+   end="EEE_IMGPROC_0.avalon_streaming_sink">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>TERASIC_AUTO_FOCUS_0</startModule>
+  <startConnectionPoint>dout</startConnectionPoint>
+  <endModule>EEE_IMGPROC_0</endModule>
+  <endConnectionPoint>avalon_streaming_sink</endConnectionPoint>
+ </connection>
+ <connection
    name="alt_vip_vfb_0.dout/TERASIC_AUTO_FOCUS_0.din"
    kind="avalon_streaming"
    version="18.1"
@@ -20766,33 +20905,6 @@ parameters are a RESULT of the module parameters. -->
   <startModule>alt_vip_vfb_0</startModule>
   <startConnectionPoint>dout</startConnectionPoint>
   <endModule>TERASIC_AUTO_FOCUS_0</endModule>
-  <endConnectionPoint>din</endConnectionPoint>
- </connection>
- <connection
-   name="TERASIC_AUTO_FOCUS_0.dout/alt_vip_itc_0.din"
-   kind="avalon_streaming"
-   version="18.1"
-   start="TERASIC_AUTO_FOCUS_0.dout"
-   end="alt_vip_itc_0.din">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>TERASIC_AUTO_FOCUS_0</startModule>
-  <startConnectionPoint>dout</startConnectionPoint>
-  <endModule>alt_vip_itc_0</endModule>
   <endConnectionPoint>din</endConnectionPoint>
  </connection>
  <connection
@@ -22612,7 +22724,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>15</instanceCount>
+  <instanceCount>16</instanceCount>
   <name>conduit_end</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -22828,7 +22940,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>3</instanceCount>
+  <instanceCount>4</instanceCount>
   <name>avalon_streaming</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>

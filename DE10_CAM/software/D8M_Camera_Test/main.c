@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include "I2C_core.h"
 #include "terasic_includes.h"
@@ -253,6 +251,8 @@ int main()
        }
 	#endif
 
+       alt_u32 val = IORD(0x42000,EEE_IMGPROC_STATUS);
+       //printf("Value read: %d\n", val);
        //Read messages from the image processor and print them on the terminal
        while ((IORD(0x42000,EEE_IMGPROC_STATUS)>>8) & 0xff) { 	//Find out if there are words to read
            int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer

@@ -26,8 +26,8 @@ module EEE_IMGPROC(
 	source_eop,
 	
 	// conduit
-	mode
-	
+	mode,
+	mask
 );
 
 
@@ -52,7 +52,7 @@ input								sink_sop;
 input								sink_eop;
 
 // streaming source
-output	[23:0]			  	   source_data;
+output[23:0]			  	   source_data;
 output								source_valid;
 input									source_ready;
 output								source_sop;
@@ -60,9 +60,15 @@ output								source_eop;
 
 // conduit export
 input                         mode;
+output [7:0] mask;
 
-////////////////////////////////////////////////////////////////////////
-//
+reg [23:0]	threshold_low;
+reg [23:0]	threshold_up;
+
+wire [23:0] reg_data_out;
+reg apply_mask;
+
+//////////////////////////////////////////////////////////////////////////
 parameter IMAGE_W = 11'd640;
 parameter IMAGE_H = 11'd480;
 parameter MESSAGE_BUF_MAX = 256;
@@ -96,7 +102,7 @@ assign new_image = bb_active ? bb_col : red_high;
 // Switch output pixels depending on mode switch
 // Don't modify the start-of-packet word - it's a packet discriptor
 // Don't modify data in non-video packets
-assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? new_image : {red,green,blue};
+//assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? new_image : {red,green,blue};
 
 //Count valid pixels to tget the image coordinates. Reset and detect packet type on Start of Packet.
 reg [10:0] x, y;
@@ -214,7 +220,7 @@ STREAM_REG #(.DATA_WIDTH(26)) in_reg (
 	.rst_n(reset_n),
 	.ready_out(sink_ready),
 	.valid_out(in_valid),
-	.data_out({red,green,blue,sop,eop}),
+	.data_out({red_out,green_out,blue_out,sop,eop}),
 	.ready_in(out_ready),
 	.valid_in(sink_valid),
 	.data_in({sink_data,sink_sop,sink_eop})
@@ -225,7 +231,7 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 	.rst_n(reset_n),
 	.ready_out(out_ready),
 	.valid_out(source_valid),
-	.data_out({source_data,source_sop,source_eop}),
+	.data_out({reg_data_out,source_sop,source_eop}),
 	.ready_in(source_ready),
 	.valid_in(in_valid),
 	.data_in({red_out, green_out, blue_out, sop, eop})
@@ -241,6 +247,9 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 `define READ_MSG    				1
 `define READ_ID    				2
 `define REG_BBCOL					3
+`define THRESHOLD_LOW			4
+`define THRESHOLD_UP				5
+`define APPLY_MASK				6
 
 //Status register bits
 // 31:16 - unimplemented
@@ -288,18 +297,33 @@ begin
 	
 	else if (s_chipselect & s_read) begin
 		if   (s_address == `REG_STATUS) s_readdata <= {16'b0,msg_buf_size,reg_status};
-		if   (s_address == `READ_MSG) s_readdata <= {msg_buf_out};
+		//if   (s_address == `READ_MSG) s_readdata <= {msg_buf_out};
+		if   (s_address == `READ_MSG) s_readdata <= 32'hEEEE;
 		if   (s_address == `READ_ID) s_readdata <= 32'h1234EEE2;
 		if   (s_address == `REG_BBCOL) s_readdata <= {8'h0, bb_col};
+		if   (s_address == `THRESHOLD_LOW) s_readdata <= {8'h0, threshold_low[23:0]};
+		if   (s_address == `THRESHOLD_UP) s_readdata <= {8'h0, threshold_up[23:0]};
+		if   (s_address == `APPLY_MASK) s_readdata <= {31'h0, apply_mask};
 	end
-	
+
+	else if (s_chipselect & s_write) begin
+		if (s_address == `THRESHOLD_LOW) threshold_low <= s_writedata[23:0];
+		if (s_address == `THRESHOLD_UP) threshold_up <= s_writedata[23:0];
+		if (s_address == `APPLY_MASK) apply_mask <= s_writedata[0];
+	end
+
 	read_d <= s_read;
 end
 
+assign mask = (reg_data_out[23:16] <= threshold_up[23:16] && reg_data_out[23:16] >= threshold_low[23:16]
+	&& reg_data_out[15:8] <= threshold_up[15:8] && reg_data_out[15:8] >= threshold_low[15:8]
+	&& reg_data_out[7:0] <= threshold_up[7:0] && reg_data_out[7:0] >= threshold_low[7:0]) ?  8'b11111111 : 0;
+
+assign source_data = ~source_sop && apply_mask ? {mask, mask, mask} : reg_data_out;
+//assign source_data = reg_data_out;
+
 //Fetch next word from message buffer after read from READ_MSG
 assign msg_buf_rd = s_chipselect & s_read & ~read_d & ~msg_buf_empty & (s_address == `READ_MSG);
-						
 
 
 endmodule
-

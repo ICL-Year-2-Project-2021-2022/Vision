@@ -76,7 +76,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -107,7 +107,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -120,7 +120,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -293,7 +293,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -416,6 +416,11 @@
  <interface name="clk_vga" internal="altpll_0.c3" type="clock" dir="start" />
  <interface name="d8m_xclkin" internal="altpll_0.c4" type="clock" dir="start" />
  <interface
+   name="eee_imgproc_0_conduit_mask"
+   internal="EEE_IMGPROC_0.conduit_mask"
+   type="conduit"
+   dir="end" />
+ <interface
    name="eee_imgproc_0_conduit_mode"
    internal="EEE_IMGPROC_0.conduit_mode"
    type="conduit"
@@ -472,7 +477,13 @@
    internal="uart_0.external_connection"
    type="conduit"
    dir="end" />
- <module name="EEE_IMGPROC_0" kind="EEE_IMGPROC" version="1.0" enabled="1" />
+ <module name="EEE_IMGPROC_0" kind="EEE_IMGPROC" version="1.0" enabled="1">
+  <parameter name="BB_COL_DEFAULT" value="65280" />
+  <parameter name="IMAGE_H" value="480" />
+  <parameter name="IMAGE_W" value="640" />
+  <parameter name="MESSAGE_BUF_MAX" value="256" />
+  <parameter name="MSG_INTERVAL" value="6" />
+ </module>
  <module
    name="TERASIC_AUTO_FOCUS_0"
    kind="TERASIC_AUTO_FOCUS"
@@ -1271,13 +1282,18 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="alt_vip_vfb_0.dout"
-   end="TERASIC_AUTO_FOCUS_0.din" />
+   start="EEE_IMGPROC_0.avalon_streaming_source"
+   end="alt_vip_itc_0.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
    start="TERASIC_AUTO_FOCUS_0.dout"
-   end="alt_vip_itc_0.din" />
+   end="EEE_IMGPROC_0.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="alt_vip_vfb_0.dout"
+   end="TERASIC_AUTO_FOCUS_0.din" />
  <connection kind="clock" version="18.1" start="altpll_0.c2" end="sdram.clk" />
  <connection
    kind="clock"

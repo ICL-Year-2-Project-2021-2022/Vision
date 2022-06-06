@@ -21,6 +21,9 @@
 #define EEE_IMGPROC_MSG 1
 #define EEE_IMGPROC_ID 2
 #define EEE_IMGPROC_BBCOL 3
+#define EEE_IMGPROC_THRESHOLD_LOW 4
+#define EEE_IMGPROC_THRESHOLD_UP 5
+#define EEE_IMGPROC_MASK 6
 
 #define EXPOSURE_INIT 0x002200
 #define EXPOSURE_STEP 0x100
@@ -113,12 +116,16 @@ bool MIPI_Init(void){
 int main()
 {
 
+	alt_u32 enableMask = 0;
 	fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
 
   printf("DE10-LITE D8M VGA Demo\n");
   printf("Imperial College EEE2 Project version\n");
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
   IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
+  IOWR(0x42000, EEE_IMGPROC_THRESHOLD_LOW, 0x331111);
+  IOWR(0x42000, EEE_IMGPROC_THRESHOLD_UP, 0xff3a3a);
+  IOWR(0x42000, EEE_IMGPROC_MASK, 0);
 
   usleep(2000);
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
@@ -197,9 +204,6 @@ int main()
 
   while(1){
 
-
-
-
 	#if 0
 
 	  // touch KEY0 to trigger Auto focus
@@ -261,6 +265,15 @@ int main()
         	   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
         	   OV8865_FOCUS_Move_to(current_focus);
         	   printf("\nFocus = %x ",current_focus);
+       	   	   break;}
+       	   case 'm': {
+       		   if (enableMask == 1) {
+           		   enableMask = 0;
+       		   } else {
+       			   enableMask = 1;
+       		   }
+       		   IOWR(0x42000, EEE_IMGPROC_MASK, enableMask);
+        	   printf("Mask mode = %x ", enableMask);
        	   	   break;}
        }
 

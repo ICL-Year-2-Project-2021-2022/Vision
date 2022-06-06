@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 1, 2022 2:01:07 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1654088467580</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\micha\Desktop\Vision\DE10_CAM\software\cam_small_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>06-Jun-2022 09:44:58</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1654505099055</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\vacla\Projects\Vision\DE10_CAM\software\cam_small_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
