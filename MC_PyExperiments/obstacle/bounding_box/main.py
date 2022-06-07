@@ -2,19 +2,18 @@ import cv2
 import numpy as np
 import masker
 import locator
+import bounder
+import distance
+import fourier
 
 
 images = []
 positions = []
 
 ##Appended 2 images here, why 2 images?
-images.append(cv2.imread("../assets/white_obstacle0.jpeg", cv2.IMREAD_COLOR))
-images.append(cv2.resize(cv2.imread("../assets/img1.jpg", cv2.IMREAD_COLOR),(0,0),fx=0.3,fy=0.3))
-positions.append([0,0,0])
+images.append(cv2.resize(cv2.imread("../../assets/white_obstacle3.jpeg", cv2.IMREAD_COLOR),(0,0),fx=1,fy=1))
 
-##What is positions and why -125?
-images.append(cv2.imread("../assets/white_obstacle2.jpeg", cv2.IMREAD_COLOR))
-positions.append([0,-125,0])
+positions.append([0,0,0])
 
 # images.append(cv2.imread("assets/235.jpg", cv2.IMREAD_COLOR))
 # positions.append([0,-235,0])
@@ -45,17 +44,26 @@ for img in images:
         ## Get the mask for the specific color. Mask is a binary image of Zero and non-zero.
         ## We are trying to set zero for parts of image that aren't the same color.
         mask = masker.hsv_mask(img, color)
+        bmin_x, bmax_x, bmin_y, bmax_y = bounder.getbbox(mask)
+        #obs_distance = distance.triangle_distance(bmax_y-bmin_y,bmax_x-bmin_x)
+        com = locator.find_com(mask)
+        bounded_mask = mask[bmin_y:bmax_y,bmin_x:bmax_x]
+        max_stripe_width =distance.find_stripe_width(bounded_mask) 
+        print('stripe width',distance.find_stripe_width(bounded_mask))
+        print('distance to obstacle: ', distance.find_distance(max_stripe_width,img))
+        cv2.imshow('bounded', bounded_mask)
+
+        fourier.fourier_trans(bounded_mask)
 
 
-        com = locator.find_com(mask,color)
-        
         ##com[2] is total mass mass
         print(color, com[2], 0.001*img.shape[0]*img.shape[1])
         ## I guess here is accuracy check??? if passes accuracy, then put a circle and text
         if com[2] > 0.001*img.shape[0]*img.shape[1]:
             img = cv2.circle(img, (com[0], com[1]), 10, (255, 0, 0), 2)
-            font = cv2.FONT_HERSHEY_SIMPLEX
+            font = cv2.FONT_HERSHEY_SIMPLEX 
             img = cv2.putText(img,color,(com[0],com[1]), font, 1,(255,255,255),1,cv2.LINE_AA)
+            img = cv2.rectangle(img, (bmin_x,bmin_y),(bmax_x,bmax_y),(0,0,0),2)
             imgobjects.append([com[0], com[1], com[2], color])
 
     #Display color masks
