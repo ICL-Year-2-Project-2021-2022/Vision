@@ -254,15 +254,16 @@ int main()
        }
 	#endif
 
-       //Read messages from the image processor and print them on the terminal
-       while ((IORD(0x42000,EEE_IMGPROC_STATUS)>>8) & 0xff) { 	//Find out if there are words to read
-           int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer
-    	   if (fwrite(&word, 4, 1, ser) != 1)
-    		   printf("Error writing to UART");
-           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
-    		   printf("\n");
-    	   printf("%08x ",word);
-       }
+//       //Read messages from the image processor and print them on the terminal
+//       while ((IORD(0x42000,EEE_IMGPROC_STATUS)>>8) & 0xff) { 	//Find out if there are words to read
+//           int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer
+//    	   if (fwrite(&word, 4, 1, ser) != 1)
+//    		   printf("Error writing to UART");
+//           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
+//    		   printf("\n");
+//    	   printf("%08x ",word);
+//       }
+
 
        //Update the bounding box colour
        boundingBoxColour = ((boundingBoxColour + 1) & 0xff);
