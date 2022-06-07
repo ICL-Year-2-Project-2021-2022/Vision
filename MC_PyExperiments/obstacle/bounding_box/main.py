@@ -50,7 +50,7 @@ for img in images:
         bounded_mask = mask[bmin_y:bmax_y,bmin_x:bmax_x]
         max_stripe_width =distance.find_stripe_width(bounded_mask) 
         print('stripe width',distance.find_stripe_width(bounded_mask))
-        print('distance to obstacle: ', distance.find_distance(max_stripe_width,img))
+        print('distance to obstacle: ', distance.find_distance(bounded_mask,img))
         cv2.imshow('bounded', bounded_mask)
 
         fourier.fourier_trans(bounded_mask)

@@ -34,8 +34,8 @@ def fun_freq(fft_data):
         elif con_data[i]>0:
             pre_pos=True
         elif pre_pos and con_data[i]<0:
-            y_points = [abs(fft_data[i-2]),abs(fft_data[i-1]),abs(fft_data[i])]
-            x_points = [i-2,i-1,i]
+            y_points = [abs(fft_data[i-2]),abs(fft_data[i-1]),abs(fft_data[i]), abs(fft_data[i+1])]
+            x_points = [i-2,i-1,i, i+1]
             p1=np.polyfit(x_points, y_points,2) #coefficient of quadratic fit
             max_f1 = -p1[1]/2/p1[0]
             return max_f1
