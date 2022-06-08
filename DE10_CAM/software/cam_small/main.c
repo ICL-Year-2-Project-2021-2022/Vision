@@ -323,7 +323,7 @@ int main()
        		   int convertedX = x_raw / mass;
        		   int convertedY = y_raw / mass;
        		   printf("pixels count: %d, sop_count: %d, end_count: %d, video_packet_count: %d", pixels_count, sop_count, eop_count, video_packet_count);
-       		   printf("X raw: %d, Y raw: %d, mass: %x, mass: %d\n", x_raw, y_raw, mass);
+       		   printf("X raw: %d, Y raw: %d, mass: %d\n", x_raw, y_raw, mass);
        		   printf("Converted X: %d, converted Y: %d", convertedX, convertedY);
        		   break;
        	   }
