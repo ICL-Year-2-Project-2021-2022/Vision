@@ -159,7 +159,7 @@ module Qsys (
 	wire  [31:0] mm_interconnect_0_mipi_pwdn_n_s1_writedata;                        // mm_interconnect_0:mipi_pwdn_n_s1_writedata -> mipi_pwdn_n:writedata
 	wire         mm_interconnect_0_eee_imgproc_0_s1_chipselect;                     // mm_interconnect_0:EEE_IMGPROC_0_s1_chipselect -> EEE_IMGPROC_0:s_chipselect
 	wire  [31:0] mm_interconnect_0_eee_imgproc_0_s1_readdata;                       // EEE_IMGPROC_0:s_readdata -> mm_interconnect_0:EEE_IMGPROC_0_s1_readdata
-	wire   [2:0] mm_interconnect_0_eee_imgproc_0_s1_address;                        // mm_interconnect_0:EEE_IMGPROC_0_s1_address -> EEE_IMGPROC_0:s_address
+	wire   [3:0] mm_interconnect_0_eee_imgproc_0_s1_address;                        // mm_interconnect_0:EEE_IMGPROC_0_s1_address -> EEE_IMGPROC_0:s_address
 	wire         mm_interconnect_0_eee_imgproc_0_s1_read;                           // mm_interconnect_0:EEE_IMGPROC_0_s1_read -> EEE_IMGPROC_0:s_read
 	wire         mm_interconnect_0_eee_imgproc_0_s1_write;                          // mm_interconnect_0:EEE_IMGPROC_0_s1_write -> EEE_IMGPROC_0:s_write
 	wire  [31:0] mm_interconnect_0_eee_imgproc_0_s1_writedata;                      // mm_interconnect_0:EEE_IMGPROC_0_s1_writedata -> EEE_IMGPROC_0:s_writedata

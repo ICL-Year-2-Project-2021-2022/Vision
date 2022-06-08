@@ -24,6 +24,13 @@
 #define EEE_IMGPROC_THRESHOLD_LOW 4
 #define EEE_IMGPROC_THRESHOLD_UP 5
 #define EEE_IMGPROC_MASK 6
+#define EEE_IMGPROC_READ_COM_X 7
+#define EEE_IMGPROC_READ_COM_Y 8
+#define EEE_IMGPROC_READ_COM_MASS 9
+#define EEE_IMGPROC_READ_PIXELS_COUNTER 10
+#define EEE_IMGPROC_READ_SOP_COUNTER	11
+#define EEE_IMGPROC_READ_EOP_COUNTER	12
+#define EEE_IMGPROC_READ_VIDEO_PACKET_COUNTER	13
 
 #define EXPOSURE_INIT 0x002200
 #define EXPOSURE_STEP 0x100
@@ -123,16 +130,16 @@ int main()
   printf("Imperial College EEE2 Project version\n");
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
   IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
-  IOWR(0x42000, EEE_IMGPROC_THRESHOLD_LOW, 0x331111);
-  IOWR(0x42000, EEE_IMGPROC_THRESHOLD_UP, 0xff3a3a);
-  IOWR(0x42000, EEE_IMGPROC_MASK, 0);
+  IOWR(0x41000, EEE_IMGPROC_THRESHOLD_LOW, 0x331111);
+  IOWR(0x41000, EEE_IMGPROC_THRESHOLD_UP, 0xff3a3a);
+  IOWR(0x41000, EEE_IMGPROC_MASK, 0);
 
   usleep(2000);
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
   usleep(2000);
   IOWR(MIPI_RESET_N_BASE, 0x00, 0xFF);
 
-  printf("Image Processor ID: %x\n",IORD(0x42000,EEE_IMGPROC_ID));
+  printf("Image Processor ID: %x\n",IORD(0x41000,EEE_IMGPROC_ID));
   //printf("Image Processor ID: %x\n",IORD(EEE_IMGPROC_0_BASE,EEE_IMGPROC_ID)); //Don't know why this doesn't work - definition is in system.h in BSP
 
 
@@ -227,6 +234,35 @@ int main()
 //       boundingBoxColour = ((boundingBoxColour + 1) & 0xff);
 //       IOWR(0x42000, EEE_IMGPROC_BBCOL, (boundingBoxColour << 8) | (0xff - boundingBoxColour));
 
+	   /*int iterations = 15;
+	   int xConvertedSum = 0;
+	   int yConvertedSum = 0;
+	   int massSum = 0;
+	   for (int i = 0; i < iterations; i++) {
+		   int x_raw = IORD(0x41000,EEE_IMGPROC_READ_COM_X);
+		   int y_raw = IORD(0x41000,EEE_IMGPROC_READ_COM_Y);
+		   int mass = IORD(0x41000,EEE_IMGPROC_READ_COM_MASS);
+		   int valid_count = IORD(0x41000, EEE_IMGPROC_READ_VALID_COUNTER);
+		   int condition_count = IORD(0x41000, EEE_IMGPROC_READ_LOGIC_CONDITION_COUNTER);
+		   int sop_count = IORD(0x41000, EEE_IMGPROC_READ_SOP_COUNTER);
+		   int eop_count = IORD(0x41000, EEE_IMGPROC_READ_EOP_COUNTER);
+		   int convertedX = x_raw / mass;
+		   int convertedY = y_raw / mass;
+		   xConvertedSum += convertedX;
+		   yConvertedSum += convertedY;
+		   massSum += mass;
+		   usleep(10000);
+
+	   }
+
+	   xConvertedSum /= iterations;
+	   yConvertedSum /= iterations;
+	   massSum /= iterations;
+
+	   printf("X: %d, Y: %d, mass: %d\n", xConvertedSum, yConvertedSum, massSum);
+	   printf("X max: %d\n", IORD(0x41000, EEE_IMGPROC_READ_X_MAX));
+	   printf("X max: %d\n", IORD(0x41000,EEE_IMGPROC_READ_PIXELS_COUNTER));*/
+
        //Process input commands
        int in = alt_getchar();
        switch (in) {
@@ -272,9 +308,23 @@ int main()
        		   } else {
        			   enableMask = 1;
        		   }
-       		   IOWR(0x42000, EEE_IMGPROC_MASK, enableMask);
-        	   printf("Mask mode = %x ", enableMask);
-       	   	   break;}
+       		   IOWR(0x41000, EEE_IMGPROC_MASK, enableMask);
+        	   printf("Mask mode = %x ", IORD(0x41000, EEE_IMGPROC_MASK));
+       	   	   break;
+       	   }
+       	   case 'w': {
+       		   int x_raw = IORD(0x41000, EEE_IMGPROC_READ_COM_X);
+       		   int y_raw = IORD(0x41000, EEE_IMGPROC_READ_COM_Y);
+       		   int mass = IORD(0x41000, EEE_IMGPROC_READ_COM_MASS);
+       		   int pixels_count = IORD(0x41000, EEE_IMGPROC_READ_PIXELS_COUNTER);
+       		   int sop_count = IORD(0x41000, EEE_IMGPROC_READ_SOP_COUNTER);
+       		   int eop_count = IORD(0x41000, EEE_IMGPROC_READ_EOP_COUNTER);
+       		   int video_packet_count = IORD(0x41000, EEE_IMGPROC_READ_VIDEO_PACKET_COUNTER);
+       		   printf("pixels count: %d, sop_count: %d, end_count: %d, video_packet_count: %d", pixels_count, sop_count, eop_count, video_packet_count);
+       		   /*printf("X raw: %x, Y raw: %x, mass: %x, pixels_count: %d, valid_count: %x, condition_count: %x, sop_count: %x, eop_count: %x\n", x_raw, y_raw, convertedX, convertedY, mass, pixels_count, valid_count, condition_count, sop_count, eop_count);
+       		   printf("Converted X: %d, converted Y: %d", convertedX, convertedY);*/
+       		   break;
+       	   }
        }
 
 //       int* vidata = 0x03000000;

@@ -41,7 +41,7 @@ input							s_read;
 input							s_write;
 output	reg	[31:0]	s_readdata;
 input	[31:0]				s_writedata;
-input	[2:0]					s_address;
+input	[3:0]					s_address;
 
 
 // streaming sink
@@ -66,6 +66,16 @@ reg [23:0]	threshold_low;
 reg [23:0]	threshold_up;
 
 wire [23:0] reg_data_out;
+wire [31:0] ex_raw;
+wire [31:0] ey_raw;
+wire [31:0] mass;
+wire [31:0] current_ex_raw;
+wire [31:0] current_ey_raw;
+wire [31:0] current_mass;
+wire [31:0] pixels_counter_frame;
+wire [31:0] sop_counter;
+wire [31:0] eop_counter;
+wire [31:0] video_packet_counter;
 reg apply_mask;
 
 //////////////////////////////////////////////////////////////////////////
@@ -220,7 +230,7 @@ STREAM_REG #(.DATA_WIDTH(26)) in_reg (
 	.rst_n(reset_n),
 	.ready_out(sink_ready),
 	.valid_out(in_valid),
-	.data_out({red_out,green_out,blue_out,sop,eop}),
+	.data_out({red, green, blue, sop, eop}),
 	.ready_in(out_ready),
 	.valid_in(sink_valid),
 	.data_in({sink_data,sink_sop,sink_eop})
@@ -231,7 +241,7 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 	.rst_n(reset_n),
 	.ready_out(out_ready),
 	.valid_out(source_valid),
-	.data_out({reg_data_out,source_sop,source_eop}),
+	.data_out({source_data,source_sop,source_eop}),
 	.ready_in(source_ready),
 	.valid_in(in_valid),
 	.data_in({red_out, green_out, blue_out, sop, eop})
@@ -250,6 +260,13 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 `define THRESHOLD_LOW			4
 `define THRESHOLD_UP				5
 `define APPLY_MASK				6
+`define READ_COM_X					7
+`define READ_COM_Y				8
+`define READ_COM_MASS				9
+`define READ_LOGIC_PIXELS_COUNTER 10
+`define READ_SOP_COUNTER	11
+`define READ_EOP_COUNTER	12
+`define READ_VIDEO_PACKET_COUNTER	13
 
 //Status register bits
 // 31:16 - unimplemented
@@ -297,13 +314,19 @@ begin
 	
 	else if (s_chipselect & s_read) begin
 		if   (s_address == `REG_STATUS) s_readdata <= {16'b0,msg_buf_size,reg_status};
-		//if   (s_address == `READ_MSG) s_readdata <= {msg_buf_out};
-		if   (s_address == `READ_MSG) s_readdata <= 32'hEEEE;
+		if   (s_address == `READ_MSG) s_readdata <= {msg_buf_out};
 		if   (s_address == `READ_ID) s_readdata <= 32'h1234EEE2;
 		if   (s_address == `REG_BBCOL) s_readdata <= {8'h0, bb_col};
 		if   (s_address == `THRESHOLD_LOW) s_readdata <= {8'h0, threshold_low[23:0]};
 		if   (s_address == `THRESHOLD_UP) s_readdata <= {8'h0, threshold_up[23:0]};
 		if   (s_address == `APPLY_MASK) s_readdata <= {31'h0, apply_mask};
+		if	 (s_address == `READ_COM_X) s_readdata <= current_ex_raw;
+		if	 (s_address == `READ_COM_Y) s_readdata <= current_ey_raw;
+		if	 (s_address == `READ_COM_MASS) s_readdata <= current_mass;
+		if	 (s_address == `READ_LOGIC_PIXELS_COUNTER) s_readdata <= pixels_counter_frame;
+		if 	 (s_address == `READ_SOP_COUNTER) s_readdata <= sop_counter;
+		if 	 (s_address == `READ_EOP_COUNTER) s_readdata <= eop_counter;
+		if 	 (s_address == `READ_VIDEO_PACKET_COUNTER) s_readdata <= video_packet_counter;
 	end
 
 	else if (s_chipselect & s_write) begin
@@ -315,15 +338,23 @@ begin
 	read_d <= s_read;
 end
 
-assign mask = (reg_data_out[23:16] <= threshold_up[23:16] && reg_data_out[23:16] >= threshold_low[23:16]
-	&& reg_data_out[15:8] <= threshold_up[15:8] && reg_data_out[15:8] >= threshold_low[15:8]
-	&& reg_data_out[7:0] <= threshold_up[7:0] && reg_data_out[7:0] >= threshold_low[7:0]) ?  8'b11111111 : 0;
+assign mask = (red <= threshold_up[23:16] && red >= threshold_low[23:16]
+	&& green <= threshold_up[15:8] && green >= threshold_low[15:8]
+	&& blue <= threshold_up[7:0] && blue >= threshold_low[7:0]) ?  8'b11111111 : 0;
 
-assign source_data = ~source_sop && apply_mask ? {mask, mask, mask} : reg_data_out;
+assign {red_out, green_out, blue_out} = (~sop & packet_video & apply_mask) ? {mask, mask, mask} : {red, green, blue};
+//assign {red_out, green_out, blue_out} = (~sop && packet_video && apply_mask) ? {mask, mask, mask} : {red, green, blue};
+//assign source_data = ~source_sop && apply_mask ? {mask, mask, mask} : reg_data_out;
 //assign source_data = reg_data_out;
 
 //Fetch next word from message buffer after read from READ_MSG
 assign msg_buf_rd = s_chipselect & s_read & ~read_d & ~msg_buf_empty & (s_address == `READ_MSG);
 
+COM_COUNTER com_counter(
+	.clk(clk), .reset_n(reset_n),
+	.sink_valid(in_valid), .sink_sop(sop), .sink_eop(eop), .packet_video(packet_video),
+	.ex_raw(ex_raw), .ey_raw(ey_raw), .mass(mass), .current_ex_raw(current_ex_raw), .current_ey_raw(current_ey_raw), .current_mass(current_mass),
+	.pixels_counter_frame(pixels_counter_frame), .sop_counter(sop_counter), .eop_counter(eop_counter), .mask(mask), .video_packet_counter(video_packet_counter)
+);
 
 endmodule

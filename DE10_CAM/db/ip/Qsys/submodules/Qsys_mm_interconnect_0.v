@@ -31,7 +31,7 @@ module Qsys_mm_interconnect_0 (
 		output wire        altpll_0_pll_slave_read,                                    //                                                     .read
 		input  wire [31:0] altpll_0_pll_slave_readdata,                                //                                                     .readdata
 		output wire [31:0] altpll_0_pll_slave_writedata,                               //                                                     .writedata
-		output wire [2:0]  EEE_IMGPROC_0_s1_address,                                   //                                     EEE_IMGPROC_0_s1.address
+		output wire [3:0]  EEE_IMGPROC_0_s1_address,                                   //                                     EEE_IMGPROC_0_s1.address
 		output wire        EEE_IMGPROC_0_s1_write,                                     //                                                     .write
 		output wire        EEE_IMGPROC_0_s1_read,                                      //                                                     .read
 		input  wire [31:0] EEE_IMGPROC_0_s1_readdata,                                  //                                                     .readdata
@@ -2176,7 +2176,7 @@ module Qsys_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (3),
+		.AV_ADDRESS_W                   (4),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),
