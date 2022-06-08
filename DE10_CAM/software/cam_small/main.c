@@ -320,9 +320,11 @@ int main()
        		   int sop_count = IORD(0x41000, EEE_IMGPROC_READ_SOP_COUNTER);
        		   int eop_count = IORD(0x41000, EEE_IMGPROC_READ_EOP_COUNTER);
        		   int video_packet_count = IORD(0x41000, EEE_IMGPROC_READ_VIDEO_PACKET_COUNTER);
+       		   int convertedX = x_raw / mass;
+       		   int convertedY = y_raw / mass;
        		   printf("pixels count: %d, sop_count: %d, end_count: %d, video_packet_count: %d", pixels_count, sop_count, eop_count, video_packet_count);
-       		   /*printf("X raw: %x, Y raw: %x, mass: %x, pixels_count: %d, valid_count: %x, condition_count: %x, sop_count: %x, eop_count: %x\n", x_raw, y_raw, convertedX, convertedY, mass, pixels_count, valid_count, condition_count, sop_count, eop_count);
-       		   printf("Converted X: %d, converted Y: %d", convertedX, convertedY);*/
+       		   printf("X raw: %d, Y raw: %d, mass: %x, mass: %d\n", x_raw, y_raw, mass);
+       		   printf("Converted X: %d, converted Y: %d", convertedX, convertedY);
        		   break;
        	   }
        }

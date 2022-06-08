@@ -75,7 +75,6 @@ module COM_COUNTER_tb ();
         reset_n = 0;
         #2;
         reset_n = 1;
-        #1;
         sop = 1;
         #2;
         sop = 0;
@@ -105,7 +104,8 @@ module COM_COUNTER_tb ();
         #2;
         for (i = 0; i < 479; i = i + 1) begin
             for (j = 0; j < 640; j = j + 1) begin
-                if (i >= 220 && i <= 260 && j >= 320 && j <= 360) begin
+                if (i >= 0 && i <= 1 && j >= 0 && j <= 1) begin
+                    $display("HIGH for i: %d, j: %d", i, j);
                     mask = 8'hff;
                 end else begin
                     mask = 8'h0;
@@ -121,13 +121,13 @@ module COM_COUNTER_tb ();
         eop = 1;
         #2;
         eop = 0;
-        $display("expected X=%d, expected Y=%d, expected mass=%d, current X=%d, current Y=%d, current mass=%d", expected_x, expected_y, expected_mass, ex_raw, ey_raw, mass);
+        $display("expected X=%d, expected Y=%d, expected mass=%d, current X=%d, current Y=%d, current mass=%d", 2, 2, 4, ex_raw, ey_raw, mass);
         $display("pixel counter: %d", pixels_counter_frame);
         $display("sop counter: %d", sop_counter);
         $display("eop counter: %d", eop_counter);
-        assert (expected_x == ex_raw) else $fatal(2, "X is not correct!");
-        assert (expected_y == ey_raw) else $fatal(2, "Y is not correct!");
-        assert (expected_mass == mass) else $fatal(2, "Mass is not correct!");
+        assert (2 == ex_raw) else $fatal(2, "X is not correct!");
+        assert (2 == ey_raw) else $fatal(2, "Y is not correct!");
+        assert (4 == mass) else $fatal(2, "Mass is not correct!");
     end
 
 COM_COUNTER com_counter(

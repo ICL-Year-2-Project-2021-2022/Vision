@@ -46,6 +46,7 @@ always @(posedge clk) begin
 		current_ey_raw <= 0;
 		current_mass <= 0;
 		pixels_counter <= 0;
+		pixels_counter_frame <= 0;
 		eop_counter <= 0;
 		sop_counter <= 0;
 		video_packet_counter <= 0;
@@ -61,11 +62,16 @@ always @(posedge clk) begin
 		video_packet_counter <= video_packet_counter + 1;
 		if (sink_valid) begin
 			pixels_counter <= pixels_counter + 1;
+			if (x_pixel < 4 & y_pixel < 4) begin
+				$display("sink valid, x: %d, y: %d", x_pixel, y_pixel);
+			end
 				
 			if (mask == 8'hff) begin
-				current_ex_raw = current_ex_raw + x_pixel;
-				current_ey_raw = current_ey_raw + y_pixel;
-				current_mass = current_mass + 1;
+				$display("x_pixel: %d", x_pixel);
+				$display("y_pixel: %d", y_pixel);
+				current_ex_raw <= current_ex_raw + x_pixel;
+				current_ey_raw <= current_ey_raw + y_pixel;
+				current_mass <= current_mass + 1;
 			end
 
 			if(x_pixel >= width-1) begin
@@ -93,7 +99,6 @@ always @(posedge clk) begin
 			ex_raw <= current_ex_raw;
 			ey_raw <= current_ey_raw;
 			pixels_counter_frame <= pixels_counter;
-			pixels_counter <= 0;
 			eop_counter <= eop_counter + 1;
 		end
 	end

@@ -320,9 +320,9 @@ begin
 		if   (s_address == `THRESHOLD_LOW) s_readdata <= {8'h0, threshold_low[23:0]};
 		if   (s_address == `THRESHOLD_UP) s_readdata <= {8'h0, threshold_up[23:0]};
 		if   (s_address == `APPLY_MASK) s_readdata <= {31'h0, apply_mask};
-		if	 (s_address == `READ_COM_X) s_readdata <= current_ex_raw;
-		if	 (s_address == `READ_COM_Y) s_readdata <= current_ey_raw;
-		if	 (s_address == `READ_COM_MASS) s_readdata <= current_mass;
+		if	 (s_address == `READ_COM_X) s_readdata <= ex_raw;
+		if	 (s_address == `READ_COM_Y) s_readdata <= ey_raw;
+		if	 (s_address == `READ_COM_MASS) s_readdata <= mass;
 		if	 (s_address == `READ_LOGIC_PIXELS_COUNTER) s_readdata <= pixels_counter_frame;
 		if 	 (s_address == `READ_SOP_COUNTER) s_readdata <= sop_counter;
 		if 	 (s_address == `READ_EOP_COUNTER) s_readdata <= eop_counter;
