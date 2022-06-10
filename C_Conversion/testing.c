@@ -29,10 +29,53 @@ int test_inverse2(){
     
 }
 
+int test_matrix_multi(){
+    //to find row of a matrix: (sizeof(a)/sizeof(a[0]))
+    //to find column of a matrix: (sizeof(a)/ sizeof(a[0][0]))/row
+    float matrixA[1][3] = {{1,2,2}};
+    float matrixB[3][3] = {{2,6,0},{3,1,9},{4,8,2}};
+    int row_A = sizeof(matrixA)/sizeof(matrixA[0]);
+    int col_A = sizeof(matrixA)/sizeof(matrixA[0][0])/row_A;
+    int row_B = sizeof(matrixB)/sizeof(matrixB[0]);
+    int col_B = sizeof(matrixB)/sizeof(matrixB[0][0])/row_B;
+
+    float matrixC[row_A][col_B];
+    matrix_multi(row_A, col_A, row_B, col_B,matrixA, matrixB, matrixC);
+    int i,j=0;
+    for (i=0; i<row_A; i++){
+        for (j=0; j<col_B; j++){
+            printf("%f ", matrixC[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+int test_transpose(){
+    float matrixA[3][3] = {{2,6,0},{3,1,9},{4,8,2}};
+    int row = sizeof(matrixA)/sizeof(matrixA[0]);
+    int col = sizeof(matrixA)/sizeof(matrixA[0][0])/row;
+    float transposed[col][row];
+    transpose(row, col, matrixA, transposed);
+    int i,j=0;
+    for (i=0; i<row; i++){
+        for (j=0; j<col; j++){
+            printf("%f ", transposed[i][j]);
+        }
+        printf("\n");
+    }
+
+
+}
+
+
+
 int main(){
     //test_row_switch();
     //test_inverse1();
-    test_inverse2();
+    //test_inverse2();
+    //test_matrix_multi();
+    //test_transpose();
     // float matrix[2][2] = {{1.0,2.0, 5.0},{3.0,4.0 , -1.0},{2.5, 1.0, 1.5}};
     // float iden[2][2] = {{1.0,0.0},{0.0,1.0}};
     // printf("%f,%f", iden[0][0], iden[0][1]);

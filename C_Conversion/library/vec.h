@@ -102,6 +102,34 @@ void row_operation(float row1[], float row2[], size_t side){
     }
 }
 
+
+void matrix_multi(size_t row_A, size_t col_A,size_t row_B, size_t col_B, float matrix_A[row_A][col_A], float matrix_B[row_B][col_B],float dst[row_A][col_B]){
+    if (col_A!=row_B){
+        printf("Wrong Matrix Size - Mult Error");
+    }
+    int i,j, k=0;
+    for (i=0; i<row_A;i++ ){
+        for (j=0; j<col_B; j++){
+            float sum=0;
+            for (k=0; k<col_A; k++){
+                sum = sum + matrix_A[i][k]*matrix_B[k][j];
+            }
+            dst[i][j] = sum;
+        }
+    }
+}
+
+
+void transpose(size_t row, size_t col, float matrix[row][col], float dst[col][row]){
+    int i,j=0;
+    for (i =0; i<row; i++){
+        for (j=0; j<col; j++){
+            dst[j][i]= matrix[i][j];
+        }
+    }
+}
+
+
 //modified Gauss Jordon inverse, get echelon form and bottom up reduce upper trangular.
 void gaussian_inverse(size_t side, float matrix_A[][side], float dst[][side]){
     int i,j,k,l =0;
