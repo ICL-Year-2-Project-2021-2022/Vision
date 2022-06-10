@@ -106,17 +106,16 @@ struct Mid_Err find_mid(struct Ray ray1,struct Ray ray2, size_t len){
     //printf("r,s,%f,%f", r,s);
     
     //point1 = np.add(ray1[1],np.multiply( r,  ray1[0]))
-    float mult_sol[3];
-    multi_scalar_vector(r, ray1.dir, len, mult_sol);
+    float mult_sol1[3];
+    multi_scalar_vector(r, ray1.dir, len, mult_sol1);
     float point1[3];
-    add_vectors(ray1.pos, mult_sol, len, point1);
+    add_vectors(ray1.pos, mult_sol1, len, point1);
     //printf("point1:%f, %f,%f\n", point1[0], point1[1], point1[2]);
-
+    float mult_sol2[3];
     //point2 = np.add(ray2[1], np.multiply( s,  ray2[0]))
-    multi_scalar_vector(s,ray2.dir, len, mult_sol);
+    multi_scalar_vector(s,ray2.dir, len, mult_sol2);
     float point2[3];
-    
-    add_vectors(ray2.pos, mult_sol, len, point2);
+    add_vectors(ray2.pos, mult_sol2, len, point2);
     
     //printf("point2:%f, %f,%f\n", point2[0], point2[1], point2[2]);
     
@@ -124,7 +123,9 @@ struct Mid_Err find_mid(struct Ray ray1,struct Ray ray2, size_t len){
     float p1p2[3];
     add_vectors(point1, point2, len, p1p2);
     //printf("added: %f, %f, %f", p1p2[0],p1p2[1], p1p2[2]);
-    divide_scalar_vector(2, p1p2, len, results.midpoint);
+    float divide_sol[3];
+    divide_scalar_vector(2, p1p2, len, divide_sol);
+    memcpy(results.midpoint,divide_sol, sizeof(results.midpoint));
     //printf("midpt: %f,%f,%f", results.midpoint[0], results.midpoint[1], results.midpoint[2]);
 
     float sub_sol[3];
@@ -144,12 +145,12 @@ int test_map_pixel_to_angle(){
     if(result.horizontal_angle-precision<-0.2712078032 && result.horizontal_angle+precision>-0.2712078032){
         if (result.vertical_angle-precision<-0.14889840181076 && result.vertical_angle+precision>-0.14889840181076){
             if (result.est_distance-precision<516.8105540083 && result.est_distance+precision>516.8105540083){
-                printf("%s", "Map Pixel to Angle Passed");
+                printf("%s", "Map Pixel to Angle Passed\n");
                 return 0;
             }
         }
     }
-    printf("%s", "Map Pixel to Angle Failed");
+    printf("%s", "Map Pixel to Angle Failed\n");
     return -1;
 
 
@@ -160,11 +161,18 @@ int test_find_mid(){
     struct Ray r2 ={.dir = {0.8576753190942117, -0.44499217565015714, -0.2576334811836026}, .pos = {0, 0, 110}, .color = "red"};
     struct Mid_Err results;
     results = find_mid(r1,r2,3);
-    if ((int)results.midpoint[0]==277 && (int)results.midpoint[1]==-143 && (int)results.midpoint[2]==32 && (int)results.error ==10){
-        printf("Find_Mid Passed");
-        return 0;
+    float precision = 1;
+    if (results.midpoint[0]-precision<277 && results.midpoint[0]+precision>277){
+        if (results.midpoint[1]-precision<-143 && results.midpoint[1]+precision>-143){
+            if (results.midpoint[2]-precision<32 && results.midpoint[2]+precision>32){
+                if (results.error-precision<10 && results.error+precision>10){
+                    printf("Find_Mid Passed\n");
+                    return 0;
+                }
+            }
+        } 
     }
-    printf("Find_Mid Failed");
+    printf("Find_Mid Failed\n");
     return -1;
 }
 
@@ -172,7 +180,7 @@ int test_find_mid(){
 
 int main(){
     
-    // test_find_mid();
-    //test_map_pixel_to_angle();
+    test_find_mid();
+    test_map_pixel_to_angle();
     
 }
