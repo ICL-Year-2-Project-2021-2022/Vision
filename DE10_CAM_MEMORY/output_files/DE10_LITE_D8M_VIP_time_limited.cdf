@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484) Path("C:/Users/micha/Desktop/Vision/DE10_CAM_FRESH/output_files/") File("DE10_LITE_D8M_VIP_time_limited.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484) Path("C:/Users/micha/Desktop/Vision/DE10_CAM_MEMORY/output_files/") File("DE10_LITE_D8M_VIP_time_limited.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

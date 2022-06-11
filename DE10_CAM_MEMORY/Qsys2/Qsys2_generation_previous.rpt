@@ -1,0 +1,200 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\micha\Desktop\Vision\DE10_CAM_MEMORY\Qsys2.qsys --block-symbol-file --output-directory=C:\Users\micha\Desktop\Vision\DE10_CAM_MEMORY\Qsys2 --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading DE10_CAM_MEMORY/Qsys2.qsys
+Progress: Reading input file
+Progress: Adding TERASIC_AUTO_FOCUS_0 [TERASIC_AUTO_FOCUS 1.0]
+Progress: Parameterizing module TERASIC_AUTO_FOCUS_0
+Progress: Adding TERASIC_CAMERA_0 [TERASIC_CAMERA 1.0]
+Progress: Parameterizing module TERASIC_CAMERA_0
+Progress: Adding alt_vip_itc_0 [alt_vip_itc 14.0]
+Progress: Parameterizing module alt_vip_itc_0
+Progress: Adding alt_vip_vfb_0 [alt_vip_vfb 13.1]
+Progress: Parameterizing module alt_vip_vfb_0
+Progress: Adding altpll_0 [altpll 18.1]
+Progress: Parameterizing module altpll_0
+Progress: Adding altpll_1 [altpll 18.1]
+Progress: Parameterizing module altpll_1
+Progress: Adding clk_50 [clock_source 18.1]
+Progress: Parameterizing module clk_50
+Progress: Adding i2c_opencores_camera [i2c_opencores 12.0]
+Progress: Parameterizing module i2c_opencores_camera
+Progress: Adding i2c_opencores_mipi [i2c_opencores 12.0]
+Progress: Parameterizing module i2c_opencores_mipi
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 18.1]
+Progress: Parameterizing module key
+Progress: Adding led [altera_avalon_pio 18.1]
+Progress: Parameterizing module led
+Progress: Adding mipi_pwdn_n [altera_avalon_pio 18.1]
+Progress: Parameterizing module mipi_pwdn_n
+Progress: Adding mipi_reset_n [altera_avalon_pio 18.1]
+Progress: Parameterizing module mipi_reset_n
+Progress: Adding nios2_gen2 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2_gen2
+Progress: Adding sdram [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram
+Progress: Adding sw [altera_avalon_pio 18.1]
+Progress: Parameterizing module sw
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 18.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 18.1]
+Progress: Parameterizing module timer
+Progress: Adding uart_0 [altera_avalon_uart 18.1]
+Progress: Parameterizing module uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: Qsys2.alt_vip_vfb_0: The Frame Buffer will no longer be available after 16.1, please upgrade to Frame Buffer II.
+Info: Qsys2.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: Qsys2.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: Qsys2.sdram: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: Qsys2.sw: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: Qsys2.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: Qsys2.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\micha\Desktop\Vision\DE10_CAM_MEMORY\Qsys2.qsys --synthesis=VERILOG --output-directory=C:\Users\micha\Desktop\Vision\DE10_CAM_MEMORY\Qsys2\synthesis --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading DE10_CAM_MEMORY/Qsys2.qsys
+Progress: Reading input file
+Progress: Adding TERASIC_AUTO_FOCUS_0 [TERASIC_AUTO_FOCUS 1.0]
+Progress: Parameterizing module TERASIC_AUTO_FOCUS_0
+Progress: Adding TERASIC_CAMERA_0 [TERASIC_CAMERA 1.0]
+Progress: Parameterizing module TERASIC_CAMERA_0
+Progress: Adding alt_vip_itc_0 [alt_vip_itc 14.0]
+Progress: Parameterizing module alt_vip_itc_0
+Progress: Adding alt_vip_vfb_0 [alt_vip_vfb 13.1]
+Progress: Parameterizing module alt_vip_vfb_0
+Progress: Adding altpll_0 [altpll 18.1]
+Progress: Parameterizing module altpll_0
+Progress: Adding altpll_1 [altpll 18.1]
+Progress: Parameterizing module altpll_1
+Progress: Adding clk_50 [clock_source 18.1]
+Progress: Parameterizing module clk_50
+Progress: Adding i2c_opencores_camera [i2c_opencores 12.0]
+Progress: Parameterizing module i2c_opencores_camera
+Progress: Adding i2c_opencores_mipi [i2c_opencores 12.0]
+Progress: Parameterizing module i2c_opencores_mipi
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 18.1]
+Progress: Parameterizing module key
+Progress: Adding led [altera_avalon_pio 18.1]
+Progress: Parameterizing module led
+Progress: Adding mipi_pwdn_n [altera_avalon_pio 18.1]
+Progress: Parameterizing module mipi_pwdn_n
+Progress: Adding mipi_reset_n [altera_avalon_pio 18.1]
+Progress: Parameterizing module mipi_reset_n
+Progress: Adding nios2_gen2 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2_gen2
+Progress: Adding sdram [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram
+Progress: Adding sw [altera_avalon_pio 18.1]
+Progress: Parameterizing module sw
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 18.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 18.1]
+Progress: Parameterizing module timer
+Progress: Adding uart_0 [altera_avalon_uart 18.1]
+Progress: Parameterizing module uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: Qsys2.alt_vip_vfb_0: The Frame Buffer will no longer be available after 16.1, please upgrade to Frame Buffer II.
+Info: Qsys2.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: Qsys2.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: Qsys2.sdram: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: Qsys2.sw: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: Qsys2.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: Qsys2.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Info: Qsys2: Generating Qsys2 "Qsys2" for QUARTUS_SYNTH
+Info: Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src2 and cmd_mux_002.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src5 and cmd_mux_005.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src6 and cmd_mux_006.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src7 and cmd_mux_007.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src12 and cmd_mux_012.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src13 and cmd_mux_013.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src15 and cmd_mux_015.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src1 and cmd_mux_007.sink1
+Info: Inserting clock-crossing logic between cmd_demux_001.src2 and cmd_mux_015.sink1
+Info: Inserting clock-crossing logic between cmd_demux_002.src0 and cmd_mux_015.sink2
+Info: Inserting clock-crossing logic between cmd_demux_003.src0 and cmd_mux_015.sink3
+Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+Info: Inserting clock-crossing logic between rsp_demux_002.src0 and rsp_mux.sink2
+Info: Inserting clock-crossing logic between rsp_demux_005.src0 and rsp_mux.sink5
+Info: Inserting clock-crossing logic between rsp_demux_006.src0 and rsp_mux.sink6
+Info: Inserting clock-crossing logic between rsp_demux_007.src0 and rsp_mux.sink7
+Info: Inserting clock-crossing logic between rsp_demux_007.src1 and rsp_mux_001.sink1
+Info: Inserting clock-crossing logic between rsp_demux_012.src0 and rsp_mux.sink12
+Info: Inserting clock-crossing logic between rsp_demux_013.src0 and rsp_mux.sink13
+Info: Inserting clock-crossing logic between rsp_demux_015.src0 and rsp_mux.sink15
+Info: Inserting clock-crossing logic between rsp_demux_015.src1 and rsp_mux_001.sink2
+Info: Inserting clock-crossing logic between rsp_demux_015.src2 and rsp_mux_002.sink0
+Info: Inserting clock-crossing logic between rsp_demux_015.src3 and rsp_mux_003.sink0
+Info: TERASIC_AUTO_FOCUS_0: "Qsys2" instantiated TERASIC_AUTO_FOCUS "TERASIC_AUTO_FOCUS_0"
+Info: TERASIC_CAMERA_0: "Qsys2" instantiated TERASIC_CAMERA "TERASIC_CAMERA_0"
+Info: alt_vip_itc_0: "Qsys2" instantiated alt_vip_itc "alt_vip_itc_0"
+Info: alt_vip_vfb_0: "Qsys2" instantiated alt_vip_vfb "alt_vip_vfb_0"
+Info: altpll_0: "Qsys2" instantiated altpll "altpll_0"
+Info: altpll_1: "Qsys2" instantiated altpll "altpll_1"
+Info: i2c_opencores_camera: "Qsys2" instantiated i2c_opencores "i2c_opencores_camera"
+Info: jtag_uart: Starting RTL generation for module 'Qsys2_jtag_uart'
+Info: jtag_uart:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=Qsys2_jtag_uart --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0016_jtag_uart_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0016_jtag_uart_gen//Qsys2_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'Qsys2_jtag_uart'
+Info: jtag_uart: "Qsys2" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: key: Starting RTL generation for module 'Qsys2_key'
+Info: key:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys2_key --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0017_key_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0017_key_gen//Qsys2_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key: Done RTL generation for module 'Qsys2_key'
+Info: key: "Qsys2" instantiated altera_avalon_pio "key"
+Info: led: Starting RTL generation for module 'Qsys2_led'
+Info: led:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys2_led --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0018_led_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0018_led_gen//Qsys2_led_component_configuration.pl  --do_build_sim=0  ]
+Info: led: Done RTL generation for module 'Qsys2_led'
+Info: led: "Qsys2" instantiated altera_avalon_pio "led"
+Info: mipi_pwdn_n: Starting RTL generation for module 'Qsys2_mipi_pwdn_n'
+Info: mipi_pwdn_n:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys2_mipi_pwdn_n --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0019_mipi_pwdn_n_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0019_mipi_pwdn_n_gen//Qsys2_mipi_pwdn_n_component_configuration.pl  --do_build_sim=0  ]
+Info: mipi_pwdn_n: Done RTL generation for module 'Qsys2_mipi_pwdn_n'
+Info: mipi_pwdn_n: "Qsys2" instantiated altera_avalon_pio "mipi_pwdn_n"
+Info: nios2_gen2: "Qsys2" instantiated altera_nios2_gen2 "nios2_gen2"
+Info: sdram: Starting RTL generation for module 'Qsys2_sdram'
+Info: sdram:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=Qsys2_sdram --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0020_sdram_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0020_sdram_gen//Qsys2_sdram_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram: Done RTL generation for module 'Qsys2_sdram'
+Info: sdram: "Qsys2" instantiated altera_avalon_new_sdram_controller "sdram"
+Info: sw: Starting RTL generation for module 'Qsys2_sw'
+Info: sw:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys2_sw --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0021_sw_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0021_sw_gen//Qsys2_sw_component_configuration.pl  --do_build_sim=0  ]
+Info: sw: Done RTL generation for module 'Qsys2_sw'
+Info: sw: "Qsys2" instantiated altera_avalon_pio "sw"
+Info: sysid_qsys: "Qsys2" instantiated altera_avalon_sysid_qsys "sysid_qsys"
+Info: timer: Starting RTL generation for module 'Qsys2_timer'
+Info: timer:   Generation command is [exec C:/intelFPGA_lite/18.1/quartus/bin64//perl/bin/perl.exe -I C:/intelFPGA_lite/18.1/quartus/bin64//perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=Qsys2_timer --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0023_timer_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0023_timer_gen//Qsys2_timer_component_configuration.pl  --do_build_sim=0  ]
+Info: timer: Done RTL generation for module 'Qsys2_timer'
+Info: timer: "Qsys2" instantiated altera_avalon_timer "timer"
+Info: uart_0: Starting RTL generation for module 'Qsys2_uart_0'
+Info: uart_0:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=Qsys2_uart_0 --dir=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0024_uart_0_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/micha/AppData/Local/Temp/alt9153_5006587870387127568.dir/0024_uart_0_gen//Qsys2_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: uart_0: Done RTL generation for module 'Qsys2_uart_0'
+Info: uart_0: "Qsys2" instantiated altera_avalon_uart "uart_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "Qsys2" instantiated altera_mm_interconnect "mm_interconnect_0"
+Error: Generation stopped, 385 or more modules remaining
+Info: Qsys2: Done "Qsys2" with 66 modules, 53 files
+Error: qsys-generate failed with exit code 1: 1 Error, 0 Warnings
+Info: Stopping: Create HDL design files for synthesis

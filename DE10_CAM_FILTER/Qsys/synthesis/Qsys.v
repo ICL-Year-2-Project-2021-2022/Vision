@@ -54,21 +54,21 @@ module Qsys (
 	wire         rgb_to_gray_0_avalon_streaming_source_ready;                       // GRAY_TO_RGB_0:sink_ready -> RGB_TO_GRAY_0:source_ready
 	wire         rgb_to_gray_0_avalon_streaming_source_startofpacket;               // RGB_TO_GRAY_0:source_sop -> GRAY_TO_RGB_0:sink_sop
 	wire         rgb_to_gray_0_avalon_streaming_source_endofpacket;                 // RGB_TO_GRAY_0:source_eop -> GRAY_TO_RGB_0:sink_eop
-	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> alt_vip_vfb_0:din_valid
-	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> alt_vip_vfb_0:din_data
-	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
-	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_vfb_0:din_startofpacket
-	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_vfb_0:din_endofpacket
-	wire         gray_to_rgb_0_avalon_streaming_source_valid;                       // GRAY_TO_RGB_0:source_valid -> alt_vip_itc_0:is_valid
-	wire  [23:0] gray_to_rgb_0_avalon_streaming_source_data;                        // GRAY_TO_RGB_0:source_data -> alt_vip_itc_0:is_data
-	wire         gray_to_rgb_0_avalon_streaming_source_ready;                       // alt_vip_itc_0:is_ready -> GRAY_TO_RGB_0:source_ready
-	wire         gray_to_rgb_0_avalon_streaming_source_startofpacket;               // GRAY_TO_RGB_0:source_sop -> alt_vip_itc_0:is_sop
-	wire         gray_to_rgb_0_avalon_streaming_source_endofpacket;                 // GRAY_TO_RGB_0:source_eop -> alt_vip_itc_0:is_eop
+	wire         gray_to_rgb_0_avalon_streaming_source_valid;                       // GRAY_TO_RGB_0:source_valid -> alt_vip_vfb_0:din_valid
+	wire  [23:0] gray_to_rgb_0_avalon_streaming_source_data;                        // GRAY_TO_RGB_0:source_data -> alt_vip_vfb_0:din_data
+	wire         gray_to_rgb_0_avalon_streaming_source_ready;                       // alt_vip_vfb_0:din_ready -> GRAY_TO_RGB_0:source_ready
+	wire         gray_to_rgb_0_avalon_streaming_source_startofpacket;               // GRAY_TO_RGB_0:source_sop -> alt_vip_vfb_0:din_startofpacket
+	wire         gray_to_rgb_0_avalon_streaming_source_endofpacket;                 // GRAY_TO_RGB_0:source_eop -> alt_vip_vfb_0:din_endofpacket
 	wire         alt_vip_vfb_0_dout_valid;                                          // alt_vip_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
 	wire  [23:0] alt_vip_vfb_0_dout_data;                                           // alt_vip_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
 	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
 	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
 	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
+	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> alt_vip_itc_0:is_valid
+	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> alt_vip_itc_0:is_data
+	wire         terasic_auto_focus_0_dout_ready;                                   // alt_vip_itc_0:is_ready -> TERASIC_AUTO_FOCUS_0:source_ready
+	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> alt_vip_itc_0:is_sop
+	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> alt_vip_itc_0:is_eop
 	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [GRAY_TO_RGB_0:clk, RGB_TO_GRAY_0:clk, TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter:in_clk_0_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, rst_controller_001:clk, sdram:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
@@ -188,11 +188,11 @@ module Qsys (
 	wire         irq_mapper_receiver3_irq;                                          // timer:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                          // uart_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_gen2_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2:irq
-	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> avalon_st_adapter:in_0_valid
-	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> avalon_st_adapter:in_0_data
-	wire         terasic_auto_focus_0_dout_ready;                                   // avalon_st_adapter:in_0_ready -> TERASIC_AUTO_FOCUS_0:source_ready
-	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> avalon_st_adapter:in_0_startofpacket
-	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> avalon_st_adapter:in_0_endofpacket
+	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> avalon_st_adapter:in_0_valid
+	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> avalon_st_adapter:in_0_data
+	wire         terasic_camera_0_avalon_streaming_source_ready;                    // avalon_st_adapter:in_0_ready -> TERASIC_CAMERA_0:st_ready
+	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> avalon_st_adapter:in_0_startofpacket
+	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> avalon_st_adapter:in_0_endofpacket
 	wire         avalon_st_adapter_out_0_valid;                                     // avalon_st_adapter:out_0_valid -> RGB_TO_GRAY_0:sink_valid
 	wire  [23:0] avalon_st_adapter_out_0_data;                                      // avalon_st_adapter:out_0_data -> RGB_TO_GRAY_0:sink_data
 	wire         avalon_st_adapter_out_0_ready;                                     // RGB_TO_GRAY_0:sink_ready -> avalon_st_adapter:out_0_ready
@@ -314,48 +314,48 @@ module Qsys (
 		.ANC_LINE                      (0),
 		.FIELD0_ANC_LINE               (0)
 	) alt_vip_itc_0 (
-		.is_clk        (altpll_0_c2_clk),                                     //       is_clk_rst.clk
-		.rst           (rst_controller_reset_out_reset),                      // is_clk_rst_reset.reset
-		.is_data       (gray_to_rgb_0_avalon_streaming_source_data),          //              din.data
-		.is_valid      (gray_to_rgb_0_avalon_streaming_source_valid),         //                 .valid
-		.is_ready      (gray_to_rgb_0_avalon_streaming_source_ready),         //                 .ready
-		.is_sop        (gray_to_rgb_0_avalon_streaming_source_startofpacket), //                 .startofpacket
-		.is_eop        (gray_to_rgb_0_avalon_streaming_source_endofpacket),   //                 .endofpacket
-		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),                 //    clocked_video.export
-		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),                //                 .export
-		.underflow     (alt_vip_itc_0_clocked_video_underflow),               //                 .export
-		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid),           //                 .export
-		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),              //                 .export
-		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),              //                 .export
-		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),                   //                 .export
-		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),                   //                 .export
-		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)                    //                 .export
+		.is_clk        (altpll_0_c2_clk),                           //       is_clk_rst.clk
+		.rst           (rst_controller_reset_out_reset),            // is_clk_rst_reset.reset
+		.is_data       (terasic_auto_focus_0_dout_data),            //              din.data
+		.is_valid      (terasic_auto_focus_0_dout_valid),           //                 .valid
+		.is_ready      (terasic_auto_focus_0_dout_ready),           //                 .ready
+		.is_sop        (terasic_auto_focus_0_dout_startofpacket),   //                 .startofpacket
+		.is_eop        (terasic_auto_focus_0_dout_endofpacket),     //                 .endofpacket
+		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),       //    clocked_video.export
+		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),      //                 .export
+		.underflow     (alt_vip_itc_0_clocked_video_underflow),     //                 .export
+		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid), //                 .export
+		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),    //                 .export
+		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),    //                 .export
+		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),         //                 .export
+		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),         //                 .export
+		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)          //                 .export
 	);
 
 	Qsys_alt_vip_vfb_0 alt_vip_vfb_0 (
-		.clock                        (altpll_0_c2_clk),                                        //        clock.clk
-		.reset                        (rst_controller_reset_out_reset),                         //        reset.reset
-		.din_ready                    (terasic_camera_0_avalon_streaming_source_ready),         //          din.ready
-		.din_valid                    (terasic_camera_0_avalon_streaming_source_valid),         //             .valid
-		.din_data                     (terasic_camera_0_avalon_streaming_source_data),          //             .data
-		.din_startofpacket            (terasic_camera_0_avalon_streaming_source_startofpacket), //             .startofpacket
-		.din_endofpacket              (terasic_camera_0_avalon_streaming_source_endofpacket),   //             .endofpacket
-		.dout_ready                   (alt_vip_vfb_0_dout_ready),                               //         dout.ready
-		.dout_valid                   (alt_vip_vfb_0_dout_valid),                               //             .valid
-		.dout_data                    (alt_vip_vfb_0_dout_data),                                //             .data
-		.dout_startofpacket           (alt_vip_vfb_0_dout_startofpacket),                       //             .startofpacket
-		.dout_endofpacket             (alt_vip_vfb_0_dout_endofpacket),                         //             .endofpacket
-		.read_master_av_address       (alt_vip_vfb_0_read_master_address),                      //  read_master.address
-		.read_master_av_read          (alt_vip_vfb_0_read_master_read),                         //             .read
-		.read_master_av_waitrequest   (alt_vip_vfb_0_read_master_waitrequest),                  //             .waitrequest
-		.read_master_av_readdatavalid (alt_vip_vfb_0_read_master_readdatavalid),                //             .readdatavalid
-		.read_master_av_readdata      (alt_vip_vfb_0_read_master_readdata),                     //             .readdata
-		.read_master_av_burstcount    (alt_vip_vfb_0_read_master_burstcount),                   //             .burstcount
-		.write_master_av_address      (alt_vip_vfb_0_write_master_address),                     // write_master.address
-		.write_master_av_write        (alt_vip_vfb_0_write_master_write),                       //             .write
-		.write_master_av_writedata    (alt_vip_vfb_0_write_master_writedata),                   //             .writedata
-		.write_master_av_waitrequest  (alt_vip_vfb_0_write_master_waitrequest),                 //             .waitrequest
-		.write_master_av_burstcount   (alt_vip_vfb_0_write_master_burstcount)                   //             .burstcount
+		.clock                        (altpll_0_c2_clk),                                     //        clock.clk
+		.reset                        (rst_controller_reset_out_reset),                      //        reset.reset
+		.din_ready                    (gray_to_rgb_0_avalon_streaming_source_ready),         //          din.ready
+		.din_valid                    (gray_to_rgb_0_avalon_streaming_source_valid),         //             .valid
+		.din_data                     (gray_to_rgb_0_avalon_streaming_source_data),          //             .data
+		.din_startofpacket            (gray_to_rgb_0_avalon_streaming_source_startofpacket), //             .startofpacket
+		.din_endofpacket              (gray_to_rgb_0_avalon_streaming_source_endofpacket),   //             .endofpacket
+		.dout_ready                   (alt_vip_vfb_0_dout_ready),                            //         dout.ready
+		.dout_valid                   (alt_vip_vfb_0_dout_valid),                            //             .valid
+		.dout_data                    (alt_vip_vfb_0_dout_data),                             //             .data
+		.dout_startofpacket           (alt_vip_vfb_0_dout_startofpacket),                    //             .startofpacket
+		.dout_endofpacket             (alt_vip_vfb_0_dout_endofpacket),                      //             .endofpacket
+		.read_master_av_address       (alt_vip_vfb_0_read_master_address),                   //  read_master.address
+		.read_master_av_read          (alt_vip_vfb_0_read_master_read),                      //             .read
+		.read_master_av_waitrequest   (alt_vip_vfb_0_read_master_waitrequest),               //             .waitrequest
+		.read_master_av_readdatavalid (alt_vip_vfb_0_read_master_readdatavalid),             //             .readdatavalid
+		.read_master_av_readdata      (alt_vip_vfb_0_read_master_readdata),                  //             .readdata
+		.read_master_av_burstcount    (alt_vip_vfb_0_read_master_burstcount),                //             .burstcount
+		.write_master_av_address      (alt_vip_vfb_0_write_master_address),                  // write_master.address
+		.write_master_av_write        (alt_vip_vfb_0_write_master_write),                    //             .write
+		.write_master_av_writedata    (alt_vip_vfb_0_write_master_writedata),                //             .writedata
+		.write_master_av_waitrequest  (alt_vip_vfb_0_write_master_waitrequest),              //             .waitrequest
+		.write_master_av_burstcount   (alt_vip_vfb_0_write_master_burstcount)                //             .burstcount
 	);
 
 	Qsys_altpll_0 altpll_0 (
@@ -730,18 +730,18 @@ module Qsys (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter (
-		.in_clk_0_clk        (altpll_0_c2_clk),                         // in_clk_0.clk
-		.in_rst_0_reset      (rst_controller_reset_out_reset),          // in_rst_0.reset
-		.in_0_data           (terasic_auto_focus_0_dout_data),          //     in_0.data
-		.in_0_valid          (terasic_auto_focus_0_dout_valid),         //         .valid
-		.in_0_ready          (terasic_auto_focus_0_dout_ready),         //         .ready
-		.in_0_startofpacket  (terasic_auto_focus_0_dout_startofpacket), //         .startofpacket
-		.in_0_endofpacket    (terasic_auto_focus_0_dout_endofpacket),   //         .endofpacket
-		.out_0_data          (avalon_st_adapter_out_0_data),            //    out_0.data
-		.out_0_valid         (avalon_st_adapter_out_0_valid),           //         .valid
-		.out_0_ready         (avalon_st_adapter_out_0_ready),           //         .ready
-		.out_0_startofpacket (avalon_st_adapter_out_0_startofpacket),   //         .startofpacket
-		.out_0_endofpacket   (avalon_st_adapter_out_0_endofpacket)      //         .endofpacket
+		.in_clk_0_clk        (altpll_0_c2_clk),                                        // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),                         // in_rst_0.reset
+		.in_0_data           (terasic_camera_0_avalon_streaming_source_data),          //     in_0.data
+		.in_0_valid          (terasic_camera_0_avalon_streaming_source_valid),         //         .valid
+		.in_0_ready          (terasic_camera_0_avalon_streaming_source_ready),         //         .ready
+		.in_0_startofpacket  (terasic_camera_0_avalon_streaming_source_startofpacket), //         .startofpacket
+		.in_0_endofpacket    (terasic_camera_0_avalon_streaming_source_endofpacket),   //         .endofpacket
+		.out_0_data          (avalon_st_adapter_out_0_data),                           //    out_0.data
+		.out_0_valid         (avalon_st_adapter_out_0_valid),                          //         .valid
+		.out_0_ready         (avalon_st_adapter_out_0_ready),                          //         .ready
+		.out_0_startofpacket (avalon_st_adapter_out_0_startofpacket),                  //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_out_0_endofpacket)                     //         .endofpacket
 	);
 
 	altera_reset_controller #(

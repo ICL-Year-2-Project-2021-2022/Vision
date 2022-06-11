@@ -49,28 +49,26 @@ module Qsys (
 		output wire        uart_0_rx_tx_txd                           //                                 .txd
 	);
 
-	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> alt_vip_vfb_0:din_valid
-	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> alt_vip_vfb_0:din_data
-	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
-	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_vfb_0:din_startofpacket
-	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_vfb_0:din_endofpacket
-	wire         alt_vip_vfb_0_dout_valid;                                          // alt_vip_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
-	wire  [23:0] alt_vip_vfb_0_dout_data;                                           // alt_vip_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
-	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
-	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
-	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
+	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> alt_vip_cl_vfb_0:din_valid
+	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> alt_vip_cl_vfb_0:din_data
+	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_cl_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
+	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_cl_vfb_0:din_startofpacket
+	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_cl_vfb_0:din_endofpacket
 	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> alt_vip_itc_0:is_valid
 	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> alt_vip_itc_0:is_data
 	wire         terasic_auto_focus_0_dout_ready;                                   // alt_vip_itc_0:is_ready -> TERASIC_AUTO_FOCUS_0:source_ready
 	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> alt_vip_itc_0:is_sop
 	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> alt_vip_itc_0:is_eop
-	wire         altpll_1_c0_clk;                                                   // altpll_1:c0 -> [mm_interconnect_0:altpll_1_c0_clk, rst_controller_004:clk, sdram:clk]
-	wire         altpll_1_c2_clk;                                                   // altpll_1:c2 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, key:clk, led:clk, mm_interconnect_0:altpll_1_c2_clk, nios2_gen2:clk, rst_controller_003:clk, sw:clk, sysid_qsys:clock, timer:clk, uart_0:clk]
-	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, mm_interconnect_0:altpll_0_c2_clk, rst_controller:clk]
+	wire         alt_vip_cl_vfb_0_dout_valid;                                       // alt_vip_cl_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
+	wire  [23:0] alt_vip_cl_vfb_0_dout_data;                                        // alt_vip_cl_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
+	wire         alt_vip_cl_vfb_0_dout_ready;                                       // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_cl_vfb_0:dout_ready
+	wire         alt_vip_cl_vfb_0_dout_startofpacket;                               // alt_vip_cl_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
+	wire         alt_vip_cl_vfb_0_dout_endofpacket;                                 // alt_vip_cl_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
+	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_cl_vfb_0:main_clock, alt_vip_itc_0:is_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, sdram:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
 	wire         nios2_gen2_data_master_debugaccess;                                // nios2_gen2:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_data_master_debugaccess
-	wire  [27:0] nios2_gen2_data_master_address;                                    // nios2_gen2:d_address -> mm_interconnect_0:nios2_gen2_data_master_address
+	wire  [18:0] nios2_gen2_data_master_address;                                    // nios2_gen2:d_address -> mm_interconnect_0:nios2_gen2_data_master_address
 	wire   [3:0] nios2_gen2_data_master_byteenable;                                 // nios2_gen2:d_byteenable -> mm_interconnect_0:nios2_gen2_data_master_byteenable
 	wire         nios2_gen2_data_master_read;                                       // nios2_gen2:d_read -> mm_interconnect_0:nios2_gen2_data_master_read
 	wire         nios2_gen2_data_master_readdatavalid;                              // mm_interconnect_0:nios2_gen2_data_master_readdatavalid -> nios2_gen2:d_readdatavalid
@@ -78,7 +76,7 @@ module Qsys (
 	wire  [31:0] nios2_gen2_data_master_writedata;                                  // nios2_gen2:d_writedata -> mm_interconnect_0:nios2_gen2_data_master_writedata
 	wire  [31:0] nios2_gen2_instruction_master_readdata;                            // mm_interconnect_0:nios2_gen2_instruction_master_readdata -> nios2_gen2:i_readdata
 	wire         nios2_gen2_instruction_master_waitrequest;                         // mm_interconnect_0:nios2_gen2_instruction_master_waitrequest -> nios2_gen2:i_waitrequest
-	wire  [27:0] nios2_gen2_instruction_master_address;                             // nios2_gen2:i_address -> mm_interconnect_0:nios2_gen2_instruction_master_address
+	wire  [18:0] nios2_gen2_instruction_master_address;                             // nios2_gen2:i_address -> mm_interconnect_0:nios2_gen2_instruction_master_address
 	wire         nios2_gen2_instruction_master_read;                                // nios2_gen2:i_read -> mm_interconnect_0:nios2_gen2_instruction_master_read
 	wire         nios2_gen2_instruction_master_readdatavalid;                       // mm_interconnect_0:nios2_gen2_instruction_master_readdatavalid -> nios2_gen2:i_readdatavalid
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;          // mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
@@ -121,11 +119,13 @@ module Qsys (
 	wire         mm_interconnect_0_altpll_0_pll_slave_read;                         // mm_interconnect_0:altpll_0_pll_slave_read -> altpll_0:read
 	wire         mm_interconnect_0_altpll_0_pll_slave_write;                        // mm_interconnect_0:altpll_0_pll_slave_write -> altpll_0:write
 	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_writedata;                    // mm_interconnect_0:altpll_0_pll_slave_writedata -> altpll_0:writedata
-	wire  [31:0] mm_interconnect_0_altpll_1_pll_slave_readdata;                     // altpll_1:readdata -> mm_interconnect_0:altpll_1_pll_slave_readdata
-	wire   [1:0] mm_interconnect_0_altpll_1_pll_slave_address;                      // mm_interconnect_0:altpll_1_pll_slave_address -> altpll_1:address
-	wire         mm_interconnect_0_altpll_1_pll_slave_read;                         // mm_interconnect_0:altpll_1_pll_slave_read -> altpll_1:read
-	wire         mm_interconnect_0_altpll_1_pll_slave_write;                        // mm_interconnect_0:altpll_1_pll_slave_write -> altpll_1:write
-	wire  [31:0] mm_interconnect_0_altpll_1_pll_slave_writedata;                    // mm_interconnect_0:altpll_1_pll_slave_writedata -> altpll_1:writedata
+	wire         mm_interconnect_0_onchip_memory2_0_s1_chipselect;                  // mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
+	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_readdata;                    // onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
+	wire  [14:0] mm_interconnect_0_onchip_memory2_0_s1_address;                     // mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
+	wire   [3:0] mm_interconnect_0_onchip_memory2_0_s1_byteenable;                  // mm_interconnect_0:onchip_memory2_0_s1_byteenable -> onchip_memory2_0:byteenable
+	wire         mm_interconnect_0_onchip_memory2_0_s1_write;                       // mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
+	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;                   // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
+	wire         mm_interconnect_0_onchip_memory2_0_s1_clken;                       // mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
 	wire         mm_interconnect_0_timer_s1_chipselect;                             // mm_interconnect_0:timer_s1_chipselect -> timer:chipselect
 	wire  [15:0] mm_interconnect_0_timer_s1_readdata;                               // timer:readdata -> mm_interconnect_0:timer_s1_readdata
 	wire   [2:0] mm_interconnect_0_timer_s1_address;                                // mm_interconnect_0:timer_s1_address -> timer:address
@@ -157,30 +157,38 @@ module Qsys (
 	wire         mm_interconnect_0_uart_0_s1_begintransfer;                         // mm_interconnect_0:uart_0_s1_begintransfer -> uart_0:begintransfer
 	wire         mm_interconnect_0_uart_0_s1_write;                                 // mm_interconnect_0:uart_0_s1_write -> uart_0:write_n
 	wire  [15:0] mm_interconnect_0_uart_0_s1_writedata;                             // mm_interconnect_0:uart_0_s1_writedata -> uart_0:writedata
-	wire         mm_interconnect_0_sdram_s1_chipselect;                             // mm_interconnect_0:sdram_s1_chipselect -> sdram:az_cs
-	wire  [15:0] mm_interconnect_0_sdram_s1_readdata;                               // sdram:za_data -> mm_interconnect_0:sdram_s1_readdata
-	wire         mm_interconnect_0_sdram_s1_waitrequest;                            // sdram:za_waitrequest -> mm_interconnect_0:sdram_s1_waitrequest
-	wire  [24:0] mm_interconnect_0_sdram_s1_address;                                // mm_interconnect_0:sdram_s1_address -> sdram:az_addr
-	wire         mm_interconnect_0_sdram_s1_read;                                   // mm_interconnect_0:sdram_s1_read -> sdram:az_rd_n
-	wire   [1:0] mm_interconnect_0_sdram_s1_byteenable;                             // mm_interconnect_0:sdram_s1_byteenable -> sdram:az_be_n
-	wire         mm_interconnect_0_sdram_s1_readdatavalid;                          // sdram:za_valid -> mm_interconnect_0:sdram_s1_readdatavalid
-	wire         mm_interconnect_0_sdram_s1_write;                                  // mm_interconnect_0:sdram_s1_write -> sdram:az_wr_n
-	wire  [15:0] mm_interconnect_0_sdram_s1_writedata;                              // mm_interconnect_0:sdram_s1_writedata -> sdram:az_data
+	wire         alt_vip_cl_vfb_0_mem_master_rd_waitrequest;                        // mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_waitrequest -> alt_vip_cl_vfb_0:mem_master_rd_waitrequest
+	wire  [31:0] alt_vip_cl_vfb_0_mem_master_rd_readdata;                           // mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_readdata -> alt_vip_cl_vfb_0:mem_master_rd_readdata
+	wire  [31:0] alt_vip_cl_vfb_0_mem_master_rd_address;                            // alt_vip_cl_vfb_0:mem_master_rd_address -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_address
+	wire         alt_vip_cl_vfb_0_mem_master_rd_read;                               // alt_vip_cl_vfb_0:mem_master_rd_read -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_read
+	wire         alt_vip_cl_vfb_0_mem_master_rd_readdatavalid;                      // mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_readdatavalid -> alt_vip_cl_vfb_0:mem_master_rd_readdatavalid
+	wire   [2:0] alt_vip_cl_vfb_0_mem_master_rd_burstcount;                         // alt_vip_cl_vfb_0:mem_master_rd_burstcount -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_rd_burstcount
+	wire         alt_vip_cl_vfb_0_mem_master_wr_waitrequest;                        // mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_waitrequest -> alt_vip_cl_vfb_0:mem_master_wr_waitrequest
+	wire  [31:0] alt_vip_cl_vfb_0_mem_master_wr_address;                            // alt_vip_cl_vfb_0:mem_master_wr_address -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_address
+	wire   [3:0] alt_vip_cl_vfb_0_mem_master_wr_byteenable;                         // alt_vip_cl_vfb_0:mem_master_wr_byteenable -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_byteenable
+	wire         alt_vip_cl_vfb_0_mem_master_wr_write;                              // alt_vip_cl_vfb_0:mem_master_wr_write -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_write
+	wire  [31:0] alt_vip_cl_vfb_0_mem_master_wr_writedata;                          // alt_vip_cl_vfb_0:mem_master_wr_writedata -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_writedata
+	wire   [2:0] alt_vip_cl_vfb_0_mem_master_wr_burstcount;                         // alt_vip_cl_vfb_0:mem_master_wr_burstcount -> mm_interconnect_1:alt_vip_cl_vfb_0_mem_master_wr_burstcount
+	wire         mm_interconnect_1_sdram_s1_chipselect;                             // mm_interconnect_1:sdram_s1_chipselect -> sdram:az_cs
+	wire  [15:0] mm_interconnect_1_sdram_s1_readdata;                               // sdram:za_data -> mm_interconnect_1:sdram_s1_readdata
+	wire         mm_interconnect_1_sdram_s1_waitrequest;                            // sdram:za_waitrequest -> mm_interconnect_1:sdram_s1_waitrequest
+	wire  [24:0] mm_interconnect_1_sdram_s1_address;                                // mm_interconnect_1:sdram_s1_address -> sdram:az_addr
+	wire         mm_interconnect_1_sdram_s1_read;                                   // mm_interconnect_1:sdram_s1_read -> sdram:az_rd_n
+	wire   [1:0] mm_interconnect_1_sdram_s1_byteenable;                             // mm_interconnect_1:sdram_s1_byteenable -> sdram:az_be_n
+	wire         mm_interconnect_1_sdram_s1_readdatavalid;                          // sdram:za_valid -> mm_interconnect_1:sdram_s1_readdatavalid
+	wire         mm_interconnect_1_sdram_s1_write;                                  // mm_interconnect_1:sdram_s1_write -> sdram:az_wr_n
+	wire  [15:0] mm_interconnect_1_sdram_s1_writedata;                              // mm_interconnect_1:sdram_s1_writedata -> sdram:az_data
+	wire         irq_mapper_receiver0_irq;                                          // i2c_opencores_mipi:wb_inta_o -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                          // i2c_opencores_camera:wb_inta_o -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                          // jtag_uart:av_irq -> irq_mapper:receiver2_irq
 	wire         irq_mapper_receiver3_irq;                                          // timer:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                          // uart_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_gen2_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2:irq
-	wire         irq_mapper_receiver0_irq;                                          // irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
-	wire   [0:0] irq_synchronizer_receiver_irq;                                     // i2c_opencores_mipi:wb_inta_o -> irq_synchronizer:receiver_irq
-	wire         irq_mapper_receiver1_irq;                                          // irq_synchronizer_001:sender_irq -> irq_mapper:receiver1_irq
-	wire   [0:0] irq_synchronizer_001_receiver_irq;                                 // i2c_opencores_camera:wb_inta_o -> irq_synchronizer_001:receiver_irq
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset]
-	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1]
-	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [altpll_0:reset, altpll_1:reset, mm_interconnect_0:altpll_1_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:i2c_opencores_mipi_clock_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
-	wire         rst_controller_003_reset_out_reset_req;                            // rst_controller_003:reset_req -> [nios2_gen2:reset_req, rst_translator:reset_req_in]
-	wire         rst_controller_004_reset_out_reset;                                // rst_controller_004:reset_out -> [mm_interconnect_0:sdram_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_cl_vfb_0:main_reset, alt_vip_itc_0:rst, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_cl_vfb_0_main_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1]
+	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
+	wire         rst_controller_002_reset_out_reset_req;                            // rst_controller_002:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 
 	TERASIC_AUTO_FOCUS #(
 		.VIDEO_W (640),
@@ -194,11 +202,11 @@ module Qsys (
 		.s_readdata   (mm_interconnect_0_terasic_auto_focus_0_mm_ctrl_readdata),   //        .readdata
 		.s_writedata  (mm_interconnect_0_terasic_auto_focus_0_mm_ctrl_writedata),  //        .writedata
 		.s_address    (mm_interconnect_0_terasic_auto_focus_0_mm_ctrl_address),    //        .address
-		.sink_data    (alt_vip_vfb_0_dout_data),                                   //     din.data
-		.sink_valid   (alt_vip_vfb_0_dout_valid),                                  //        .valid
-		.sink_ready   (alt_vip_vfb_0_dout_ready),                                  //        .ready
-		.sink_sop     (alt_vip_vfb_0_dout_startofpacket),                          //        .startofpacket
-		.sink_eop     (alt_vip_vfb_0_dout_endofpacket),                            //        .endofpacket
+		.sink_data    (alt_vip_cl_vfb_0_dout_data),                                //     din.data
+		.sink_valid   (alt_vip_cl_vfb_0_dout_valid),                               //        .valid
+		.sink_ready   (alt_vip_cl_vfb_0_dout_ready),                               //        .ready
+		.sink_sop     (alt_vip_cl_vfb_0_dout_startofpacket),                       //        .startofpacket
+		.sink_eop     (alt_vip_cl_vfb_0_dout_endofpacket),                         //        .endofpacket
 		.source_data  (terasic_auto_focus_0_dout_data),                            //    dout.data
 		.source_valid (terasic_auto_focus_0_dout_valid),                           //        .valid
 		.source_ready (terasic_auto_focus_0_dout_ready),                           //        .ready
@@ -224,6 +232,67 @@ module Qsys (
 		.st_eop        (terasic_camera_0_avalon_streaming_source_endofpacket),   //                        .endofpacket
 		.st_ready      (terasic_camera_0_avalon_streaming_source_ready),         //                        .ready
 		.st_valid      (terasic_camera_0_avalon_streaming_source_valid)          //                        .valid
+	);
+
+	Qsys_alt_vip_cl_vfb_0 #(
+		.BITS_PER_SYMBOL              (8),
+		.NUMBER_OF_COLOR_PLANES       (3),
+		.COLOR_PLANES_ARE_IN_PARALLEL (1),
+		.PIXELS_IN_PARALLEL           (1),
+		.READY_LATENCY                (1),
+		.MAX_WIDTH                    (640),
+		.MAX_HEIGHT                   (480),
+		.CLOCKS_ARE_SEPARATE          (0),
+		.MEM_PORT_WIDTH               (32),
+		.MEM_BASE_ADDR                (0),
+		.BURST_ALIGNMENT              (0),
+		.WRITE_FIFO_DEPTH             (512),
+		.WRITE_BURST_TARGET           (4),
+		.READ_FIFO_DEPTH              (512),
+		.READ_BURST_TARGET            (4),
+		.WRITER_RUNTIME_CONTROL       (0),
+		.READER_RUNTIME_CONTROL       (0),
+		.IS_FRAME_WRITER              (0),
+		.IS_FRAME_READER              (0),
+		.DROP_FRAMES                  (1),
+		.REPEAT_FRAMES                (1),
+		.DROP_REPEAT_USER             (0),
+		.INTERLACED_SUPPORT           (0),
+		.CONTROLLED_DROP_REPEAT       (0),
+		.DROP_INVALID_FIELDS          (0),
+		.MULTI_FRAME_DELAY            (1),
+		.IS_SYNC_MASTER               (0),
+		.IS_SYNC_SLAVE                (0),
+		.LINE_BASED_BUFFERING         (0),
+		.PRIORITIZE_FMAX              (0),
+		.USER_PACKETS_MAX_STORAGE     (0),
+		.MAX_SYMBOLS_PER_PACKET       (10),
+		.NUM_BUFFERS                  (3)
+	) alt_vip_cl_vfb_0 (
+		.main_clock                  (altpll_0_c2_clk),                                        //    main_clock.clk
+		.main_reset                  (rst_controller_reset_out_reset),                         //    main_reset.reset
+		.din_data                    (terasic_camera_0_avalon_streaming_source_data),          //           din.data
+		.din_valid                   (terasic_camera_0_avalon_streaming_source_valid),         //              .valid
+		.din_startofpacket           (terasic_camera_0_avalon_streaming_source_startofpacket), //              .startofpacket
+		.din_endofpacket             (terasic_camera_0_avalon_streaming_source_endofpacket),   //              .endofpacket
+		.din_ready                   (terasic_camera_0_avalon_streaming_source_ready),         //              .ready
+		.mem_master_wr_address       (alt_vip_cl_vfb_0_mem_master_wr_address),                 // mem_master_wr.address
+		.mem_master_wr_burstcount    (alt_vip_cl_vfb_0_mem_master_wr_burstcount),              //              .burstcount
+		.mem_master_wr_waitrequest   (alt_vip_cl_vfb_0_mem_master_wr_waitrequest),             //              .waitrequest
+		.mem_master_wr_write         (alt_vip_cl_vfb_0_mem_master_wr_write),                   //              .write
+		.mem_master_wr_writedata     (alt_vip_cl_vfb_0_mem_master_wr_writedata),               //              .writedata
+		.mem_master_wr_byteenable    (alt_vip_cl_vfb_0_mem_master_wr_byteenable),              //              .byteenable
+		.dout_data                   (alt_vip_cl_vfb_0_dout_data),                             //          dout.data
+		.dout_valid                  (alt_vip_cl_vfb_0_dout_valid),                            //              .valid
+		.dout_startofpacket          (alt_vip_cl_vfb_0_dout_startofpacket),                    //              .startofpacket
+		.dout_endofpacket            (alt_vip_cl_vfb_0_dout_endofpacket),                      //              .endofpacket
+		.dout_ready                  (alt_vip_cl_vfb_0_dout_ready),                            //              .ready
+		.mem_master_rd_address       (alt_vip_cl_vfb_0_mem_master_rd_address),                 // mem_master_rd.address
+		.mem_master_rd_burstcount    (alt_vip_cl_vfb_0_mem_master_rd_burstcount),              //              .burstcount
+		.mem_master_rd_waitrequest   (alt_vip_cl_vfb_0_mem_master_rd_waitrequest),             //              .waitrequest
+		.mem_master_rd_read          (alt_vip_cl_vfb_0_mem_master_rd_read),                    //              .read
+		.mem_master_rd_readdata      (alt_vip_cl_vfb_0_mem_master_rd_readdata),                //              .readdata
+		.mem_master_rd_readdatavalid (alt_vip_cl_vfb_0_mem_master_rd_readdatavalid)            //              .readdatavalid
 	);
 
 	alt_vipitc131_IS2Vid #(
@@ -279,32 +348,6 @@ module Qsys (
 		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)          //                 .export
 	);
 
-	Qsys_alt_vip_vfb_0 alt_vip_vfb_0 (
-		.clock                        (altpll_0_c2_clk),                                        //        clock.clk
-		.reset                        (rst_controller_reset_out_reset),                         //        reset.reset
-		.din_ready                    (terasic_camera_0_avalon_streaming_source_ready),         //          din.ready
-		.din_valid                    (terasic_camera_0_avalon_streaming_source_valid),         //             .valid
-		.din_data                     (terasic_camera_0_avalon_streaming_source_data),          //             .data
-		.din_startofpacket            (terasic_camera_0_avalon_streaming_source_startofpacket), //             .startofpacket
-		.din_endofpacket              (terasic_camera_0_avalon_streaming_source_endofpacket),   //             .endofpacket
-		.dout_ready                   (alt_vip_vfb_0_dout_ready),                               //         dout.ready
-		.dout_valid                   (alt_vip_vfb_0_dout_valid),                               //             .valid
-		.dout_data                    (alt_vip_vfb_0_dout_data),                                //             .data
-		.dout_startofpacket           (alt_vip_vfb_0_dout_startofpacket),                       //             .startofpacket
-		.dout_endofpacket             (alt_vip_vfb_0_dout_endofpacket),                         //             .endofpacket
-		.read_master_av_address       (),                                                       //  read_master.address
-		.read_master_av_read          (),                                                       //             .read
-		.read_master_av_waitrequest   (),                                                       //             .waitrequest
-		.read_master_av_readdatavalid (),                                                       //             .readdatavalid
-		.read_master_av_readdata      (),                                                       //             .readdata
-		.read_master_av_burstcount    (),                                                       //             .burstcount
-		.write_master_av_address      (),                                                       // write_master.address
-		.write_master_av_write        (),                                                       //             .write
-		.write_master_av_writedata    (),                                                       //             .writedata
-		.write_master_av_waitrequest  (),                                                       //             .waitrequest
-		.write_master_av_burstcount   ()                                                        //             .burstcount
-	);
-
 	Qsys_altpll_0 altpll_0 (
 		.clk                (clk_clk),                                        //       inclk_interface.clk
 		.reset              (rst_controller_001_reset_out_reset),             // inclk_interface_reset.reset
@@ -314,7 +357,7 @@ module Qsys (
 		.readdata           (mm_interconnect_0_altpll_0_pll_slave_readdata),  //                      .readdata
 		.writedata          (mm_interconnect_0_altpll_0_pll_slave_writedata), //                      .writedata
 		.c0                 (),                                               //                    c0.clk
-		.c1                 (),                                               //                    c1.clk
+		.c1                 (clk_sdram_clk),                                  //                    c1.clk
 		.c2                 (altpll_0_c2_clk),                                //                    c2.clk
 		.c3                 (clk_vga_clk),                                    //                    c3.clk
 		.c4                 (d8m_xclkin_clk),                                 //                    c4.clk
@@ -322,33 +365,6 @@ module Qsys (
 		.locked             (altpll_0_locked_conduit_export),                 //        locked_conduit.export
 		.scandone           (),                                               //           (terminated)
 		.scandataout        (),                                               //           (terminated)
-		.phasedone          (),                                               //           (terminated)
-		.phasecounterselect (3'b000),                                         //           (terminated)
-		.phaseupdown        (1'b0),                                           //           (terminated)
-		.phasestep          (1'b0),                                           //           (terminated)
-		.scanclk            (1'b0),                                           //           (terminated)
-		.scanclkena         (1'b0),                                           //           (terminated)
-		.scandata           (1'b0),                                           //           (terminated)
-		.configupdate       (1'b0)                                            //           (terminated)
-	);
-
-	Qsys_altpll_1 altpll_1 (
-		.clk                (clk_clk),                                        //       inclk_interface.clk
-		.reset              (rst_controller_001_reset_out_reset),             // inclk_interface_reset.reset
-		.read               (mm_interconnect_0_altpll_1_pll_slave_read),      //             pll_slave.read
-		.write              (mm_interconnect_0_altpll_1_pll_slave_write),     //                      .write
-		.address            (mm_interconnect_0_altpll_1_pll_slave_address),   //                      .address
-		.readdata           (mm_interconnect_0_altpll_1_pll_slave_readdata),  //                      .readdata
-		.writedata          (mm_interconnect_0_altpll_1_pll_slave_writedata), //                      .writedata
-		.c0                 (altpll_1_c0_clk),                                //                    c0.clk
-		.c1                 (clk_sdram_clk),                                  //                    c1.clk
-		.c2                 (altpll_1_c2_clk),                                //                    c2.clk
-		.scandone           (),                                               //           (terminated)
-		.scandataout        (),                                               //           (terminated)
-		.c3                 (),                                               //           (terminated)
-		.c4                 (),                                               //           (terminated)
-		.areset             (1'b0),                                           //           (terminated)
-		.locked             (),                                               //           (terminated)
 		.phasedone          (),                                               //           (terminated)
 		.phasecounterselect (3'b000),                                         //           (terminated)
 		.phaseupdown        (1'b0),                                           //           (terminated)
@@ -370,7 +386,7 @@ module Qsys (
 		.wb_we_i    (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_write),       //                 .write
 		.wb_stb_i   (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_chipselect),  //                 .chipselect
 		.wb_ack_o   (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_waitrequest), //                 .waitrequest_n
-		.wb_inta_o  (irq_synchronizer_001_receiver_irq)                                  // interrupt_sender.irq
+		.wb_inta_o  (irq_mapper_receiver1_irq)                                           // interrupt_sender.irq
 	);
 
 	i2c_opencores i2c_opencores_mipi (
@@ -384,12 +400,12 @@ module Qsys (
 		.wb_we_i    (mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_write),       //                 .write
 		.wb_stb_i   (mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_chipselect),  //                 .chipselect
 		.wb_ack_o   (mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_waitrequest), //                 .waitrequest_n
-		.wb_inta_o  (irq_synchronizer_receiver_irq)                                    // interrupt_sender.irq
+		.wb_inta_o  (irq_mapper_receiver0_irq)                                         // interrupt_sender.irq
 	);
 
 	Qsys_jtag_uart jtag_uart (
-		.clk            (altpll_1_c2_clk),                                           //               clk.clk
-		.rst_n          (~rst_controller_003_reset_out_reset),                       //             reset.reset_n
+		.clk            (clk_clk),                                                   //               clk.clk
+		.rst_n          (~rst_controller_002_reset_out_reset),                       //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
@@ -401,16 +417,16 @@ module Qsys (
 	);
 
 	Qsys_key key (
-		.clk      (altpll_1_c2_clk),                     //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.clk      (clk_clk),                             //                 clk.clk
+		.reset_n  (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_key_s1_address),    //                  s1.address
 		.readdata (mm_interconnect_0_key_s1_readdata),   //                    .readdata
 		.in_port  (key_external_connection_export)       // external_connection.export
 	);
 
 	Qsys_led led (
-		.clk        (altpll_1_c2_clk),                     //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.clk        (clk_clk),                             //                 clk.clk
+		.reset_n    (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address    (mm_interconnect_0_led_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_led_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_led_s1_writedata),  //                    .writedata
@@ -442,9 +458,9 @@ module Qsys (
 	);
 
 	Qsys_nios2_gen2 nios2_gen2 (
-		.clk                                 (altpll_1_c2_clk),                                          //                       clk.clk
-		.reset_n                             (~rst_controller_003_reset_out_reset),                      //                     reset.reset_n
-		.reset_req                           (rst_controller_003_reset_out_reset_req),                   //                          .reset_req
+		.clk                                 (clk_clk),                                                  //                       clk.clk
+		.reset_n                             (~rst_controller_002_reset_out_reset),                      //                     reset.reset_n
+		.reset_req                           (rst_controller_002_reset_out_reset_req),                   //                          .reset_req
 		.d_address                           (nios2_gen2_data_master_address),                           //               data_master.address
 		.d_byteenable                        (nios2_gen2_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (nios2_gen2_data_master_read),                              //                          .read
@@ -472,18 +488,32 @@ module Qsys (
 		.dummy_ci_port                       ()                                                          // custom_instruction_master.readra
 	);
 
+	Qsys_onchip_memory2_0 onchip_memory2_0 (
+		.clk        (clk_clk),                                          //   clk1.clk
+		.address    (mm_interconnect_0_onchip_memory2_0_s1_address),    //     s1.address
+		.clken      (mm_interconnect_0_onchip_memory2_0_s1_clken),      //       .clken
+		.chipselect (mm_interconnect_0_onchip_memory2_0_s1_chipselect), //       .chipselect
+		.write      (mm_interconnect_0_onchip_memory2_0_s1_write),      //       .write
+		.readdata   (mm_interconnect_0_onchip_memory2_0_s1_readdata),   //       .readdata
+		.writedata  (mm_interconnect_0_onchip_memory2_0_s1_writedata),  //       .writedata
+		.byteenable (mm_interconnect_0_onchip_memory2_0_s1_byteenable), //       .byteenable
+		.reset      (rst_controller_002_reset_out_reset),               // reset1.reset
+		.reset_req  (rst_controller_002_reset_out_reset_req),           //       .reset_req
+		.freeze     (1'b0)                                              // (terminated)
+	);
+
 	Qsys_sdram sdram (
-		.clk            (altpll_1_c0_clk),                          //   clk.clk
-		.reset_n        (~rst_controller_004_reset_out_reset),      // reset.reset_n
-		.az_addr        (mm_interconnect_0_sdram_s1_address),       //    s1.address
-		.az_be_n        (~mm_interconnect_0_sdram_s1_byteenable),   //      .byteenable_n
-		.az_cs          (mm_interconnect_0_sdram_s1_chipselect),    //      .chipselect
-		.az_data        (mm_interconnect_0_sdram_s1_writedata),     //      .writedata
-		.az_rd_n        (~mm_interconnect_0_sdram_s1_read),         //      .read_n
-		.az_wr_n        (~mm_interconnect_0_sdram_s1_write),        //      .write_n
-		.za_data        (mm_interconnect_0_sdram_s1_readdata),      //      .readdata
-		.za_valid       (mm_interconnect_0_sdram_s1_readdatavalid), //      .readdatavalid
-		.za_waitrequest (mm_interconnect_0_sdram_s1_waitrequest),   //      .waitrequest
+		.clk            (altpll_0_c2_clk),                          //   clk.clk
+		.reset_n        (~rst_controller_reset_out_reset),          // reset.reset_n
+		.az_addr        (mm_interconnect_1_sdram_s1_address),       //    s1.address
+		.az_be_n        (~mm_interconnect_1_sdram_s1_byteenable),   //      .byteenable_n
+		.az_cs          (mm_interconnect_1_sdram_s1_chipselect),    //      .chipselect
+		.az_data        (mm_interconnect_1_sdram_s1_writedata),     //      .writedata
+		.az_rd_n        (~mm_interconnect_1_sdram_s1_read),         //      .read_n
+		.az_wr_n        (~mm_interconnect_1_sdram_s1_write),        //      .write_n
+		.za_data        (mm_interconnect_1_sdram_s1_readdata),      //      .readdata
+		.za_valid       (mm_interconnect_1_sdram_s1_readdatavalid), //      .readdatavalid
+		.za_waitrequest (mm_interconnect_1_sdram_s1_waitrequest),   //      .waitrequest
 		.zs_addr        (sdram_wire_addr),                          //  wire.export
 		.zs_ba          (sdram_wire_ba),                            //      .export
 		.zs_cas_n       (sdram_wire_cas_n),                         //      .export
@@ -496,23 +526,23 @@ module Qsys (
 	);
 
 	Qsys_sw sw (
-		.clk      (altpll_1_c2_clk),                     //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.clk      (clk_clk),                             //                 clk.clk
+		.reset_n  (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_sw_s1_address),     //                  s1.address
 		.readdata (mm_interconnect_0_sw_s1_readdata),    //                    .readdata
 		.in_port  (sw_external_connection_export)        // external_connection.export
 	);
 
 	Qsys_sysid_qsys sysid_qsys (
-		.clock    (altpll_1_c2_clk),                                     //           clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset),                 //         reset.reset_n
+		.clock    (clk_clk),                                             //           clk.clk
+		.reset_n  (~rst_controller_002_reset_out_reset),                 //         reset.reset_n
 		.readdata (mm_interconnect_0_sysid_qsys_control_slave_readdata), // control_slave.readdata
 		.address  (mm_interconnect_0_sysid_qsys_control_slave_address)   //              .address
 	);
 
 	Qsys_timer timer (
-		.clk        (altpll_1_c2_clk),                       //   clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),   // reset.reset_n
+		.clk        (clk_clk),                               //   clk.clk
+		.reset_n    (~rst_controller_002_reset_out_reset),   // reset.reset_n
 		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
@@ -522,8 +552,8 @@ module Qsys (
 	);
 
 	Qsys_uart_0 uart_0 (
-		.clk           (altpll_1_c2_clk),                           //                 clk.clk
-		.reset_n       (~rst_controller_003_reset_out_reset),       //               reset.reset_n
+		.clk           (clk_clk),                                   //                 clk.clk
+		.reset_n       (~rst_controller_002_reset_out_reset),       //               reset.reset_n
 		.address       (mm_interconnect_0_uart_0_s1_address),       //                  s1.address
 		.begintransfer (mm_interconnect_0_uart_0_s1_begintransfer), //                    .begintransfer
 		.chipselect    (mm_interconnect_0_uart_0_s1_chipselect),    //                    .chipselect
@@ -538,13 +568,9 @@ module Qsys (
 
 	Qsys_mm_interconnect_0 mm_interconnect_0 (
 		.altpll_0_c2_clk                                            (altpll_0_c2_clk),                                                    //                                          altpll_0_c2.clk
-		.altpll_1_c0_clk                                            (altpll_1_c0_clk),                                                    //                                          altpll_1_c0.clk
-		.altpll_1_c2_clk                                            (altpll_1_c2_clk),                                                    //                                          altpll_1_c2.clk
 		.clk_50_clk_clk                                             (clk_clk),                                                            //                                           clk_50_clk.clk
-		.altpll_1_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                 // altpll_1_inclk_interface_reset_reset_bridge_in_reset.reset
-		.i2c_opencores_mipi_clock_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                                 // i2c_opencores_mipi_clock_reset_reset_bridge_in_reset.reset
-		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_003_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
-		.sdram_reset_reset_bridge_in_reset_reset                    (rst_controller_004_reset_out_reset),                                 //                    sdram_reset_reset_bridge_in_reset.reset
+		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                 // altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
+		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_002_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
 		.TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset     (rst_controller_reset_out_reset),                                     //     TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_data_master_address                             (nios2_gen2_data_master_address),                                     //                               nios2_gen2_data_master.address
 		.nios2_gen2_data_master_waitrequest                         (nios2_gen2_data_master_waitrequest),                                 //                                                     .waitrequest
@@ -565,11 +591,6 @@ module Qsys (
 		.altpll_0_pll_slave_read                                    (mm_interconnect_0_altpll_0_pll_slave_read),                          //                                                     .read
 		.altpll_0_pll_slave_readdata                                (mm_interconnect_0_altpll_0_pll_slave_readdata),                      //                                                     .readdata
 		.altpll_0_pll_slave_writedata                               (mm_interconnect_0_altpll_0_pll_slave_writedata),                     //                                                     .writedata
-		.altpll_1_pll_slave_address                                 (mm_interconnect_0_altpll_1_pll_slave_address),                       //                                   altpll_1_pll_slave.address
-		.altpll_1_pll_slave_write                                   (mm_interconnect_0_altpll_1_pll_slave_write),                         //                                                     .write
-		.altpll_1_pll_slave_read                                    (mm_interconnect_0_altpll_1_pll_slave_read),                          //                                                     .read
-		.altpll_1_pll_slave_readdata                                (mm_interconnect_0_altpll_1_pll_slave_readdata),                      //                                                     .readdata
-		.altpll_1_pll_slave_writedata                               (mm_interconnect_0_altpll_1_pll_slave_writedata),                     //                                                     .writedata
 		.i2c_opencores_camera_avalon_slave_0_address                (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_address),      //                  i2c_opencores_camera_avalon_slave_0.address
 		.i2c_opencores_camera_avalon_slave_0_write                  (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_write),        //                                                     .write
 		.i2c_opencores_camera_avalon_slave_0_readdata               (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_readdata),     //                                                     .readdata
@@ -614,15 +635,13 @@ module Qsys (
 		.nios2_gen2_debug_mem_slave_byteenable                      (mm_interconnect_0_nios2_gen2_debug_mem_slave_byteenable),            //                                                     .byteenable
 		.nios2_gen2_debug_mem_slave_waitrequest                     (mm_interconnect_0_nios2_gen2_debug_mem_slave_waitrequest),           //                                                     .waitrequest
 		.nios2_gen2_debug_mem_slave_debugaccess                     (mm_interconnect_0_nios2_gen2_debug_mem_slave_debugaccess),           //                                                     .debugaccess
-		.sdram_s1_address                                           (mm_interconnect_0_sdram_s1_address),                                 //                                             sdram_s1.address
-		.sdram_s1_write                                             (mm_interconnect_0_sdram_s1_write),                                   //                                                     .write
-		.sdram_s1_read                                              (mm_interconnect_0_sdram_s1_read),                                    //                                                     .read
-		.sdram_s1_readdata                                          (mm_interconnect_0_sdram_s1_readdata),                                //                                                     .readdata
-		.sdram_s1_writedata                                         (mm_interconnect_0_sdram_s1_writedata),                               //                                                     .writedata
-		.sdram_s1_byteenable                                        (mm_interconnect_0_sdram_s1_byteenable),                              //                                                     .byteenable
-		.sdram_s1_readdatavalid                                     (mm_interconnect_0_sdram_s1_readdatavalid),                           //                                                     .readdatavalid
-		.sdram_s1_waitrequest                                       (mm_interconnect_0_sdram_s1_waitrequest),                             //                                                     .waitrequest
-		.sdram_s1_chipselect                                        (mm_interconnect_0_sdram_s1_chipselect),                              //                                                     .chipselect
+		.onchip_memory2_0_s1_address                                (mm_interconnect_0_onchip_memory2_0_s1_address),                      //                                  onchip_memory2_0_s1.address
+		.onchip_memory2_0_s1_write                                  (mm_interconnect_0_onchip_memory2_0_s1_write),                        //                                                     .write
+		.onchip_memory2_0_s1_readdata                               (mm_interconnect_0_onchip_memory2_0_s1_readdata),                     //                                                     .readdata
+		.onchip_memory2_0_s1_writedata                              (mm_interconnect_0_onchip_memory2_0_s1_writedata),                    //                                                     .writedata
+		.onchip_memory2_0_s1_byteenable                             (mm_interconnect_0_onchip_memory2_0_s1_byteenable),                   //                                                     .byteenable
+		.onchip_memory2_0_s1_chipselect                             (mm_interconnect_0_onchip_memory2_0_s1_chipselect),                   //                                                     .chipselect
+		.onchip_memory2_0_s1_clken                                  (mm_interconnect_0_onchip_memory2_0_s1_clken),                        //                                                     .clken
 		.sw_s1_address                                              (mm_interconnect_0_sw_s1_address),                                    //                                                sw_s1.address
 		.sw_s1_readdata                                             (mm_interconnect_0_sw_s1_readdata),                                   //                                                     .readdata
 		.sysid_qsys_control_slave_address                           (mm_interconnect_0_sysid_qsys_control_slave_address),                 //                             sysid_qsys_control_slave.address
@@ -647,37 +666,41 @@ module Qsys (
 		.uart_0_s1_chipselect                                       (mm_interconnect_0_uart_0_s1_chipselect)                              //                                                     .chipselect
 	);
 
+	Qsys_mm_interconnect_1 mm_interconnect_1 (
+		.altpll_0_c2_clk                                         (altpll_0_c2_clk),                              //                                       altpll_0_c2.clk
+		.alt_vip_cl_vfb_0_main_reset_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),               // alt_vip_cl_vfb_0_main_reset_reset_bridge_in_reset.reset
+		.alt_vip_cl_vfb_0_mem_master_rd_address                  (alt_vip_cl_vfb_0_mem_master_rd_address),       //                    alt_vip_cl_vfb_0_mem_master_rd.address
+		.alt_vip_cl_vfb_0_mem_master_rd_waitrequest              (alt_vip_cl_vfb_0_mem_master_rd_waitrequest),   //                                                  .waitrequest
+		.alt_vip_cl_vfb_0_mem_master_rd_burstcount               (alt_vip_cl_vfb_0_mem_master_rd_burstcount),    //                                                  .burstcount
+		.alt_vip_cl_vfb_0_mem_master_rd_read                     (alt_vip_cl_vfb_0_mem_master_rd_read),          //                                                  .read
+		.alt_vip_cl_vfb_0_mem_master_rd_readdata                 (alt_vip_cl_vfb_0_mem_master_rd_readdata),      //                                                  .readdata
+		.alt_vip_cl_vfb_0_mem_master_rd_readdatavalid            (alt_vip_cl_vfb_0_mem_master_rd_readdatavalid), //                                                  .readdatavalid
+		.alt_vip_cl_vfb_0_mem_master_wr_address                  (alt_vip_cl_vfb_0_mem_master_wr_address),       //                    alt_vip_cl_vfb_0_mem_master_wr.address
+		.alt_vip_cl_vfb_0_mem_master_wr_waitrequest              (alt_vip_cl_vfb_0_mem_master_wr_waitrequest),   //                                                  .waitrequest
+		.alt_vip_cl_vfb_0_mem_master_wr_burstcount               (alt_vip_cl_vfb_0_mem_master_wr_burstcount),    //                                                  .burstcount
+		.alt_vip_cl_vfb_0_mem_master_wr_byteenable               (alt_vip_cl_vfb_0_mem_master_wr_byteenable),    //                                                  .byteenable
+		.alt_vip_cl_vfb_0_mem_master_wr_write                    (alt_vip_cl_vfb_0_mem_master_wr_write),         //                                                  .write
+		.alt_vip_cl_vfb_0_mem_master_wr_writedata                (alt_vip_cl_vfb_0_mem_master_wr_writedata),     //                                                  .writedata
+		.sdram_s1_address                                        (mm_interconnect_1_sdram_s1_address),           //                                          sdram_s1.address
+		.sdram_s1_write                                          (mm_interconnect_1_sdram_s1_write),             //                                                  .write
+		.sdram_s1_read                                           (mm_interconnect_1_sdram_s1_read),              //                                                  .read
+		.sdram_s1_readdata                                       (mm_interconnect_1_sdram_s1_readdata),          //                                                  .readdata
+		.sdram_s1_writedata                                      (mm_interconnect_1_sdram_s1_writedata),         //                                                  .writedata
+		.sdram_s1_byteenable                                     (mm_interconnect_1_sdram_s1_byteenable),        //                                                  .byteenable
+		.sdram_s1_readdatavalid                                  (mm_interconnect_1_sdram_s1_readdatavalid),     //                                                  .readdatavalid
+		.sdram_s1_waitrequest                                    (mm_interconnect_1_sdram_s1_waitrequest),       //                                                  .waitrequest
+		.sdram_s1_chipselect                                     (mm_interconnect_1_sdram_s1_chipselect)         //                                                  .chipselect
+	);
+
 	Qsys_irq_mapper irq_mapper (
-		.clk           (altpll_1_c2_clk),                    //       clk.clk
-		.reset         (rst_controller_003_reset_out_reset), // clk_reset.reset
+		.clk           (clk_clk),                            //       clk.clk
+		.reset         (rst_controller_002_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
 		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.receiver4_irq (irq_mapper_receiver4_irq),           // receiver4.irq
 		.sender_irq    (nios2_gen2_irq_irq)                  //    sender.irq
-	);
-
-	altera_irq_clock_crosser #(
-		.IRQ_WIDTH (1)
-	) irq_synchronizer (
-		.receiver_clk   (clk_clk),                            //       receiver_clk.clk
-		.sender_clk     (altpll_1_c2_clk),                    //         sender_clk.clk
-		.receiver_reset (rst_controller_002_reset_out_reset), // receiver_clk_reset.reset
-		.sender_reset   (rst_controller_003_reset_out_reset), //   sender_clk_reset.reset
-		.receiver_irq   (irq_synchronizer_receiver_irq),      //           receiver.irq
-		.sender_irq     (irq_mapper_receiver0_irq)            //             sender.irq
-	);
-
-	altera_irq_clock_crosser #(
-		.IRQ_WIDTH (1)
-	) irq_synchronizer_001 (
-		.receiver_clk   (clk_clk),                            //       receiver_clk.clk
-		.sender_clk     (altpll_1_c2_clk),                    //         sender_clk.clk
-		.receiver_reset (rst_controller_002_reset_out_reset), // receiver_clk_reset.reset
-		.sender_reset   (rst_controller_003_reset_out_reset), //   sender_clk_reset.reset
-		.receiver_irq   (irq_synchronizer_001_receiver_irq),  //           receiver.irq
-		.sender_irq     (irq_mapper_receiver1_irq)            //             sender.irq
 	);
 
 	altera_reset_controller #(
@@ -810,69 +833,6 @@ module Qsys (
 		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_002 (
-		.reset_in0      (~reset_reset_n),                       // reset_in0.reset
-		.reset_in1      (nios2_gen2_debug_reset_request_reset), // reset_in1.reset
-		.clk            (clk_clk),                              //       clk.clk
-		.reset_out      (rst_controller_002_reset_out_reset),   // reset_out.reset
-		.reset_req      (),                                     // (terminated)
-		.reset_req_in0  (1'b0),                                 // (terminated)
-		.reset_req_in1  (1'b0),                                 // (terminated)
-		.reset_in2      (1'b0),                                 // (terminated)
-		.reset_req_in2  (1'b0),                                 // (terminated)
-		.reset_in3      (1'b0),                                 // (terminated)
-		.reset_req_in3  (1'b0),                                 // (terminated)
-		.reset_in4      (1'b0),                                 // (terminated)
-		.reset_req_in4  (1'b0),                                 // (terminated)
-		.reset_in5      (1'b0),                                 // (terminated)
-		.reset_req_in5  (1'b0),                                 // (terminated)
-		.reset_in6      (1'b0),                                 // (terminated)
-		.reset_req_in6  (1'b0),                                 // (terminated)
-		.reset_in7      (1'b0),                                 // (terminated)
-		.reset_req_in7  (1'b0),                                 // (terminated)
-		.reset_in8      (1'b0),                                 // (terminated)
-		.reset_req_in8  (1'b0),                                 // (terminated)
-		.reset_in9      (1'b0),                                 // (terminated)
-		.reset_req_in9  (1'b0),                                 // (terminated)
-		.reset_in10     (1'b0),                                 // (terminated)
-		.reset_req_in10 (1'b0),                                 // (terminated)
-		.reset_in11     (1'b0),                                 // (terminated)
-		.reset_req_in11 (1'b0),                                 // (terminated)
-		.reset_in12     (1'b0),                                 // (terminated)
-		.reset_req_in12 (1'b0),                                 // (terminated)
-		.reset_in13     (1'b0),                                 // (terminated)
-		.reset_req_in13 (1'b0),                                 // (terminated)
-		.reset_in14     (1'b0),                                 // (terminated)
-		.reset_req_in14 (1'b0),                                 // (terminated)
-		.reset_in15     (1'b0),                                 // (terminated)
-		.reset_req_in15 (1'b0)                                  // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (2),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (1),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
@@ -894,12 +854,12 @@ module Qsys (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_003 (
+	) rst_controller_002 (
 		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
 		.reset_in1      (nios2_gen2_debug_reset_request_reset),   // reset_in1.reset
-		.clk            (altpll_1_c2_clk),                        //       clk.clk
-		.reset_out      (rst_controller_003_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_003_reset_out_reset_req), //          .reset_req
+		.clk            (clk_clk),                                //       clk.clk
+		.reset_out      (rst_controller_002_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_002_reset_out_reset_req), //          .reset_req
 		.reset_req_in0  (1'b0),                                   // (terminated)
 		.reset_req_in1  (1'b0),                                   // (terminated)
 		.reset_in2      (1'b0),                                   // (terminated)
@@ -930,69 +890,6 @@ module Qsys (
 		.reset_req_in14 (1'b0),                                   // (terminated)
 		.reset_in15     (1'b0),                                   // (terminated)
 		.reset_req_in15 (1'b0)                                    // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (2),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_004 (
-		.reset_in0      (~reset_reset_n),                       // reset_in0.reset
-		.reset_in1      (nios2_gen2_debug_reset_request_reset), // reset_in1.reset
-		.clk            (altpll_1_c0_clk),                      //       clk.clk
-		.reset_out      (rst_controller_004_reset_out_reset),   // reset_out.reset
-		.reset_req      (),                                     // (terminated)
-		.reset_req_in0  (1'b0),                                 // (terminated)
-		.reset_req_in1  (1'b0),                                 // (terminated)
-		.reset_in2      (1'b0),                                 // (terminated)
-		.reset_req_in2  (1'b0),                                 // (terminated)
-		.reset_in3      (1'b0),                                 // (terminated)
-		.reset_req_in3  (1'b0),                                 // (terminated)
-		.reset_in4      (1'b0),                                 // (terminated)
-		.reset_req_in4  (1'b0),                                 // (terminated)
-		.reset_in5      (1'b0),                                 // (terminated)
-		.reset_req_in5  (1'b0),                                 // (terminated)
-		.reset_in6      (1'b0),                                 // (terminated)
-		.reset_req_in6  (1'b0),                                 // (terminated)
-		.reset_in7      (1'b0),                                 // (terminated)
-		.reset_req_in7  (1'b0),                                 // (terminated)
-		.reset_in8      (1'b0),                                 // (terminated)
-		.reset_req_in8  (1'b0),                                 // (terminated)
-		.reset_in9      (1'b0),                                 // (terminated)
-		.reset_req_in9  (1'b0),                                 // (terminated)
-		.reset_in10     (1'b0),                                 // (terminated)
-		.reset_req_in10 (1'b0),                                 // (terminated)
-		.reset_in11     (1'b0),                                 // (terminated)
-		.reset_req_in11 (1'b0),                                 // (terminated)
-		.reset_in12     (1'b0),                                 // (terminated)
-		.reset_req_in12 (1'b0),                                 // (terminated)
-		.reset_in13     (1'b0),                                 // (terminated)
-		.reset_req_in13 (1'b0),                                 // (terminated)
-		.reset_in14     (1'b0),                                 // (terminated)
-		.reset_req_in14 (1'b0),                                 // (terminated)
-		.reset_in15     (1'b0),                                 // (terminated)
-		.reset_req_in15 (1'b0)                                  // (terminated)
 	);
 
 endmodule

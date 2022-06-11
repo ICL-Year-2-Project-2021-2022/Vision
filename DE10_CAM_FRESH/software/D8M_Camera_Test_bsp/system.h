@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Mon Jun 06 23:07:51 BST 2022
+ * Generated: Sat Jun 11 16:17:38 BST 2022
  */
 
 /*
@@ -215,6 +215,20 @@
 #define ALTPLL_0_SPAN 16
 #define ALTPLL_0_TYPE "altpll"
 #define ALT_MODULE_CLASS_altpll_0 altpll
+
+
+/*
+ * altpll_1 configuration
+ *
+ */
+
+#define ALTPLL_1_BASE 0x0
+#define ALTPLL_1_IRQ -1
+#define ALTPLL_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define ALTPLL_1_NAME "/dev/altpll_1"
+#define ALTPLL_1_SPAN 16
+#define ALTPLL_1_TYPE "altpll"
+#define ALT_MODULE_CLASS_altpll_1 altpll
 
 
 /*
@@ -450,7 +464,7 @@
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1654552094
+#define SYSID_QSYS_TIMESTAMP 1654955463
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 

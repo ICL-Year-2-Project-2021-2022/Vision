@@ -1,0 +1,82 @@
+$date
+	Wed Jun 01 10:17:57 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module avalon_latency_tb $end
+$var wire 1 ! source_valid $end
+$var wire 1 " sink_ready $end
+$var wire 24 # data_out [23:0] $end
+$var reg 1 $ clk $end
+$var reg 24 % data_in [23:0] $end
+$var reg 1 & reset $end
+$var reg 1 ' sink_valid $end
+$var reg 1 ( source_ready $end
+$scope module dut $end
+$var wire 1 $ clk $end
+$var wire 1 & reset_n $end
+$var wire 24 ) sink_data [23:0] $end
+$var wire 1 * sink_eop $end
+$var wire 1 + sink_sop $end
+$var wire 1 ' sink_valid $end
+$var wire 24 , source_data [23:0] $end
+$var wire 1 - source_eop $end
+$var wire 1 ( source_ready $end
+$var wire 1 . source_sop $end
+$var wire 1 ! source_valid $end
+$var wire 1 " sink_ready $end
+$var reg 1 / last_ready $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x/
+z.
+z-
+b1111 ,
+z+
+z*
+b1111 )
+0(
+1'
+0&
+b1111 %
+0$
+b1111 #
+0"
+1!
+$end
+#1
+0/
+1&
+1$
+#2
+0"
+1(
+0$
+#3
+1"
+1/
+1$
+#4
+0$
+#5
+1$
+#6
+0"
+0$
+0(
+#7
+0/
+1$
+#8
+0$
+#9
+1$
+#10
+0$

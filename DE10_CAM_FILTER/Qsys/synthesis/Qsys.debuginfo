@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="Qsys" kind="system" version="18.1" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2022.06.07.14:33:35 -->
+ <!-- 2022.06.07.22:16:54 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1654608695</value>
+  <value>1654636507</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -17542,7 +17542,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1654608695</value>
+   <value>1654636507</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -17562,7 +17562,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1654608695</value>
+   <value>1654636507</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -17578,7 +17578,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1654608695</value>
+   <value>1654636507</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -29743,10 +29743,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_streaming_sink</endConnectionPoint>
  </connection>
  <connection
-   name="GRAY_TO_RGB_0.avalon_streaming_source/alt_vip_itc_0.din"
+   name="TERASIC_AUTO_FOCUS_0.dout/alt_vip_itc_0.din"
    kind="avalon_streaming"
    version="18.1"
-   start="GRAY_TO_RGB_0.avalon_streaming_source"
+   start="TERASIC_AUTO_FOCUS_0.dout"
    end="alt_vip_itc_0.din">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -29764,8 +29764,8 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>GRAY_TO_RGB_0</startModule>
-  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
+  <startModule>TERASIC_AUTO_FOCUS_0</startModule>
+  <startConnectionPoint>dout</startConnectionPoint>
   <endModule>alt_vip_itc_0</endModule>
   <endConnectionPoint>din</endConnectionPoint>
  </connection>
@@ -31546,10 +31546,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="TERASIC_AUTO_FOCUS_0.dout/avalon_st_adapter.in_0"
+   name="TERASIC_CAMERA_0.avalon_streaming_source/avalon_st_adapter.in_0"
    kind="avalon_streaming"
    version="18.1"
-   start="TERASIC_AUTO_FOCUS_0.dout"
+   start="TERASIC_CAMERA_0.avalon_streaming_source"
    end="avalon_st_adapter.in_0">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -31567,8 +31567,8 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>TERASIC_AUTO_FOCUS_0</startModule>
-  <startConnectionPoint>dout</startConnectionPoint>
+  <startModule>TERASIC_CAMERA_0</startModule>
+  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
   <endModule>avalon_st_adapter</endModule>
   <endConnectionPoint>in_0</endConnectionPoint>
  </connection>
@@ -33337,5 +33337,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <reportVersion>18.1 625</reportVersion>
- <uniqueIdentifier>B2FC366D814D000001813E5D4325</uniqueIdentifier>
+ <uniqueIdentifier>B2FC366D814D000001814005B03D</uniqueIdentifier>
 </EnsembleReport>

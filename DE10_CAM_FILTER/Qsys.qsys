@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "16";
          type = "int";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "15";
          type = "int";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "19";
          type = "int";
       }
       datum sopceditor_expanded
@@ -79,7 +79,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -100,7 +100,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "18";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -110,7 +110,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -291,7 +291,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "17";
          type = "int";
       }
       datum sopceditor_expanded
@@ -1262,22 +1262,22 @@
    kind="avalon_streaming"
    version="18.1"
    start="TERASIC_CAMERA_0.avalon_streaming_source"
-   end="alt_vip_vfb_0.din" />
+   end="RGB_TO_GRAY_0.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
    start="GRAY_TO_RGB_0.avalon_streaming_source"
-   end="alt_vip_itc_0.din" />
- <connection
-   kind="avalon_streaming"
-   version="18.1"
-   start="TERASIC_AUTO_FOCUS_0.dout"
-   end="RGB_TO_GRAY_0.avalon_streaming_sink" />
+   end="alt_vip_vfb_0.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
    start="alt_vip_vfb_0.dout"
    end="TERASIC_AUTO_FOCUS_0.din" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="TERASIC_AUTO_FOCUS_0.dout"
+   end="alt_vip_itc_0.din" />
  <connection kind="clock" version="18.1" start="altpll_0.c2" end="sdram.clk" />
  <connection
    kind="clock"

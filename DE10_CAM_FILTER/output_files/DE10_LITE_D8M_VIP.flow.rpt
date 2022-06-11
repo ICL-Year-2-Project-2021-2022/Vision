@@ -1,5 +1,5 @@
 Flow report for DE10_LITE_D8M_VIP
-Tue Jun 07 14:45:49 2022
+Tue Jun 07 15:21:57 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,14 +40,14 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 07 14:45:27 2022       ;
+; Flow Status                        ; Successful - Tue Jun 07 15:21:31 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; DE10_LITE_D8M_VIP                           ;
 ; Top-level Entity Name              ; DE10_LITE_D8M_VIP                           ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 9,691 / 49,760 ( 19 % )                     ;
+; Total logic elements               ; 9,731 / 49,760 ( 20 % )                     ;
 ;     Total combinational functions  ; 8,250 / 49,760 ( 17 % )                     ;
 ;     Dedicated logic registers      ; 6,176 / 49,760 ( 12 % )                     ;
 ; Total registers                    ; 6243                                        ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/07/2022 14:33:51 ;
+; Start date & time ; 06/07/2022 15:11:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE10_LITE_D8M_VIP   ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 963354592080.165460883018836           ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 963354592080.165461110403308           ; --            ; --          ; --         ;
 ; ENABLE_SIGNALTAP                    ; Off                                    ; --            ; --          ; --         ;
 ; FITTER_EFFORT                       ; Standard Fit                           ; Auto Fit      ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
@@ -99,11 +99,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:08:02     ; 1.0                     ; 5107 MB             ; 00:10:04                           ;
-; Fitter               ; 00:02:46     ; 1.6                     ; 6200 MB             ; 00:06:20                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4728 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:21     ; 3.2                     ; 5005 MB             ; 00:00:54                           ;
-; Total                ; 00:11:15     ; --                      ; --                  ; 00:17:24                           ;
+; Analysis & Synthesis ; 00:05:58     ; 1.0                     ; 5116 MB             ; 00:07:46                           ;
+; Fitter               ; 00:03:05     ; 1.7                     ; 6190 MB             ; 00:06:26                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4726 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:24     ; 3.2                     ; 5011 MB             ; 00:00:57                           ;
+; Total                ; 00:09:34     ; --                      ; --                  ; 00:15:16                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

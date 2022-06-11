@@ -18,10 +18,10 @@ logic[8:0] red, green, blue;
 logic[17:0] hue_step3_1, hue_step3_2;
 logic signed[17:0] hue_step2_1, hue_step2_2;
 logic signed [8:0] base;
-logic signed[3:0] modifier;
+logic signed[3:0] modifier, modifier_2, modifier_comb;
 logic signed [16:0] hue_debug;
-logic base_sign;
-logic [7:0] base_magnitude;
+logic base_sign, base_sign_1, base_sign_2;
+logic [7:0] base_magnitude, base_magnitude_comb;
 logic [14:0] saturation_lookup, saturation_step1, saturation_step2_1, saturation_step2_2;
 logic [14:0] hue_lookup;
 logic signed[14:0] hue_lookup_original;
@@ -56,19 +56,26 @@ always @(posedge clk) begin
 		saturation_step2_2 <= 0;
 		cmax <= 0;
 		cmax2 <= 0;
+		modifier <= 0;
+		modifier_2 <=0;
 	
 	end else begin
 		//Hue
 		//Step 1 ffs
 		//Differences
-		gmb <= green - blue;
-		bmr <= blue - red;
-		rmg <= red - green;
+		
+		
+		modifier <= modifier_comb;
+		
+		base_magnitude <= base_magnitude_comb;
+		base_sign_1 <= base_sign;
+		base_sign_2 <= base_sign_1;
 		
 		//Delta
 		delta <= delta_comb;
 		hue_lookup <= div_lookup[delta_comb];
-		
+		modifier <= modifier_comb;
+		modifier_2 <= modifier;
 		
 		//Hue step 2 -> Multiplication	
 		hue_step2_1 <= base_magnitude * hue_lookup[6:0];
@@ -88,7 +95,7 @@ always @(posedge clk) begin
 		//Value
 		cmax  <= cmax_comb;
 		cmax2 <=cmax;
-	
+		
 	end
 
 end
@@ -118,43 +125,45 @@ always @(*) begin
 	else cmin_comb = blue;
 	
 	delta_comb = cmax_comb-cmin_comb;
-
 	
-
+	
 	//Hue calculation
 	if (red >= blue & red >= green) begin 
 		if (green >= blue) begin
-			base = gmb;
-			modifier = 0;
+			base = green - blue;
+			modifier_comb = 0;
 		end else begin
-			base = gmb;
-			modifier = 6;
+			base = green - blue;
+			modifier_comb = 6;
 		end
 			
 	end else if (green >= red & green >= blue) begin
-		base = bmr;
-		modifier = 2;
+		base = blue - red;
+		modifier_comb = 2;
 		
 	end else begin
-		base = rmg;
-		modifier = 4;
+		base = red - green;
+		modifier_comb = 4;
 	end
 	
-	base_sign = base[8];
-	if (base_sign) base_magnitude = -base;
-	else base_magnitude = base;
+	 base_sign = base[8];
+	 
+	if (base_sign) base_magnitude_comb = -base;
+	else base_magnitude_comb = base;
 	
 
 	
 	//Step 3 -> Merge
-	if (base_sign) begin
+	if (base_sign_2) begin
 		hue_step3_1 = -(hue_step2_1 + (hue_step2_2 << 7));
 	end else begin 
 		hue_step3_1 = (hue_step2_1 + (hue_step2_2 << 7));
 	end
 	
+	//Step4
 	
-	hue_step3_2 = hue_step3_1 + (modifier<<<12);
+	
+	hue_step3_2 = hue_step3_1 + (modifier_2<<<12);
 	hue = (30* (hue_step3_2))>>12;
 
 

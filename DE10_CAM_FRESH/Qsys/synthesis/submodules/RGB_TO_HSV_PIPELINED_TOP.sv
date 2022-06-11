@@ -79,7 +79,7 @@ end
 
 
 //Streaming registers to buffer video signal
-STREAM_REG #(.DATA_WIDTH(26)) in_reg (
+STREAM_REG_HSV #(.DATA_WIDTH(26)) in_reg (
 	//Global clocks
 	.clk(clk),
 	.rst_n(reset_n),
@@ -95,7 +95,7 @@ STREAM_REG #(.DATA_WIDTH(26)) in_reg (
 	.data_out({rgb,sop,eop})
 );
 
-STREAM_REG #(.DATA_WIDTH(26)) out_reg (
+STREAM_REG_HSV #(.DATA_WIDTH(26)) out_reg (
 	//Global clocks
 	.clk(clk),
 	.rst_n(reset_n),

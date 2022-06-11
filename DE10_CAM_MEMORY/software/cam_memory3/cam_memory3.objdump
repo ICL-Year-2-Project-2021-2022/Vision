@@ -77,7 +77,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  29 .jdi          00004eb7  00000000  00000000  00084ca1  2**0
                   CONTENTS, READONLY
- 30 .sopcinfo     000a0442  00000000  00000000  00089b58  2**0
+ 30 .sopcinfo     000a0427  00000000  00000000  00089b58  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 04000000 l    d  .entry	00000000 .entry
@@ -608,7 +608,7 @@ Disassembly of section .entry:
  4000014:	08409114 	ori	at,at,580
     jmp r1
  4000018:	0800683a 	jmp	at
- 400001c:	00000000 	call	0 <__reset-0x4000000>
+ 400001c:	00000000 	call	0 <__alt_mem_sdram-0x4000000>
 
 Disassembly of section .exceptions:
 
@@ -6921,7 +6921,7 @@ void QUEUE_Empty(QUEUE_STRUCT *pQueue){
  4004778:	040050f0 	cmpltui	r16,zero,323
  400477c:	0400521c 	xori	r16,zero,328
  4004780:	0400521c 	xori	r16,zero,328
- 4004784:	04005100 	call	400510 <__reset-0x3bffaf0>
+ 4004784:	04005100 	call	400510 <__alt_mem_sdram-0x3bffaf0>
  4004788:	d9003117 	ldw	r4,196(sp)
  400478c:	d8802d15 	stw	r2,180(sp)
  4004790:	0109c83a 	sub	r4,zero,r4
@@ -13978,21 +13978,21 @@ void QUEUE_Empty(QUEUE_STRUCT *pQueue){
  400b384:	10800017 	ldw	r2,0(r2)
  400b388:	1000683a 	jmp	r2
  400b38c:	0400ba74 	movhi	r16,745
- 400b390:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b394:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b390:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b394:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b398:	0400ba94 	movui	r16,746
- 400b39c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3a0:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3a4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3a8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3ac:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3b0:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b39c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3a0:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3a4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3a8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3ac:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3b0:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b3b4:	0400bc7c 	xorhi	r16,zero,753
  400b3b8:	0400bc98 	cmpnei	r16,zero,754
- 400b3bc:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3c0:	0400b580 	call	400b58 <__reset-0x3bff4a8>
+ 400b3bc:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3c0:	0400b580 	call	400b58 <__alt_mem_sdram-0x3bff4a8>
  400b3c4:	0400bca8 	cmpgeui	r16,zero,754
- 400b3c8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b3c8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b3cc:	0400baa0 	cmpeqi	r16,zero,746
  400b3d0:	0400baac 	andhi	r16,zero,746
  400b3d4:	0400baac 	andhi	r16,zero,746
@@ -14003,68 +14003,68 @@ void QUEUE_Empty(QUEUE_STRUCT *pQueue){
  400b3e8:	0400baac 	andhi	r16,zero,746
  400b3ec:	0400baac 	andhi	r16,zero,746
  400b3f0:	0400baac 	andhi	r16,zero,746
- 400b3f4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3f8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b3fc:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b400:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b404:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b408:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b40c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b410:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b414:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b418:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b3f4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3f8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b3fc:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b400:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b404:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b408:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b40c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b410:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b414:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b418:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b41c:	0400bad8 	cmpnei	r16,zero,747
- 400b420:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b424:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b428:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b42c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b430:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b434:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b438:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b43c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b440:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b444:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b420:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b424:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b428:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b42c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b430:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b434:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b438:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b43c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b440:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b444:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b448:	0400bb10 	cmplti	r16,zero,748
- 400b44c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b450:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b454:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b458:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b45c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b44c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b450:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b454:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b458:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b45c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b460:	0400bb68 	cmpgeui	r16,zero,749
- 400b464:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b468:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b464:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b468:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b46c:	0400bbd8 	cmpnei	r16,zero,751
- 400b470:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b474:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b478:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b47c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b480:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b484:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b488:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b48c:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b490:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b494:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b470:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b474:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b478:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b47c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b480:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b484:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b488:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b48c:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b490:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b494:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b498:	0400b984 	movi	r16,742
  400b49c:	0400b9b0 	cmpltui	r16,zero,742
- 400b4a0:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b4a4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b4a8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4a0:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b4a4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b4a8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4ac:	0400bce8 	cmpgeui	r16,zero,755
  400b4b0:	0400b9b0 	cmpltui	r16,zero,742
- 400b4b4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b4b8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4b4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b4b8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4bc:	0400b844 	movi	r16,737
- 400b4c0:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4c0:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4c4:	0400b854 	movui	r16,737
  400b4c8:	0400b890 	cmplti	r16,zero,738
  400b4cc:	0400b58c 	andi	r16,zero,726
  400b4d0:	0400b838 	rdprs	r16,zero,736
- 400b4d4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4d4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4d8:	0400bc14 	movui	r16,752
- 400b4dc:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4dc:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4e0:	0400bc6c 	andhi	r16,zero,753
- 400b4e4:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
- 400b4e8:	0400bd40 	call	400bd4 <__reset-0x3bff42c>
+ 400b4e4:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
+ 400b4e8:	0400bd40 	call	400bd4 <__alt_mem_sdram-0x3bff42c>
  400b4ec:	0400b930 	cmpltui	r16,zero,740
  400b4f0:	42000204 	addi	r8,r8,8
  400b4f4:	da802317 	ldw	r10,140(sp)
@@ -23425,8 +23425,8 @@ unsigned int alt_busy_sleep (unsigned int us)
  4012484:	10909004 	addi	r2,r2,16960
  4012488:	1885383a 	mul	r2,r3,r2
  401248c:	100b883a 	mov	r5,r2
- 4012490:	01017db4 	movhi	r4,1526
- 4012494:	21384004 	addi	r4,r4,-7936
+ 4012490:	01015774 	movhi	r4,1373
+ 4012494:	2112a004 	addi	r4,r4,19072
  4012498:	4002a680 	call	4002a68 <__udivsi3>
   {
     cycles_per_loop = 3;
@@ -23478,8 +23478,8 @@ unsigned int alt_busy_sleep (unsigned int us)
         :: "r" (INT_MAX));
       us -= (INT_MAX/(ALT_CPU_FREQ/
  40124ec:	100b883a 	mov	r5,r2
- 40124f0:	01017db4 	movhi	r4,1526
- 40124f4:	21384004 	addi	r4,r4,-7936
+ 40124f0:	01015774 	movhi	r4,1373
+ 40124f4:	2112a004 	addi	r4,r4,19072
  40124f8:	4002a680 	call	4002a68 <__udivsi3>
  40124fc:	100b883a 	mov	r5,r2
  4012500:	01200034 	movhi	r4,32768
@@ -23512,8 +23512,8 @@ unsigned int alt_busy_sleep (unsigned int us)
  401253c:	10909004 	addi	r2,r2,16960
  4012540:	1885383a 	mul	r2,r3,r2
  4012544:	100b883a 	mov	r5,r2
- 4012548:	01017db4 	movhi	r4,1526
- 401254c:	21384004 	addi	r4,r4,-7936
+ 4012548:	01015774 	movhi	r4,1373
+ 401254c:	2112a004 	addi	r4,r4,19072
  4012550:	4002a680 	call	4002a68 <__udivsi3>
  4012554:	1007883a 	mov	r3,r2
  4012558:	e0bfff17 	ldw	r2,-4(fp)
@@ -23538,8 +23538,8 @@ unsigned int alt_busy_sleep (unsigned int us)
  4012574:	10909004 	addi	r2,r2,16960
  4012578:	1885383a 	mul	r2,r3,r2
  401257c:	100b883a 	mov	r5,r2
- 4012580:	01017db4 	movhi	r4,1526
- 4012584:	21384004 	addi	r4,r4,-7936
+ 4012580:	01015774 	movhi	r4,1373
+ 4012584:	2112a004 	addi	r4,r4,19072
  4012588:	4002a680 	call	4002a68 <__udivsi3>
  401258c:	1007883a 	mov	r3,r2
  4012590:	e0bfff17 	ldw	r2,-4(fp)

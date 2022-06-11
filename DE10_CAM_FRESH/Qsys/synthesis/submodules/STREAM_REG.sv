@@ -1,4 +1,4 @@
-module STREAM_REG(ready_out, valid_out, data_out, ready_in, valid_in, data_in, clk, rst_n);
+module STREAM_REG_HSV(ready_out, valid_out, data_out, ready_in, valid_in, data_in, clk, rst_n);
 
 	// Input Port(s)
 	input clk, rst_n;

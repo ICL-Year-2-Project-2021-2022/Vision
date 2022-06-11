@@ -54,22 +54,30 @@ module Qsys (
 	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
 	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_vfb_0:din_startofpacket
 	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_vfb_0:din_endofpacket
-	wire         rgb_hsv_pipelined_0_avalon_streaming_source_valid;                 // RGB_HSV_PIPELINED_0:source_valid -> alt_vip_itc_0:is_valid
-	wire  [23:0] rgb_hsv_pipelined_0_avalon_streaming_source_data;                  // RGB_HSV_PIPELINED_0:source_data -> alt_vip_itc_0:is_data
-	wire         rgb_hsv_pipelined_0_avalon_streaming_source_ready;                 // alt_vip_itc_0:is_ready -> RGB_HSV_PIPELINED_0:source_ready
-	wire         rgb_hsv_pipelined_0_avalon_streaming_source_startofpacket;         // RGB_HSV_PIPELINED_0:source_sop -> alt_vip_itc_0:is_sop
-	wire         rgb_hsv_pipelined_0_avalon_streaming_source_endofpacket;           // RGB_HSV_PIPELINED_0:source_eop -> alt_vip_itc_0:is_eop
-	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> RGB_HSV_PIPELINED_0:sink_valid
-	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> RGB_HSV_PIPELINED_0:sink_data
-	wire         terasic_auto_focus_0_dout_ready;                                   // RGB_HSV_PIPELINED_0:sink_ready -> TERASIC_AUTO_FOCUS_0:source_ready
-	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> RGB_HSV_PIPELINED_0:sink_sop
-	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> RGB_HSV_PIPELINED_0:sink_eop
 	wire         alt_vip_vfb_0_dout_valid;                                          // alt_vip_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
 	wire  [23:0] alt_vip_vfb_0_dout_data;                                           // alt_vip_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
 	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
 	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
 	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
-	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [RGB_HSV_PIPELINED_0:clk, TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, rst_controller_001:clk, sdram:clk]
+	wire         data_format_adapter_0_out_valid;                                   // data_format_adapter_0:out_valid -> alt_vip_itc_0:is_valid
+	wire  [23:0] data_format_adapter_0_out_data;                                    // data_format_adapter_0:out_data -> alt_vip_itc_0:is_data
+	wire         data_format_adapter_0_out_ready;                                   // alt_vip_itc_0:is_ready -> data_format_adapter_0:out_ready
+	wire         data_format_adapter_0_out_startofpacket;                           // data_format_adapter_0:out_startofpacket -> alt_vip_itc_0:is_sop
+	wire         data_format_adapter_0_out_endofpacket;                             // data_format_adapter_0:out_endofpacket -> alt_vip_itc_0:is_eop
+	wire         dc_fifo_1_out_valid;                                               // dc_fifo_1:out_valid -> timing_adapter_0:in_valid
+	wire  [23:0] dc_fifo_1_out_data;                                                // dc_fifo_1:out_data -> timing_adapter_0:in_data
+	wire         dc_fifo_1_out_ready;                                               // timing_adapter_0:in_ready -> dc_fifo_1:out_ready
+	wire         dc_fifo_1_out_startofpacket;                                       // dc_fifo_1:out_startofpacket -> timing_adapter_0:in_startofpacket
+	wire         dc_fifo_1_out_endofpacket;                                         // dc_fifo_1:out_endofpacket -> timing_adapter_0:in_endofpacket
+	wire   [1:0] dc_fifo_1_out_empty;                                               // dc_fifo_1:out_empty -> timing_adapter_0:in_empty
+	wire         timing_adapter_0_out_valid;                                        // timing_adapter_0:out_valid -> data_format_adapter_0:in_valid
+	wire  [23:0] timing_adapter_0_out_data;                                         // timing_adapter_0:out_data -> data_format_adapter_0:in_data
+	wire         timing_adapter_0_out_ready;                                        // data_format_adapter_0:in_ready -> timing_adapter_0:out_ready
+	wire         timing_adapter_0_out_startofpacket;                                // timing_adapter_0:out_startofpacket -> data_format_adapter_0:in_startofpacket
+	wire         timing_adapter_0_out_endofpacket;                                  // timing_adapter_0:out_endofpacket -> data_format_adapter_0:in_endofpacket
+	wire   [1:0] timing_adapter_0_out_empty;                                        // timing_adapter_0:out_empty -> data_format_adapter_0:in_empty
+	wire         altpll_1_c0_clk;                                                   // altpll_1:c0 -> [RGB_TO_HSV_0:clk, avalon_st_adapter:in_clk_0_clk, avalon_st_adapter_002:in_clk_0_clk, dc_fifo_0:out_clk, dc_fifo_1:in_clk, rst_controller:clk, rst_controller_004:clk]
+	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter_001:in_clk_0_clk, data_format_adapter_0:clk, dc_fifo_0:in_clk, dc_fifo_1:out_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller_001:clk, rst_controller_003:clk, sdram:clk, timing_adapter_0:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
 	wire         nios2_gen2_data_master_debugaccess;                                // nios2_gen2:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_data_master_debugaccess
@@ -124,6 +132,11 @@ module Qsys (
 	wire         mm_interconnect_0_altpll_0_pll_slave_read;                         // mm_interconnect_0:altpll_0_pll_slave_read -> altpll_0:read
 	wire         mm_interconnect_0_altpll_0_pll_slave_write;                        // mm_interconnect_0:altpll_0_pll_slave_write -> altpll_0:write
 	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_writedata;                    // mm_interconnect_0:altpll_0_pll_slave_writedata -> altpll_0:writedata
+	wire  [31:0] mm_interconnect_0_altpll_1_pll_slave_readdata;                     // altpll_1:readdata -> mm_interconnect_0:altpll_1_pll_slave_readdata
+	wire   [1:0] mm_interconnect_0_altpll_1_pll_slave_address;                      // mm_interconnect_0:altpll_1_pll_slave_address -> altpll_1:address
+	wire         mm_interconnect_0_altpll_1_pll_slave_read;                         // mm_interconnect_0:altpll_1_pll_slave_read -> altpll_1:read
+	wire         mm_interconnect_0_altpll_1_pll_slave_write;                        // mm_interconnect_0:altpll_1_pll_slave_write -> altpll_1:write
+	wire  [31:0] mm_interconnect_0_altpll_1_pll_slave_writedata;                    // mm_interconnect_0:altpll_1_pll_slave_writedata -> altpll_1:writedata
 	wire         mm_interconnect_0_onchip_memory2_0_s1_chipselect;                  // mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_readdata;                    // onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
 	wire  [14:0] mm_interconnect_0_onchip_memory2_0_s1_address;                     // mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
@@ -188,26 +201,61 @@ module Qsys (
 	wire         irq_mapper_receiver3_irq;                                          // timer:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                          // uart_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_gen2_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2:irq
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> RGB_HSV_PIPELINED_0:reset_n
-	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
-	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_003:reset_in1]
-	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
-	wire         rst_controller_003_reset_out_reset_req;                            // rst_controller_003:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
+	wire         rgb_to_hsv_0_avalon_streaming_source_valid;                        // RGB_TO_HSV_0:source_valid -> avalon_st_adapter:in_0_valid
+	wire  [23:0] rgb_to_hsv_0_avalon_streaming_source_data;                         // RGB_TO_HSV_0:source_data -> avalon_st_adapter:in_0_data
+	wire         rgb_to_hsv_0_avalon_streaming_source_ready;                        // avalon_st_adapter:in_0_ready -> RGB_TO_HSV_0:source_ready
+	wire         rgb_to_hsv_0_avalon_streaming_source_startofpacket;                // RGB_TO_HSV_0:source_sop -> avalon_st_adapter:in_0_startofpacket
+	wire         rgb_to_hsv_0_avalon_streaming_source_endofpacket;                  // RGB_TO_HSV_0:source_eop -> avalon_st_adapter:in_0_endofpacket
+	wire         avalon_st_adapter_out_0_valid;                                     // avalon_st_adapter:out_0_valid -> dc_fifo_1:in_valid
+	wire  [23:0] avalon_st_adapter_out_0_data;                                      // avalon_st_adapter:out_0_data -> dc_fifo_1:in_data
+	wire         avalon_st_adapter_out_0_ready;                                     // dc_fifo_1:in_ready -> avalon_st_adapter:out_0_ready
+	wire         avalon_st_adapter_out_0_startofpacket;                             // avalon_st_adapter:out_0_startofpacket -> dc_fifo_1:in_startofpacket
+	wire         avalon_st_adapter_out_0_endofpacket;                               // avalon_st_adapter:out_0_endofpacket -> dc_fifo_1:in_endofpacket
+	wire   [1:0] avalon_st_adapter_out_0_empty;                                     // avalon_st_adapter:out_0_empty -> dc_fifo_1:in_empty
+	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> avalon_st_adapter_001:in_0_valid
+	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> avalon_st_adapter_001:in_0_data
+	wire         terasic_auto_focus_0_dout_ready;                                   // avalon_st_adapter_001:in_0_ready -> TERASIC_AUTO_FOCUS_0:source_ready
+	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> avalon_st_adapter_001:in_0_startofpacket
+	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> avalon_st_adapter_001:in_0_endofpacket
+	wire         avalon_st_adapter_001_out_0_valid;                                 // avalon_st_adapter_001:out_0_valid -> dc_fifo_0:in_valid
+	wire  [23:0] avalon_st_adapter_001_out_0_data;                                  // avalon_st_adapter_001:out_0_data -> dc_fifo_0:in_data
+	wire         avalon_st_adapter_001_out_0_ready;                                 // dc_fifo_0:in_ready -> avalon_st_adapter_001:out_0_ready
+	wire         avalon_st_adapter_001_out_0_startofpacket;                         // avalon_st_adapter_001:out_0_startofpacket -> dc_fifo_0:in_startofpacket
+	wire         avalon_st_adapter_001_out_0_endofpacket;                           // avalon_st_adapter_001:out_0_endofpacket -> dc_fifo_0:in_endofpacket
+	wire   [1:0] avalon_st_adapter_001_out_0_empty;                                 // avalon_st_adapter_001:out_0_empty -> dc_fifo_0:in_empty
+	wire         dc_fifo_0_out_valid;                                               // dc_fifo_0:out_valid -> avalon_st_adapter_002:in_0_valid
+	wire  [23:0] dc_fifo_0_out_data;                                                // dc_fifo_0:out_data -> avalon_st_adapter_002:in_0_data
+	wire         dc_fifo_0_out_ready;                                               // avalon_st_adapter_002:in_0_ready -> dc_fifo_0:out_ready
+	wire         dc_fifo_0_out_startofpacket;                                       // dc_fifo_0:out_startofpacket -> avalon_st_adapter_002:in_0_startofpacket
+	wire         dc_fifo_0_out_endofpacket;                                         // dc_fifo_0:out_endofpacket -> avalon_st_adapter_002:in_0_endofpacket
+	wire   [1:0] dc_fifo_0_out_empty;                                               // dc_fifo_0:out_empty -> avalon_st_adapter_002:in_0_empty
+	wire         avalon_st_adapter_002_out_0_valid;                                 // avalon_st_adapter_002:out_0_valid -> RGB_TO_HSV_0:sink_valid
+	wire  [23:0] avalon_st_adapter_002_out_0_data;                                  // avalon_st_adapter_002:out_0_data -> RGB_TO_HSV_0:sink_data
+	wire         avalon_st_adapter_002_out_0_ready;                                 // RGB_TO_HSV_0:sink_ready -> avalon_st_adapter_002:out_0_ready
+	wire         avalon_st_adapter_002_out_0_startofpacket;                         // avalon_st_adapter_002:out_0_startofpacket -> RGB_TO_HSV_0:sink_sop
+	wire         avalon_st_adapter_002_out_0_endofpacket;                           // avalon_st_adapter_002:out_0_endofpacket -> RGB_TO_HSV_0:sink_eop
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [RGB_TO_HSV_0:reset_n, avalon_st_adapter:in_rst_0_reset]
+	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_005:reset_in1]
+	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, avalon_st_adapter_001:in_rst_0_reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [altpll_0:reset, altpll_1:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [data_format_adapter_0:reset_n, dc_fifo_0:in_reset_n, dc_fifo_1:out_reset_n, timing_adapter_0:reset_n]
+	wire         rst_controller_004_reset_out_reset;                                // rst_controller_004:reset_out -> [avalon_st_adapter_002:in_rst_0_reset, dc_fifo_0:out_reset_n, dc_fifo_1:in_reset_n]
+	wire         rst_controller_005_reset_out_reset;                                // rst_controller_005:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
+	wire         rst_controller_005_reset_out_reset_req;                            // rst_controller_005:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 
-	RGB_TO_HSV_PIPELINED_TOP rgb_hsv_pipelined_0 (
-		.clk          (altpll_0_c2_clk),                                           //                   clock.clk
-		.reset_n      (~rst_controller_reset_out_reset),                           //                   reset.reset_n
-		.source_data  (rgb_hsv_pipelined_0_avalon_streaming_source_data),          // avalon_streaming_source.data
-		.source_eop   (rgb_hsv_pipelined_0_avalon_streaming_source_endofpacket),   //                        .endofpacket
-		.source_ready (rgb_hsv_pipelined_0_avalon_streaming_source_ready),         //                        .ready
-		.source_sop   (rgb_hsv_pipelined_0_avalon_streaming_source_startofpacket), //                        .startofpacket
-		.source_valid (rgb_hsv_pipelined_0_avalon_streaming_source_valid),         //                        .valid
-		.sink_data    (terasic_auto_focus_0_dout_data),                            //   avalon_streaming_sink.data
-		.sink_valid   (terasic_auto_focus_0_dout_valid),                           //                        .valid
-		.sink_ready   (terasic_auto_focus_0_dout_ready),                           //                        .ready
-		.sink_sop     (terasic_auto_focus_0_dout_startofpacket),                   //                        .startofpacket
-		.sink_eop     (terasic_auto_focus_0_dout_endofpacket)                      //                        .endofpacket
+	RGB_TO_HSV_PIPELINED_TOP rgb_to_hsv_0 (
+		.clk          (altpll_1_c0_clk),                                    //                   clock.clk
+		.reset_n      (~rst_controller_reset_out_reset),                    //                   reset.reset_n
+		.sink_data    (avalon_st_adapter_002_out_0_data),                   //   avalon_streaming_sink.data
+		.sink_eop     (avalon_st_adapter_002_out_0_endofpacket),            //                        .endofpacket
+		.sink_ready   (avalon_st_adapter_002_out_0_ready),                  //                        .ready
+		.sink_sop     (avalon_st_adapter_002_out_0_startofpacket),          //                        .startofpacket
+		.sink_valid   (avalon_st_adapter_002_out_0_valid),                  //                        .valid
+		.source_data  (rgb_to_hsv_0_avalon_streaming_source_data),          // avalon_streaming_source.data
+		.source_eop   (rgb_to_hsv_0_avalon_streaming_source_endofpacket),   //                        .endofpacket
+		.source_ready (rgb_to_hsv_0_avalon_streaming_source_ready),         //                        .ready
+		.source_sop   (rgb_to_hsv_0_avalon_streaming_source_startofpacket), //                        .startofpacket
+		.source_valid (rgb_to_hsv_0_avalon_streaming_source_valid)          //                        .valid
 	);
 
 	TERASIC_AUTO_FOCUS #(
@@ -289,22 +337,22 @@ module Qsys (
 		.ANC_LINE                      (0),
 		.FIELD0_ANC_LINE               (0)
 	) alt_vip_itc_0 (
-		.is_clk        (altpll_0_c2_clk),                                           //       is_clk_rst.clk
-		.rst           (rst_controller_001_reset_out_reset),                        // is_clk_rst_reset.reset
-		.is_data       (rgb_hsv_pipelined_0_avalon_streaming_source_data),          //              din.data
-		.is_valid      (rgb_hsv_pipelined_0_avalon_streaming_source_valid),         //                 .valid
-		.is_ready      (rgb_hsv_pipelined_0_avalon_streaming_source_ready),         //                 .ready
-		.is_sop        (rgb_hsv_pipelined_0_avalon_streaming_source_startofpacket), //                 .startofpacket
-		.is_eop        (rgb_hsv_pipelined_0_avalon_streaming_source_endofpacket),   //                 .endofpacket
-		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),                       //    clocked_video.export
-		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),                      //                 .export
-		.underflow     (alt_vip_itc_0_clocked_video_underflow),                     //                 .export
-		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid),                 //                 .export
-		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),                    //                 .export
-		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),                    //                 .export
-		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),                         //                 .export
-		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),                         //                 .export
-		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)                          //                 .export
+		.is_clk        (altpll_0_c2_clk),                           //       is_clk_rst.clk
+		.rst           (rst_controller_001_reset_out_reset),        // is_clk_rst_reset.reset
+		.is_data       (data_format_adapter_0_out_data),            //              din.data
+		.is_valid      (data_format_adapter_0_out_valid),           //                 .valid
+		.is_ready      (data_format_adapter_0_out_ready),           //                 .ready
+		.is_sop        (data_format_adapter_0_out_startofpacket),   //                 .startofpacket
+		.is_eop        (data_format_adapter_0_out_endofpacket),     //                 .endofpacket
+		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),       //    clocked_video.export
+		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),      //                 .export
+		.underflow     (alt_vip_itc_0_clocked_video_underflow),     //                 .export
+		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid), //                 .export
+		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),    //                 .export
+		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),    //                 .export
+		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),         //                 .export
+		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),         //                 .export
+		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)          //                 .export
 	);
 
 	Qsys_alt_vip_vfb_0 alt_vip_vfb_0 (
@@ -360,9 +408,142 @@ module Qsys (
 		.configupdate       (1'b0)                                            //           (terminated)
 	);
 
+	Qsys_altpll_1 altpll_1 (
+		.clk                (clk_clk),                                        //       inclk_interface.clk
+		.reset              (rst_controller_002_reset_out_reset),             // inclk_interface_reset.reset
+		.read               (mm_interconnect_0_altpll_1_pll_slave_read),      //             pll_slave.read
+		.write              (mm_interconnect_0_altpll_1_pll_slave_write),     //                      .write
+		.address            (mm_interconnect_0_altpll_1_pll_slave_address),   //                      .address
+		.readdata           (mm_interconnect_0_altpll_1_pll_slave_readdata),  //                      .readdata
+		.writedata          (mm_interconnect_0_altpll_1_pll_slave_writedata), //                      .writedata
+		.c0                 (altpll_1_c0_clk),                                //                    c0.clk
+		.scandone           (),                                               //           (terminated)
+		.scandataout        (),                                               //           (terminated)
+		.c1                 (),                                               //           (terminated)
+		.c2                 (),                                               //           (terminated)
+		.c3                 (),                                               //           (terminated)
+		.c4                 (),                                               //           (terminated)
+		.areset             (1'b0),                                           //           (terminated)
+		.locked             (),                                               //           (terminated)
+		.phasedone          (),                                               //           (terminated)
+		.phasecounterselect (3'b000),                                         //           (terminated)
+		.phaseupdown        (1'b0),                                           //           (terminated)
+		.phasestep          (1'b0),                                           //           (terminated)
+		.scanclk            (1'b0),                                           //           (terminated)
+		.scanclkena         (1'b0),                                           //           (terminated)
+		.scandata           (1'b0),                                           //           (terminated)
+		.configupdate       (1'b0)                                            //           (terminated)
+	);
+
+	Qsys_data_format_adapter_0 data_format_adapter_0 (
+		.clk               (altpll_0_c2_clk),                         //   clk.clk
+		.reset_n           (~rst_controller_003_reset_out_reset),     // reset.reset_n
+		.in_data           (timing_adapter_0_out_data),               //    in.data
+		.in_valid          (timing_adapter_0_out_valid),              //      .valid
+		.in_ready          (timing_adapter_0_out_ready),              //      .ready
+		.in_startofpacket  (timing_adapter_0_out_startofpacket),      //      .startofpacket
+		.in_endofpacket    (timing_adapter_0_out_endofpacket),        //      .endofpacket
+		.in_empty          (timing_adapter_0_out_empty),              //      .empty
+		.out_data          (data_format_adapter_0_out_data),          //   out.data
+		.out_valid         (data_format_adapter_0_out_valid),         //      .valid
+		.out_ready         (data_format_adapter_0_out_ready),         //      .ready
+		.out_startofpacket (data_format_adapter_0_out_startofpacket), //      .startofpacket
+		.out_endofpacket   (data_format_adapter_0_out_endofpacket)    //      .endofpacket
+	);
+
+	altera_avalon_dc_fifo #(
+		.SYMBOLS_PER_BEAT   (3),
+		.BITS_PER_SYMBOL    (8),
+		.FIFO_DEPTH         (16),
+		.CHANNEL_WIDTH      (0),
+		.ERROR_WIDTH        (0),
+		.USE_PACKETS        (1),
+		.USE_IN_FILL_LEVEL  (0),
+		.USE_OUT_FILL_LEVEL (0),
+		.WR_SYNC_DEPTH      (3),
+		.RD_SYNC_DEPTH      (3)
+	) dc_fifo_0 (
+		.in_clk            (altpll_0_c2_clk),                           //        in_clk.clk
+		.in_reset_n        (~rst_controller_003_reset_out_reset),       //  in_clk_reset.reset_n
+		.out_clk           (altpll_1_c0_clk),                           //       out_clk.clk
+		.out_reset_n       (~rst_controller_004_reset_out_reset),       // out_clk_reset.reset_n
+		.in_data           (avalon_st_adapter_001_out_0_data),          //            in.data
+		.in_valid          (avalon_st_adapter_001_out_0_valid),         //              .valid
+		.in_ready          (avalon_st_adapter_001_out_0_ready),         //              .ready
+		.in_startofpacket  (avalon_st_adapter_001_out_0_startofpacket), //              .startofpacket
+		.in_endofpacket    (avalon_st_adapter_001_out_0_endofpacket),   //              .endofpacket
+		.in_empty          (avalon_st_adapter_001_out_0_empty),         //              .empty
+		.out_data          (dc_fifo_0_out_data),                        //           out.data
+		.out_valid         (dc_fifo_0_out_valid),                       //              .valid
+		.out_ready         (dc_fifo_0_out_ready),                       //              .ready
+		.out_startofpacket (dc_fifo_0_out_startofpacket),               //              .startofpacket
+		.out_endofpacket   (dc_fifo_0_out_endofpacket),                 //              .endofpacket
+		.out_empty         (dc_fifo_0_out_empty),                       //              .empty
+		.in_csr_address    (1'b0),                                      //   (terminated)
+		.in_csr_read       (1'b0),                                      //   (terminated)
+		.in_csr_write      (1'b0),                                      //   (terminated)
+		.in_csr_readdata   (),                                          //   (terminated)
+		.in_csr_writedata  (32'b00000000000000000000000000000000),      //   (terminated)
+		.out_csr_address   (1'b0),                                      //   (terminated)
+		.out_csr_read      (1'b0),                                      //   (terminated)
+		.out_csr_write     (1'b0),                                      //   (terminated)
+		.out_csr_readdata  (),                                          //   (terminated)
+		.out_csr_writedata (32'b00000000000000000000000000000000),      //   (terminated)
+		.in_error          (1'b0),                                      //   (terminated)
+		.out_error         (),                                          //   (terminated)
+		.in_channel        (1'b0),                                      //   (terminated)
+		.out_channel       (),                                          //   (terminated)
+		.space_avail_data  ()                                           //   (terminated)
+	);
+
+	altera_avalon_dc_fifo #(
+		.SYMBOLS_PER_BEAT   (3),
+		.BITS_PER_SYMBOL    (8),
+		.FIFO_DEPTH         (16),
+		.CHANNEL_WIDTH      (0),
+		.ERROR_WIDTH        (0),
+		.USE_PACKETS        (1),
+		.USE_IN_FILL_LEVEL  (0),
+		.USE_OUT_FILL_LEVEL (0),
+		.WR_SYNC_DEPTH      (3),
+		.RD_SYNC_DEPTH      (3)
+	) dc_fifo_1 (
+		.in_clk            (altpll_1_c0_clk),                       //        in_clk.clk
+		.in_reset_n        (~rst_controller_004_reset_out_reset),   //  in_clk_reset.reset_n
+		.out_clk           (altpll_0_c2_clk),                       //       out_clk.clk
+		.out_reset_n       (~rst_controller_003_reset_out_reset),   // out_clk_reset.reset_n
+		.in_data           (avalon_st_adapter_out_0_data),          //            in.data
+		.in_valid          (avalon_st_adapter_out_0_valid),         //              .valid
+		.in_ready          (avalon_st_adapter_out_0_ready),         //              .ready
+		.in_startofpacket  (avalon_st_adapter_out_0_startofpacket), //              .startofpacket
+		.in_endofpacket    (avalon_st_adapter_out_0_endofpacket),   //              .endofpacket
+		.in_empty          (avalon_st_adapter_out_0_empty),         //              .empty
+		.out_data          (dc_fifo_1_out_data),                    //           out.data
+		.out_valid         (dc_fifo_1_out_valid),                   //              .valid
+		.out_ready         (dc_fifo_1_out_ready),                   //              .ready
+		.out_startofpacket (dc_fifo_1_out_startofpacket),           //              .startofpacket
+		.out_endofpacket   (dc_fifo_1_out_endofpacket),             //              .endofpacket
+		.out_empty         (dc_fifo_1_out_empty),                   //              .empty
+		.in_csr_address    (1'b0),                                  //   (terminated)
+		.in_csr_read       (1'b0),                                  //   (terminated)
+		.in_csr_write      (1'b0),                                  //   (terminated)
+		.in_csr_readdata   (),                                      //   (terminated)
+		.in_csr_writedata  (32'b00000000000000000000000000000000),  //   (terminated)
+		.out_csr_address   (1'b0),                                  //   (terminated)
+		.out_csr_read      (1'b0),                                  //   (terminated)
+		.out_csr_write     (1'b0),                                  //   (terminated)
+		.out_csr_readdata  (),                                      //   (terminated)
+		.out_csr_writedata (32'b00000000000000000000000000000000),  //   (terminated)
+		.in_error          (1'b0),                                  //   (terminated)
+		.out_error         (),                                      //   (terminated)
+		.in_channel        (1'b0),                                  //   (terminated)
+		.out_channel       (),                                      //   (terminated)
+		.space_avail_data  ()                                       //   (terminated)
+	);
+
 	i2c_opencores i2c_opencores_camera (
 		.wb_clk_i   (clk_clk),                                                           //            clock.clk
-		.wb_rst_i   (rst_controller_003_reset_out_reset),                                //      clock_reset.reset
+		.wb_rst_i   (rst_controller_005_reset_out_reset),                                //      clock_reset.reset
 		.scl_pad_io (i2c_opencores_camera_export_scl_pad_io),                            //           export.export
 		.sda_pad_io (i2c_opencores_camera_export_sda_pad_io),                            //                 .export
 		.wb_adr_i   (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_address),     //   avalon_slave_0.address
@@ -376,7 +557,7 @@ module Qsys (
 
 	i2c_opencores i2c_opencores_mipi (
 		.wb_clk_i   (clk_clk),                                                         //            clock.clk
-		.wb_rst_i   (rst_controller_003_reset_out_reset),                              //      clock_reset.reset
+		.wb_rst_i   (rst_controller_005_reset_out_reset),                              //      clock_reset.reset
 		.scl_pad_io (i2c_opencores_mipi_export_scl_pad_io),                            //           export.export
 		.sda_pad_io (i2c_opencores_mipi_export_sda_pad_io),                            //                 .export
 		.wb_adr_i   (mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_address),     //   avalon_slave_0.address
@@ -390,7 +571,7 @@ module Qsys (
 
 	Qsys_jtag_uart jtag_uart (
 		.clk            (clk_clk),                                                   //               clk.clk
-		.rst_n          (~rst_controller_003_reset_out_reset),                       //             reset.reset_n
+		.rst_n          (~rst_controller_005_reset_out_reset),                       //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
@@ -403,7 +584,7 @@ module Qsys (
 
 	Qsys_key key (
 		.clk      (clk_clk),                             //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n  (~rst_controller_005_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_key_s1_address),    //                  s1.address
 		.readdata (mm_interconnect_0_key_s1_readdata),   //                    .readdata
 		.in_port  (key_external_connection_export)       // external_connection.export
@@ -411,7 +592,7 @@ module Qsys (
 
 	Qsys_led led (
 		.clk        (clk_clk),                             //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n    (~rst_controller_005_reset_out_reset), //               reset.reset_n
 		.address    (mm_interconnect_0_led_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_led_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_led_s1_writedata),  //                    .writedata
@@ -422,7 +603,7 @@ module Qsys (
 
 	Qsys_mipi_pwdn_n mipi_pwdn_n (
 		.clk        (clk_clk),                                     //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),         //               reset.reset_n
+		.reset_n    (~rst_controller_005_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_mipi_pwdn_n_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_mipi_pwdn_n_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_mipi_pwdn_n_s1_writedata),  //                    .writedata
@@ -433,7 +614,7 @@ module Qsys (
 
 	Qsys_mipi_pwdn_n mipi_reset_n (
 		.clk        (clk_clk),                                      //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),          //               reset.reset_n
+		.reset_n    (~rst_controller_005_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_mipi_reset_n_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_mipi_reset_n_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_mipi_reset_n_s1_writedata),  //                    .writedata
@@ -444,8 +625,8 @@ module Qsys (
 
 	Qsys_nios2_gen2 nios2_gen2 (
 		.clk                                 (clk_clk),                                                  //                       clk.clk
-		.reset_n                             (~rst_controller_003_reset_out_reset),                      //                     reset.reset_n
-		.reset_req                           (rst_controller_003_reset_out_reset_req),                   //                          .reset_req
+		.reset_n                             (~rst_controller_005_reset_out_reset),                      //                     reset.reset_n
+		.reset_req                           (rst_controller_005_reset_out_reset_req),                   //                          .reset_req
 		.d_address                           (nios2_gen2_data_master_address),                           //               data_master.address
 		.d_byteenable                        (nios2_gen2_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (nios2_gen2_data_master_read),                              //                          .read
@@ -482,8 +663,8 @@ module Qsys (
 		.readdata   (mm_interconnect_0_onchip_memory2_0_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_onchip_memory2_0_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_onchip_memory2_0_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_003_reset_out_reset),               // reset1.reset
-		.reset_req  (rst_controller_003_reset_out_reset_req),           //       .reset_req
+		.reset      (rst_controller_005_reset_out_reset),               // reset1.reset
+		.reset_req  (rst_controller_005_reset_out_reset_req),           //       .reset_req
 		.freeze     (1'b0)                                              // (terminated)
 	);
 
@@ -512,7 +693,7 @@ module Qsys (
 
 	Qsys_sw sw (
 		.clk      (clk_clk),                             //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n  (~rst_controller_005_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_sw_s1_address),     //                  s1.address
 		.readdata (mm_interconnect_0_sw_s1_readdata),    //                    .readdata
 		.in_port  (sw_external_connection_export)        // external_connection.export
@@ -520,14 +701,14 @@ module Qsys (
 
 	Qsys_sysid_qsys sysid_qsys (
 		.clock    (clk_clk),                                             //           clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset),                 //         reset.reset_n
+		.reset_n  (~rst_controller_005_reset_out_reset),                 //         reset.reset_n
 		.readdata (mm_interconnect_0_sysid_qsys_control_slave_readdata), // control_slave.readdata
 		.address  (mm_interconnect_0_sysid_qsys_control_slave_address)   //              .address
 	);
 
 	Qsys_timer timer (
 		.clk        (clk_clk),                               //   clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),   // reset.reset_n
+		.reset_n    (~rst_controller_005_reset_out_reset),   // reset.reset_n
 		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
@@ -536,9 +717,26 @@ module Qsys (
 		.irq        (irq_mapper_receiver3_irq)               //   irq.irq
 	);
 
+	Qsys_timing_adapter_0 timing_adapter_0 (
+		.clk               (altpll_0_c2_clk),                     //   clk.clk
+		.reset_n           (~rst_controller_003_reset_out_reset), // reset.reset_n
+		.in_data           (dc_fifo_1_out_data),                  //    in.data
+		.in_valid          (dc_fifo_1_out_valid),                 //      .valid
+		.in_ready          (dc_fifo_1_out_ready),                 //      .ready
+		.in_startofpacket  (dc_fifo_1_out_startofpacket),         //      .startofpacket
+		.in_endofpacket    (dc_fifo_1_out_endofpacket),           //      .endofpacket
+		.in_empty          (dc_fifo_1_out_empty),                 //      .empty
+		.out_data          (timing_adapter_0_out_data),           //   out.data
+		.out_valid         (timing_adapter_0_out_valid),          //      .valid
+		.out_ready         (timing_adapter_0_out_ready),          //      .ready
+		.out_startofpacket (timing_adapter_0_out_startofpacket),  //      .startofpacket
+		.out_endofpacket   (timing_adapter_0_out_endofpacket),    //      .endofpacket
+		.out_empty         (timing_adapter_0_out_empty)           //      .empty
+	);
+
 	Qsys_uart_0 uart_0 (
 		.clk           (clk_clk),                                   //                 clk.clk
-		.reset_n       (~rst_controller_003_reset_out_reset),       //               reset.reset_n
+		.reset_n       (~rst_controller_005_reset_out_reset),       //               reset.reset_n
 		.address       (mm_interconnect_0_uart_0_s1_address),       //                  s1.address
 		.begintransfer (mm_interconnect_0_uart_0_s1_begintransfer), //                    .begintransfer
 		.chipselect    (mm_interconnect_0_uart_0_s1_chipselect),    //                    .chipselect
@@ -555,7 +753,7 @@ module Qsys (
 		.altpll_0_c2_clk                                            (altpll_0_c2_clk),                                                    //                                          altpll_0_c2.clk
 		.clk_50_clk_clk                                             (clk_clk),                                                            //                                           clk_50_clk.clk
 		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                                 // altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
-		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_003_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
+		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_005_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
 		.TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset     (rst_controller_001_reset_out_reset),                                 //     TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_data_master_address                             (nios2_gen2_data_master_address),                                     //                               nios2_gen2_data_master.address
 		.nios2_gen2_data_master_waitrequest                         (nios2_gen2_data_master_waitrequest),                                 //                                                     .waitrequest
@@ -576,6 +774,11 @@ module Qsys (
 		.altpll_0_pll_slave_read                                    (mm_interconnect_0_altpll_0_pll_slave_read),                          //                                                     .read
 		.altpll_0_pll_slave_readdata                                (mm_interconnect_0_altpll_0_pll_slave_readdata),                      //                                                     .readdata
 		.altpll_0_pll_slave_writedata                               (mm_interconnect_0_altpll_0_pll_slave_writedata),                     //                                                     .writedata
+		.altpll_1_pll_slave_address                                 (mm_interconnect_0_altpll_1_pll_slave_address),                       //                                   altpll_1_pll_slave.address
+		.altpll_1_pll_slave_write                                   (mm_interconnect_0_altpll_1_pll_slave_write),                         //                                                     .write
+		.altpll_1_pll_slave_read                                    (mm_interconnect_0_altpll_1_pll_slave_read),                          //                                                     .read
+		.altpll_1_pll_slave_readdata                                (mm_interconnect_0_altpll_1_pll_slave_readdata),                      //                                                     .readdata
+		.altpll_1_pll_slave_writedata                               (mm_interconnect_0_altpll_1_pll_slave_writedata),                     //                                                     .writedata
 		.i2c_opencores_camera_avalon_slave_0_address                (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_address),      //                  i2c_opencores_camera_avalon_slave_0.address
 		.i2c_opencores_camera_avalon_slave_0_write                  (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_write),        //                                                     .write
 		.i2c_opencores_camera_avalon_slave_0_readdata               (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_readdata),     //                                                     .readdata
@@ -678,7 +881,7 @@ module Qsys (
 
 	Qsys_irq_mapper irq_mapper (
 		.clk           (clk_clk),                            //       clk.clk
-		.reset         (rst_controller_003_reset_out_reset), // clk_reset.reset
+		.reset         (rst_controller_005_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
@@ -687,8 +890,107 @@ module Qsys (
 		.sender_irq    (nios2_gen2_irq_irq)                  //    sender.irq
 	);
 
+	Qsys_avalon_st_adapter #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (0),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (1),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter (
+		.in_clk_0_clk        (altpll_1_c0_clk),                                    // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),                     // in_rst_0.reset
+		.in_0_data           (rgb_to_hsv_0_avalon_streaming_source_data),          //     in_0.data
+		.in_0_valid          (rgb_to_hsv_0_avalon_streaming_source_valid),         //         .valid
+		.in_0_ready          (rgb_to_hsv_0_avalon_streaming_source_ready),         //         .ready
+		.in_0_startofpacket  (rgb_to_hsv_0_avalon_streaming_source_startofpacket), //         .startofpacket
+		.in_0_endofpacket    (rgb_to_hsv_0_avalon_streaming_source_endofpacket),   //         .endofpacket
+		.out_0_data          (avalon_st_adapter_out_0_data),                       //    out_0.data
+		.out_0_valid         (avalon_st_adapter_out_0_valid),                      //         .valid
+		.out_0_ready         (avalon_st_adapter_out_0_ready),                      //         .ready
+		.out_0_startofpacket (avalon_st_adapter_out_0_startofpacket),              //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_out_0_endofpacket),                //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_out_0_empty)                       //         .empty
+	);
+
+	Qsys_avalon_st_adapter #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (0),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (1),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter_001 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_001_reset_out_reset),        // in_rst_0.reset
+		.in_0_data           (terasic_auto_focus_0_dout_data),            //     in_0.data
+		.in_0_valid          (terasic_auto_focus_0_dout_valid),           //         .valid
+		.in_0_ready          (terasic_auto_focus_0_dout_ready),           //         .ready
+		.in_0_startofpacket  (terasic_auto_focus_0_dout_startofpacket),   //         .startofpacket
+		.in_0_endofpacket    (terasic_auto_focus_0_dout_endofpacket),     //         .endofpacket
+		.out_0_data          (avalon_st_adapter_001_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_001_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_001_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_001_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_001_out_0_endofpacket),   //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_001_out_0_empty)          //         .empty
+	);
+
+	Qsys_avalon_st_adapter_002 #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (1),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (0),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (0),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (1)
+	) avalon_st_adapter_002 (
+		.in_clk_0_clk        (altpll_1_c0_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_004_reset_out_reset),        // in_rst_0.reset
+		.in_0_data           (dc_fifo_0_out_data),                        //     in_0.data
+		.in_0_valid          (dc_fifo_0_out_valid),                       //         .valid
+		.in_0_ready          (dc_fifo_0_out_ready),                       //         .ready
+		.in_0_startofpacket  (dc_fifo_0_out_startofpacket),               //         .startofpacket
+		.in_0_endofpacket    (dc_fifo_0_out_endofpacket),                 //         .endofpacket
+		.in_0_empty          (dc_fifo_0_out_empty),                       //         .empty
+		.out_0_data          (avalon_st_adapter_002_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_002_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_002_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_002_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_002_out_0_endofpacket)    //         .endofpacket
+	);
+
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
+		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
@@ -713,41 +1015,41 @@ module Qsys (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
-		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
-		.clk            (altpll_0_c2_clk),                //       clk.clk
-		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
-		.reset_req      (),                               // (terminated)
-		.reset_req_in0  (1'b0),                           // (terminated)
-		.reset_in1      (1'b0),                           // (terminated)
-		.reset_req_in1  (1'b0),                           // (terminated)
-		.reset_in2      (1'b0),                           // (terminated)
-		.reset_req_in2  (1'b0),                           // (terminated)
-		.reset_in3      (1'b0),                           // (terminated)
-		.reset_req_in3  (1'b0),                           // (terminated)
-		.reset_in4      (1'b0),                           // (terminated)
-		.reset_req_in4  (1'b0),                           // (terminated)
-		.reset_in5      (1'b0),                           // (terminated)
-		.reset_req_in5  (1'b0),                           // (terminated)
-		.reset_in6      (1'b0),                           // (terminated)
-		.reset_req_in6  (1'b0),                           // (terminated)
-		.reset_in7      (1'b0),                           // (terminated)
-		.reset_req_in7  (1'b0),                           // (terminated)
-		.reset_in8      (1'b0),                           // (terminated)
-		.reset_req_in8  (1'b0),                           // (terminated)
-		.reset_in9      (1'b0),                           // (terminated)
-		.reset_req_in9  (1'b0),                           // (terminated)
-		.reset_in10     (1'b0),                           // (terminated)
-		.reset_req_in10 (1'b0),                           // (terminated)
-		.reset_in11     (1'b0),                           // (terminated)
-		.reset_req_in11 (1'b0),                           // (terminated)
-		.reset_in12     (1'b0),                           // (terminated)
-		.reset_req_in12 (1'b0),                           // (terminated)
-		.reset_in13     (1'b0),                           // (terminated)
-		.reset_req_in13 (1'b0),                           // (terminated)
-		.reset_in14     (1'b0),                           // (terminated)
-		.reset_req_in14 (1'b0),                           // (terminated)
-		.reset_in15     (1'b0),                           // (terminated)
-		.reset_req_in15 (1'b0)                            // (terminated)
+		.reset_in0      (~reset_reset_n),                       // reset_in0.reset
+		.reset_in1      (nios2_gen2_debug_reset_request_reset), // reset_in1.reset
+		.clk            (altpll_1_c0_clk),                      //       clk.clk
+		.reset_out      (rst_controller_reset_out_reset),       // reset_out.reset
+		.reset_req      (),                                     // (terminated)
+		.reset_req_in0  (1'b0),                                 // (terminated)
+		.reset_req_in1  (1'b0),                                 // (terminated)
+		.reset_in2      (1'b0),                                 // (terminated)
+		.reset_req_in2  (1'b0),                                 // (terminated)
+		.reset_in3      (1'b0),                                 // (terminated)
+		.reset_req_in3  (1'b0),                                 // (terminated)
+		.reset_in4      (1'b0),                                 // (terminated)
+		.reset_req_in4  (1'b0),                                 // (terminated)
+		.reset_in5      (1'b0),                                 // (terminated)
+		.reset_req_in5  (1'b0),                                 // (terminated)
+		.reset_in6      (1'b0),                                 // (terminated)
+		.reset_req_in6  (1'b0),                                 // (terminated)
+		.reset_in7      (1'b0),                                 // (terminated)
+		.reset_req_in7  (1'b0),                                 // (terminated)
+		.reset_in8      (1'b0),                                 // (terminated)
+		.reset_req_in8  (1'b0),                                 // (terminated)
+		.reset_in9      (1'b0),                                 // (terminated)
+		.reset_req_in9  (1'b0),                                 // (terminated)
+		.reset_in10     (1'b0),                                 // (terminated)
+		.reset_req_in10 (1'b0),                                 // (terminated)
+		.reset_in11     (1'b0),                                 // (terminated)
+		.reset_req_in11 (1'b0),                                 // (terminated)
+		.reset_in12     (1'b0),                                 // (terminated)
+		.reset_req_in12 (1'b0),                                 // (terminated)
+		.reset_in13     (1'b0),                                 // (terminated)
+		.reset_req_in13 (1'b0),                                 // (terminated)
+		.reset_in14     (1'b0),                                 // (terminated)
+		.reset_req_in14 (1'b0),                                 // (terminated)
+		.reset_in15     (1'b0),                                 // (terminated)
+		.reset_req_in15 (1'b0)                                  // (terminated)
 	);
 
 	altera_reset_controller #(
@@ -877,6 +1179,132 @@ module Qsys (
 	);
 
 	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_003 (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.clk            (altpll_0_c2_clk),                    //       clk.clk
+		.reset_out      (rst_controller_003_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_004 (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.clk            (altpll_1_c0_clk),                    //       clk.clk
+		.reset_out      (rst_controller_004_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
@@ -901,12 +1329,12 @@ module Qsys (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_003 (
+	) rst_controller_005 (
 		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
 		.reset_in1      (nios2_gen2_debug_reset_request_reset),   // reset_in1.reset
 		.clk            (clk_clk),                                //       clk.clk
-		.reset_out      (rst_controller_003_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_003_reset_out_reset_req), //          .reset_req
+		.reset_out      (rst_controller_005_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_005_reset_out_reset_req), //          .reset_req
 		.reset_req_in0  (1'b0),                                   // (terminated)
 		.reset_req_in1  (1'b0),                                   // (terminated)
 		.reset_in2      (1'b0),                                   // (terminated)
