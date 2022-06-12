@@ -9,14 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element GRAY_TO_RGB_0
-   {
-      datum _sortIndex
-      {
-         value = "16";
-         type = "int";
-      }
-   }
    element Qsys
    {
       datum _originalDeviceFamily
@@ -39,21 +31,13 @@
       {
          value = "Cyclone V";
          type = "String";
-      }
-   }
-   element RGB_TO_GRAY_0
-   {
-      datum _sortIndex
-      {
-         value = "15";
-         type = "int";
       }
    }
    element TERASIC_AUTO_FOCUS_0
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "17";
          type = "int";
       }
       datum sopceditor_expanded
@@ -87,7 +71,7 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "18";
          type = "int";
       }
       datum sopceditor_expanded
@@ -100,7 +84,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "16";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -118,7 +102,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "19";
          type = "int";
       }
       datum sopceditor_expanded
@@ -291,7 +275,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "15";
          type = "int";
       }
       datum sopceditor_expanded
@@ -470,8 +454,6 @@
    internal="uart_0.external_connection"
    type="conduit"
    dir="end" />
- <module name="GRAY_TO_RGB_0" kind="GRAY_TO_RGB" version="1.0" enabled="1" />
- <module name="RGB_TO_GRAY_0" kind="RGB_TO_GRAY" version="1.0" enabled="1" />
  <module
    name="TERASIC_AUTO_FOCUS_0"
    kind="TERASIC_AUTO_FOCUS"
@@ -1256,17 +1238,7 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="RGB_TO_GRAY_0.avalon_streaming_source"
-   end="GRAY_TO_RGB_0.avalon_streaming_sink" />
- <connection
-   kind="avalon_streaming"
-   version="18.1"
    start="TERASIC_CAMERA_0.avalon_streaming_source"
-   end="RGB_TO_GRAY_0.avalon_streaming_sink" />
- <connection
-   kind="avalon_streaming"
-   version="18.1"
-   start="GRAY_TO_RGB_0.avalon_streaming_source"
    end="alt_vip_vfb_0.din" />
  <connection
    kind="avalon_streaming"
@@ -1289,16 +1261,6 @@
    version="18.1"
    start="altpll_0.c2"
    end="alt_vip_vfb_0.clock" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="RGB_TO_GRAY_0.clock" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="GRAY_TO_RGB_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -1456,16 +1418,6 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="RGB_TO_GRAY_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
-   end="GRAY_TO_RGB_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
    end="onchip_memory2_0.reset1" />
  <connection
    kind="reset"
@@ -1552,11 +1504,6 @@
    version="18.1"
    start="nios2_gen2.debug_reset_request"
    end="uart_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2.debug_reset_request"
-   end="GRAY_TO_RGB_0.reset" />
  <connection
    kind="reset"
    version="18.1"

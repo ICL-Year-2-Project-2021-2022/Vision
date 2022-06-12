@@ -213,7 +213,7 @@ module Qsys_avalon_st_adapter_002 #(
 		.out_endofpacket   (data_format_adapter_0_out_endofpacket)    //      .endofpacket
 	);
 
-	Qsys_avalon_st_adapter_002_timing_adapter_0 timing_adapter_0 (
+	Qsys_timing_adapter_0 timing_adapter_0 (
 		.clk               (in_clk_0_clk),                            //   clk.clk
 		.reset_n           (~in_rst_0_reset),                         // reset.reset_n
 		.in_data           (data_format_adapter_0_out_data),          //    in.data

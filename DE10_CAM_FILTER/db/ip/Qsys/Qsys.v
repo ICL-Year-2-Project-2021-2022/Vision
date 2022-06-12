@@ -49,27 +49,22 @@ module Qsys (
 		output wire        uart_0_rx_tx_txd                           //                                 .txd
 	);
 
-	wire         rgb_to_gray_0_avalon_streaming_source_valid;                       // RGB_TO_GRAY_0:source_valid -> GRAY_TO_RGB_0:sink_valid
-	wire   [7:0] rgb_to_gray_0_avalon_streaming_source_data;                        // RGB_TO_GRAY_0:source_data -> GRAY_TO_RGB_0:sink_data
-	wire         rgb_to_gray_0_avalon_streaming_source_ready;                       // GRAY_TO_RGB_0:sink_ready -> RGB_TO_GRAY_0:source_ready
-	wire         rgb_to_gray_0_avalon_streaming_source_startofpacket;               // RGB_TO_GRAY_0:source_sop -> GRAY_TO_RGB_0:sink_sop
-	wire         rgb_to_gray_0_avalon_streaming_source_endofpacket;                 // RGB_TO_GRAY_0:source_eop -> GRAY_TO_RGB_0:sink_eop
 	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> alt_vip_vfb_0:din_valid
 	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> alt_vip_vfb_0:din_data
 	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
 	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_vfb_0:din_startofpacket
 	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_vfb_0:din_endofpacket
-	wire         gray_to_rgb_0_avalon_streaming_source_valid;                       // GRAY_TO_RGB_0:source_valid -> alt_vip_itc_0:is_valid
-	wire  [23:0] gray_to_rgb_0_avalon_streaming_source_data;                        // GRAY_TO_RGB_0:source_data -> alt_vip_itc_0:is_data
-	wire         gray_to_rgb_0_avalon_streaming_source_ready;                       // alt_vip_itc_0:is_ready -> GRAY_TO_RGB_0:source_ready
-	wire         gray_to_rgb_0_avalon_streaming_source_startofpacket;               // GRAY_TO_RGB_0:source_sop -> alt_vip_itc_0:is_sop
-	wire         gray_to_rgb_0_avalon_streaming_source_endofpacket;                 // GRAY_TO_RGB_0:source_eop -> alt_vip_itc_0:is_eop
 	wire         alt_vip_vfb_0_dout_valid;                                          // alt_vip_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
 	wire  [23:0] alt_vip_vfb_0_dout_data;                                           // alt_vip_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
 	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
 	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
 	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
-	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [GRAY_TO_RGB_0:clk, RGB_TO_GRAY_0:clk, TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter:in_clk_0_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, rst_controller_001:clk, sdram:clk]
+	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> alt_vip_itc_0:is_valid
+	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> alt_vip_itc_0:is_data
+	wire         terasic_auto_focus_0_dout_ready;                                   // alt_vip_itc_0:is_ready -> TERASIC_AUTO_FOCUS_0:source_ready
+	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> alt_vip_itc_0:is_sop
+	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> alt_vip_itc_0:is_eop
+	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, sdram:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
 	wire         nios2_gen2_data_master_debugaccess;                                // nios2_gen2:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_data_master_debugaccess
@@ -188,52 +183,11 @@ module Qsys (
 	wire         irq_mapper_receiver3_irq;                                          // timer:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                          // uart_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_gen2_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2:irq
-	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> avalon_st_adapter:in_0_valid
-	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> avalon_st_adapter:in_0_data
-	wire         terasic_auto_focus_0_dout_ready;                                   // avalon_st_adapter:in_0_ready -> TERASIC_AUTO_FOCUS_0:source_ready
-	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> avalon_st_adapter:in_0_startofpacket
-	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> avalon_st_adapter:in_0_endofpacket
-	wire         avalon_st_adapter_out_0_valid;                                     // avalon_st_adapter:out_0_valid -> RGB_TO_GRAY_0:sink_valid
-	wire  [23:0] avalon_st_adapter_out_0_data;                                      // avalon_st_adapter:out_0_data -> RGB_TO_GRAY_0:sink_data
-	wire         avalon_st_adapter_out_0_ready;                                     // RGB_TO_GRAY_0:sink_ready -> avalon_st_adapter:out_0_ready
-	wire         avalon_st_adapter_out_0_startofpacket;                             // avalon_st_adapter:out_0_startofpacket -> RGB_TO_GRAY_0:sink_sop
-	wire         avalon_st_adapter_out_0_endofpacket;                               // avalon_st_adapter:out_0_endofpacket -> RGB_TO_GRAY_0:sink_eop
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [GRAY_TO_RGB_0:reset_n, TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, avalon_st_adapter:in_rst_0_reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
-	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_003:reset_in1]
-	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> RGB_TO_GRAY_0:reset_n
-	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
-	wire         rst_controller_003_reset_out_reset_req;                            // rst_controller_003:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
-
-	RGB_TO_GRAY gray_to_rgb_0 (
-		.clk          (altpll_0_c2_clk),                                     //                   clock.clk
-		.reset_n      (~rst_controller_reset_out_reset),                     //                   reset.reset_n
-		.source_data  (gray_to_rgb_0_avalon_streaming_source_data),          // avalon_streaming_source.data
-		.source_eop   (gray_to_rgb_0_avalon_streaming_source_endofpacket),   //                        .endofpacket
-		.source_ready (gray_to_rgb_0_avalon_streaming_source_ready),         //                        .ready
-		.source_sop   (gray_to_rgb_0_avalon_streaming_source_startofpacket), //                        .startofpacket
-		.source_valid (gray_to_rgb_0_avalon_streaming_source_valid),         //                        .valid
-		.sink_data    (rgb_to_gray_0_avalon_streaming_source_data),          //   avalon_streaming_sink.data
-		.sink_valid   (rgb_to_gray_0_avalon_streaming_source_valid),         //                        .valid
-		.sink_ready   (rgb_to_gray_0_avalon_streaming_source_ready),         //                        .ready
-		.sink_sop     (rgb_to_gray_0_avalon_streaming_source_startofpacket), //                        .startofpacket
-		.sink_eop     (rgb_to_gray_0_avalon_streaming_source_endofpacket)    //                        .endofpacket
-	);
-
-	RGB_TO_GRAY rgb_to_gray_0 (
-		.clk          (altpll_0_c2_clk),                                     //                   clock.clk
-		.reset_n      (~rst_controller_001_reset_out_reset),                 //                   reset.reset_n
-		.source_data  (rgb_to_gray_0_avalon_streaming_source_data),          // avalon_streaming_source.data
-		.source_eop   (rgb_to_gray_0_avalon_streaming_source_endofpacket),   //                        .endofpacket
-		.source_ready (rgb_to_gray_0_avalon_streaming_source_ready),         //                        .ready
-		.source_sop   (rgb_to_gray_0_avalon_streaming_source_startofpacket), //                        .startofpacket
-		.source_valid (rgb_to_gray_0_avalon_streaming_source_valid),         //                        .valid
-		.sink_data    (avalon_st_adapter_out_0_data),                        //   avalon_streaming_sink.data
-		.sink_valid   (avalon_st_adapter_out_0_valid),                       //                        .valid
-		.sink_ready   (avalon_st_adapter_out_0_ready),                       //                        .ready
-		.sink_sop     (avalon_st_adapter_out_0_startofpacket),               //                        .startofpacket
-		.sink_eop     (avalon_st_adapter_out_0_endofpacket)                  //                        .endofpacket
-	);
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1]
+	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
+	wire         rst_controller_002_reset_out_reset_req;                            // rst_controller_002:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 
 	TERASIC_AUTO_FOCUS #(
 		.VIDEO_W (640),
@@ -314,22 +268,22 @@ module Qsys (
 		.ANC_LINE                      (0),
 		.FIELD0_ANC_LINE               (0)
 	) alt_vip_itc_0 (
-		.is_clk        (altpll_0_c2_clk),                                     //       is_clk_rst.clk
-		.rst           (rst_controller_reset_out_reset),                      // is_clk_rst_reset.reset
-		.is_data       (gray_to_rgb_0_avalon_streaming_source_data),          //              din.data
-		.is_valid      (gray_to_rgb_0_avalon_streaming_source_valid),         //                 .valid
-		.is_ready      (gray_to_rgb_0_avalon_streaming_source_ready),         //                 .ready
-		.is_sop        (gray_to_rgb_0_avalon_streaming_source_startofpacket), //                 .startofpacket
-		.is_eop        (gray_to_rgb_0_avalon_streaming_source_endofpacket),   //                 .endofpacket
-		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),                 //    clocked_video.export
-		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),                //                 .export
-		.underflow     (alt_vip_itc_0_clocked_video_underflow),               //                 .export
-		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid),           //                 .export
-		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),              //                 .export
-		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),              //                 .export
-		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),                   //                 .export
-		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),                   //                 .export
-		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)                    //                 .export
+		.is_clk        (altpll_0_c2_clk),                           //       is_clk_rst.clk
+		.rst           (rst_controller_reset_out_reset),            // is_clk_rst_reset.reset
+		.is_data       (terasic_auto_focus_0_dout_data),            //              din.data
+		.is_valid      (terasic_auto_focus_0_dout_valid),           //                 .valid
+		.is_ready      (terasic_auto_focus_0_dout_ready),           //                 .ready
+		.is_sop        (terasic_auto_focus_0_dout_startofpacket),   //                 .startofpacket
+		.is_eop        (terasic_auto_focus_0_dout_endofpacket),     //                 .endofpacket
+		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),       //    clocked_video.export
+		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),      //                 .export
+		.underflow     (alt_vip_itc_0_clocked_video_underflow),     //                 .export
+		.vid_datavalid (alt_vip_itc_0_clocked_video_vid_datavalid), //                 .export
+		.vid_v_sync    (alt_vip_itc_0_clocked_video_vid_v_sync),    //                 .export
+		.vid_h_sync    (alt_vip_itc_0_clocked_video_vid_h_sync),    //                 .export
+		.vid_f         (alt_vip_itc_0_clocked_video_vid_f),         //                 .export
+		.vid_h         (alt_vip_itc_0_clocked_video_vid_h),         //                 .export
+		.vid_v         (alt_vip_itc_0_clocked_video_vid_v)          //                 .export
 	);
 
 	Qsys_alt_vip_vfb_0 alt_vip_vfb_0 (
@@ -360,7 +314,7 @@ module Qsys (
 
 	Qsys_altpll_0 altpll_0 (
 		.clk                (clk_clk),                                        //       inclk_interface.clk
-		.reset              (rst_controller_002_reset_out_reset),             // inclk_interface_reset.reset
+		.reset              (rst_controller_001_reset_out_reset),             // inclk_interface_reset.reset
 		.read               (mm_interconnect_0_altpll_0_pll_slave_read),      //             pll_slave.read
 		.write              (mm_interconnect_0_altpll_0_pll_slave_write),     //                      .write
 		.address            (mm_interconnect_0_altpll_0_pll_slave_address),   //                      .address
@@ -387,7 +341,7 @@ module Qsys (
 
 	i2c_opencores i2c_opencores_camera (
 		.wb_clk_i   (clk_clk),                                                           //            clock.clk
-		.wb_rst_i   (rst_controller_003_reset_out_reset),                                //      clock_reset.reset
+		.wb_rst_i   (rst_controller_002_reset_out_reset),                                //      clock_reset.reset
 		.scl_pad_io (i2c_opencores_camera_export_scl_pad_io),                            //           export.export
 		.sda_pad_io (i2c_opencores_camera_export_sda_pad_io),                            //                 .export
 		.wb_adr_i   (mm_interconnect_0_i2c_opencores_camera_avalon_slave_0_address),     //   avalon_slave_0.address
@@ -401,7 +355,7 @@ module Qsys (
 
 	i2c_opencores i2c_opencores_mipi (
 		.wb_clk_i   (clk_clk),                                                         //            clock.clk
-		.wb_rst_i   (rst_controller_003_reset_out_reset),                              //      clock_reset.reset
+		.wb_rst_i   (rst_controller_002_reset_out_reset),                              //      clock_reset.reset
 		.scl_pad_io (i2c_opencores_mipi_export_scl_pad_io),                            //           export.export
 		.sda_pad_io (i2c_opencores_mipi_export_sda_pad_io),                            //                 .export
 		.wb_adr_i   (mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_address),     //   avalon_slave_0.address
@@ -415,7 +369,7 @@ module Qsys (
 
 	Qsys_jtag_uart jtag_uart (
 		.clk            (clk_clk),                                                   //               clk.clk
-		.rst_n          (~rst_controller_003_reset_out_reset),                       //             reset.reset_n
+		.rst_n          (~rst_controller_002_reset_out_reset),                       //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
@@ -428,7 +382,7 @@ module Qsys (
 
 	Qsys_key key (
 		.clk      (clk_clk),                             //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n  (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_key_s1_address),    //                  s1.address
 		.readdata (mm_interconnect_0_key_s1_readdata),   //                    .readdata
 		.in_port  (key_external_connection_export)       // external_connection.export
@@ -436,7 +390,7 @@ module Qsys (
 
 	Qsys_led led (
 		.clk        (clk_clk),                             //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address    (mm_interconnect_0_led_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_led_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_led_s1_writedata),  //                    .writedata
@@ -447,7 +401,7 @@ module Qsys (
 
 	Qsys_mipi_pwdn_n mipi_pwdn_n (
 		.clk        (clk_clk),                                     //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),         //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_mipi_pwdn_n_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_mipi_pwdn_n_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_mipi_pwdn_n_s1_writedata),  //                    .writedata
@@ -458,7 +412,7 @@ module Qsys (
 
 	Qsys_mipi_pwdn_n mipi_reset_n (
 		.clk        (clk_clk),                                      //                 clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),          //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_mipi_reset_n_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_mipi_reset_n_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_mipi_reset_n_s1_writedata),  //                    .writedata
@@ -469,8 +423,8 @@ module Qsys (
 
 	Qsys_nios2_gen2 nios2_gen2 (
 		.clk                                 (clk_clk),                                                  //                       clk.clk
-		.reset_n                             (~rst_controller_003_reset_out_reset),                      //                     reset.reset_n
-		.reset_req                           (rst_controller_003_reset_out_reset_req),                   //                          .reset_req
+		.reset_n                             (~rst_controller_002_reset_out_reset),                      //                     reset.reset_n
+		.reset_req                           (rst_controller_002_reset_out_reset_req),                   //                          .reset_req
 		.d_address                           (nios2_gen2_data_master_address),                           //               data_master.address
 		.d_byteenable                        (nios2_gen2_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (nios2_gen2_data_master_read),                              //                          .read
@@ -507,8 +461,8 @@ module Qsys (
 		.readdata   (mm_interconnect_0_onchip_memory2_0_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_onchip_memory2_0_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_onchip_memory2_0_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_003_reset_out_reset),               // reset1.reset
-		.reset_req  (rst_controller_003_reset_out_reset_req),           //       .reset_req
+		.reset      (rst_controller_002_reset_out_reset),               // reset1.reset
+		.reset_req  (rst_controller_002_reset_out_reset_req),           //       .reset_req
 		.freeze     (1'b0)                                              // (terminated)
 	);
 
@@ -537,7 +491,7 @@ module Qsys (
 
 	Qsys_sw sw (
 		.clk      (clk_clk),                             //                 clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset), //               reset.reset_n
+		.reset_n  (~rst_controller_002_reset_out_reset), //               reset.reset_n
 		.address  (mm_interconnect_0_sw_s1_address),     //                  s1.address
 		.readdata (mm_interconnect_0_sw_s1_readdata),    //                    .readdata
 		.in_port  (sw_external_connection_export)        // external_connection.export
@@ -545,14 +499,14 @@ module Qsys (
 
 	Qsys_sysid_qsys sysid_qsys (
 		.clock    (clk_clk),                                             //           clk.clk
-		.reset_n  (~rst_controller_003_reset_out_reset),                 //         reset.reset_n
+		.reset_n  (~rst_controller_002_reset_out_reset),                 //         reset.reset_n
 		.readdata (mm_interconnect_0_sysid_qsys_control_slave_readdata), // control_slave.readdata
 		.address  (mm_interconnect_0_sysid_qsys_control_slave_address)   //              .address
 	);
 
 	Qsys_timer timer (
 		.clk        (clk_clk),                               //   clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),   // reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),   // reset.reset_n
 		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
@@ -563,7 +517,7 @@ module Qsys (
 
 	Qsys_uart_0 uart_0 (
 		.clk           (clk_clk),                                   //                 clk.clk
-		.reset_n       (~rst_controller_003_reset_out_reset),       //               reset.reset_n
+		.reset_n       (~rst_controller_002_reset_out_reset),       //               reset.reset_n
 		.address       (mm_interconnect_0_uart_0_s1_address),       //                  s1.address
 		.begintransfer (mm_interconnect_0_uart_0_s1_begintransfer), //                    .begintransfer
 		.chipselect    (mm_interconnect_0_uart_0_s1_chipselect),    //                    .chipselect
@@ -579,8 +533,8 @@ module Qsys (
 	Qsys_mm_interconnect_0 mm_interconnect_0 (
 		.altpll_0_c2_clk                                            (altpll_0_c2_clk),                                                    //                                          altpll_0_c2.clk
 		.clk_50_clk_clk                                             (clk_clk),                                                            //                                           clk_50_clk.clk
-		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                                 // altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
-		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_003_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
+		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                 // altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
+		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_002_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
 		.TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset     (rst_controller_reset_out_reset),                                     //     TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_data_master_address                             (nios2_gen2_data_master_address),                                     //                               nios2_gen2_data_master.address
 		.nios2_gen2_data_master_waitrequest                         (nios2_gen2_data_master_waitrequest),                                 //                                                     .waitrequest
@@ -703,45 +657,13 @@ module Qsys (
 
 	Qsys_irq_mapper irq_mapper (
 		.clk           (clk_clk),                            //       clk.clk
-		.reset         (rst_controller_003_reset_out_reset), // clk_reset.reset
+		.reset         (rst_controller_002_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
 		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.receiver4_irq (irq_mapper_receiver4_irq),           // receiver4.irq
 		.sender_irq    (nios2_gen2_irq_irq)                  //    sender.irq
-	);
-
-	Qsys_avalon_st_adapter #(
-		.inBitsPerSymbol (8),
-		.inUsePackets    (1),
-		.inDataWidth     (24),
-		.inChannelWidth  (0),
-		.inErrorWidth    (0),
-		.inUseEmptyPort  (0),
-		.inUseValid      (1),
-		.inUseReady      (1),
-		.inReadyLatency  (1),
-		.outDataWidth    (24),
-		.outChannelWidth (0),
-		.outErrorWidth   (0),
-		.outUseEmptyPort (0),
-		.outUseValid     (1),
-		.outUseReady     (1),
-		.outReadyLatency (0)
-	) avalon_st_adapter (
-		.in_clk_0_clk        (altpll_0_c2_clk),                         // in_clk_0.clk
-		.in_rst_0_reset      (rst_controller_reset_out_reset),          // in_rst_0.reset
-		.in_0_data           (terasic_auto_focus_0_dout_data),          //     in_0.data
-		.in_0_valid          (terasic_auto_focus_0_dout_valid),         //         .valid
-		.in_0_ready          (terasic_auto_focus_0_dout_ready),         //         .ready
-		.in_0_startofpacket  (terasic_auto_focus_0_dout_startofpacket), //         .startofpacket
-		.in_0_endofpacket    (terasic_auto_focus_0_dout_endofpacket),   //         .endofpacket
-		.out_0_data          (avalon_st_adapter_out_0_data),            //    out_0.data
-		.out_0_valid         (avalon_st_adapter_out_0_valid),           //         .valid
-		.out_0_ready         (avalon_st_adapter_out_0_ready),           //         .ready
-		.out_0_startofpacket (avalon_st_adapter_out_0_startofpacket),   //         .startofpacket
-		.out_0_endofpacket   (avalon_st_adapter_out_0_endofpacket)      //         .endofpacket
 	);
 
 	altera_reset_controller #(
@@ -834,71 +756,8 @@ module Qsys (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (altpll_0_c2_clk),                    //       clk.clk
-		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
-		.reset_req      (),                                   // (terminated)
-		.reset_req_in0  (1'b0),                               // (terminated)
-		.reset_in1      (1'b0),                               // (terminated)
-		.reset_req_in1  (1'b0),                               // (terminated)
-		.reset_in2      (1'b0),                               // (terminated)
-		.reset_req_in2  (1'b0),                               // (terminated)
-		.reset_in3      (1'b0),                               // (terminated)
-		.reset_req_in3  (1'b0),                               // (terminated)
-		.reset_in4      (1'b0),                               // (terminated)
-		.reset_req_in4  (1'b0),                               // (terminated)
-		.reset_in5      (1'b0),                               // (terminated)
-		.reset_req_in5  (1'b0),                               // (terminated)
-		.reset_in6      (1'b0),                               // (terminated)
-		.reset_req_in6  (1'b0),                               // (terminated)
-		.reset_in7      (1'b0),                               // (terminated)
-		.reset_req_in7  (1'b0),                               // (terminated)
-		.reset_in8      (1'b0),                               // (terminated)
-		.reset_req_in8  (1'b0),                               // (terminated)
-		.reset_in9      (1'b0),                               // (terminated)
-		.reset_req_in9  (1'b0),                               // (terminated)
-		.reset_in10     (1'b0),                               // (terminated)
-		.reset_req_in10 (1'b0),                               // (terminated)
-		.reset_in11     (1'b0),                               // (terminated)
-		.reset_req_in11 (1'b0),                               // (terminated)
-		.reset_in12     (1'b0),                               // (terminated)
-		.reset_req_in12 (1'b0),                               // (terminated)
-		.reset_in13     (1'b0),                               // (terminated)
-		.reset_req_in13 (1'b0),                               // (terminated)
-		.reset_in14     (1'b0),                               // (terminated)
-		.reset_req_in14 (1'b0),                               // (terminated)
-		.reset_in15     (1'b0),                               // (terminated)
-		.reset_req_in15 (1'b0)                                // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_002 (
-		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
 		.clk            (clk_clk),                            //       clk.clk
-		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)
@@ -958,12 +817,12 @@ module Qsys (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_003 (
+	) rst_controller_002 (
 		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
 		.reset_in1      (nios2_gen2_debug_reset_request_reset),   // reset_in1.reset
 		.clk            (clk_clk),                                //       clk.clk
-		.reset_out      (rst_controller_003_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_003_reset_out_reset_req), //          .reset_req
+		.reset_out      (rst_controller_002_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_002_reset_out_reset_req), //          .reset_req
 		.reset_req_in0  (1'b0),                                   // (terminated)
 		.reset_req_in1  (1'b0),                                   // (terminated)
 		.reset_in2      (1'b0),                                   // (terminated)

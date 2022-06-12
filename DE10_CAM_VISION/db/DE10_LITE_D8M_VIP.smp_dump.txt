@@ -77,11 +77,87 @@ state_int.WAIT_FOR_SYNCH 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1
 state_int.WAIT_FOR_ANC 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
 state_int.INSERT_ANC 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_video_input_bridge_cmd:video_in_cmd|state
+Name state.IDLE state.DISCARD state.SEND_PACKET 
+state.IDLE 0 0 0 
+state.SEND_PACKET 1 0 1 
+state.DISCARD 1 1 0 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_video_output_bridge:video_out|state
+Name state.TERMINATE state.CONCATENATE state.WAIT_FOR_COMMAND state.SEND_EMPTY_PACKET state.SEND_PACKET state.SEND_PACKET_SOP state.SEND_CONTROL_PACKET state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 
+state.SEND_CONTROL_PACKET 0 0 0 0 0 0 1 1 
+state.SEND_PACKET_SOP 0 0 0 0 0 1 0 1 
+state.SEND_PACKET 0 0 0 0 1 0 0 1 
+state.SEND_EMPTY_PACKET 0 0 0 1 0 0 0 1 
+state.WAIT_FOR_COMMAND 0 0 1 0 0 0 0 1 
+state.CONCATENATE 0 1 0 0 0 0 0 1 
+state.TERMINATE 1 0 0 0 0 0 0 1 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_video_output_bridge:video_out|alt_vip_common_video_packet_encode:video_output|state
+Name state.SEND_PACKET state.SEND_EMPTY_PACKET state.TYPE_11_PACKET state.CONTROL_FINAL state.CONTROL_PACKET state.IDLE 
+state.IDLE 0 0 0 0 0 0 
+state.CONTROL_PACKET 0 0 0 0 1 1 
+state.CONTROL_FINAL 0 0 0 1 0 1 
+state.TYPE_11_PACKET 0 0 1 0 0 1 
+state.SEND_EMPTY_PACKET 0 1 0 0 0 1 
+state.SEND_PACKET 1 0 0 0 0 1 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_video_input_bridge_resp:video_in_resp|state
+Name state.SEND_PAD_LINE_PACKET state.SEND_EOP_RESPONSE state.SEND_FRAME_PACKET state.DISCARD state.SEND_LINE_PACKET state.NEW_LINE_PACKET state.SEND_USER_PACKET state.NEW_USER_PACKET state.NEW_CONTROL_CONTEXT_PACKET state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 
+state.NEW_CONTROL_CONTEXT_PACKET 0 0 0 0 0 0 0 0 1 1 
+state.NEW_USER_PACKET 0 0 0 0 0 0 0 1 0 1 
+state.SEND_USER_PACKET 0 0 0 0 0 0 1 0 0 1 
+state.NEW_LINE_PACKET 0 0 0 0 0 1 0 0 0 1 
+state.SEND_LINE_PACKET 0 0 0 0 1 0 0 0 0 1 
+state.DISCARD 0 0 0 1 0 0 0 0 0 1 
+state.SEND_FRAME_PACKET 0 0 1 0 0 0 0 0 0 1 
+state.SEND_EOP_RESPONSE 0 1 0 0 0 0 0 0 0 1 
+state.SEND_PAD_LINE_PACKET 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_video_input_bridge_resp:video_in_resp|alt_vip_common_video_packet_decode:video_input|state
+Name state.SEND_PACKET state.SEND_PACKET_SOP state.CONTEXT_PACKET state.CONTROL_PACKET state.SINGLE_BEAT_PACKET state.IDLE 
+state.IDLE 0 0 0 0 0 0 
+state.SINGLE_BEAT_PACKET 0 0 0 0 1 1 
+state.CONTROL_PACKET 0 0 0 1 0 1 
+state.CONTEXT_PACKET 0 0 1 0 0 1 
+state.SEND_PACKET_SOP 0 1 0 0 0 1 
+state.SEND_PACKET 1 0 0 0 0 1 
+
 State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mSetup_ST
 Name mSetup_ST.0000 mSetup_ST.0010 mSetup_ST.0001 
 mSetup_ST.0000 0 0 0 
 mSetup_ST.0001 1 0 1 
 mSetup_ST.0010 1 1 0 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|Qsys_alt_vip_cl_2dfir_0_alg_core:alg_core|alt_vip_fir_alg_core:fir_core_inst|alt_vip_fir_alg_core_controller:controller_inst|state
+Name state.SEND_RESP state.FLUSH state.RUN state.IDLE 
+state.IDLE 0 0 0 0 
+state.RUN 0 0 1 1 
+state.FLUSH 0 1 0 1 
+state.SEND_RESP 1 0 0 1 
+
+State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_alt_vip_cl_2dfir_0:alt_vip_cl_2dfir_0|alt_vip_fir_scheduler:scheduler|state
+Name state.WAIT_AC_RESP state.VOB_CMD_SEND_LINE state.MUX_CMD_SEND_LINE state.AC_CMD_PROCESS_LINE state.AC_CMD_INIT_UPPER state.AC_CMD_INIT_LOWER state.VOB_CMD_SEND_CONTROL state.LB_CMD_SEND_LINE state.LB_CMD_FILL_LINE state.VIB_CMD_SEND_LINE state.VIB_DISCARD_USER_NB state.WAIT_FOR_LINE state.MUX_CMD_SEND_USER_PACKET state.VOB_CMD_SEND_USER_PACKET state.VIB_CMD_SEND_USER_PACKET state.VIB_CMD_DISCARD_USER_PACKET state.STOPPED state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STOPPED 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.VIB_CMD_DISCARD_USER_PACKET 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.VIB_CMD_SEND_USER_PACKET 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.VOB_CMD_SEND_USER_PACKET 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.MUX_CMD_SEND_USER_PACKET 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.WAIT_FOR_LINE 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.VIB_DISCARD_USER_NB 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.VIB_CMD_SEND_LINE 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.LB_CMD_FILL_LINE 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.LB_CMD_SEND_LINE 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.VOB_CMD_SEND_CONTROL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.AC_CMD_INIT_LOWER 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.AC_CMD_INIT_UPPER 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.AC_CMD_PROCESS_LINE 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.MUX_CMD_SEND_LINE 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.VOB_CMD_SEND_LINE 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.WAIT_AC_RESP 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |DE10_LITE_D8M_VIP|Qsys:u0|Qsys_nios2_gen2:nios2_gen2|Qsys_nios2_gen2_cpu:cpu|Qsys_nios2_gen2_cpu_nios2_oci:the_Qsys_nios2_gen2_cpu_nios2_oci|Qsys_nios2_gen2_cpu_debug_slave_wrapper:the_Qsys_nios2_gen2_cpu_debug_slave_wrapper|Qsys_nios2_gen2_cpu_debug_slave_tck:the_Qsys_nios2_gen2_cpu_debug_slave_tck|DRsize
 Name DRsize.101 DRsize.100 DRsize.011 DRsize.010 DRsize.001 DRsize.000 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="Qsys" kind="system" version="18.1" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2022.06.07.22:16:54 -->
+ <!-- 2022.06.11.20:14:23 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1654636507</value>
+  <value>1654974761</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -147,842 +147,6 @@
   <visible>false</visible>
   <valid>true</valid>
  </parameter>
- <module
-   name="GRAY_TO_RGB_0"
-   kind="GRAY_TO_RGB"
-   version="1.0"
-   path="GRAY_TO_RGB_0">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface name="clock" kind="clock_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>false</isStart>
-   <port>
-    <name>clk</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-  </interface>
-  <interface name="reset" kind="reset_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>DEASSERT</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>false</isStart>
-   <port>
-    <name>reset_n</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>reset_n</role>
-   </port>
-  </interface>
-  <interface
-     name="avalon_streaming_source"
-     kind="avalon_streaming_source"
-     version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>true</isStart>
-   <port>
-    <name>source_data</name>
-    <direction>Output</direction>
-    <width>24</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>source_eop</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-   <port>
-    <name>source_ready</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>source_sop</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>source_valid</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-  </interface>
-  <interface
-     name="avalon_streaming_sink"
-     kind="avalon_streaming_sink"
-     version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>false</isStart>
-   <port>
-    <name>sink_data</name>
-    <direction>Input</direction>
-    <width>8</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>sink_valid</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-   <port>
-    <name>sink_ready</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>sink_sop</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>sink_eop</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-  </interface>
- </module>
- <module
-   name="RGB_TO_GRAY_0"
-   kind="RGB_TO_GRAY"
-   version="1.0"
-   path="RGB_TO_GRAY_0">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface name="clock" kind="clock_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>false</isStart>
-   <port>
-    <name>clk</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-  </interface>
-  <interface name="reset" kind="reset_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>DEASSERT</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>false</isStart>
-   <port>
-    <name>reset_n</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>reset_n</role>
-   </port>
-  </interface>
-  <interface
-     name="avalon_streaming_source"
-     kind="avalon_streaming_source"
-     version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>true</isStart>
-   <port>
-    <name>source_data</name>
-    <direction>Output</direction>
-    <width>8</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>source_eop</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-   <port>
-    <name>source_ready</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>source_sop</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>source_valid</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-  </interface>
-  <interface
-     name="avalon_streaming_sink"
-     kind="avalon_streaming_sink"
-     version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>false</isStart>
-   <port>
-    <name>sink_data</name>
-    <direction>Input</direction>
-    <width>24</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>sink_valid</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-   <port>
-    <name>sink_ready</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>sink_sop</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>sink_eop</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-  </interface>
- </module>
  <module
    name="TERASIC_AUTO_FOCUS_0"
    kind="TERASIC_AUTO_FOCUS"
@@ -5951,18 +5115,6 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>RGB_TO_GRAY_0</moduleName>
-    <slaveName>clock</slaveName>
-    <name>RGB_TO_GRAY_0.clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>GRAY_TO_RGB_0</moduleName>
-    <slaveName>clock</slaveName>
-    <name>GRAY_TO_RGB_0.clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>TERASIC_CAMERA_0</moduleName>
     <slaveName>clock_reset</slaveName>
     <name>TERASIC_CAMERA_0.clock_reset</name>
@@ -5987,21 +5139,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>avalon_st_adapter</moduleName>
-    <slaveName>in_clk_0</slaveName>
-    <name>avalon_st_adapter.in_clk_0</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>rst_controller</moduleName>
     <slaveName>clk</slaveName>
     <name>rst_controller.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>rst_controller_001</moduleName>
-    <slaveName>clk</slaveName>
-    <name>rst_controller_001.clk</name>
    </clockDomainMember>
   </interface>
   <interface name="c3" kind="clock_source" version="18.1">
@@ -6566,15 +5706,15 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>rst_controller_002</moduleName>
+    <moduleName>rst_controller_001</moduleName>
     <slaveName>clk</slaveName>
-    <name>rst_controller_002.clk</name>
+    <name>rst_controller_001.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>rst_controller_003</moduleName>
+    <moduleName>rst_controller_002</moduleName>
     <slaveName>clk</slaveName>
-    <name>rst_controller_003.clk</name>
+    <name>rst_controller_002.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -17542,7 +16682,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1654636507</value>
+   <value>1654974761</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -17562,7 +16702,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1654636507</value>
+   <value>1654974761</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -17578,7 +16718,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1654636507</value>
+   <value>1654974761</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -27299,622 +26439,6 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="avalon_st_adapter"
-   kind="altera_avalon_st_adapter"
-   version="18.1"
-   path="avalon_st_adapter">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="inBitsPerSymbol">
-   <type>int</type>
-   <value>8</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inUsePackets">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inDataWidth">
-   <type>int</type>
-   <value>24</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inMaxChannel">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inChannelWidth">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inErrorWidth">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inErrorDescriptor">
-   <type>[Ljava.lang.String;</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inUseEmptyPort">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inEmptyWidth">
-   <type>int</type>
-   <value>2</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inUseValid">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inUseReady">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inReadyLatency">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outDataWidth">
-   <type>int</type>
-   <value>24</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outMaxChannel">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outChannelWidth">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outErrorWidth">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outErrorDescriptor">
-   <type>[Ljava.lang.String;</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outUseEmptyPort">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outEmptyWidth">
-   <type>int</type>
-   <value>2</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outUseValid">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outUseReady">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="outReadyLatency">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="AUTO_DEVICE_FAMILY">
-   <type>java.lang.String</type>
-   <value>MAX10FPGA</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
-  </parameter>
-  <parameter name="AUTO_DEVICE">
-   <type>java.lang.String</type>
-   <value>10M50DAF484C7G</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>DEVICE</sysinfo_type>
-  </parameter>
-  <parameter name="AUTO_DEVICE_SPEEDGRADE">
-   <type>java.lang.String</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>DEVICE_SPEEDGRADE</sysinfo_type>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>MAX 10</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface name="in_clk_0" kind="clock_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>false</isStart>
-   <port>
-    <name>in_clk_0_clk</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-  </interface>
-  <interface name="in_rst_0" kind="reset_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>in_clk_0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>DEASSERT</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>false</isStart>
-   <port>
-    <name>in_rst_0_reset</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>reset</role>
-   </port>
-  </interface>
-  <interface name="in_0" kind="avalon_streaming_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>in_clk_0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>in_rst_0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>3</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>false</isStart>
-   <port>
-    <name>in_0_data</name>
-    <direction>Input</direction>
-    <width>24</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>in_0_valid</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-   <port>
-    <name>in_0_ready</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>in_0_startofpacket</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>in_0_endofpacket</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-  </interface>
-  <interface name="out_0" kind="avalon_streaming_source" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>in_clk_0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>in_rst_0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="beatsPerCycle">
-    <type>int</type>
-    <value>1</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="dataBitsPerSymbol">
-    <type>int</type>
-    <value>8</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="emptyWithinPacket">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="errorDescriptor">
-    <type>[Ljava.lang.String;</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="firstSymbolInHighOrderBits">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="highOrderSymbolAtMSB">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="maxChannel">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="packetDescription">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="readyLatency">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="symbolsPerBeat">
-    <type>int</type>
-    <value>3</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>avalon_streaming</type>
-   <isStart>true</isStart>
-   <port>
-    <name>out_0_data</name>
-    <direction>Output</direction>
-    <width>24</width>
-    <role>data</role>
-   </port>
-   <port>
-    <name>out_0_valid</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>valid</role>
-   </port>
-   <port>
-    <name>out_0_ready</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>ready</role>
-   </port>
-   <port>
-    <name>out_0_startofpacket</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>startofpacket</role>
-   </port>
-   <port>
-    <name>out_0_endofpacket</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>endofpacket</role>
-   </port>
-  </interface>
- </module>
- <module
    name="rst_controller"
    kind="altera_reset_controller"
    version="18.1"
@@ -28718,381 +27242,6 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="NUM_RESET_INPUTS">
    <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="OUTPUT_RESET_SYNC_EDGES">
-   <type>java.lang.String</type>
-   <value>deassert</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="SYNC_DEPTH">
-   <type>int</type>
-   <value>2</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="RESET_REQUEST_PRESENT">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="RESET_REQ_WAIT_TIME">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="MIN_RST_ASSERTION_TIME">
-   <type>int</type>
-   <value>3</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="RESET_REQ_EARLY_DSRT_TIME">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN0">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN1">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN2">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN3">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN4">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN5">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN6">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN7">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN8">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN9">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN10">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN11">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN12">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN13">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN14">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_IN15">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="USE_RESET_REQUEST_INPUT">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="ADAPT_RESET_REQUEST">
-   <type>int</type>
-   <value>0</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface name="reset_in0" kind="reset_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>NONE</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>false</isStart>
-   <port>
-    <name>reset_in0</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>reset</role>
-   </port>
-  </interface>
-  <interface name="clk" kind="clock_sink" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>false</isStart>
-   <port>
-    <name>clk</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-  </interface>
-  <interface name="reset_out" kind="reset_source" version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clk</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedDirectReset">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedResetSinks">
-    <type>[Ljava.lang.String;</type>
-    <value>reset_in0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>DEASSERT</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>true</isStart>
-   <port>
-    <name>reset_out</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>reset</role>
-   </port>
-  </interface>
- </module>
- <module
-   name="rst_controller_003"
-   kind="altera_reset_controller"
-   version="18.1"
-   path="rst_controller_003">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="NUM_RESET_INPUTS">
-   <type>int</type>
    <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
@@ -29716,33 +27865,6 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <connection
-   name="RGB_TO_GRAY_0.avalon_streaming_source/GRAY_TO_RGB_0.avalon_streaming_sink"
-   kind="avalon_streaming"
-   version="18.1"
-   start="RGB_TO_GRAY_0.avalon_streaming_source"
-   end="GRAY_TO_RGB_0.avalon_streaming_sink">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>RGB_TO_GRAY_0</startModule>
-  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
-  <endModule>GRAY_TO_RGB_0</endModule>
-  <endConnectionPoint>avalon_streaming_sink</endConnectionPoint>
- </connection>
- <connection
    name="TERASIC_AUTO_FOCUS_0.dout/alt_vip_itc_0.din"
    kind="avalon_streaming"
    version="18.1"
@@ -29821,60 +27943,6 @@ parameters are a RESULT of the module parameters. -->
   <startModule>altpll_0</startModule>
   <startConnectionPoint>c2</startConnectionPoint>
   <endModule>TERASIC_AUTO_FOCUS_0</endModule>
-  <endConnectionPoint>clock</endConnectionPoint>
- </connection>
- <connection
-   name="altpll_0.c2/RGB_TO_GRAY_0.clock"
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="RGB_TO_GRAY_0.clock">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>altpll_0</startModule>
-  <startConnectionPoint>c2</startConnectionPoint>
-  <endModule>RGB_TO_GRAY_0</endModule>
-  <endConnectionPoint>clock</endConnectionPoint>
- </connection>
- <connection
-   name="altpll_0.c2/GRAY_TO_RGB_0.clock"
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="GRAY_TO_RGB_0.clock">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>altpll_0</startModule>
-  <startConnectionPoint>c2</startConnectionPoint>
-  <endModule>GRAY_TO_RGB_0</endModule>
   <endConnectionPoint>clock</endConnectionPoint>
  </connection>
  <connection
@@ -31546,114 +29614,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="TERASIC_CAMERA_0.avalon_streaming_source/avalon_st_adapter.in_0"
-   kind="avalon_streaming"
-   version="18.1"
-   start="TERASIC_CAMERA_0.avalon_streaming_source"
-   end="avalon_st_adapter.in_0">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>TERASIC_CAMERA_0</startModule>
-  <startConnectionPoint>avalon_streaming_source</startConnectionPoint>
-  <endModule>avalon_st_adapter</endModule>
-  <endConnectionPoint>in_0</endConnectionPoint>
- </connection>
- <connection
-   name="avalon_st_adapter.out_0/RGB_TO_GRAY_0.avalon_streaming_sink"
-   kind="avalon_streaming"
-   version="18.1"
-   start="avalon_st_adapter.out_0"
-   end="RGB_TO_GRAY_0.avalon_streaming_sink">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>avalon_st_adapter</startModule>
-  <startConnectionPoint>out_0</startConnectionPoint>
-  <endModule>RGB_TO_GRAY_0</endModule>
-  <endConnectionPoint>avalon_streaming_sink</endConnectionPoint>
- </connection>
- <connection
-   name="altpll_0.c2/avalon_st_adapter.in_clk_0"
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="avalon_st_adapter.in_clk_0">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>altpll_0</startModule>
-  <startConnectionPoint>c2</startConnectionPoint>
-  <endModule>avalon_st_adapter</endModule>
-  <endConnectionPoint>in_clk_0</endConnectionPoint>
- </connection>
- <connection
-   name="rst_controller.reset_out/GRAY_TO_RGB_0.reset"
-   kind="reset"
-   version="18.1"
-   start="rst_controller.reset_out"
-   end="GRAY_TO_RGB_0.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>rst_controller</startModule>
-  <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>GRAY_TO_RGB_0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
    name="rst_controller.reset_out/TERASIC_AUTO_FOCUS_0.reset"
    kind="reset"
    version="18.1"
@@ -31816,33 +29776,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>alt_vip_vfb_0_reset_reset_bridge_in_reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller.reset_out/avalon_st_adapter.in_rst_0"
-   kind="reset"
-   version="18.1"
-   start="rst_controller.reset_out"
-   end="avalon_st_adapter.in_rst_0">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>rst_controller</startModule>
-  <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>avalon_st_adapter</endModule>
-  <endConnectionPoint>in_rst_0</endConnectionPoint>
- </connection>
- <connection
    name="clk_50.clk_reset/rst_controller.reset_in0"
    kind="reset"
    version="18.1"
@@ -31924,11 +29857,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_001.reset_out/RGB_TO_GRAY_0.reset"
+   name="rst_controller_001.reset_out/altpll_0.inclk_interface_reset"
    kind="reset"
    version="18.1"
    start="rst_controller_001.reset_out"
-   end="RGB_TO_GRAY_0.reset">
+   end="altpll_0.inclk_interface_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -31947,8 +29880,35 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>rst_controller_001</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>RGB_TO_GRAY_0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
+  <endModule>altpll_0</endModule>
+  <endConnectionPoint>inclk_interface_reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="rst_controller_001.reset_out/mm_interconnect_0.altpll_0_inclk_interface_reset_reset_bridge_in_reset"
+   kind="reset"
+   version="18.1"
+   start="rst_controller_001.reset_out"
+   end="mm_interconnect_0.altpll_0_inclk_interface_reset_reset_bridge_in_reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>rst_controller_001</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
+  <endModule>mm_interconnect_0</endModule>
+  <endConnectionPoint>altpll_0_inclk_interface_reset_reset_bridge_in_reset</endConnectionPoint>
  </connection>
  <connection
    name="clk_50.clk_reset/rst_controller_001.reset_in0"
@@ -31978,119 +29938,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset_in0</endConnectionPoint>
  </connection>
  <connection
-   name="altpll_0.c2/rst_controller_001.clk"
-   kind="clock"
-   version="18.1"
-   start="altpll_0.c2"
-   end="rst_controller_001.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>altpll_0</startModule>
-  <startConnectionPoint>c2</startConnectionPoint>
-  <endModule>rst_controller_001</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
-   name="rst_controller_002.reset_out/altpll_0.inclk_interface_reset"
-   kind="reset"
-   version="18.1"
-   start="rst_controller_002.reset_out"
-   end="altpll_0.inclk_interface_reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>rst_controller_002</startModule>
-  <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>altpll_0</endModule>
-  <endConnectionPoint>inclk_interface_reset</endConnectionPoint>
- </connection>
- <connection
-   name="rst_controller_002.reset_out/mm_interconnect_0.altpll_0_inclk_interface_reset_reset_bridge_in_reset"
-   kind="reset"
-   version="18.1"
-   start="rst_controller_002.reset_out"
-   end="mm_interconnect_0.altpll_0_inclk_interface_reset_reset_bridge_in_reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>rst_controller_002</startModule>
-  <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>mm_interconnect_0</endModule>
-  <endConnectionPoint>altpll_0_inclk_interface_reset_reset_bridge_in_reset</endConnectionPoint>
- </connection>
- <connection
-   name="clk_50.clk_reset/rst_controller_002.reset_in0"
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
-   end="rst_controller_002.reset_in0">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_50</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>rst_controller_002</endModule>
-  <endConnectionPoint>reset_in0</endConnectionPoint>
- </connection>
- <connection
-   name="clk_50.clk/rst_controller_002.clk"
+   name="clk_50.clk/rst_controller_001.clk"
    kind="clock"
    version="18.1"
    start="clk_50.clk"
-   end="rst_controller_002.clk">
+   end="rst_controller_001.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -32109,14 +29961,14 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_50</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>rst_controller_002</endModule>
+  <endModule>rst_controller_001</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32134,7 +29986,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32167,10 +30019,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clock_reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32188,7 +30040,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32221,10 +30073,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clock_reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32242,7 +30094,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32275,10 +30127,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32296,7 +30148,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32329,10 +30181,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32350,7 +30202,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32383,10 +30235,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32404,7 +30256,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32437,10 +30289,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32458,7 +30310,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32491,10 +30343,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/nios2_gen2.reset"
+   name="rst_controller_002.reset_out/nios2_gen2.reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="nios2_gen2.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32512,16 +30364,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>nios2_gen2</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/onchip_memory2_0.reset1"
+   name="rst_controller_002.reset_out/onchip_memory2_0.reset1"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="onchip_memory2_0.reset1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32539,16 +30391,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>onchip_memory2_0</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32566,7 +30418,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32599,10 +30451,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32620,7 +30472,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32653,10 +30505,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32674,7 +30526,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32707,10 +30559,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32728,7 +30580,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32761,10 +30613,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32782,7 +30634,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32815,10 +30667,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>nios2_gen2_reset_reset_bridge_in_reset</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller_003.reset_out/rst_translator.in_reset"
+   name="rst_controller_002.reset_out/rst_translator.in_reset"
    kind="reset"
    version="18.1"
-   start="rst_controller_003.reset_out"
+   start="rst_controller_002.reset_out"
    end="rst_translator.in_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -32836,7 +30688,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>rst_controller_003</startModule>
+  <startModule>rst_controller_002</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_translator</endModule>
   <endConnectionPoint>in_reset</endConnectionPoint>
@@ -32869,11 +30721,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_50.clk_reset/rst_controller_003.reset_in0"
+   name="clk_50.clk_reset/rst_controller_002.reset_in0"
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="rst_controller_003.reset_in0">
+   end="rst_controller_002.reset_in0">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -32892,15 +30744,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_50</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>rst_controller_003</endModule>
+  <endModule>rst_controller_002</endModule>
   <endConnectionPoint>reset_in0</endConnectionPoint>
  </connection>
  <connection
-   name="nios2_gen2.debug_reset_request/rst_controller_003.reset_in1"
+   name="nios2_gen2.debug_reset_request/rst_controller_002.reset_in1"
    kind="reset"
    version="18.1"
    start="nios2_gen2.debug_reset_request"
-   end="rst_controller_003.reset_in1">
+   end="rst_controller_002.reset_in1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -32919,15 +30771,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>nios2_gen2</startModule>
   <startConnectionPoint>debug_reset_request</startConnectionPoint>
-  <endModule>rst_controller_003</endModule>
+  <endModule>rst_controller_002</endModule>
   <endConnectionPoint>reset_in1</endConnectionPoint>
  </connection>
  <connection
-   name="clk_50.clk/rst_controller_003.clk"
+   name="clk_50.clk/rst_controller_002.clk"
    kind="clock"
    version="18.1"
    start="clk_50.clk"
-   end="rst_controller_003.clk">
+   end="rst_controller_002.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -32946,7 +30798,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_50</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>rst_controller_003</endModule>
+  <endModule>rst_controller_002</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -32978,54 +30830,6 @@ parameters are a RESULT of the module parameters. -->
  </connection>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>GRAY_TO_RGB</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>GRAY_TO_RGB</displayName>
-  <version>1.0</version>
- </plugin>
- <plugin>
-  <instanceCount>31</instanceCount>
-  <name>clock_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Clock Input</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>34</instanceCount>
-  <name>reset_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Reset Input</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>6</instanceCount>
-  <name>avalon_streaming_source</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Avalon Streaming Source</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>6</instanceCount>
-  <name>avalon_streaming_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Avalon Streaming Sink</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>RGB_TO_GRAY</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>RGB_TO_GRAY</displayName>
-  <version>1.0</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
   <name>TERASIC_AUTO_FOCUS</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -33033,11 +30837,43 @@ parameters are a RESULT of the module parameters. -->
   <version>1.0</version>
  </plugin>
  <plugin>
+  <instanceCount>27</instanceCount>
+  <name>clock_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Clock Input</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>30</instanceCount>
+  <name>reset_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Input</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
   <instanceCount>20</instanceCount>
   <name>avalon_slave</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Avalon Memory Mapped Slave</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>3</instanceCount>
+  <name>avalon_streaming_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Avalon Streaming Sink</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>3</instanceCount>
+  <name>avalon_streaming_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Avalon Streaming Source</displayName>
   <version>18.1</version>
  </plugin>
  <plugin>
@@ -33185,7 +31021,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>6</instanceCount>
+  <instanceCount>5</instanceCount>
   <name>reset_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -33257,15 +31093,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>1</instanceCount>
-  <name>altera_avalon_st_adapter</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>Avalon-ST Adapter</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>4</instanceCount>
+  <instanceCount>3</instanceCount>
   <name>altera_reset_controller</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -33281,7 +31109,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>1</instanceCount>
   <name>avalon_streaming</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -33289,7 +31117,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>20</instanceCount>
+  <instanceCount>18</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -33305,7 +31133,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>10</instanceCount>
+  <instanceCount>8</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -33321,15 +31149,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
-  <name>avalon_streaming</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IConnection</subtype>
-  <displayName>Avalon Streaming Connection</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>45</instanceCount>
+  <instanceCount>41</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -33337,5 +31157,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <reportVersion>18.1 625</reportVersion>
- <uniqueIdentifier>B2FC366D814D000001814005B03D</uniqueIdentifier>
+ <uniqueIdentifier>B2FC366D814D00000181542EF378</uniqueIdentifier>
 </EnsembleReport>

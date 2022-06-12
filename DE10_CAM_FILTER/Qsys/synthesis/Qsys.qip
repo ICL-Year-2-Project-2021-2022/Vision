@@ -2,7 +2,7 @@ set_global_assignment -entity "Qsys" -library "Qsys" -name IP_TOOL_NAME "Qsys"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "Qsys" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../Qsys.sopcinfo"]
-set_global_assignment -entity "Qsys" -library "Qsys" -name SLD_INFO "QSYS_NAME Qsys HAS_SOPCINFO 1 GENERATION_ID 1654636507"
+set_global_assignment -entity "Qsys" -library "Qsys" -name SLD_INFO "QSYS_NAME Qsys HAS_SOPCINFO 1 GENERATION_ID 1654974761"
 set_global_assignment -library "Qsys" -name MISC_FILE [file join $::quartus(qip_path) "../Qsys.cmp"]
 set_global_assignment -library "Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Qsys.regmap"]
 set_global_assignment -library "Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Qsys.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_DISPLAY_
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY1NDYzNjUwNw==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY1NDk3NDc2MQ==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "Qsys" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -55,55 +55,6 @@ set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE1"
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU5QVVQ=::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcmVzZXRfaW5wdXRz"
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_COMPONENT_PARAMETER "QURBUFRfUkVTRVRfUkVRVUVTVA==::MA==::T25seSBhZGFwdCBvbmx5IHJlc2V0IHJlcXVlc3Q="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_NAME "UXN5c19hdmFsb25fc3RfYWRhcHRlcg=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIEFkYXB0ZXI="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_VERSION "MTguMQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_DESCRIPTION "QWRhcHQgbWlzbWF0Y2hlZCBBdmFsb24tU1QgZW5kcG9pbnRz"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5CaXRzUGVyU3ltYm9s::OA==::U3ltYm9sIFdpZHRo"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VQYWNrZXRz::MQ==::VXNlIFBhY2tldA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5EYXRhV2lkdGg=::MjQ=::U291cmNlIERhdGEgV2lkdGg="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5NYXhDaGFubmVs::MA==::U291cmNlIE1heCBDaGFubmVs"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5DaGFubmVsV2lkdGg=::MA==::U291cmNlIENoYW5uZWwgUG9ydCBXaWR0aA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5FcnJvcldpZHRo::MA==::U291cmNlIEVycm9yIFBvcnQgV2lkdGg="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eVBvcnQ=::MA==::U291cmNlIFVzZXMgRW1wdHkgUG9ydA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5FbXB0eVdpZHRo::Mg==::U291cmNlIEVtcHR5IFBvcnQgV2lkdGg="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VWYWxpZA==::MQ==::U291cmNlIFVzZXMgVmFsaWQgUG9ydA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VSZWFkeQ==::MQ==::U291cmNlIFVzZXMgUmVhZHkgUG9ydA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5SZWFkeUxhdGVuY3k=::MQ==::U291cmNlIFJlYWR5IExhdGVuY3k="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0RGF0YVdpZHRo::MjQ=::U2luayBEYXRhIFdpZHRo"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0TWF4Q2hhbm5lbA==::MA==::U2luayBNYXggQ2hhbm5lbA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0Q2hhbm5lbFdpZHRo::MA==::U2luayBDaGFubmVsIFBvcnQgV2lkdGg="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0RXJyb3JXaWR0aA==::MA==::U2luayBFcnJvciBQb3J0IFdpZHRo"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0VXNlRW1wdHlQb3J0::MA==::U2luayBVc2VzIEVtcHR5IFBvcnQ="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0RW1wdHlXaWR0aA==::Mg==::U2luayBFbXB0eSBQb3J0IFdpZHRo"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0VXNlVmFsaWQ=::MQ==::U2luayBVc2VzIFZhbGlkIFBvcnQ="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0VXNlUmVhZHk=::MQ==::U2luayBVc2VzIFJlYWR5IFBvcnQ="
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0UmVhZHlMYXRlbmN5::MA==::U2luayBSZWFkeSBMYXRlbmN5"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_NAME "UXN5c19hdmFsb25fc3RfYWRhcHRlcl90aW1pbmdfYWRhcHRlcl8w"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIFRpbWluZyBBZGFwdGVy"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_VERSION "MTguMQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5DaGFubmVsV2lkdGg=::MA==::Q2hhbm5lbCBTaWduYWwgV2lkdGggKGJpdHMp"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5NYXhDaGFubmVs::MA==::TWF4IENoYW5uZWw="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5CaXRzUGVyU3ltYm9s::OA==::RGF0YSBCaXRzIFBlciBTeW1ib2w="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VQYWNrZXRz::dHJ1ZQ==::SW5jbHVkZSBQYWNrZXQgU3VwcG9ydA=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eVBvcnQ=::Tk8=::SW5jbHVkZSBFbXB0eSBTaWduYWw="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eQ==::ZmFsc2U=::aW5Vc2VFbXB0eQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5TeW1ib2xzUGVyQmVhdA==::Mw==::RGF0YSBTeW1ib2xzIFBlciBCZWF0"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VSZWFkeQ==::dHJ1ZQ==::U3VwcG9ydCBCYWNrcHJlc3N1cmUgd2l0aCB0aGUgcmVhZHkgc2lnbmFs"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0VXNlUmVhZHk=::dHJ1ZQ==::U3VwcG9ydCBCYWNrcHJlc3N1cmUgd2l0aCB0aGUgcmVhZHkgc2lnbmFs"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5SZWFkeUxhdGVuY3k=::MQ==::UmVhZHkgTGF0ZW5jeQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0UmVhZHlMYXRlbmN5::MA==::UmVhZHkgTGF0ZW5jeQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5FcnJvcldpZHRo::MA==::RXJyb3IgU2lnbmFsIFdpZHRoIChiaXRzKQ=="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "aW5Vc2VWYWxpZA==::dHJ1ZQ==::SW5jbHVkZSBWYWxpZCBTaWduYWw="
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_COMPONENT_PARAMETER "b3V0VXNlVmFsaWQ=::dHJ1ZQ==::SW5jbHVkIFZhbGlkIFNpZ25hbA=="
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_COMPONENT_NAME "UXN5c19pcnFfbWFwcGVy"
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIElSUSBNYXBwZXI="
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1882,19 +1833,11 @@ set_global_assignment -entity "TERASIC_AUTO_FOCUS" -library "Qsys" -name IP_COMP
 set_global_assignment -entity "TERASIC_AUTO_FOCUS" -library "Qsys" -name IP_COMPONENT_DESCRIPTION "YXV0byBmb2N1cyBzaW1wbGUgZnVjdGlvbg=="
 set_global_assignment -entity "TERASIC_AUTO_FOCUS" -library "Qsys" -name IP_COMPONENT_PARAMETER "VklERU9fVw==::NjQw::VklERU9fVw=="
 set_global_assignment -entity "TERASIC_AUTO_FOCUS" -library "Qsys" -name IP_COMPONENT_PARAMETER "VklERU9fSA==::NDgw::VklERU9fSA=="
-set_global_assignment -entity "RGB_TO_GRAY" -library "Qsys" -name IP_COMPONENT_NAME "UkdCX1RPX0dSQVk="
-set_global_assignment -entity "RGB_TO_GRAY" -library "Qsys" -name IP_COMPONENT_DISPLAY_NAME "R1JBWV9UT19SR0I="
-set_global_assignment -entity "RGB_TO_GRAY" -library "Qsys" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "RGB_TO_GRAY" -library "Qsys" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "RGB_TO_GRAY" -library "Qsys" -name IP_COMPONENT_VERSION "MS4w"
 
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "Qsys.v"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
 set_global_assignment -library "Qsys" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
-set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_avalon_st_adapter.v"]
-set_global_assignment -library "Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_avalon_st_adapter_timing_adapter_0.sv"]
-set_global_assignment -library "Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_avalon_st_adapter_timing_adapter_0_fifo.sv"]
 set_global_assignment -library "Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_irq_mapper.sv"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_mm_interconnect_1.v"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Qsys_mm_interconnect_1_avalon_st_adapter.v"]
@@ -2033,18 +1976,10 @@ set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(q
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/I2C_VCM_Controller.v"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/TERASIC_AUTO_FOCUS.v"]
 set_global_assignment -library "Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/VCM_CTRL_P.v"]
-set_global_assignment -library "Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/STREAM_REG.sv"]
-set_global_assignment -library "Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/GRAY_TO_RGB.sv"]
 
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_TOOL_NAME "altera_reset_controller"
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "altera_reset_controller" -library "Qsys" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_TOOL_NAME "altera_avalon_st_adapter"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_TOOL_VERSION "18.1"
-set_global_assignment -entity "Qsys_avalon_st_adapter" -library "Qsys" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_TOOL_NAME "timing_adapter"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_TOOL_VERSION "18.1"
-set_global_assignment -entity "Qsys_avalon_st_adapter_timing_adapter_0" -library "Qsys" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_TOOL_NAME "altera_irq_mapper"
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "Qsys_irq_mapper" -library "Qsys" -name IP_TOOL_ENV "Qsys"

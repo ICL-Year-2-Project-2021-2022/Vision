@@ -59,25 +59,13 @@ module Qsys (
 	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
 	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
 	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
-	wire         data_format_adapter_0_out_valid;                                   // data_format_adapter_0:out_valid -> alt_vip_itc_0:is_valid
-	wire  [23:0] data_format_adapter_0_out_data;                                    // data_format_adapter_0:out_data -> alt_vip_itc_0:is_data
-	wire         data_format_adapter_0_out_ready;                                   // alt_vip_itc_0:is_ready -> data_format_adapter_0:out_ready
-	wire         data_format_adapter_0_out_startofpacket;                           // data_format_adapter_0:out_startofpacket -> alt_vip_itc_0:is_sop
-	wire         data_format_adapter_0_out_endofpacket;                             // data_format_adapter_0:out_endofpacket -> alt_vip_itc_0:is_eop
-	wire         dc_fifo_1_out_valid;                                               // dc_fifo_1:out_valid -> timing_adapter_0:in_valid
-	wire  [23:0] dc_fifo_1_out_data;                                                // dc_fifo_1:out_data -> timing_adapter_0:in_data
-	wire         dc_fifo_1_out_ready;                                               // timing_adapter_0:in_ready -> dc_fifo_1:out_ready
-	wire         dc_fifo_1_out_startofpacket;                                       // dc_fifo_1:out_startofpacket -> timing_adapter_0:in_startofpacket
-	wire         dc_fifo_1_out_endofpacket;                                         // dc_fifo_1:out_endofpacket -> timing_adapter_0:in_endofpacket
-	wire   [1:0] dc_fifo_1_out_empty;                                               // dc_fifo_1:out_empty -> timing_adapter_0:in_empty
-	wire         timing_adapter_0_out_valid;                                        // timing_adapter_0:out_valid -> data_format_adapter_0:in_valid
-	wire  [23:0] timing_adapter_0_out_data;                                         // timing_adapter_0:out_data -> data_format_adapter_0:in_data
-	wire         timing_adapter_0_out_ready;                                        // data_format_adapter_0:in_ready -> timing_adapter_0:out_ready
-	wire         timing_adapter_0_out_startofpacket;                                // timing_adapter_0:out_startofpacket -> data_format_adapter_0:in_startofpacket
-	wire         timing_adapter_0_out_endofpacket;                                  // timing_adapter_0:out_endofpacket -> data_format_adapter_0:in_endofpacket
-	wire   [1:0] timing_adapter_0_out_empty;                                        // timing_adapter_0:out_empty -> data_format_adapter_0:in_empty
+	wire         timing_adapter_0_out_valid;                                        // timing_adapter_0:out_valid -> alt_vip_itc_0:is_valid
+	wire  [23:0] timing_adapter_0_out_data;                                         // timing_adapter_0:out_data -> alt_vip_itc_0:is_data
+	wire         timing_adapter_0_out_ready;                                        // alt_vip_itc_0:is_ready -> timing_adapter_0:out_ready
+	wire         timing_adapter_0_out_startofpacket;                                // timing_adapter_0:out_startofpacket -> alt_vip_itc_0:is_sop
+	wire         timing_adapter_0_out_endofpacket;                                  // timing_adapter_0:out_endofpacket -> alt_vip_itc_0:is_eop
 	wire         altpll_1_c0_clk;                                                   // altpll_1:c0 -> [RGB_TO_HSV_0:clk, avalon_st_adapter:in_clk_0_clk, avalon_st_adapter_002:in_clk_0_clk, dc_fifo_0:out_clk, dc_fifo_1:in_clk, rst_controller:clk, rst_controller_004:clk]
-	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter_001:in_clk_0_clk, data_format_adapter_0:clk, dc_fifo_0:in_clk, dc_fifo_1:out_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller_001:clk, rst_controller_003:clk, sdram:clk, timing_adapter_0:clk]
+	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter_001:in_clk_0_clk, avalon_st_adapter_003:in_clk_0_clk, dc_fifo_0:in_clk, dc_fifo_1:out_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller_001:clk, rst_controller_003:clk, sdram:clk, timing_adapter_0:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
 	wire         nios2_gen2_data_master_debugaccess;                                // nios2_gen2:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_data_master_debugaccess
@@ -234,11 +222,22 @@ module Qsys (
 	wire         avalon_st_adapter_002_out_0_ready;                                 // RGB_TO_HSV_0:sink_ready -> avalon_st_adapter_002:out_0_ready
 	wire         avalon_st_adapter_002_out_0_startofpacket;                         // avalon_st_adapter_002:out_0_startofpacket -> RGB_TO_HSV_0:sink_sop
 	wire         avalon_st_adapter_002_out_0_endofpacket;                           // avalon_st_adapter_002:out_0_endofpacket -> RGB_TO_HSV_0:sink_eop
+	wire         dc_fifo_1_out_valid;                                               // dc_fifo_1:out_valid -> avalon_st_adapter_003:in_0_valid
+	wire  [23:0] dc_fifo_1_out_data;                                                // dc_fifo_1:out_data -> avalon_st_adapter_003:in_0_data
+	wire         dc_fifo_1_out_ready;                                               // avalon_st_adapter_003:in_0_ready -> dc_fifo_1:out_ready
+	wire         dc_fifo_1_out_startofpacket;                                       // dc_fifo_1:out_startofpacket -> avalon_st_adapter_003:in_0_startofpacket
+	wire         dc_fifo_1_out_endofpacket;                                         // dc_fifo_1:out_endofpacket -> avalon_st_adapter_003:in_0_endofpacket
+	wire   [1:0] dc_fifo_1_out_empty;                                               // dc_fifo_1:out_empty -> avalon_st_adapter_003:in_0_empty
+	wire         avalon_st_adapter_003_out_0_valid;                                 // avalon_st_adapter_003:out_0_valid -> timing_adapter_0:in_valid
+	wire  [23:0] avalon_st_adapter_003_out_0_data;                                  // avalon_st_adapter_003:out_0_data -> timing_adapter_0:in_data
+	wire         avalon_st_adapter_003_out_0_ready;                                 // timing_adapter_0:in_ready -> avalon_st_adapter_003:out_0_ready
+	wire         avalon_st_adapter_003_out_0_startofpacket;                         // avalon_st_adapter_003:out_0_startofpacket -> timing_adapter_0:in_startofpacket
+	wire         avalon_st_adapter_003_out_0_endofpacket;                           // avalon_st_adapter_003:out_0_endofpacket -> timing_adapter_0:in_endofpacket
 	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [RGB_TO_HSV_0:reset_n, avalon_st_adapter:in_rst_0_reset]
 	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_005:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, avalon_st_adapter_001:in_rst_0_reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
 	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [altpll_0:reset, altpll_1:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [data_format_adapter_0:reset_n, dc_fifo_0:in_reset_n, dc_fifo_1:out_reset_n, timing_adapter_0:reset_n]
+	wire         rst_controller_003_reset_out_reset;                                // rst_controller_003:reset_out -> [avalon_st_adapter_003:in_rst_0_reset, dc_fifo_0:in_reset_n, dc_fifo_1:out_reset_n, timing_adapter_0:reset_n]
 	wire         rst_controller_004_reset_out_reset;                                // rst_controller_004:reset_out -> [avalon_st_adapter_002:in_rst_0_reset, dc_fifo_0:out_reset_n, dc_fifo_1:in_reset_n]
 	wire         rst_controller_005_reset_out_reset;                                // rst_controller_005:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
 	wire         rst_controller_005_reset_out_reset_req;                            // rst_controller_005:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
@@ -339,11 +338,11 @@ module Qsys (
 	) alt_vip_itc_0 (
 		.is_clk        (altpll_0_c2_clk),                           //       is_clk_rst.clk
 		.rst           (rst_controller_001_reset_out_reset),        // is_clk_rst_reset.reset
-		.is_data       (data_format_adapter_0_out_data),            //              din.data
-		.is_valid      (data_format_adapter_0_out_valid),           //                 .valid
-		.is_ready      (data_format_adapter_0_out_ready),           //                 .ready
-		.is_sop        (data_format_adapter_0_out_startofpacket),   //                 .startofpacket
-		.is_eop        (data_format_adapter_0_out_endofpacket),     //                 .endofpacket
+		.is_data       (timing_adapter_0_out_data),                 //              din.data
+		.is_valid      (timing_adapter_0_out_valid),                //                 .valid
+		.is_ready      (timing_adapter_0_out_ready),                //                 .ready
+		.is_sop        (timing_adapter_0_out_startofpacket),        //                 .startofpacket
+		.is_eop        (timing_adapter_0_out_endofpacket),          //                 .endofpacket
 		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),       //    clocked_video.export
 		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),      //                 .export
 		.underflow     (alt_vip_itc_0_clocked_video_underflow),     //                 .export
@@ -433,22 +432,6 @@ module Qsys (
 		.scanclkena         (1'b0),                                           //           (terminated)
 		.scandata           (1'b0),                                           //           (terminated)
 		.configupdate       (1'b0)                                            //           (terminated)
-	);
-
-	Qsys_data_format_adapter_0 data_format_adapter_0 (
-		.clk               (altpll_0_c2_clk),                         //   clk.clk
-		.reset_n           (~rst_controller_003_reset_out_reset),     // reset.reset_n
-		.in_data           (timing_adapter_0_out_data),               //    in.data
-		.in_valid          (timing_adapter_0_out_valid),              //      .valid
-		.in_ready          (timing_adapter_0_out_ready),              //      .ready
-		.in_startofpacket  (timing_adapter_0_out_startofpacket),      //      .startofpacket
-		.in_endofpacket    (timing_adapter_0_out_endofpacket),        //      .endofpacket
-		.in_empty          (timing_adapter_0_out_empty),              //      .empty
-		.out_data          (data_format_adapter_0_out_data),          //   out.data
-		.out_valid         (data_format_adapter_0_out_valid),         //      .valid
-		.out_ready         (data_format_adapter_0_out_ready),         //      .ready
-		.out_startofpacket (data_format_adapter_0_out_startofpacket), //      .startofpacket
-		.out_endofpacket   (data_format_adapter_0_out_endofpacket)    //      .endofpacket
 	);
 
 	altera_avalon_dc_fifo #(
@@ -718,20 +701,18 @@ module Qsys (
 	);
 
 	Qsys_timing_adapter_0 timing_adapter_0 (
-		.clk               (altpll_0_c2_clk),                     //   clk.clk
-		.reset_n           (~rst_controller_003_reset_out_reset), // reset.reset_n
-		.in_data           (dc_fifo_1_out_data),                  //    in.data
-		.in_valid          (dc_fifo_1_out_valid),                 //      .valid
-		.in_ready          (dc_fifo_1_out_ready),                 //      .ready
-		.in_startofpacket  (dc_fifo_1_out_startofpacket),         //      .startofpacket
-		.in_endofpacket    (dc_fifo_1_out_endofpacket),           //      .endofpacket
-		.in_empty          (dc_fifo_1_out_empty),                 //      .empty
-		.out_data          (timing_adapter_0_out_data),           //   out.data
-		.out_valid         (timing_adapter_0_out_valid),          //      .valid
-		.out_ready         (timing_adapter_0_out_ready),          //      .ready
-		.out_startofpacket (timing_adapter_0_out_startofpacket),  //      .startofpacket
-		.out_endofpacket   (timing_adapter_0_out_endofpacket),    //      .endofpacket
-		.out_empty         (timing_adapter_0_out_empty)           //      .empty
+		.clk               (altpll_0_c2_clk),                           //   clk.clk
+		.reset_n           (~rst_controller_003_reset_out_reset),       // reset.reset_n
+		.in_data           (avalon_st_adapter_003_out_0_data),          //    in.data
+		.in_valid          (avalon_st_adapter_003_out_0_valid),         //      .valid
+		.in_ready          (avalon_st_adapter_003_out_0_ready),         //      .ready
+		.in_startofpacket  (avalon_st_adapter_003_out_0_startofpacket), //      .startofpacket
+		.in_endofpacket    (avalon_st_adapter_003_out_0_endofpacket),   //      .endofpacket
+		.out_data          (timing_adapter_0_out_data),                 //   out.data
+		.out_valid         (timing_adapter_0_out_valid),                //      .valid
+		.out_ready         (timing_adapter_0_out_ready),                //      .ready
+		.out_startofpacket (timing_adapter_0_out_startofpacket),        //      .startofpacket
+		.out_endofpacket   (timing_adapter_0_out_endofpacket)           //      .endofpacket
 	);
 
 	Qsys_uart_0 uart_0 (
@@ -987,6 +968,39 @@ module Qsys (
 		.out_0_ready         (avalon_st_adapter_002_out_0_ready),         //         .ready
 		.out_0_startofpacket (avalon_st_adapter_002_out_0_startofpacket), //         .startofpacket
 		.out_0_endofpacket   (avalon_st_adapter_002_out_0_endofpacket)    //         .endofpacket
+	);
+
+	Qsys_avalon_st_adapter_003 #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (1),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (0),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (0),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter_003 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_003_reset_out_reset),        // in_rst_0.reset
+		.in_0_data           (dc_fifo_1_out_data),                        //     in_0.data
+		.in_0_valid          (dc_fifo_1_out_valid),                       //         .valid
+		.in_0_ready          (dc_fifo_1_out_ready),                       //         .ready
+		.in_0_startofpacket  (dc_fifo_1_out_startofpacket),               //         .startofpacket
+		.in_0_endofpacket    (dc_fifo_1_out_endofpacket),                 //         .endofpacket
+		.in_0_empty          (dc_fifo_1_out_empty),                       //         .empty
+		.out_0_data          (avalon_st_adapter_003_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_003_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_003_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_003_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_003_out_0_endofpacket)    //         .endofpacket
 	);
 
 	altera_reset_controller #(
