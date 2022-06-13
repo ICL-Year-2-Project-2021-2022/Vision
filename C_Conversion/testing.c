@@ -70,7 +70,11 @@ int test_transpose(){
 
 
 
-
+struct Observations{
+    float land_dist;
+    float land_ang;
+    char *color;
+};
 
 struct Land{ //diff from kalman
     float x;
@@ -81,6 +85,7 @@ struct Land{ //diff from kalman
 struct Landmarks{
     size_t size;
     struct Land item[6];
+    struct Observations items[6];
 };
 
 struct Seen_Land_List{
@@ -145,7 +150,7 @@ void get_exp(float pred_state[5][1], struct Seen_Land_List seen_list){
     float q = dotProduct(delta, delta, 2);
     float exp_dis_ang[2]; //z
     exp_dis_ang[0] = sqrt(q); 
-    exp_dis_ang[1] = atan2(delta[1],delta[2]) - pred_state[2][0];
+    exp_dis_ang[1] = atan2(delta[1],delta[0]) - pred_state[2][0];
     printf ("q: %f\nexp: %f %f", q, exp_dis_ang[0], exp_dis_ang[1]);
 }
 
@@ -157,17 +162,115 @@ void test_get_exp(){
     struct Seen_Land_List seen_list;
     seen_list.size=0;
     seen_list.item[seen_list.size]=l1;
-    float pred_state[5][1] = {{2}, {4}, {6}, {3}, {4.5}};
+    float pred_state[5][1] = {{2}, {4}, {0.39}, {3}, {4.5}};
     get_exp(pred_state, seen_list);
     
 }
+
+
+void prediction(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1], struct Landmarks land_list){ //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
+    //only using the first 3 array for x, y, theta, others are for the mappings
+
+    //prediction steps
+    //1. Create a N x 3 identity matrix,then multiply the change in x y and thetre to map it into 2N+3 dimensional space
+    //2. obtain prediction of x,y,thetre by adding displacements to current state
+    //3. Compute matrix Gt
+    //4. Compute predicted var matrix with Gt and var
+    int i,j,k=0; 
+    float iden_mat[state_size][3];
+    memset(iden_mat,0,state_size*3*sizeof(int));
+    for (i=0; i<3; i++){
+        iden_mat[i][i] = 1;
+    }
+    float displace_vector[state_size][1];
+    matrix_multi(state_size, 3, 3, 1, iden_mat, displacement,displace_vector);
+    
+    float pred_state[state_size][1]; //predicted state
+    add_matrix(state_size, 1, old_state, displace_vector,pred_state);
+ 
+    //get jacobian
+    float jacob3x3[3][3] = {{1,0,-displacement[1][0]},{0,1,displacement[0][0]},{0,0,1}};
+    
+    float jacob3x3_trans[3][3];
+    transpose(3,3,jacob3x3,jacob3x3_trans);
+
+    float varxx[3][3];
+    for (i=0; i<3; i++){
+        for (j=0; j<3;j++){
+            varxx[i][j]= var[i][j];
+        }
+    }
+    float tmp[3][3];
+    float pre_varxx[3][3]; //only for varxx 3x3 pre, not final pre.
+    matrix_multi(3,3,3,3,jacob3x3,varxx,tmp);
+    matrix_multi(3,3,3,3,tmp,jacob3x3_trans,pre_varxx);
+
+    float varxm[3][state_size-3];
+    for (i=0; i<3; i++){
+        for (j=3; j<state_size;j++){
+            varxm[i][j-3] = var[i][j];
+        }
+    }
+    float pre_varvm[3][state_size-3];
+    matrix_multi(3,3,3,state_size-3,jacob3x3,varxm, pre_varvm);
+    float pre_varvm_trans[state_size-3][3];
+    transpose(3,state_size-3, pre_varvm,pre_varvm_trans);
+    
+    // save memory by not computing state_size x state_size x state_size
+    float pred_var[state_size][state_size];
+    for (i=0; i<state_size; i++){
+        for (j=0; j<state_size; j++){
+            if (i<3 && j<3){
+                pred_var[i][j] = pre_varxx[i][j];
+            }
+            else if (i<3 && j>=3){
+                pred_var[i][j] = pre_varvm[i][j-3];
+            }
+            //not sure if this is correct. The lecture slides might be wrong here
+            else if (j<3 && i>=3){
+                pred_var[i][j] = pre_varvm_trans[i-3][j];
+            }
+            else{
+                pred_var[i][j] = var[i][j];
+            }
+        }
+    }
+
+    printf("Pred State\n");
+    for (i=0; i<state_size; i++){
+        printf("%f ", pred_state[i][0]);
+    }
+    printf("\n");
+    printf("Pred Var\n");
+    for (i=0; i<state_size; i++){
+        for (j=0; j<state_size; j++){
+            printf("%f ", pred_var[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void test_prediction(){
+    float state[5][1] = { {1},{2},{0.5},{20},{30}};
+    int state_size = sizeof(state)/sizeof(float);
+    float var[5][5]={{1,2,1,1,3},{2,5,1,0,5},{1,2,0,1,2},{1,2,4,5,3},{1,0,0,2,1}};
+    float displacement[3][1]= {{5}, {20}, {0.62}};
+    struct Observations landmark1 = {.land_dist = 40,.land_ang =30, .color="red"};
+    struct Landmarks land_list;
+    land_list.size=0;
+    land_list.items[0] = landmark1;
+    land_list.size++;
+    prediction(state_size,state,var,displacement, land_list);
+}
+
 int main(){
     //test_row_switch();
     //test_inverse1();
     //test_inverse2();
     //test_matrix_multi();
     //test_find_color();
-    test_get_exp();
+    //test_get_exp();
+    test_prediction();
     
     
     return 0;
