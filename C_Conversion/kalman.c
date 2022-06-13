@@ -13,7 +13,7 @@ struct Observations{
 
 struct Landmarks{
     size_t size;
-    struct Observations item[10];
+    struct Observations item[6];
 };
 
 struct Seen_Land{
@@ -24,7 +24,8 @@ struct Seen_Land{
 
 struct Seen_Land_List{
     size_t size;
-    struct Seen_Land item[10];
+    struct Seen_Land item[6];
+    //red 0, blue 1, green 2, yellow 3, black 4, pink 5  
 };
 
 float kalman_filter(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1], struct Landmarks land_list, struct Seen_Land_List seen_list){ //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
@@ -122,37 +123,54 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
         int c=0 ;
         int x_coor, y_coor; //x and y coordinate of landmark, used to compute delta, see below.
         for (j=0; j<land_list.size;j++){
-            for(k=0; k<seen_list.size; k++){
-                if (land_list.item[j].color == seen_list.item[k].color){
-                    seen= true;
-                    c=j;
-                }
+           
+            if (land_list.item[i].color == seen_list.item[j].color){
+                seen= true;
+                c=j;
             }
+            
         }
         // if the landmark was not observed, then we calculate the position of it
         
         if (!seen){
-            x_coor = pred_state[0][0] + land_list.item[c].land_dist*cos(land_list.item[c].land_ang + pred_state[2][0]);
-            y_coor = pred_state[1][0] + land_list.item[c].land_dist*sin(land_list.item[c].land_ang + pred_state[2][0]);
-            
-            //(to-do) store this into state as well
+            x_coor = pred_state[0][0] + land_list.item[i].land_dist*cos(land_list.item[i].land_ang + pred_state[2][0]);
+            y_coor = pred_state[1][0] + land_list.item[i].land_dist*sin(land_list.item[i].land_ang + pred_state[2][0]);
+            //suppose we map a specific color into a specified location in matrix
+           
+              
         }
         else{
-            x_coor = old_state[2*c+3][0];
-            y_coor = old_state[2*c+4][0];
+            x_coor = seen_list.item[c].x_coor;
+            y_coor = seen_list.item[c].y_coor;
         }
         
         //obtain expected observation
         float delta[2];//distance of landmark to robot
-        delta[0] = x_coor - old_state[0][0];
-        delta[1] = y_coor - old_state[1][0];
+        delta[0] = x_coor - pred_state[0][0];
+        delta[1] = y_coor - pred_state[1][0];
         float q = dotProduct(delta, delta, 2);
         float exp_dis_ang[2]; //z
         exp_dis_ang[0] = sqrt(q);
-        exp_dis_ang[1] = atan2(delta[1],delta[2]) - old_state[2][0]; 
+        exp_dis_ang[1] = atan2(delta[1],delta[2]) - pred_state[2][0]; 
 
         //Compute jacobian matrix H
         float F_matrix[5][state_size];//used to scale up the jacobian matrix
+        for (j=0; j<5; j++){
+            for(k=0; k<state_size; k++){
+                if (j<3 && j==k){
+                    F_matrix[j][j]=1;
+                }
+                else if (j==3 && k == 2*c+3){
+                    F_matrix[j][k]=1; 
+                }
+                else if (j==4 && k == 2*c+4){
+                    F_matrix[j][k]=1;
+                }
+                else{
+                    F_matrix[j][k]=0;
+                }
+            }
+        }
         float jacobian_low[2][5] = {{-delta[0]/sqrt(q), -delta[1]/sqrt(q), 0, delta[0]/sqrt(q), delta[1]/sqrt(q)}, {delta[1]/q, -delta[0]/q, -1, -delta[1]/q, delta[0]/q}};
         float jacobian[2][state_size];
         matrix_multi(2,5,5,state_size,jacobian_low, F_matrix, jacobian);
@@ -182,7 +200,7 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
 
         //get new predicted angle
         float iden_matrix_sxs[state_size][state_size];
-        memset(iden_matrix_sxs,0,state_size*state_size*sizeof(int));
+        memset(iden_matrix_sxs,0,state_size*state_size*sizeof(float));
         for (j=0; j<state_size;j++){
             iden_matrix_sxs[j][j]=1;
         }
@@ -196,6 +214,8 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
                 pred_state[j][k]= new_pred_var[j][k];
             }
         }
+
+
     }
 
 
