@@ -42,7 +42,7 @@ module Qsys_alt_vip_cl_2dfir_0_alg_core
       input    wire   reset
    );
    
-   localparam  integer  FIXED_COEFFS  [0 : 80] =  '{128,  128,  128,  0,  0,  0,  0,  0,  0,
+   localparam  integer  FIXED_COEFFS  [0 : 80] =  '{14,  14,  14,  0,  0,  0,  0,  0,  0,
                                                     0,  0, 0, 0, 0, 0, 0, 0, 0,
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0,
