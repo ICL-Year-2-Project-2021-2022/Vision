@@ -19,7 +19,7 @@ struct Landmarks{
 struct Seen_Land{
     float x_coor;
     float y_coor;
-    char color[20];
+    char *color;
 };
 
 struct Seen_Land_List{
@@ -27,6 +27,8 @@ struct Seen_Land_List{
     struct Seen_Land item[6];
     //red 0, blue 1, green 2, yellow 3, black 4, pink 5  
 };
+
+enum colorcode{red, blue, green, yellow, black, pink};
 
 float kalman_filter(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1], struct Landmarks land_list, struct Seen_Land_List seen_list){ //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
     //only using the first 3 array for x, y, theta, others are for the mappings
@@ -136,86 +138,91 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
             x_coor = pred_state[0][0] + land_list.item[i].land_dist*cos(land_list.item[i].land_ang + pred_state[2][0]);
             y_coor = pred_state[1][0] + land_list.item[i].land_dist*sin(land_list.item[i].land_ang + pred_state[2][0]);
             //suppose we map a specific color into a specified location in matrix
-           
-              
+            struct Seen_Land new_land;
+            new_land.x_coor = x_coor;
+            new_land.y_coor = y_coor;
+            new_land.color = land_list.item[i].color;
+            seen_list.item[seen_list.size] = new_land;
+            enum colorcode color_num;
+            color_num = new_land.color;
+            pred_state[2*color_num+3][0] = x_coor;
+            pred_state[2*color_num+4][0] = y_coor;
         }
         else{
             x_coor = seen_list.item[c].x_coor;
             y_coor = seen_list.item[c].y_coor;
-        }
-        
-        //obtain expected observation
-        float delta[2];//distance of landmark to robot
-        delta[0] = x_coor - pred_state[0][0];
-        delta[1] = y_coor - pred_state[1][0];
-        float q = dotProduct(delta, delta, 2);
-        float exp_dis_ang[2]; //z
-        exp_dis_ang[0] = sqrt(q);
-        exp_dis_ang[1] = atan2(delta[1],delta[2]) - pred_state[2][0]; 
+            //obtain expected observation
+            float delta[2];//distance of landmark to robot
+            delta[0] = x_coor - pred_state[0][0];
+            delta[1] = y_coor - pred_state[1][0];
+            float q = dotProduct(delta, delta, 2);
+            float exp_dis_ang[2]; //z
+            exp_dis_ang[0] = sqrt(q);
+            exp_dis_ang[1] = atan2(delta[1],delta[2]) - pred_state[2][0]; 
 
-        //Compute jacobian matrix H
-        float F_matrix[5][state_size];//used to scale up the jacobian matrix
-        for (j=0; j<5; j++){
-            for(k=0; k<state_size; k++){
-                if (j<3 && j==k){
-                    F_matrix[j][j]=1;
+            //Compute jacobian matrix H
+            float F_matrix[5][state_size];//used to scale up the jacobian matrix
+            for (j=0; j<5; j++){
+                for(k=0; k<state_size; k++){
+                    if (j<3 && j==k){
+                        F_matrix[j][j]=1;
+                    }
+                    else if (j==3 && k == 2*c+3){
+                        F_matrix[j][k]=1; 
+                    }
+                    else if (j==4 && k == 2*c+4){
+                        F_matrix[j][k]=1;
+                    }
+                    else{
+                        F_matrix[j][k]=0;
+                    }
                 }
-                else if (j==3 && k == 2*c+3){
-                    F_matrix[j][k]=1; 
-                }
-                else if (j==4 && k == 2*c+4){
-                    F_matrix[j][k]=1;
-                }
-                else{
-                    F_matrix[j][k]=0;
+            }
+            //should optimise this line, too many divisions.
+            float jacobian_low[2][5] = {{-delta[0]/sqrt(q), -delta[1]/sqrt(q), 0, delta[0]/sqrt(q), delta[1]/sqrt(q)}, {delta[1]/q, -delta[0]/q, -1, -delta[1]/q, delta[0]/q}};
+            float jacobian[2][state_size];
+            matrix_multi(2,5,5,state_size,jacobian_low, F_matrix, jacobian);
+
+            //Compute Kalman Gain
+            float kalman_gain[state_size][2];
+            float trans_jacobian[state_size][2];
+            transpose(2, state_size, jacobian, trans_jacobian);
+            float k_tmp1[2][state_size];
+            matrix_multi(2,state_size,state_size,state_size,jacobian,pred_var, k_tmp1);
+            float k_tmp2[2][2], k_tmp3[2][2];
+            matrix_multi(2,state_size,state_size,2,k_tmp1,trans_jacobian,k_tmp2);
+            //(To-Do) need to add Qvar
+            gaussian_inverse(2,k_tmp2,k_tmp3);
+            float k_tmp4[state_size][2];
+            matrix_multi(state_size,state_size,state_size,2,pred_var, trans_jacobian,k_tmp4);
+            //final kalman gain computed
+            matrix_multi(state_size,2,2,2,k_tmp4,k_tmp3,kalman_gain);
+
+            //get new predicted state
+            float z_diff[2][1];
+            z_diff[0][0] = land_list.item[c].land_dist - exp_dis_ang[0];
+            z_diff[1][0] = land_list.item[c].land_ang - exp_dis_ang[1];
+            float z_tmp[state_size][1];
+            matrix_multi(state_size,2,2,2,kalman_gain,z_diff,z_tmp);
+            add_matrix(state_size, 1,pred_state,z_tmp,pred_state);
+
+            //get new predicted angle
+            float iden_matrix_sxs[state_size][state_size];
+            memset(iden_matrix_sxs,0,state_size*state_size*sizeof(float));
+            for (j=0; j<state_size;j++){
+                iden_matrix_sxs[j][j]=1;
+            }
+            float ang_tmp[state_size][state_size],ang_tmp2[state_size][state_size];
+            matrix_multi(state_size,2,2,state_size, kalman_gain,jacobian,ang_tmp);
+            sub_matrix(state_size,state_size,iden_matrix_sxs,ang_tmp,ang_tmp2);
+            float new_pred_var[state_size][state_size];
+            matrix_multi(state_size,state_size, state_size, state_size,ang_tmp2,pred_var,new_pred_var);
+            for (j=0; j<state_size; j++){
+                for (k=0; k<state_size; k++){
+                    pred_state[j][k]= new_pred_var[j][k];
                 }
             }
         }
-        float jacobian_low[2][5] = {{-delta[0]/sqrt(q), -delta[1]/sqrt(q), 0, delta[0]/sqrt(q), delta[1]/sqrt(q)}, {delta[1]/q, -delta[0]/q, -1, -delta[1]/q, delta[0]/q}};
-        float jacobian[2][state_size];
-        matrix_multi(2,5,5,state_size,jacobian_low, F_matrix, jacobian);
-
-        //Compute Kalman Gain
-        float kalman_gain[state_size][2];
-        float trans_jacobian[state_size][2];
-        transpose(2, state_size, jacobian, trans_jacobian);
-        float k_tmp1[2][state_size];
-        matrix_multi(2,state_size,state_size,state_size,jacobian,pred_var, k_tmp1);
-        float k_tmp2[2][2], k_tmp3[2][2];
-        matrix_multi(2,state_size,state_size,2,k_tmp1,trans_jacobian,k_tmp2);
-        //(To-Do) need to add Qvar
-        gaussian_inverse(2,k_tmp2,k_tmp3);
-        float k_tmp4[state_size][2];
-        matrix_multi(state_size,state_size,state_size,2,pred_var, trans_jacobian,k_tmp4);
-        //final kalman gain computed
-        matrix_multi(state_size,2,2,2,k_tmp4,k_tmp3,kalman_gain);
-
-        //get new predicted state
-        float z_diff[2][1];
-        z_diff[0][0] = land_list.item[c].land_dist - exp_dis_ang[0];
-        z_diff[1][0] = land_list.item[c].land_ang - exp_dis_ang[1];
-        float z_tmp[state_size][1];
-        matrix_multi(state_size,2,2,2,kalman_gain,z_diff,z_tmp);
-        add_matrix(state_size, 1,pred_state,z_tmp,pred_state);
-
-        //get new predicted angle
-        float iden_matrix_sxs[state_size][state_size];
-        memset(iden_matrix_sxs,0,state_size*state_size*sizeof(float));
-        for (j=0; j<state_size;j++){
-            iden_matrix_sxs[j][j]=1;
-        }
-        float ang_tmp[state_size][state_size],ang_tmp2[state_size][state_size];
-        matrix_multi(state_size,2,2,state_size, kalman_gain,jacobian,ang_tmp);
-        sub_matrix(state_size,state_size,iden_matrix_sxs,ang_tmp,ang_tmp2);
-        float new_pred_var[state_size][state_size];
-        matrix_multi(state_size,state_size, state_size, state_size,ang_tmp2,pred_var,new_pred_var);
-        for (j=0; j<state_size; j++){
-            for (k=0; k<state_size; k++){
-                pred_state[j][k]= new_pred_var[j][k];
-            }
-        }
-
-
     }
 
 
