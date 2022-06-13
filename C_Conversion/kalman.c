@@ -28,9 +28,15 @@ struct Seen_Land_List{
     //red 0, blue 1, green 2, yellow 3, black 4, pink 5  
 };
 
+//return new state and new variance
+struct Kal_Res{
+    float new_state[15][1];
+    float new_var[15][15];
+};
+
 enum colorcode{red, blue, green, yellow, black, pink};
 
-float kalman_filter(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1], struct Landmarks land_list, struct Seen_Land_List seen_list){ //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
+struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1], struct Landmarks land_list, struct Seen_Land_List seen_list){ //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
     //only using the first 3 array for x, y, theta, others are for the mappings
 
     //prediction steps
@@ -39,6 +45,7 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
     //3. Compute matrix Gt
     //4. Compute predicted var matrix with Gt and var
     int i,j,k=0;
+    state_size = 15; //assume 6 aliens
     float iden_mat[state_size][3];
     memset(iden_mat,0,state_size*3*sizeof(int));
     for (i=0; i<3; i++){
@@ -157,7 +164,7 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
             delta[1] = y_coor - pred_state[1][0];
             float q = dotProduct(delta, delta, 2);
             float exp_dis_ang[2]; //z
-            exp_dis_ang[0] = sqrt(q);
+            exp_dis_ang[0] = sqrt(q); 
             exp_dis_ang[1] = atan2(delta[1],delta[2]) - pred_state[2][0]; 
 
             //Compute jacobian matrix H
@@ -219,15 +226,15 @@ float kalman_filter(size_t state_size, float old_state[state_size][1], float var
             matrix_multi(state_size,state_size, state_size, state_size,ang_tmp2,pred_var,new_pred_var);
             for (j=0; j<state_size; j++){
                 for (k=0; k<state_size; k++){
-                    pred_state[j][k]= new_pred_var[j][k];
+                    pred_var[j][k]= new_pred_var[j][k];
                 }
             }
         }
     }
-
-
-
-
+    struct Kal_Res result;
+    memcpy(result.new_state, pred_state,15*sizeof(float));
+    memcpy(result.new_var, pred_var, 15*15*sizeof(float));
+    return result;
 }
 
 
