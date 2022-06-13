@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "library/vec.h"
+#include "library/linalg.h"
 #include <stdlib.h>
 
 
@@ -69,32 +69,64 @@ int test_transpose(){
 }
 
 
+struct Land{
+    float x;
+    float y;
+    char *color;
+};
+
+struct Land_List{
+    size_t size;
+    struct Land items[10];
+};
+
+struct Seen_List{
+    size_t size;
+    struct Land items[10];
+};
+
+void find_color(struct Seen_List seen_list, struct Land_List land_list){
+    int i,j=0;
+    for (i=0; i<land_list.size; i++){
+        for(j=0; j<seen_list.size; j++){
+            if(land_list.items[i].color == seen_list.items[j].color){
+                printf("%s", land_list.items[i].color);
+            }
+        }
+    }
+}
+
+void test_find_color(){
+    struct Land l1,l2;
+    l1.x=1;
+    l1.y=2;
+    l1.color= "red";
+    l2.x=2;
+    l2.y=4;
+    l2.color= "blue";
+    struct Land_List list1;
+    list1.size=0;
+    list1.items[list1.size]=l1;
+    list1.size++;
+    list1.items[list1.size]=l2;
+    list1.size++;
+
+    struct Seen_List seen_list;
+    seen_list.size=0;
+    seen_list.items[seen_list.size]=l2;
+    seen_list.size++;
+    find_color(seen_list,list1);
+    //should display blue
+}
+
 
 int main(){
     //test_row_switch();
     //test_inverse1();
     //test_inverse2();
     //test_matrix_multi();
-    //test_transpose();
-    // float matrix[2][2] = {{1.0,2.0, 5.0},{3.0,4.0 , -1.0},{2.5, 1.0, 1.5}};
-    // float iden[2][2] = {{1.0,0.0},{0.0,1.0}};
-    // printf("%f,%f", iden[0][0], iden[0][1]);
-    // multi_scalar_vector(2,matrix[0],2, iden[0]);
-    // printf("%f,%f", iden[0][0], iden[0][1]);
-    // int vector1[2] = {3, 6};
-    // int vector2[2] = {4,6}; 
-    // printf("norm %d", norm(vector1,2));
-    // int sol[2] = {};
-    // add_vectors(vector1, vector2, sizeof(vector1)/sizeof(vector1[0]),sol);
-    // printf("det,%d\n",det_2x2(matrix));
-    // printf("sol, %d, %d\n",sol[0], sol[1]);
+    test_find_color();
     
-     
-    // int matrix3[3][3] = {{1,2,3},{4,5,6},{2,3,8}};
-    // printf("det3,%d\n",det_3x3(matrix3));
-    // int result[2];
-    // solve2x2(matrix, vector1, result);
-    // printf("%d, %d",result[0], result[1]);
+    
     return 0;
-
 }
