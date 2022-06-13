@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>01-Jun-2022 17:42:04</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1654101724261</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>12-Jun-2022 18:12:25</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1655053945975</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\vacla\Projects\Vision\DE10_CAM\software\UART_Nios_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>

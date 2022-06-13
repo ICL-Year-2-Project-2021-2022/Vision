@@ -11,7 +11,11 @@ int main ()
 	if (fp) {
 		printf("UART detected.\n");
 		while (1) {
-			char *msgToSend;
+			prompt = getc(fp);
+			if (prompt == 'R') {
+				printf("Read request received!\n");
+			}
+			/*char *msgToSend;
 			asprintf(&msgToSend, "%s, message id: %d\n", msg, messageCounter);
 			printf("FPGA sending\n");
 			char response_buffer[64];
@@ -24,7 +28,7 @@ int main ()
 				index++;
 			}
 			printf("Received: %s\n", response_buffer);
-			messageCounter++;
+			messageCounter++;*/
 			usleep(100000);
 		}
 		fclose (fp);

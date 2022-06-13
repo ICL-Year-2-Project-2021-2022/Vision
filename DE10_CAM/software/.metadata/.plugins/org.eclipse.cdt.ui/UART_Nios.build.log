@@ -1,9 +1,9 @@
-17:46:19 **** Incremental Build of configuration Nios II for project UART_Nios ****
+18:17:40 **** Incremental Build of configuration Nios II for project UART_Nios ****
 make all 
 Info: Building ../UART_Nios_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../UART_Nios_bsp/
 [BSP build complete]
 [UART_Nios build complete]
 
-17:46:20 Build Finished (took 872ms)
+18:17:41 Build Finished (took 743ms)
 
