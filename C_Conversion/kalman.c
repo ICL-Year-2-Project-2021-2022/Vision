@@ -168,8 +168,7 @@ void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_si
     pred_state[2 * color_num + 4][0] = y_coor;
 }
 
-void
-obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor, float delta[2],
+void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor, float delta[2],
                           float exp_dis_ang[2], float *q) {
     delta[0] = x_coor - pred_state[0][0];
     delta[1] = y_coor - pred_state[1][0];
