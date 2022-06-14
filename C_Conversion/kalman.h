@@ -45,4 +45,6 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
 
 void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size], float pred_var[state_size][state_size]);
 
+void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_size][1], struct Seen_Land_List seen_list, struct Observations observation);
+
 #endif //KALMAN_KALMAN_H

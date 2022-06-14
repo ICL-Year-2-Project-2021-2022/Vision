@@ -1,13 +1,15 @@
 #include "kalman.h"
 
 struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], float var[state_size][state_size],
-        float displacement[3][1], struct Landmarks land_list, struct Seen_Land_List seen_list) { //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
+                             float displacement[3][1], struct Landmarks land_list,
+                             struct Seen_Land_List seen_list) { //missing R(procc noise) and Q(meas noise) (uncertainty, needs to be defined)
     //only using the first 3 array for x, y, theta, others are for the mappings
     struct Kal_Res predictionResult = predictionStep(state_size, old_state, var, displacement);
     return correctionStep(state_size, predictionResult.new_state, predictionResult.new_var, land_list, seen_list);
 }
 
-struct Kal_Res predictionStep(size_t state_size, float old_state[state_size][1], float var[state_size][state_size], float displacement[3][1]) {
+struct Kal_Res predictionStep(size_t state_size, float old_state[state_size][1], float var[state_size][state_size],
+                              float displacement[3][1]) {
     //prediction steps
     //1. Create a N x 3 identity matrix,then multiply the change in x y and thetre to map it into 2N+3 dimensional space
     //2. obtain prediction of x,y,thetre by adding displacements to current state
@@ -33,50 +35,20 @@ struct Kal_Res correctionStep(size_t state_size, float pred_state[state_size][1]
     for (i = 0; i < land_list.size; i++) {
         bool seen = false;
         int c = 0;
-        float x_coor, y_coor; //x and y coordinate of landmark, used to compute delta, see below.
         for (j = 0; j < seen_list.size; j++) {
-
             if (strcmp(land_list.item[i].color, seen_list.item[j].color)) {
                 seen = true;
                 c = j;
             }
-
         }
         // if the landmark was not observed, then we calculate the position of it
 
         if (!seen) {
-            x_coor =
-                    pred_state[0][0] + land_list.item[i].land_dist * cos(land_list.item[i].land_ang + pred_state[2][0]);
-            y_coor =
-                    pred_state[1][0] + land_list.item[i].land_dist * sin(land_list.item[i].land_ang + pred_state[2][0]);
-            //suppose we map a specific color into a specified location in matrix
-            struct Seen_Land new_land;
-            new_land.x_coor = x_coor;
-            new_land.y_coor = y_coor;
-            new_land.color = land_list.item[i].color;
-            seen_list.item[seen_list.size] = new_land;
-            int color_num = 10;
-            if (strcmp(new_land.color, "red") == 0) {
-                color_num = 0;
-            } else if (strcmp(new_land.color, "blue") == 0) {
-                color_num = 1;
-            } else if (strcmp(new_land.color, "green") == 0) {
-                color_num = 2;
-            } else if (strcmp(new_land.color, "dark_green") == 0) {
-                color_num = 3;
-            } else if (strcmp(new_land.color, "pink") == 0) {
-                color_num = 4;
-            } else if (strcmp(new_land.color, "yellow") == 0) {
-                color_num = 5;
-            }
-            if (color_num == 10) {
-                fprintf(stderr, "Wrong Color Code");
-            }
-            pred_state[2 * color_num + 3][0] = x_coor;
-            pred_state[2 * color_num + 4][0] = y_coor;
+            //size_t state_size, float pred_state[state_size][1], struct Seen_Land_List seen_list, struct Observations observation, int itemIndex
+            setPositionOfNeverSeenLandmark(state_size, pred_state, seen_list, land_list.item[i]);
         } else {
-            x_coor = seen_list.item[c].x_coor;
-            y_coor = seen_list.item[c].y_coor;
+            float x_coor = seen_list.item[c].x_coor;
+            float y_coor = seen_list.item[c].y_coor;
             //obtain expected observation
             float delta[2];//distance of landmark to robot
             delta[0] = x_coor - pred_state[0][0];
@@ -122,7 +94,7 @@ struct Kal_Res correctionStep(size_t state_size, float pred_state[state_size][1]
             float k_tmp4[state_size][2];
             matrix_multi(state_size, state_size, state_size, 2, pred_var, trans_jacobian, k_tmp4);
             //final kalman gain computed
-            matrix_multi(state_size, 2, 2, 2, k_tmp4, k_tmp3, kalman_gain);
+            matrix_multi(state_size, 2, 2, 1, k_tmp4, k_tmp3, kalman_gain);
 
             //get new predicted state
             float z_diff[2][1];
@@ -167,7 +139,8 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
     add_matrix(state_size, 1, old_state, displace_vector, pred_state);
 }
 
-void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size], float pred_var[state_size][state_size]) {
+void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size],
+                           float pred_var[state_size][state_size]) {
     int i, j = 0;
 //get jacobian
     float jacob3x3[3][3] = {{1, 0, -displacement[1][0]},
@@ -215,6 +188,38 @@ void calculatePredictedVar(size_t state_size, float displacement[3][1], float va
             }
         }
     }
+}
+
+void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_size][1], struct Seen_Land_List seen_list, struct Observations observation) {
+    float x_coor =
+            pred_state[0][0] + observation.land_dist * cos(observation.land_ang + pred_state[2][0]);
+    float y_coor =
+            pred_state[1][0] + observation.land_dist * sin(observation.land_ang + pred_state[2][0]);
+//suppose we map a specific color into a specified location in matrix
+    struct Seen_Land new_land;
+    new_land.x_coor = x_coor;
+    new_land.y_coor = y_coor;
+    new_land.color = observation.color;
+    seen_list.item[seen_list.size] = new_land;
+    int color_num = 10;
+    if (strcmp(new_land.color, "red") == 0) {
+        color_num = 0;
+    } else if (strcmp(new_land.color, "blue") == 0) {
+        color_num = 1;
+    } else if (strcmp(new_land.color, "green") == 0) {
+        color_num = 2;
+    } else if (strcmp(new_land.color, "dark_green") == 0) {
+        color_num = 3;
+    } else if (strcmp(new_land.color, "pink") == 0) {
+        color_num = 4;
+    } else if (strcmp(new_land.color, "yellow") == 0) {
+        color_num = 5;
+    }
+    if (color_num == 10) {
+        fprintf(stderr, "Wrong Color Code");
+    }
+    pred_state[2 * color_num + 3][0] = x_coor;
+    pred_state[2 * color_num + 4][0] = y_coor;
 }
 
 int main() {
