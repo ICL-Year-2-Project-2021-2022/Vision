@@ -1,11 +1,13 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdbool.h>
-#include "library/linalg.h"
-
 #ifndef KALMAN_KALMAN_H
 #define KALMAN_KALMAN_H
 
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+#ifndef KALMAN_KALMAN_TEST_H
+#include "library/linalg.h"
+#endif
 
 struct Observations{
     float land_dist;

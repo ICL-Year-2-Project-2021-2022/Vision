@@ -22,8 +22,7 @@ struct Kal_Res predictionStep(size_t state_size, float old_state[state_size][1],
     return result;
 }
 
-struct Kal_Res
-correctionStep(size_t state_size, float pred_state[state_size][1], float pred_var[state_size][state_size],
+struct Kal_Res correctionStep(size_t state_size, float pred_state[state_size][1], float pred_var[state_size][state_size],
                struct Landmarks land_list, struct Seen_Land_List seen_list) {
     // Correction steps in Kalman Filter
     //1. Identify i-th measurement at time t observes th4e landmark with index j (c =j)
@@ -69,7 +68,7 @@ correctionStep(size_t state_size, float pred_state[state_size][1], float pred_va
 
 void calculatePredictedState(size_t state_size, float old_state[state_size][1], float displacement[3][1],
                              float pred_state[state_size][1]) {
-    int i, j = 0;
+    int i = 0;
     //state_size = 15; //assume 6 aliens
     float iden_mat[state_size][3];
     memset(iden_mat, 0, state_size * 3 * sizeof(int));
@@ -247,34 +246,4 @@ void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_si
             pred_var[i][j] = new_pred_var[i][j];
         }
     }
-}
-
-int main() {
-    float state[5][1] = {{1},
-                         {2},
-                         {0.5},
-                         {16},
-                         {61}};
-    int state_size = sizeof(state) / sizeof(float);
-    float var[5][5] = {{1, 2, 1, 1, 3},
-                       {2, 5, 1, 0, 5},
-                       {1, 2, 0, 1, 2},
-                       {1, 2, 4, 5, 3},
-                       {1, 0, 0, 2, 1}};
-    float displacement[3][1] = {{5},
-                                {20},
-                                {0.62}};
-    struct Observations landmark1 = {.land_dist = 40, .land_ang =0.2, .color="red"};
-    struct Landmarks land_list;
-    land_list.size = 0;
-    land_list.item[0] = landmark1;
-    land_list.size++;
-    int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 16, .y_coor = 61, .color = "red"};
-    struct Seen_Land_List seen_land_list;
-    seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
-    struct Kal_Res results;
-    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
 }
