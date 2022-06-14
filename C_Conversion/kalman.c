@@ -126,21 +126,22 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
     //5. Compute kalman gain
     //6. Sub Kalman gain to obtain new state and variance matrix
 
+    
     for (i =0; i<land_list.size; i++){
         bool seen=false;
         int c=0 ;
-        int x_coor, y_coor; //x and y coordinate of landmark, used to compute delta, see below.
+        float x_coor, y_coor; //x and y coordinate of landmark, used to compute delta, see below.
         for (j=0; j<seen_list.size;j++){
            
-            if (strcmp(land_list.item[i].color, seen_list.item[j].color)){
+            if (strcmp(land_list.item[i].color, seen_list.item[j].color)==0){
                 seen= true;
                 c=j;
             }
             
         }
         // if the landmark was not observed, then we calculate the position of it
-        
         if (!seen){
+
             x_coor = pred_state[0][0] + land_list.item[i].land_dist*cos(land_list.item[i].land_ang + pred_state[2][0]);
             y_coor = pred_state[1][0] + land_list.item[i].land_dist*sin(land_list.item[i].land_ang + pred_state[2][0]);
             //suppose we map a specific color into a specified location in matrix
@@ -149,23 +150,24 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
             new_land.y_coor = y_coor;
             new_land.color = land_list.item[i].color;
             seen_list.item[seen_list.size] = new_land;
+            seen_list.size++;
             int color_num= 10;
-            if (strcmp(new_land.color, "red")){
+            if (strcmp(new_land.color, "red")==0){
                 color_num=0;
             }
-            else if (strcmp(new_land.color, "blue")){
+            else if (strcmp(new_land.color, "blue")==0){
                 color_num=1;
             }
-            else if (strcmp(new_land.color, "green")){
+            else if (strcmp(new_land.color, "green")==0){
                 color_num=2;
             }
-            else if (strcmp(new_land.color, "dark_green")){
+            else if (strcmp(new_land.color, "dark_green")==0){
                 color_num=3;
             }
-            else if (strcmp(new_land.color, "pink")){
+            else if (strcmp(new_land.color, "pink")==0){
                 color_num=4;
             }
-            else if (strcmp(new_land.color, "yellow")){
+            else if (strcmp(new_land.color, "yellow")==0){
                 color_num=5;
             }
             if (color_num==10){
@@ -173,8 +175,15 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
             }
             pred_state[2*color_num+3][0] = x_coor;
             pred_state[2*color_num+4][0] = y_coor;
+            // printf("  %s   ", new_land.color);
+            // printf("x, y coor: %f %f",x_coor, y_coor);
+            // for (k=0; k<state_size; k++){
+            //     printf("pred state: %f",pred_state[k][0]);
+            // }
+            //printf("pred_state: %f %f",  pred_state[2*color_num+3][0],  pred_state[2*color_num+4][0]);
         }
         else{
+            printf("seen");
             x_coor = seen_list.item[c].x_coor;
             y_coor = seen_list.item[c].y_coor;
             //obtain expected observation
@@ -186,6 +195,7 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
             exp_dis_ang[0] = sqrt(q); 
             exp_dis_ang[1] = atan2(delta[1],delta[0]) - pred_state[2][0]; 
 
+            printf("exp: %f %f",exp_dis_ang[0], exp_dis_ang[1]);
             //Compute jacobian matrix H
             float F_matrix[5][state_size];//used to scale up the jacobian matrix
             for (j=0; j<5; j++){
@@ -206,8 +216,11 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
             }
             //should optimise this line, too many divisions.
             float jacobian_low[2][5] = {{-delta[0]/sqrt(q), -delta[1]/sqrt(q), 0, delta[0]/sqrt(q), delta[1]/sqrt(q)}, {delta[1]/q, -delta[0]/q, -1, -delta[1]/q, delta[0]/q}};
+            
+
             float jacobian[2][state_size];
             matrix_multi(2,5,5,state_size,jacobian_low, F_matrix, jacobian);
+            
 
             //Compute Kalman Gain
             float kalman_gain[state_size][2];
@@ -224,15 +237,25 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
             //final kalman gain computed
             matrix_multi(state_size,2,2,2,k_tmp4,k_tmp3,kalman_gain);
 
+            printf("Kalman\n");
+            for(j=0; j<state_size; j++){
+                for (k=0; k<2; k++){
+                    printf("%f ", jacobian_low[j][k]);
+                }
+            }
             //get new predicted state
             float z_diff[2][1];
             z_diff[0][0] = land_list.item[c].land_dist - exp_dis_ang[0];
             z_diff[1][0] = land_list.item[c].land_ang - exp_dis_ang[1];
+            printf("z_diff: %f %f", z_diff[0][0], z_diff[1][0]);
             float z_tmp[state_size][1];
-            matrix_multi(state_size,2,2,2,kalman_gain,z_diff,z_tmp);
+            matrix_multi(state_size,2,2,1,kalman_gain,z_diff,z_tmp);
+            for (j=0; j<5; j++){
+                printf(" pred: %f", pred_state[j][0]);
+            }
             add_matrix(state_size, 1,pred_state,z_tmp,pred_state);
 
-            //get new predicted angle
+            //get new predicted variance
             float iden_matrix_sxs[state_size][state_size];
             memset(iden_matrix_sxs,0,state_size*state_size*sizeof(float));
             for (j=0; j<state_size;j++){
@@ -251,11 +274,13 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
         }
     }
     struct Kal_Res result;
-    for(i=0; i<15;i++){
+    printf("new state\n");
+    for(i=0; i<state_size;i++){
         result.new_state[i][0] = pred_state[i][0];
+        printf("%f ", result.new_state[i][0]);
     }
-    for(i=0; i<15; i++){
-        for (j=0; j<15; j++){
+    for(i=0; i<state_size; i++){
+        for (j=0; j<state_size; j++){
             result.new_var[i][j] = pred_var[i][j];
         }
     }
@@ -265,18 +290,21 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
 
 
 int main(){
-    float state[5][1] = { {1},{2},{0.5},{20},{30}};
+    float state[5][1] = { {1},{2},{0.5},{16},{61}};
     int state_size = sizeof(state)/sizeof(float);
     float var[5][5]={{1,2,1,1,3},{2,5,1,0,5},{1,2,0,1,2},{1,2,4,5,3},{1,0,0,2,1}};
     float displacement[3][1]= {{5}, {20}, {0.62}};
-    struct Observations landmark1 = {.land_dist = 40,.land_ang =30, .color="red"};
+    struct Observations landmark1 = {.land_dist = 40,.land_ang =0.2, .color="red"};
     struct Landmarks land_list;
     land_list.size=0;
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land;
+    struct Seen_Land seen_land1 = {.x_coor = 16, .y_coor = 61 , .color = "red"};
     struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
     struct Kal_Res results;
     results = kalman_filter(state_size,state,var,displacement, land_list, seen_land_list);
     
