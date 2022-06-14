@@ -244,7 +244,7 @@ void gaussian_inverse(size_t side, float matrix_A[][side], float dst[][side]){
         }
     }
     // printing out matrix
-    printf("Resultant Matrix: \n");
+    printf("Inverse Matrix: \n");
     for (i=0; i<side; i++){
         for (j=0; j<2*side; j++){
             printf("%f ",matrix_comb[i][j]);
