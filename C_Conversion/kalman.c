@@ -80,6 +80,10 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
     matrix_multi(state_size, 3, 3, 1, iden_mat, displacement, displace_vector);
 
     add_matrix(state_size, 1, old_state, displace_vector, pred_state);
+    printf("Predicted State\n");
+    for (i=0; i<state_size; i++){
+        printf("%f ", pred_state[i][0]);
+    }
 }
 
 void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size],
