@@ -36,7 +36,7 @@ struct Kal_Res correctionStep(size_t state_size, float pred_state[state_size][1]
         bool seen = false;
         int seenLandmarkIndex = 0;
         for (j = 0; j < seen_list.size; j++) {
-            if (strcmp(land_list.item[i].color, seen_list.item[j].color)) {
+            if (strcmp(land_list.item[i].color, seen_list.item[j].color)==0) {
                 seen = true;
                 seenLandmarkIndex = j;
             }
@@ -56,12 +56,13 @@ struct Kal_Res correctionStep(size_t state_size, float pred_state[state_size][1]
 
             float kalman_gain[state_size][2];
             computeKalmanGain(state_size, pred_var, jacobian, kalman_gain);
-
+            
             getPredictedStateFromKalmanGain(state_size, land_list.item[seenLandmarkIndex].land_dist,
                                             land_list.item[seenLandmarkIndex].land_ang, kalman_gain, exp_dis_ang,
                                             pred_state);
 
             getPredictedVarFromKalmanGain(state_size, kalman_gain, jacobian, pred_var);
+             
         }
     }
 }
@@ -166,8 +167,7 @@ void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_si
     pred_state[2 * color_num + 4][0] = y_coor;
 }
 
-void
-obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], int x_coor, int y_coor, float delta[2],
+void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor, float delta[2],
                           float exp_dis_ang[2], float *q) {
     delta[0] = x_coor - pred_state[0][0];
     delta[1] = y_coor - pred_state[1][0];
@@ -218,7 +218,7 @@ void computeKalmanGain(size_t state_size, float pred_var[state_size][state_size]
     matrix_multi(state_size, 2, 2, 2, k_tmp4, k_tmp3, kalman_gain);
 }
 
-void getPredictedStateFromKalmanGain(size_t state_size, int land_dist, int land_ang, float kalman_gain[state_size][2],
+void getPredictedStateFromKalmanGain(size_t state_size, float land_dist, float land_ang, float kalman_gain[state_size][2],
                                      float exp_dis_ang[2], float pred_state[state_size][1]) {
     float z_diff[2][1];
     z_diff[0][0] = land_dist - exp_dis_ang[0];
@@ -226,6 +226,12 @@ void getPredictedStateFromKalmanGain(size_t state_size, int land_dist, int land_
     float z_tmp[state_size][1];
     matrix_multi(state_size, 2, 2, 1, kalman_gain, z_diff, z_tmp);
     add_matrix(state_size, 1, pred_state, z_tmp, pred_state);
+    int i=0;
+    printf("Pred State");
+    for (i=0; i<state_size; i++){
+        printf("%f ", pred_state[i][0]);
+    }
+    
 }
 
 void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_size][2], float jacobian[2][state_size],
@@ -240,7 +246,7 @@ void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_si
     matrix_multi(state_size, 2, 2, state_size, kalman_gain, jacobian, ang_tmp);
     sub_matrix(state_size, state_size, iden_matrix_sxs, ang_tmp, ang_tmp2);
     float new_pred_var[state_size][state_size];
-    matrix_multi(state_size, state_size, state_size, state_size, ang_tmp2, pred_var, new_pred_var);
+    matrix_multi(state_size, state_size, state_size, state_size, ang_tmp2, pred_var, new_pred_var);    
     for (i = 0; i < state_size; i++) {
         for (j = 0; j < state_size; j++) {
             pred_var[i][j] = new_pred_var[i][j];

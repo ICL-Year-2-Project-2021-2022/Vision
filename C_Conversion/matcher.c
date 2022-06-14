@@ -1,5 +1,5 @@
 #include <math.h>
-#include "library/vec.h"
+#include "library/linalg.h"
 #include <stdio.h>
 
 
@@ -22,7 +22,7 @@ struct Angles_Param{
 struct Ray{
     float dir[3];
     float pos[3];
-    char color[16];
+    char *color;
 };
 
 struct Mid_Err{
