@@ -8,7 +8,8 @@ struct Kal_Res kalman_filter(size_t state_size, float old_state[state_size][1], 
     normalise_angles(state_size, old_state, displacement);
     printf("\nDisplacement:\n, %f \n", displacement[2][0]);
     struct Kal_Res predictionResult = predictionStep(state_size, old_state, var, displacement);
-    return correctionStep(state_size, predictionResult.new_state, predictionResult.new_var, land_list, seen_list);
+    correctionStep(state_size, old_state, predictionResult.new_state, predictionResult.new_var, land_list, seen_list);
+    return predictionResult;
 }
 
 void normalise_angles(size_t state_size, float old_state[state_size][1],float displacement[3][1]){
@@ -19,10 +20,10 @@ void normalise_angles(size_t state_size, float old_state[state_size][1],float di
     {
         displacement[2][0] = displacement[2][0] + M_PI*2;
     }
-    if (old_state[2][0]>M_PI*2){
+    if (old_state[2][0]+displacement[2][0]>M_PI*2){
         old_state[2][0] = old_state[2][0] - M_PI*2;
     }
-    if (old_state[2][0]<-M_PI*2){
+    if (old_state[2][0]+displacement[2][0]<-M_PI*2){
         old_state[2][0] = old_state[2][0] + M_PI*2;
     }
     
@@ -42,8 +43,7 @@ struct Kal_Res predictionStep(size_t state_size, float old_state[state_size][1],
     return result;
 }
 
-struct Kal_Res
-correctionStep(size_t state_size, float pred_state[state_size][1], float pred_var[state_size][state_size],
+void correctionStep(size_t state_size, float old_state[state_size][1], float pred_state[state_size][1], float pred_var[state_size][state_size],
                struct Landmarks land_list, struct Seen_Land_List seen_list) {
     // Correction steps in Kalman Filter
     //1. Identify i-th measurement at time t observes th4e landmark with index j (c =j)
@@ -69,8 +69,8 @@ correctionStep(size_t state_size, float pred_state[state_size][1], float pred_va
         } else {
             //obtain expected observation
             float delta[2], exp_dis_ang[2], q;
-            obtainExpectedObservation(state_size, pred_state, seen_list.item[seenLandmarkIndex].x_coor,
-                                      seen_list.item[seenLandmarkIndex].y_coor, delta, exp_dis_ang, &q);
+            int color_num = get_colornum(land_list.item[i].color);
+            obtainExpectedObservation(state_size, pred_state, old_state[2*color_num+3][0],old_state[2*color_num+4][0] , delta, exp_dis_ang, &q);
             printf("Expected Angle: %f\n" ,exp_dis_ang[1]);
             float jacobian[2][state_size];
             computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
@@ -172,24 +172,30 @@ void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_si
     seen_list.item[seen_list.size] = new_land;
     seen_list.size++;
     int color_num = 10;
-    if (strcmp(new_land.color, "red") == 0) {
+    color_num = get_colornum(new_land.color);
+    pred_state[2 * color_num + 3][0] = x_coor;
+    pred_state[2 * color_num + 4][0] = y_coor;
+}
+
+int get_colornum(char *color){
+    int color_num = 10;
+    if (strcmp(color, "red") == 0) {
         color_num = 0;
-    } else if (strcmp(new_land.color, "blue") == 0) {
+    } else if (strcmp(color, "blue") == 0) {
         color_num = 1;
-    } else if (strcmp(new_land.color, "green") == 0) {
+    } else if (strcmp(color, "green") == 0) {
         color_num = 2;
-    } else if (strcmp(new_land.color, "dark_green") == 0) {
+    } else if (strcmp(color, "dark_green") == 0) {
         color_num = 3;
-    } else if (strcmp(new_land.color, "pink") == 0) {
+    } else if (strcmp(color, "pink") == 0) {
         color_num = 4;
-    } else if (strcmp(new_land.color, "yellow") == 0) {
+    } else if (strcmp(color, "yellow") == 0) {
         color_num = 5;
     }
     if (color_num == 10) {
         fprintf(stderr, "Wrong Color Code\n");
     }
-    pred_state[2 * color_num + 3][0] = x_coor;
-    pred_state[2 * color_num + 4][0] = y_coor;
+    return color_num;
 }
 
 void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor,
@@ -293,37 +299,9 @@ void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_si
 }
 
 
-void test_combined_ObservePositiveAngDisplaceNegAng() {
-    float state[5][1] = {{0},
-                         {0},
-                         {M_PI_2},
-                         {600},
-                         {600}};
-    int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
-    float displacement[3][1] = {{400},
-                                {50},
-                                {-1.4464}};
-    struct Observations landmark1 = {.land_dist = 585.235, .land_ang =1.222, .color="red"};
-    struct Landmarks land_list;
-    land_list.size = 0;
-    land_list.item[0] = landmark1;
-    land_list.size++;
-    int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 610, .color = "red"};
-    struct Seen_Land_List seen_land_list;
-    seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
-    struct Kal_Res results;
-    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
-}
 
-void test_combined_ObserveNegAngDisplaceNegAng(){
+
+int test_combined_ObserveNegAngDisplaceNegAng(){
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
@@ -351,11 +329,18 @@ void test_combined_ObserveNegAngDisplaceNegAng(){
     seen_land_list.size++;
     struct Kal_Res results;
     results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
 }
 
 
 
-void test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
+int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
@@ -369,7 +354,7 @@ void test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
                        {0.1, 0.1, 0.1, 0.11, 0.1}};
     float displacement[3][1] = {{50},
                                 {400},
-                                {-6.407535}};
+                                {-6.407535}}; //-2pi
     struct Observations landmark1 = {.land_dist = 585.235, .land_ang =-1.0976, .color="red"};
     struct Landmarks land_list;
     land_list.size = 0;
@@ -383,13 +368,343 @@ void test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
     seen_land_list.size++;
     struct Kal_Res results;
     results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    for (int i; i<state_size; i++){
+        printf("\n%f\n", results.new_state[i][0]);
+    }
+    float precision= 0.2f; //accept 20% error
+    if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
 }
+
+
+int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise(){
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {600},
+                         {600}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.11, 0.1}};
+    float displacement[3][1] = {{50},
+                                {400},
+                                {6.15883}}; //+2pi
+    struct Observations landmark1 = {.land_dist = 585.235, .land_ang =-1.0976, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results;
+    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    for (int i; i<state_size; i++){
+        printf("\n%f\n", results.new_state[i][0]);
+    }
+    float precision= 0.2f; //accept 20% error
+    if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
+int test_combined_ObservePositiveAngDisplaceNegAng() {
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {600},
+                         {600}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float displacement[3][1] = {{400},
+                                {50},
+                                {-1.4464}};
+    struct Observations landmark1 = {.land_dist = 585.235, .land_ang =1.09767, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results;
+    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() {
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {600},
+                         {600}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float displacement[3][1] = {{400},
+                                {50},
+                                {4.836785}}; //+2pi
+    struct Observations landmark1 = {.land_dist = 585.235, .land_ang =1.09767, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results;
+    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
+
+int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() {
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {600},
+                         {600}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float displacement[3][1] = {{400},
+                                {50},
+                                {-7.729585307}}; //-2pi
+    struct Observations landmark1 = {.land_dist = 585.235, .land_ang =1.09767, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results;
+    results = kalman_filter(state_size, state, var, displacement, land_list, seen_land_list);
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
+
+int test_combined_2Steps_RightRight() {
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {595},
+                         {595}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.2, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float displacement_tmp[3][1] = {{300},
+                                {100},
+                                {-1.249045}}; 
+    struct Observations landmark1 = {.land_dist = 583, .land_ang =0.71, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 590, .y_coor = 590, .color = "red"}; //can remove coordinates
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results, results_tmp;
+    results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, seen_land_list);
+
+    float displacement[3][1] = {{250}, {200}, {0.3529}};
+    struct Observations landmark2 = {.land_dist = 302, .land_ang = 0.731, .color="red"};
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark2;
+    land_list2.size++;
+
+    results = kalman_filter(state_size, results_tmp.new_state, results_tmp.new_var, displacement, land_list2, seen_land_list);
+
+
+
+
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0]+ displacement_tmp[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0]+ displacement_tmp[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0]+ displacement_tmp[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0]+ displacement_tmp[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int test_combined_2Steps_RightUp() {
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {595},
+                         {595}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.2, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1},
+                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float displacement_tmp[3][1] = {{300},
+                                {100},
+                                {-1.249045}}; 
+    struct Observations landmark1 = {.land_dist = 583, .land_ang =0.71, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    int seen_len;
+    struct Seen_Land seen_land1 = {.x_coor = 590, .y_coor = 590, .color = "red"}; //can remove coordinates
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results, results_tmp;
+    results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, seen_land_list);
+
+    float displacement[3][1] = {{250}, {200}, {0.3529}};
+    struct Observations landmark2 = {.land_dist = 302, .land_ang = 0.731, .color="red"};
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark2;
+    land_list2.size++;
+
+    results = kalman_filter(state_size, results_tmp.new_state, results_tmp.new_var, displacement, land_list2, seen_land_list);
+
+
+
+
+    float precision= 0.2f; //accept 20% error
+     if (results.new_state[0][0]<(state[0][0]+displacement[0][0]+ displacement_tmp[0][0])*(1+precision) && results.new_state[0][0]>(state[0][0]+displacement[0][0]+ displacement_tmp[0][0])*(1-precision) ){
+        if (results.new_state[1][0]<(state[1][0]+displacement[1][0]+ displacement_tmp[1][0])*(1+precision) && results.new_state[1][0]>(state[1][0]+displacement[1][0]+ displacement_tmp[1][0])*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
+
+
 
 
 int main(){
     //test_combined1();
-    test_combined_ObservePositiveAngDisplaceNegAng();
-    test_combined_ObserveNegAngDisplaceNegAng();
-    test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement();
+    int testCounter = 0;
+    int successTestCounter = 0;
 
+    
+    if (test_combined_ObserveNegAngDisplaceNegAng() == 0) {
+        printf("test_combined_ObserveNegAngDisplaceNegAng - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObserveNegAngDisplaceNegAng - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement() == 0) {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() == 0) {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() - FAIL\n");
+    }
+    testCounter++;
+
+    
+    if (test_combined_ObservePositiveAngDisplaceNegAng() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - FAIL\n");
+    }
+    testCounter++;
+
+
+    if (test_combined_2Steps_RightRight() == 0) {
+        printf("test_combined_2Steps_RightRight - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_2Steps_RightRight - FAIL\n");
+    }
+    testCounter++;
+    
+    printf("Total tests: %d, passed: %d", testCounter, successTestCounter);
 }
