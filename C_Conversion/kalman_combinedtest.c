@@ -166,8 +166,6 @@ void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_si
             pred_state[1][0] + observation.land_dist * sin(observation.land_ang + pred_state[2][0]);
 //suppose we map a specific color into a specified location in matrix
     struct Seen_Land new_land;
-    new_land.x_coor = x_coor;
-    new_land.y_coor = y_coor;
     new_land.color = observation.color;
     seen_list.item[seen_list.size] = new_land;
     seen_list.size++;
@@ -322,7 +320,7 @@ int test_combined_ObserveNegAngDisplaceNegAng(){
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -361,7 +359,7 @@ int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -402,7 +400,7 @@ int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise(){
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -443,7 +441,7 @@ int test_combined_ObservePositiveAngDisplaceNegAng() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -480,7 +478,7 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -519,7 +517,7 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 600, .y_coor = 600, .color = "red"};
+    struct Seen_Land seen_land1 = {.color = "red"};
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -558,7 +556,7 @@ int test_combined_2Steps_RightRight() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 590, .y_coor = 590, .color = "red"}; //can remove coordinates
+    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
@@ -608,7 +606,7 @@ int test_combined_2Steps_RightUp() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.x_coor = 590, .y_coor = 590, .color = "red"}; //can remove coordinates
+    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
     seen_land_list.item[seen_land_list.size] = seen_land1;
