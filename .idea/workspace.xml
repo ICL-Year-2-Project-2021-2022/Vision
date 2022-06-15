@@ -17,7 +17,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="">
+    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="fix angle subtraction in obtainExpectedPosition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/kalman.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/kalman_test.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman_test.c" afterDir="false" />
@@ -82,22 +82,36 @@
       <updated>1655219364172</updated>
       <workItem from="1655219365478" duration="3721000" />
       <workItem from="1655223548201" duration="1995000" />
-      <workItem from="1655232018273" duration="5756000" />
+      <workItem from="1655232018273" duration="7771000" />
+      <workItem from="1655244828803" duration="1311000" />
+      <workItem from="1655281755938" duration="5316000" />
     </task>
+    <task id="LOCAL-00001" summary="fix angle subtraction in obtainExpectedPosition">
+      <created>1655237908667</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655237908667</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/C_Conversion/kalman.c</url>
-          <line>176</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix angle subtraction in obtainExpectedPosition" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix angle subtraction in obtainExpectedPosition" />
   </component>
 </project>

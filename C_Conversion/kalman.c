@@ -82,9 +82,6 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
 
     add_matrix(state_size, 1, old_state, displace_vector, pred_state);
     printf("Predicted State\n");
-    for (i=0; i<state_size; i++){
-        printf("%f ", pred_state[i][0]);
-    }
 }
 
 void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size],
@@ -172,6 +169,7 @@ void setPositionOfNeverSeenLandmark(size_t state_size, float pred_state[state_si
     pred_state[2 * color_num + 4][0] = y_coor;
 }
 
+// angles - same as in mathematics - rotation to the left - anti-clockwise -> positive angle, rotation to the right - clockwise -> negative angle
 void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor,
                                float delta[2], float exp_dis_ang[2], float *q) {
     delta[0] = x_coor - pred_state[0][0];
@@ -179,16 +177,12 @@ void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1
     *q = dotProduct(delta, delta, 2);
     exp_dis_ang[0] = sqrt(*q);
     float angleDueToDifference = atan2(delta[1], delta[0]);
-    if (angleDueToDifference > 0 && pred_state[2][0] > 0 || angleDueToDifference < 0 && pred_state[2][0] < 0) {
-        if (angleDueToDifference < pred_state[2][0]) {
-            exp_dis_ang[1] = abs(pred_state[2][0] - angleDueToDifference);
-        } else if (pred_state[2][0] < angleDueToDifference) {
-            exp_dis_ang[1] = abs(angleDueToDifference - pred_state[2][0]);
-        }
+    if ((angleDueToDifference > 0 && pred_state[2][0] > 0) && (angleDueToDifference < 0 && pred_state[2][0] < 0)) {
+        exp_dis_ang[1] = angleDueToDifference - pred_state[2][0];
     } else if (angleDueToDifference > pred_state[2][0]) {
-        exp_dis_ang[1] = angleDueToDifference + pred_state[2][0];
+        exp_dis_ang[1] = angleDueToDifference - pred_state[2][0];
     } else {
-        exp_dis_ang[1] = -(pred_state[2][0] + angleDueToDifference);
+        exp_dis_ang[1] = -(pred_state[2][0] - angleDueToDifference);
     }
 }
 

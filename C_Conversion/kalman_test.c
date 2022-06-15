@@ -9,7 +9,7 @@ int compareMatrices(size_t row, size_t col, float matrixA[row][col], float matri
         for (j = 0; j < col; j++) {
             if (matrixA[i][j] != matrixB[i][j]) {
                 result = -1;
-                printf("diff at [i = %d, j = %d] -> A is %f and B is %f", i, j, matrixA[i][j], matrixB[i][j]);
+                printf("diff at [i = %d, j = %d] -> A is %f and B is %f\n", i, j, matrixA[i][j], matrixB[i][j]);
             }
         }
     }
@@ -149,7 +149,7 @@ int obtainExpectedPositionOfTheLandmarkBasedOnXAndY() {
     obtainExpectedObservation(state_size, pred_state, 11, 1, delta, exp_dis_ang, &q);
     float expected_delta[2] = {10, 0};
     float expected_dis_ang[2] = {10, 0};
-    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang);
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
     return (matricesComparison == 0 && q == 100) ? 0 : -1;
 }
 
@@ -160,9 +160,81 @@ int obtainExpectedPositionOfTheLandmarkWithIncludedAngles() {
     float pred_state[state_size][1] = {{2}, {2}, {0.5f}, {11}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
     obtainExpectedObservation(state_size, pred_state, 11, 0, delta, exp_dis_ang, &q);
     float expected_delta[2] = {9, -2};
-    float expected_dis_ang[2] = {9.21954441f, -0.281331f};
-    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang);
+    float expected_dis_ang[2] = {9.21954441f, -0.718668938f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
     return (matricesComparison == 0 && q == 85) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithResultantNegativeAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{2}, {2}, {0.5f}, {10}, {1}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 10, 1, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {8, -1};
+    float expected_dis_ang[2] = {8.062257748f, -0.6243549945f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 65) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkNegativeGivingPositiveAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{1}, {1}, {-0.5f}, {8}, {0.5f}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 8, 0.5f, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {7, -0.5f};
+    float expected_dis_ang[2] = {7.017834424f, 0.42869252f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 49.25f) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkPositiveGivingPositiveAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{1}, {1}, {-0.5f}, {8}, {2.5f}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 8, 2.5f, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {7, 1.5f};
+    float expected_dis_ang[2] = {7.158910532f, 0.7110933332f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 51.25f) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingPositiveAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{1}, {1}, {0.25f}, {8}, {2.5f}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 8, 3, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {7, 2};
+    float expected_dis_ang[2] = {7.28010988f, 0.02829965901f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 53) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingNegativeAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{1}, {1}, {0.25f}, {8}, {1.5f}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 8, 1.5f, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {7, 0.5f};
+    float expected_dis_ang[2] = {7.017834424f, -0.1786925352f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 49.25) ? 0 : -1;
+}
+
+int obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndNegativeLandmarkGivingPositiveAngle() {
+    float delta[2];
+    float exp_dis_ang[2];
+    float q;
+    float pred_state[state_size][1] = {{1}, {1}, {-0.5f}, {8}, {0.5f}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    obtainExpectedObservation(state_size, pred_state, 8, 0.5f, delta, exp_dis_ang, &q);
+    float expected_delta[2] = {7, -0.5f};
+    float expected_dis_ang[2] = {7.017834424f, 0.42869252f};
+    int matricesComparison = compareMatrices(2, 1, delta, expected_delta) == 0 && compareMatrices(2, 1, exp_dis_ang, expected_dis_ang) == 0 ? 0 : -1;
+    return (matricesComparison == 0 && q == 49.25) ? 0 : -1;
 }
 
 int main() {
@@ -262,6 +334,54 @@ int main() {
         successTestCounter++;
     } else {
         printf("obtainExpectedPositionOfTheLandmarkWithIncludedAngles - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithResultantNegativeAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithResultantNegativeAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithResultantNegativeAngle - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkNegativeGivingPositiveAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkNegativeGivingPositiveAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkNegativeGivingPositiveAngle - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkPositiveGivingPositiveAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkPositiveGivingPositiveAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndLandmarkPositiveGivingPositiveAngle - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingPositiveAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingPositiveAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingPositiveAngle - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingNegativeAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingNegativeAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndPositiveLandmarkGivingNegativeAngle - FAIL\n");
+    }
+    testCounter++;
+
+    if (obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndNegativeLandmarkGivingPositiveAngle() == 0) {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndNegativeLandmarkGivingPositiveAngle - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("obtainExpectedPositionOfTheLandmarkWithNegativeRobotAngleAndNegativeLandmarkGivingPositiveAngle - FAIL\n");
     }
     testCounter++;
 
