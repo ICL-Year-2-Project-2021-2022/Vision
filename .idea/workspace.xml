@@ -17,10 +17,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="fix angle subtraction in obtainExpectedPosition">
+    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="add unit tests for the obtainExpectedObservation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/kalman.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/kalman.h" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/kalman_test.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman_test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/library/linalg.h" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/library/linalg.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,11 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">

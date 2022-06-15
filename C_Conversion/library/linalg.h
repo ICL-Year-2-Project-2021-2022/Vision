@@ -38,7 +38,7 @@ void solve2x2(float matrix[][2], float vector[], float dst[]) {
     float det = det_2x2(matrix);
     if (det == 0) {
         fprintf(stderr, "Determinant is 0!\n");
-        exit(-1);
+        //exit(-1);
     }
     float x1[2][2] = {{vector[0],    vector[1]},
                       {matrix[0][1], matrix[1][1]}};
@@ -199,7 +199,7 @@ void gaussian_inverse(size_t side, float matrix_A[][side], float dst[][side]) {
                         }
                         if (k + 1 == side) {
                             fprintf(stderr, "Error, Determanent is 0", 1);
-                            exit(-1);
+                            //exit(-1);
                         }
                     }
                     // int m=0;

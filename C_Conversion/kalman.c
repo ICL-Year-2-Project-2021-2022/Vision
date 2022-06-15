@@ -53,7 +53,7 @@ correctionStep(size_t state_size, float pred_state[state_size][1], float pred_va
                                       seen_list.item[seenLandmarkIndex].y_coor, delta, exp_dis_ang, &q);
 
             float jacobian[2][state_size];
-            computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
+            computeJacobianHMatrix(state_size, seenLandmarkIndex, q, delta, jacobian);
 
             float kalman_gain[state_size][2];
             computeKalmanGain(state_size, pred_var, jacobian, kalman_gain);
@@ -186,8 +186,7 @@ void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1
     }
 }
 
-void computeJacobianHMatrix(size_t state_size, float jacobian[2][state_size], int seenLandmarkIndex, float q,
-                            float delta[2]) {
+void computeJacobianHMatrix(size_t state_size, int seenLandmarkIndex, float q, float delta[2], float jacobian[2][state_size]) {
     int i, j;
     float F_matrix[5][state_size];//used to scale up the jacobian matrix
     for (i = 0; i < 5; i++) {
