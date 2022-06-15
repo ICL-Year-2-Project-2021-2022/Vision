@@ -165,6 +165,51 @@ int obtainExpectedPositionOfTheLandmarkWithIncludedAngles() {
     return (matricesComparison == 0 && q == 85) ? 0 : -1;
 }
 
+
+
+int testForEntireFilter1() {
+    float state[15][1] = {{0},
+                          {0},
+                          {0},
+                          {60},
+                          {60},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0},
+                          {0}};
+
+    float expected_var[state_size][state_size];
+    for (int i = 0; i < state_size; i++) {
+        for (int j = 0; j < state_size; j++) {
+            expected_var[j][i] = 0;
+        }
+    }
+    float displacement[3][1] = {{20},
+                                {30},
+                                {0.588}};
+    struct Observations landmark1 = {.land_dist = 84.85, .land_ang =0.7853, .color="red"};
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    struct Seen_Land seen_land1 = {.x_coor = 60, .y_coor = 61, .color = "red"};
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    seen_land_list.item[seen_land_list.size] = seen_land1;
+    seen_land_list.size++;
+    struct Kal_Res results = kalman_filter(state_size, state, expected_var, displacement, land_list, seen_land_list);
+//    for (int i = 0; i < state_size; i++) {
+//
+//        printf("%f", results.new_state[i][0]);
+//    }
+}
+
 int main() {
     int testCounter = 0;
     int successTestCounter = 0;
@@ -264,6 +309,16 @@ int main() {
         printf("obtainExpectedPositionOfTheLandmarkWithIncludedAngles - FAIL\n");
     }
     testCounter++;
+
+    if (testForEntireFilter1() == 0) {
+        printf("testForEntireFilter1 - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("testForEntireFilter1 - FAIL\n");
+    }
+    testCounter++;
+
+
 
     printf("Total tests: %d, passed: %d", testCounter, successTestCounter);
 }
