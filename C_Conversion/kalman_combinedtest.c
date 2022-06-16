@@ -43,13 +43,6 @@ struct Kal_Res predictionStep(size_t state_size, float old_state[state_size][1],
     //state_size = 15; //assume 6 aliens
     calculatePredictedState(state_size, old_state, displacement, result.new_state);
     calculatePredictedVar(state_size, displacement, var, result.new_var, control_noise);
-    printf("\nVariance Matrix:\n");
-    for (int i=0; i<state_size; i++){
-        for (int j=0; j<state_size; j++){
-            printf("%f ", result.new_var[i][j]);
-        }
-        printf("\n");
-    }
     return result;
 }
 
@@ -248,22 +241,28 @@ void computeJacobianHMatrix(size_t state_size, float jacobian[2][state_size], in
     matrix_multi(2, 5, 5, state_size, jacobian_low, F_matrix, jacobian);
 }
 
+//verfied
 void computeKalmanGain(size_t state_size, float pred_var[state_size][state_size], float jacobian[2][state_size],
                        float kalman_gain[state_size][2], float measure_noise[2][2]) {
     float trans_jacobian[state_size][2];
     //Compute Kalman Gain
+     
     transpose(2, state_size, jacobian, trans_jacobian);
-    float k_tmp1[2][state_size];
+    
+    float k_tmp1[2][state_size]; 
     matrix_multi(2, state_size, state_size, state_size, jacobian, pred_var, k_tmp1);
-    float k_tmp2[2][2], k_tmp3[2][2];
+    float k_tmp2[2][2];
     matrix_multi(2, state_size, state_size, 2, k_tmp1, trans_jacobian, k_tmp2);
     float k_tmp5[2][2];
+    float k_tmp3[2][2];
     add_matrix(2,2,k_tmp2, measure_noise, k_tmp5);
     gaussian_inverse(2, k_tmp5, k_tmp3);
     float k_tmp4[state_size][2];
     matrix_multi(state_size, state_size, state_size, 2, pred_var, trans_jacobian, k_tmp4);
+    
     //final kalman gain computed
     matrix_multi(state_size, 2, 2, 2, k_tmp4, k_tmp3, kalman_gain);
+    
 }
 
 void
@@ -276,7 +275,7 @@ getPredictedStateFromKalmanGain(size_t state_size, float land_dist, float land_a
     matrix_multi(state_size, 2, 2, 1, kalman_gain, z_diff, z_tmp);
     add_matrix(state_size, 1, pred_state, z_tmp, pred_state);
     int i = 0;
-    printf("New Pred State: ");
+    printf("New Pred State:\n ");
     for (i = 0; i < state_size; i++) {
         printf("%f ", pred_state[i][0]);
     }
@@ -294,13 +293,23 @@ void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_si
     }
     float ang_tmp[state_size][state_size], ang_tmp2[state_size][state_size];
     matrix_multi(state_size, 2, 2, state_size, kalman_gain, jacobian, ang_tmp);
+    
     sub_matrix(state_size, state_size, iden_matrix_sxs, ang_tmp, ang_tmp2);
+   
     float new_pred_var[state_size][state_size];
     matrix_multi(state_size, state_size, state_size, state_size, ang_tmp2, pred_var, new_pred_var);
     for (i = 0; i < state_size; i++) {
         for (j = 0; j < state_size; j++) {
             pred_var[i][j] = new_pred_var[i][j];
+            
         }
+    }
+    printf("New Pred Var:\n");
+    for (int i=0; i<5; i++){
+        for (int j=0; j<5; j++){
+            printf("%f ", pred_var[i][j]);
+        }
+        printf("\n");
     }
 }
 
@@ -357,11 +366,11 @@ int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement(){
                          {600},
                          {600}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.11, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement[3][1] = {{50},
                                 {400},
                                 {-6.407535}}; //-2pi
@@ -400,11 +409,11 @@ int test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise(){
                          {600},
                          {600}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.11, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement[3][1] = {{50},
                                 {400},
                                 {6.15883}}; //+2pi
@@ -443,11 +452,11 @@ int test_combined_ObservePositiveAngDisplaceNegAng() {
                          {600},
                          {600}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement[3][1] = {{400},
                                 {50},
                                 {-1.4464}};
@@ -482,11 +491,11 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() {
                          {600},
                          {600}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement[3][1] = {{400},
                                 {50},
                                 {4.836785}}; //+2pi
@@ -523,11 +532,11 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() {
                          {600},
                          {600}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement[3][1] = {{400},
                                 {50},
                                 {-7.729585307}}; //-2pi
@@ -564,11 +573,11 @@ int test_combined_2Steps_RightRight() {
                          {595},
                          {595}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.2, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -616,11 +625,11 @@ int test_combined_2Steps_RightUp() {
                          {595},
                          {595}};
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.2, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1},
-                       {0.1, 0.1, 0.1, 0.1, 0.1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -669,11 +678,11 @@ int test_combined_2Steps_RightUp_InaccurateMeasurements() {
                          {500},
                          {500}};//should be 600
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0,  FLT_MAX, 0},
-                       {0, 0, 0, 0, FLT_MAX}};  // this actually changes final measurements a lot
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};  // this actually changes final measurements a lot
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -721,11 +730,11 @@ int test_combined_3Steps_RightUpRight() {
                          {550},
                          {550}};//should be 600
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0.01, 0.01, 0.01, 0.01, 0.01},
-                       {0.01, 0.01, 0.01, 0.01, 0.01},
-                       {0.01, 0.01, 0.01, 0.01, 0.01},
-                       {0.01, 0.01, 0.01, 0.02, 0.01},
-                       {0.01, 0.01, 0.01, 0.01, 0.01}}; // this actually changes final measurements a lot
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}}; // this actually changes final measurements a lot
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -785,11 +794,11 @@ int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
                          {900},
                          {400}};//should be 600
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0,  FLT_MAX, 0},
-                       {0, 0, 0, 0, FLT_MAX}}; 
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -839,23 +848,23 @@ int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
 }
 
 int test_combined_4Steps_convergenceTest() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,0.2}};
+    float measure_noise[2][2] = {{1000,0},{0, 0.05}};
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
                          {0},
                          {0}};//should be 600
     int state_size = sizeof(state) / sizeof(state[0]);
-    float var[5][5] = {{0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0},
-                       {0, 0, 0,  FLT_MAX, 0},
-                       {0, 0, 0, 0, FLT_MAX}}; 
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 1000, 0},
+                       {0, 0, 0, 0, 1000}}; 
     float displacement_tmp[3][1] = {{200},
                                 {200},
                                 {-M_PI/4}}; 
-    struct Observations landmark1 = {.land_dist = 1900, .land_ang =0, .color="red"};//should be 1131, 0
+    struct Observations landmark1 = {.land_dist = 1200, .land_ang =0, .color="red"};//should be 1131, 0
     struct Landmarks land_list;
     land_list.size = 0;
     land_list.item[0] = landmark1;
@@ -867,7 +876,7 @@ int test_combined_4Steps_convergenceTest() {
 
 
     float displacement_tmp2[3][1] = {{200}, {-100}, {-1.2490}};
-    struct Observations landmark3 = {.land_dist = 1400, .land_ang = 1.2490, .color="red"}; //should be 1081, 1.249
+    struct Observations landmark3 = {.land_dist = 1100, .land_ang = 1.2490, .color="red"}; //should be 1081, 1.249
     struct Landmarks land_list3;
     land_list3.size = 0;
     land_list3.item[0] = landmark3;
@@ -887,7 +896,7 @@ int test_combined_4Steps_convergenceTest() {
 
 
     float displacement_tmp5[3][1] = {{250}, {100}, {-1.0906}};
-    struct Observations landmark2 = {.land_dist = 300, .land_ang = 0.4045, .color="red"}; //should be 424
+    struct Observations landmark2 = {.land_dist = 400, .land_ang = 0.4045, .color="red"}; //should be 424
     struct Landmarks land_list2;
     land_list2.size = 0;
     land_list2.item[0] = landmark2;
@@ -927,11 +936,11 @@ int testVariance(){
     //                    {0, 0, 0, 0, 0},
     //                    {0, 0, 0,  FLT_MAX, 0},
     //                    {0, 0, 0, 0, FLT_MAX}}; 
-    float var[5][5] = {{0.2, 1, 0, 0, 0},
-                       {0, 0, 1, 0, 0},
-                       {0, 0.5, 0, 0.1, 0},
-                       {0, 0, 0.5,  1, 0},
-                       {0, 0, 0, 0, 1}};
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 20, 0, 0, 0},
+                       {0, 0, 0.2, 0, 0},
+                       {0, 0, 0, 300, 0},
+                       {0, 0, 0, 0, 500}};
     float displacement_tmp[3][1] = {{200},
                                 {200},
                                 {-M_PI/4}}; 
@@ -965,96 +974,96 @@ int main(){
     }
     testCounter++;
 
-    // if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement() == 0) {
-    //     printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - FAIL\n");
-    // }
-    // testCounter++;
+    if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement() == 0) {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundDisplacement - FAIL\n");
+    }
+    testCounter++;
 
-    // if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() == 0) {
-    //     printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() - FAIL\n");
-    // }
-    // testCounter++;
-
-    
-    // if (test_combined_ObservePositiveAngDisplaceNegAng() == 0) {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng - FAIL\n");
-    // }
-    // testCounter++;
-
-    // if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() == 0) {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - FAIL\n");
-    // }
-    // testCounter++;
-
-    // if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() == 0) {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - FAIL\n");
-    // }
-    // testCounter++;
-
-
-    // if (test_combined_2Steps_RightRight() == 0) {
-    //     printf("test_combined_2Steps_RightRight - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_2Steps_RightRight - FAIL\n");
-    // }
-    // testCounter++;
-
-    // if (test_combined_2Steps_RightUp() == 0) {
-    //     printf("test_combined_2Steps_RightUp - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_2Steps_RightUp - FAIL\n");
-    // }
-    // testCounter++;
-
-    // if (test_combined_2Steps_RightUp_InaccurateMeasurements() == 0) {
-    //     printf("test_combined_2Steps_RightUp_InaccurateMeasurements - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_2Steps_RightUp_InaccurateMeasurements - FAIL\n");
-    // }
-    // testCounter++;
-
-    // if (test_combined_3Steps_RightUpRight() == 0) {
-    //     printf("test_combined_3Steps_RightUpRight - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_3Steps_RightUpRight - FAIL\n");
-    // }
-    // testCounter++;
-
-    //  if (test_combined_3Steps_RightUpRight_Covariance_Initlialisation() == 0) {
-    //     printf("test_combined_3Steps_RightUpRight_Covariance_Initlialisation - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_3Steps_RightUpRight_Covariance_Initlialisation - FAIL\n");
-    // }
-    // testCounter++;
+    if (test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() == 0) {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObserveNegAngDisplaceNegAng_WrapAroundAngAntiClockwise() - FAIL\n");
+    }
+    testCounter++;
 
     
-    // if (test_combined_4Steps_convergenceTest() == 0) {
-    //     printf("test_combined_4Steps_convergenceTest - PASS\n");
-    //     successTestCounter++;
-    // } else {
-    //     printf("test_combined_4Steps_convergenceTest - FAIL\n");
-    // }
-    // testCounter++;
+    if (test_combined_ObservePositiveAngDisplaceNegAng() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() == 0) {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - FAIL\n");
+    }
+    testCounter++;
+
+
+    if (test_combined_2Steps_RightRight() == 0) {
+        printf("test_combined_2Steps_RightRight - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_2Steps_RightRight - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_2Steps_RightUp() == 0) {
+        printf("test_combined_2Steps_RightUp - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_2Steps_RightUp - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_2Steps_RightUp_InaccurateMeasurements() == 0) {
+        printf("test_combined_2Steps_RightUp_InaccurateMeasurements - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_2Steps_RightUp_InaccurateMeasurements - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_3Steps_RightUpRight() == 0) {
+        printf("test_combined_3Steps_RightUpRight - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_3Steps_RightUpRight - FAIL\n");
+    }
+    testCounter++;
+
+     if (test_combined_3Steps_RightUpRight_Covariance_Initlialisation() == 0) {
+        printf("test_combined_3Steps_RightUpRight_Covariance_Initlialisation - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_3Steps_RightUpRight_Covariance_Initlialisation - FAIL\n");
+    }
+    testCounter++;
+
+    
+    if (test_combined_4Steps_convergenceTest() == 0) {
+        printf("test_combined_4Steps_convergenceTest - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_4Steps_convergenceTest - FAIL\n");
+    }
+    testCounter++;
     
     
     printf("Total tests: %d, passed: %d", testCounter, successTestCounter);
