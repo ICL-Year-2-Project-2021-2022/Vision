@@ -65,29 +65,31 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
                 seenLandmarkIndex = j;
             }
         }
+        float delta[2], exp_dis_ang[2], q;
+        int color_num = get_colornum(land_list.item[i].color);
         // if the landmark was not observed, then we calculate the position of it
         if (!seen) {
             //size_t state_size, float pred_state[state_size][1], struct Seen_Land_List seen_list, struct Observations observation, int itemIndex
             setPositionOfNeverSeenLandmark(state_size, pred_state, seen_list, land_list.item[i]);
+            obtainExpectedObservation(state_size, pred_state, pred_state[2*color_num+3][0], pred_state[2*color_num+4][0], delta, exp_dis_ang, &q);
         } else {
             //obtain expected observation
-            float delta[2], exp_dis_ang[2], q;
-            int color_num = get_colornum(land_list.item[i].color);
+            
             obtainExpectedObservation(state_size, pred_state, old_state[2*color_num+3][0],old_state[2*color_num+4][0] , delta, exp_dis_ang, &q);
-            printf("Expected Angle: %f\n" ,exp_dis_ang[1]);
-            float jacobian[2][state_size];
-            computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
+        }    
+        printf("Expected Angle: %f\n" ,exp_dis_ang[1]);
+        float jacobian[2][state_size];
+        computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
 
-            float kalman_gain[state_size][2];
-            computeKalmanGain(state_size, pred_var, jacobian, kalman_gain, measure_noise);
-
+        float kalman_gain[state_size][2];
+        computeKalmanGain(state_size, pred_var, jacobian, kalman_gain, measure_noise);
+        if (seen){
             getPredictedStateFromKalmanGain(state_size, land_list.item[seenLandmarkIndex].land_dist,
-                                            land_list.item[seenLandmarkIndex].land_ang, kalman_gain, exp_dis_ang,
-                                            pred_state);
-
-            getPredictedVarFromKalmanGain(state_size, kalman_gain, jacobian, pred_var);
-
+                                        land_list.item[seenLandmarkIndex].land_ang, kalman_gain, exp_dis_ang,
+                                        pred_state);
         }
+        getPredictedVarFromKalmanGain(state_size, kalman_gain, jacobian, pred_var);
+
     }
 }
 
@@ -305,8 +307,8 @@ void getPredictedVarFromKalmanGain(size_t state_size, float kalman_gain[state_si
         }
     }
     printf("New Pred Var:\n");
-    for (int i=0; i<5; i++){
-        for (int j=0; j<5; j++){
+    for (int i=0; i<state_size; i++){
+        for (int j=0; j<state_size; j++){
             printf("%f ", pred_var[i][j]);
         }
         printf("\n");
@@ -483,19 +485,19 @@ int test_combined_ObservePositiveAngDisplaceNegAng() {
 }
 
 int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{1600,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {600},
-                         {600}};
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}};
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement[3][1] = {{400},
                                 {50},
                                 {4.836785}}; //+2pi
@@ -524,19 +526,19 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundAnticlockwise() {
 
 
 int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{160,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {600},
-                         {600}};
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}};
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement[3][1] = {{400},
                                 {50},
                                 {-7.729585307}}; //-2pi
@@ -565,19 +567,19 @@ int test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise() {
 
 
 int test_combined_2Steps_RightRight() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{1600,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {595},
-                         {595}};
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}};
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -617,19 +619,19 @@ int test_combined_2Steps_RightRight() {
 }
 
 int test_combined_2Steps_RightUp() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{1600,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {595},
-                         {595}};
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
                        {0, 10, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}};
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -670,19 +672,19 @@ int test_combined_2Steps_RightUp() {
 
 
 int test_combined_2Steps_RightUp_InaccurateMeasurements() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{160000,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {500},
-                         {500}};//should be 600
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}};  // this actually changes final measurements a lot
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -722,19 +724,19 @@ int test_combined_2Steps_RightUp_InaccurateMeasurements() {
 }
 
 int test_combined_3Steps_RightUpRight() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{160000,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {550},
-                         {550}};//should be 600
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}}; // this actually changes final measurements a lot
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -786,19 +788,19 @@ int test_combined_3Steps_RightUpRight() {
 
 
 int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,5}};
-    float measure_noise[2][2] = {{10,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{160000,0},{0, 0.007}}; //around 40cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
-                         {900},
-                         {400}};//should be 600
+                         {0},
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
-                       {0, 20, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 300, 0},
-                       {0, 0, 0, 0, 500}}; 
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{300},
                                 {100},
                                 {-1.249045}}; 
@@ -848,23 +850,23 @@ int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
 }
 
 int test_combined_4Steps_convergenceTest() {
-    float control_noise[3][3] = {{5, 0, 0,},{0,5,0},{0,0,0.2}};
-    float measure_noise[2][2] = {{1000,0},{0, 0.05}};
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{160000,0},{0, 0.007}}; //around 20cm 5 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
                          {0},
-                         {0}};//should be 600
+                         {0}};
     int state_size = sizeof(state) / sizeof(state[0]);
     float var[5][5] = {{10, 0, 0, 0, 0},
                        {0, 10, 0, 0, 0},
-                       {0, 0, 0.2, 0, 0},
-                       {0, 0, 0, 1000, 0},
-                       {0, 0, 0, 0, 1000}}; 
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}}; 
     float displacement_tmp[3][1] = {{200},
                                 {200},
                                 {-M_PI/4}}; 
-    struct Observations landmark1 = {.land_dist = 1200, .land_ang =0, .color="red"};//should be 1131, 0
+    struct Observations landmark1 = {.land_dist = 1530, .land_ang =0, .color="red"};//should be 1131, 0
     struct Landmarks land_list;
     land_list.size = 0;
     land_list.item[0] = landmark1;
@@ -876,7 +878,7 @@ int test_combined_4Steps_convergenceTest() {
 
 
     float displacement_tmp2[3][1] = {{200}, {-100}, {-1.2490}};
-    struct Observations landmark3 = {.land_dist = 1100, .land_ang = 1.2490, .color="red"}; //should be 1081, 1.249
+    struct Observations landmark3 = {.land_dist = 1499, .land_ang = 1.2490, .color="red"}; //should be 1081, 1.249
     struct Landmarks land_list3;
     land_list3.size = 0;
     land_list3.item[0] = landmark3;
@@ -886,17 +888,17 @@ int test_combined_4Steps_convergenceTest() {
 
 
     float displacement_tmp4[3][1] = {{50}, {500}, {1.9351}};
-    struct Observations landmark4 = {.land_dist = 600, .land_ang = -0.842, .color="red"}; //should be 707, -0.842
+    struct Observations landmark4 = {.land_dist = 440, .land_ang = -0.842, .color="red"}; //should be 707, -0.842
     struct Landmarks land_list4;
     land_list4.size = 0;
     land_list4.item[0] = landmark4;
     land_list4.size++;
-    struct Kal_Res results_tmp4;
+    struct Kal_Res results_tmp4; 
     results_tmp4 = kalman_filter(state_size, results_tmp2.new_state, results_tmp2.new_var, displacement_tmp4, land_list4, &seen_land_list, control_noise, measure_noise);
 
 
     float displacement_tmp5[3][1] = {{250}, {100}, {-1.0906}};
-    struct Observations landmark2 = {.land_dist = 400, .land_ang = 0.4045, .color="red"}; //should be 424
+    struct Observations landmark2 = {.land_dist = 408, .land_ang = 0.4045, .color="red"}; //should be 424
     struct Landmarks land_list2;
     land_list2.size = 0;
     land_list2.item[0] = landmark2;
@@ -920,6 +922,76 @@ int test_combined_4Steps_convergenceTest() {
     }
     return -1;
     
+}
+
+
+
+int test_combined_4Steps_UpUp() {
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{250000,0},{0, 0.007}}; //around 50cm 5 degree error
+    float state[5][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {0},
+                         {0}};
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[5][5] = {{10, 0, 0, 0, 0},
+                       {0, 10, 0, 0, 0},
+                       {0, 0, 0.03, 0, 0},
+                       {0, 0, 0, 10000000, 0},
+                       {0, 0, 0, 0, 10000000}};
+                       
+                       
+    float displacement_tmp[3][1] = {{0}, {0}, {0}};
+    struct Observations landmark1 = {.land_dist = 2000, .land_ang =0, .color="red"};//should be 1131, 0
+    struct Landmarks land_list;
+    land_list.size = 0;
+    land_list.item[0] = landmark1;
+    land_list.size++;
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    struct Kal_Res results_tmp;
+    results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement_tmp2[3][1] = {{0}, {100}, {0}};
+    struct Observations landmark3 = {.land_dist = 620, .land_ang = 0.02, .color="red"}; //should be 1081, 1.249
+    struct Landmarks land_list3;
+    land_list3.size = 0;
+    land_list3.item[0] = landmark3;
+    land_list3.size++;
+    struct Kal_Res results_tmp2;
+    results_tmp2 = kalman_filter(state_size, results_tmp.new_state, results_tmp.new_var, displacement_tmp2, land_list3, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement_tmp4[3][1] = {{0}, {0}, {0}};
+    struct Observations landmark4 = {.land_dist = 1000, .land_ang = -0.07, .color="red"}; //should be 850, -0.842
+    struct Landmarks land_list4;
+    land_list4.size = 0;
+    land_list4.item[0] = landmark4;
+    land_list4.size++;
+    struct Kal_Res results_tmp4; 
+    results_tmp4 = kalman_filter(state_size, results_tmp2.new_state, results_tmp2.new_var, displacement_tmp4, land_list4, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement_tmp5[3][1] = {{0}, {150}, {0}};
+    struct Observations landmark2 = {.land_dist = 760, .land_ang = 0.02, .color="red"}; //should be 750
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark2;
+    land_list2.size++;
+    struct Kal_Res results;
+    results = kalman_filter(state_size, results_tmp4.new_state, results_tmp2.new_var, displacement_tmp5, land_list2, &seen_land_list, control_noise, measure_noise);
+
+
+
+    float precision= 0.2f; //accept 20% error
+    if (results.new_state[3][0]<200 && results.new_state[3][0]>-200 ){
+        if (results.new_state[4][0]<1000*(1+precision) && results.new_state[4][0]>1000*(1-precision) ){
+            return 0;
+        }
+    }
+    return -1;
 }
 
 int testVariance(){
@@ -1065,6 +1137,15 @@ int main(){
     }
     testCounter++;
     
+    if (test_combined_4Steps_UpUp() == 0) {
+        printf("test_combined_4Steps_UpUp - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_4Steps_UpUp - FAIL\n");
+    }
+    testCounter++;
+
+   
     
     printf("Total tests: %d, passed: %d", testCounter, successTestCounter);
 }
