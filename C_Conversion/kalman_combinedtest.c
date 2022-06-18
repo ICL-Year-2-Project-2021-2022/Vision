@@ -57,6 +57,9 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
     //6. Sub Kalman gain to obtain new state and variance matrix
     int i, j, k;
     for (i = 0; i < land_list.size; i++) {
+        if (land_list.item[i].land_dist>2000){
+            continue;
+        }
         bool seen = false;
         int seenLandmarkIndex = 0;
         for (j = 0; j < seen_list->size; j++) {
@@ -199,7 +202,7 @@ int get_colornum(char *color){
 
 void obtainExpectedObservation(size_t state_size, float pred_state[state_size][1], float x_coor, float y_coor,
                                float delta[2], float exp_dis_ang[2], float *q) {
-    delta[0] = x_coor - pred_state[0][0];
+    delta[0] = x_coor - pred_state[0][0]; 
     delta[1] = y_coor - pred_state[1][0];
     *q = dotProduct(delta, delta, 2); 
     exp_dis_ang[0] = sqrt(*q);
