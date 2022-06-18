@@ -13,12 +13,12 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "28";
          type = "int";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -26,7 +26,7 @@
    {
       datum baseAddress
       {
-         value = "266560";
+         value = "209600";
          type = "String";
       }
    }
@@ -34,15 +34,41 @@
    {
       datum _sortIndex
       {
-         value = "29";
+         value = "40";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element COLOR_FILTER_1.avalon_mm_slave
    {
       datum baseAddress
       {
-         value = "266304";
+         value = "209216";
+         type = "String";
+      }
+   }
+   element COLOR_FILTER_2
+   {
+      datum _sortIndex
+      {
+         value = "44";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element COLOR_FILTER_2.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "209088";
          type = "String";
       }
    }
@@ -50,15 +76,20 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "31";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element COM_COUNTER_0.avalon_mm_slave
    {
       datum baseAddress
       {
-         value = "266496";
+         value = "209536";
          type = "String";
       }
    }
@@ -66,15 +97,62 @@
    {
       datum _sortIndex
       {
-         value = "31";
+         value = "42";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element COM_COUNTER_1.avalon_mm_slave
    {
       datum baseAddress
       {
-         value = "266368";
+         value = "209152";
+         type = "String";
+      }
+   }
+   element COM_COUNTER_2
+   {
+      datum _sortIndex
+      {
+         value = "46";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element COM_COUNTER_2.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "209024";
+         type = "String";
+      }
+   }
+   element EDGE_BINS_0
+   {
+      datum _sortIndex
+      {
+         value = "32";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element EDGE_BINS_0.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "208896";
          type = "String";
       }
    }
@@ -82,23 +160,120 @@
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "35";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
-   element LINEAR_BLUR_0
+   element OBSTACLE_DIST_0
    {
       datum _sortIndex
       {
-         value = "30";
+         value = "33";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
-   element LINEAR_BLUR_0.avalon_mm_slave
+   element OBSTACLE_DIST_0.avalon_mm_slave
    {
       datum baseAddress
       {
-         value = "266432";
+         value = "209280";
+         type = "String";
+      }
+   }
+   element PIXEL_BUFFER_0
+   {
+      datum _sortIndex
+      {
+         value = "24";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element PIXEL_BUFFER_0.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element PIXEL_GRABBER_HSV
+   {
+      datum _sortIndex
+      {
+         value = "26";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element PIXEL_GRABBER_HSV.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "209344";
+         type = "String";
+      }
+   }
+   element PIXEL_GRABBER_RGB
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element PIXEL_GRABBER_RGB.avalon_mm_slave
+   {
+      datum baseAddress
+      {
+         value = "209408";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
          type = "String";
       }
    }
@@ -155,14 +330,6 @@
       datum _originalDeviceFamily
       {
          value = "Cyclone V";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
          type = "String";
       }
    }
@@ -194,36 +361,59 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "25";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element RGB_TO_HSV.avalon_mm_slave
    {
       datum baseAddress
       {
-         value = "266240";
+         value = "209472";
          type = "String";
       }
    }
-   element ST_TERMINATOR_0
+   element ST_TERMINATOR_1
    {
       datum _sortIndex
       {
-         value = "32";
+         value = "43";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element ST_TERMINATOR_2
+   {
+      datum _sortIndex
+      {
+         value = "47";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element TERASIC_AUTO_FOCUS_0
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "21";
          type = "int";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -231,7 +421,7 @@
    {
       datum baseAddress
       {
-         value = "266688";
+         value = "209792";
          type = "String";
       }
    }
@@ -239,33 +429,25 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "18";
          type = "int";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
-      }
-   }
-   element alt_vip_cl_2dfir_0
-   {
-      datum _sortIndex
-      {
-         value = "22";
-         type = "int";
       }
    }
    element alt_vip_itc_0
    {
       datum _sortIndex
       {
-         value = "28";
+         value = "39";
          type = "int";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -273,17 +455,17 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "20";
          type = "int";
       }
       datum megawizard_uipreferences
       {
-         value = "{output_directory=C:\\Users\\micha\\Desktop\\Vision\\DE10_CAM_VISION, output_language=VERILOG}";
+         value = "{}";
          type = "String";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -291,7 +473,7 @@
    {
       datum _sortIndex
       {
-         value = "33";
+         value = "49";
          type = "int";
       }
       datum sopceditor_expanded
@@ -304,7 +486,7 @@
    {
       datum baseAddress
       {
-         value = "266880";
+         value = "210048";
          type = "String";
       }
    }
@@ -312,7 +494,7 @@
    {
       datum _sortIndex
       {
-         value = "34";
+         value = "48";
          type = "int";
       }
    }
@@ -320,7 +502,23 @@
    {
       datum baseAddress
       {
-         value = "266864";
+         value = "210032";
+         type = "String";
+      }
+   }
+   element altpll_2
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element altpll_2.pll_slave
+   {
+      datum baseAddress
+      {
+         value = "209904";
          type = "String";
       }
    }
@@ -331,44 +529,174 @@
          value = "0";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
    }
    element data_format_adapter_0
    {
       datum _sortIndex
       {
-         value = "27";
+         value = "38";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element dc_fifo_0
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "22";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element dc_fifo_1
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "37";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element eop_pio
+   {
+      datum _sortIndex
+      {
+         value = "36";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element eop_pio.s1
+   {
+      datum baseAddress
+      {
+         value = "209920";
+         type = "String";
+      }
+   }
+   element fir_0_0
+   {
+      datum _sortIndex
+      {
+         value = "29";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element fir_0_0.control
+   {
+      datum baseAddress
+      {
+         value = "206848";
+         type = "String";
+      }
+   }
+   element fir_0_1
+   {
+      datum _sortIndex
+      {
+         value = "30";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element fir_0_1.control
+   {
+      datum baseAddress
+      {
+         value = "202752";
+         type = "String";
+      }
+   }
+   element fir_1
+   {
+      datum _sortIndex
+      {
+         value = "41";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element fir_1.control
+   {
+      datum baseAddress
+      {
+         value = "200704";
+         type = "String";
+      }
+   }
+   element fir_2
+   {
+      datum _sortIndex
+      {
+         value = "45";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element fir_2.control
+   {
+      datum baseAddress
+      {
+         value = "198656";
+         type = "String";
       }
    }
    element i2c_opencores_camera
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "8";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element i2c_opencores_camera.avalon_slave_0
    {
       datum baseAddress
       {
-         value = "266720";
+         value = "209824";
          type = "String";
       }
    }
@@ -376,15 +704,20 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "7";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element i2c_opencores_mipi.avalon_slave_0
    {
       datum baseAddress
       {
-         value = "266752";
+         value = "209856";
          type = "String";
       }
    }
@@ -392,15 +725,20 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "5";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element jtag_uart.avalon_jtag_slave
    {
       datum baseAddress
       {
-         value = "266904";
+         value = "210072";
          type = "String";
       }
    }
@@ -408,15 +746,20 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "11";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element key.s1
    {
       datum baseAddress
       {
-         value = "266816";
+         value = "209984";
          type = "String";
       }
    }
@@ -424,15 +767,20 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "9";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element led.s1
    {
       datum baseAddress
       {
-         value = "266848";
+         value = "210016";
          type = "String";
       }
    }
@@ -440,15 +788,20 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "13";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element mipi_pwdn_n.s1
    {
       datum baseAddress
       {
-         value = "266784";
+         value = "209952";
          type = "String";
       }
    }
@@ -456,15 +809,20 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "12";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element mipi_reset_n.s1
    {
       datum baseAddress
       {
-         value = "266800";
+         value = "209968";
          type = "String";
       }
    }
@@ -472,15 +830,20 @@
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
       }
    }
    element nios2_gen2.debug_mem_slave
    {
       datum baseAddress
       {
-         value = "264192";
+         value = "204800";
          type = "String";
       }
    }
@@ -488,8 +851,13 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "4";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element onchip_memory2_0.s1
@@ -500,16 +868,37 @@
          type = "String";
       }
    }
-   element sdram
+   element pio_0
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "3";
          type = "int";
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element pio_0.s1
+   {
+      datum baseAddress
+      {
+         value = "209936";
+         type = "String";
+      }
+   }
+   element sdram
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
          type = "boolean";
       }
    }
@@ -525,31 +914,46 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "34";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element st_splitter_1
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "27";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element sw
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "10";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element sw.s1
    {
       datum baseAddress
       {
-         value = "266832";
+         value = "210000";
          type = "String";
       }
    }
@@ -557,15 +961,20 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "14";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element sysid_qsys.control_slave
    {
       datum baseAddress
       {
-         value = "266896";
+         value = "210064";
          type = "String";
       }
    }
@@ -573,15 +982,62 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "15";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element timer.s1
    {
       datum baseAddress
       {
-         value = "266656";
+         value = "209760";
+         type = "String";
+      }
+   }
+   element timer_0
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element timer_0.s1
+   {
+      datum baseAddress
+      {
+         value = "209696";
+         type = "String";
+      }
+   }
+   element timer_1
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element timer_1.s1
+   {
+      datum baseAddress
+      {
+         value = "209664";
          type = "String";
       }
    }
@@ -589,15 +1045,20 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "6";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element uart_0.s1
    {
       datum baseAddress
       {
-         value = "266624";
+         value = "209728";
          type = "String";
       }
    }
@@ -656,6 +1117,16 @@
  <interface name="clk_vga" internal="altpll_0.c3" type="clock" dir="start" />
  <interface name="d8m_xclkin" internal="altpll_0.c4" type="clock" dir="start" />
  <interface
+   name="eop_irq"
+   internal="EOP_IRQ_0.conduit_end"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="eop_pio"
+   internal="eop_pio.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="i2c_opencores_camera_export"
    internal="i2c_opencores_camera.export"
    type="conduit"
@@ -693,6 +1164,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="switch"
+   internal="pio_0.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="terasic_auto_focus_0_conduit"
    internal="TERASIC_AUTO_FOCUS_0.Conduit"
    type="conduit"
@@ -709,20 +1185,53 @@
    dir="end" />
  <module name="COLOR_FILTER_0" kind="COLOR_FILTER" version="1.0" enabled="1" />
  <module name="COLOR_FILTER_1" kind="COLOR_FILTER" version="1.0" enabled="1" />
- <module name="COM_COUNTER_0" kind="COM_COUNTER" version="1.1" enabled="1">
+ <module name="COLOR_FILTER_2" kind="COLOR_FILTER" version="1.0" enabled="1" />
+ <module name="COM_COUNTER_0" kind="COM_COUNTER" version="1.3" enabled="1">
   <parameter name="IMAGE_H" value="480" />
   <parameter name="IMAGE_W" value="640" />
  </module>
- <module name="COM_COUNTER_1" kind="COM_COUNTER" version="1.1" enabled="1">
+ <module name="COM_COUNTER_1" kind="COM_COUNTER" version="1.3" enabled="1">
   <parameter name="IMAGE_H" value="480" />
   <parameter name="IMAGE_W" value="640" />
  </module>
- <module name="EOP_IRQ_0" kind="EOP_IRQ" version="1.1" enabled="1" />
- <module name="LINEAR_BLUR_0" kind="LINEAR_BLUR" version="1.1" enabled="1">
-  <parameter name="length" value="4" />
+ <module name="COM_COUNTER_2" kind="COM_COUNTER" version="1.3" enabled="1">
+  <parameter name="IMAGE_H" value="480" />
+  <parameter name="IMAGE_W" value="640" />
+ </module>
+ <module name="EDGE_BINS_0" kind="EDGE_BINS" version="1.0" enabled="1">
+  <parameter name="IMAGE_H" value="480" />
+  <parameter name="IMAGE_W" value="640" />
+ </module>
+ <module name="EOP_IRQ_0" kind="EOP_IRQ" version="1.6" enabled="1" />
+ <module name="OBSTACLE_DIST_0" kind="OBSTACLE_DIST" version="1.0" enabled="1">
+  <parameter name="height" value="480" />
+  <parameter name="width" value="640" />
+ </module>
+ <module name="PIXEL_BUFFER_0" kind="PIXEL_BUFFER" version="2.1" enabled="1">
+  <parameter name="clog_sub_factor" value="3" />
+  <parameter name="height" value="480" />
+  <parameter name="sub_factor" value="8" />
+  <parameter name="width" value="640" />
+ </module>
+ <module
+   name="PIXEL_GRABBER_HSV"
+   kind="PIXEL_GRABBER"
+   version="1.1"
+   enabled="1">
+  <parameter name="height" value="480" />
+  <parameter name="width" value="640" />
+ </module>
+ <module
+   name="PIXEL_GRABBER_RGB"
+   kind="PIXEL_GRABBER"
+   version="1.1"
+   enabled="1">
+  <parameter name="height" value="480" />
+  <parameter name="width" value="640" />
  </module>
  <module name="RGB_TO_HSV" kind="RGB_TO_HSV" version="4.0" enabled="1" />
- <module name="ST_TERMINATOR_0" kind="ST_TERMINATOR" version="1.0" enabled="1" />
+ <module name="ST_TERMINATOR_1" kind="ST_TERMINATOR" version="1.0" enabled="1" />
+ <module name="ST_TERMINATOR_2" kind="ST_TERMINATOR" version="1.0" enabled="1" />
  <module
    name="TERASIC_AUTO_FOCUS_0"
    kind="TERASIC_AUTO_FOCUS"
@@ -738,50 +1247,6 @@
    enabled="1">
   <parameter name="VIDEO_H" value="480" />
   <parameter name="VIDEO_W" value="640" />
- </module>
- <module
-   name="alt_vip_cl_2dfir_0"
-   kind="alt_vip_cl_2dfir"
-   version="18.1"
-   enabled="1">
-  <parameter name="ALGORITHM_NAME" value="STANDARD_FIR" />
-  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
-  <parameter name="BITS_PER_SYMBOL_IN" value="8" />
-  <parameter name="BITS_PER_SYMBOL_OUT" value="8" />
-  <parameter name="COEFF_FRACTION_BITS" value="7" />
-  <parameter name="COEFF_INTEGER_BITS" value="1" />
-  <parameter name="COEFF_SIGNED" value="0" />
-  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
-  <parameter name="DEFAULT_LOWER_BLUR" value="0" />
-  <parameter name="DEFAULT_UPPER_BLUR" value="15" />
-  <parameter name="DIAG_SYMMETRIC" value="1" />
-  <parameter name="DO_MIRRORING" value="1" />
-  <parameter name="ENABLE_WIDE_BLUR_SHARPEN" value="1" />
-  <parameter name="EXTRA_PIPELINING" value="1" />
-  <parameter name="FAMILY" value="MAX 10" />
-  <parameter name="FIXED_COEFF_FILE">C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\ip\coefficients.csv</parameter>
-  <parameter name="H_SYMMETRIC" value="1" />
-  <parameter name="H_TAPS" value="3" />
-  <parameter name="INPUT_GUARD_BANDS_ENABLE" value="0" />
-  <parameter name="INPUT_GUARD_BAND_LOWER" value="0" />
-  <parameter name="INPUT_GUARD_BAND_UPPER" value="255" />
-  <parameter name="IS_422" value="0" />
-  <parameter name="LIMITED_READBACK" value="0" />
-  <parameter name="MAX_HEIGHT" value="480" />
-  <parameter name="MAX_WIDTH" value="640" />
-  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
-  <parameter name="NO_BLANKING" value="0" />
-  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
-  <parameter name="OUTPUT_GUARD_BANDS_ENABLE" value="0" />
-  <parameter name="OUTPUT_GUARD_BAND_LOWER" value="0" />
-  <parameter name="OUTPUT_GUARD_BAND_UPPER" value="255" />
-  <parameter name="PIXELS_IN_PARALLEL" value="1" />
-  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
-  <parameter name="RUNTIME_CONTROL" value="0" />
-  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
-  <parameter name="V_SYMMETRIC" value="1" />
-  <parameter name="V_TAPS" value="3" />
  </module>
  <module name="alt_vip_itc_0" kind="alt_vip_itc" version="14.0" enabled="1">
   <parameter name="ACCEPT_COLOURS_IN_SEQ" value="0" />
@@ -821,7 +1286,7 @@
  </module>
  <module name="alt_vip_vfb_0" kind="alt_vip_vfb" version="13.1" enabled="1">
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
-  <parameter name="PARAMETERISATION"><![CDATA[<frameBufferParams><VFB_NAME>MyFrameBuffer</VFB_NAME><VFB_MAX_WIDTH>640</VFB_MAX_WIDTH><VFB_MAX_HEIGHT>480</VFB_MAX_HEIGHT><VFB_BPS>8</VFB_BPS><VFB_CHANNELS_IN_SEQ>1</VFB_CHANNELS_IN_SEQ><VFB_CHANNELS_IN_PAR>3</VFB_CHANNELS_IN_PAR><VFB_WRITER_RUNTIME_CONTROL>false</VFB_WRITER_RUNTIME_CONTROL><VFB_DROP_FRAMES>true</VFB_DROP_FRAMES><VFB_READER_RUNTIME_CONTROL>0</VFB_READER_RUNTIME_CONTROL><VFB_REPEAT_FRAMES>true</VFB_REPEAT_FRAMES><VFB_FRAMEBUFFERS_ADDR>00000000</VFB_FRAMEBUFFERS_ADDR><VFB_MEM_PORT_WIDTH>32</VFB_MEM_PORT_WIDTH><VFB_MEM_MASTERS_USE_SEPARATE_CLOCK>false</VFB_MEM_MASTERS_USE_SEPARATE_CLOCK><VFB_RDATA_FIFO_DEPTH>1024</VFB_RDATA_FIFO_DEPTH><VFB_RDATA_BURST_TARGET>4</VFB_RDATA_BURST_TARGET><VFB_WDATA_FIFO_DEPTH>1024</VFB_WDATA_FIFO_DEPTH><VFB_WDATA_BURST_TARGET>4</VFB_WDATA_BURST_TARGET><VFB_MAX_NUMBER_PACKETS>1</VFB_MAX_NUMBER_PACKETS><VFB_MAX_SYMBOLS_IN_PACKET>10</VFB_MAX_SYMBOLS_IN_PACKET><VFB_INTERLACED_SUPPORT>0</VFB_INTERLACED_SUPPORT><VFB_CONTROLLED_DROP_REPEAT>0</VFB_CONTROLLED_DROP_REPEAT><VFB_BURST_ALIGNMENT>0</VFB_BURST_ALIGNMENT><VFB_DROP_INVALID_FIELDS>false</VFB_DROP_INVALID_FIELDS></frameBufferParams>]]></parameter>
+  <parameter name="PARAMETERISATION"><![CDATA[<frameBufferParams><VFB_NAME>MyFrameBuffer</VFB_NAME><VFB_MAX_WIDTH>640</VFB_MAX_WIDTH><VFB_MAX_HEIGHT>480</VFB_MAX_HEIGHT><VFB_BPS>8</VFB_BPS><VFB_CHANNELS_IN_SEQ>1</VFB_CHANNELS_IN_SEQ><VFB_CHANNELS_IN_PAR>3</VFB_CHANNELS_IN_PAR><VFB_WRITER_RUNTIME_CONTROL>false</VFB_WRITER_RUNTIME_CONTROL><VFB_DROP_FRAMES>true</VFB_DROP_FRAMES><VFB_READER_RUNTIME_CONTROL>0</VFB_READER_RUNTIME_CONTROL><VFB_REPEAT_FRAMES>true</VFB_REPEAT_FRAMES><VFB_FRAMEBUFFERS_ADDR>00000000</VFB_FRAMEBUFFERS_ADDR><VFB_MEM_PORT_WIDTH>32</VFB_MEM_PORT_WIDTH><VFB_MEM_MASTERS_USE_SEPARATE_CLOCK>false</VFB_MEM_MASTERS_USE_SEPARATE_CLOCK><VFB_RDATA_FIFO_DEPTH>512</VFB_RDATA_FIFO_DEPTH><VFB_RDATA_BURST_TARGET>4</VFB_RDATA_BURST_TARGET><VFB_WDATA_FIFO_DEPTH>512</VFB_WDATA_FIFO_DEPTH><VFB_WDATA_BURST_TARGET>4</VFB_WDATA_BURST_TARGET><VFB_MAX_NUMBER_PACKETS>1</VFB_MAX_NUMBER_PACKETS><VFB_MAX_SYMBOLS_IN_PACKET>10</VFB_MAX_SYMBOLS_IN_PACKET><VFB_INTERLACED_SUPPORT>0</VFB_INTERLACED_SUPPORT><VFB_CONTROLLED_DROP_REPEAT>0</VFB_CONTROLLED_DROP_REPEAT><VFB_BURST_ALIGNMENT>0</VFB_BURST_ALIGNMENT><VFB_DROP_INVALID_FIELDS>false</VFB_DROP_INVALID_FIELDS></frameBufferParams>]]></parameter>
  </module>
  <module name="altpll_0" kind="altpll" version="18.1" enabled="1">
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
@@ -998,6 +1463,173 @@
   <parameter name="BANDWIDTH_TYPE" value="AUTO" />
   <parameter name="CLK0_DIVIDE_BY" value="5" />
   <parameter name="CLK0_DUTY_CYCLE" value="50" />
+  <parameter name="CLK0_MULTIPLY_BY" value="9" />
+  <parameter name="CLK0_PHASE_SHIFT" value="0" />
+  <parameter name="CLK1_DIVIDE_BY" value="" />
+  <parameter name="CLK1_DUTY_CYCLE" value="" />
+  <parameter name="CLK1_MULTIPLY_BY" value="" />
+  <parameter name="CLK1_PHASE_SHIFT" value="" />
+  <parameter name="CLK2_DIVIDE_BY" value="" />
+  <parameter name="CLK2_DUTY_CYCLE" value="" />
+  <parameter name="CLK2_MULTIPLY_BY" value="" />
+  <parameter name="CLK2_PHASE_SHIFT" value="" />
+  <parameter name="CLK3_DIVIDE_BY" value="" />
+  <parameter name="CLK3_DUTY_CYCLE" value="" />
+  <parameter name="CLK3_MULTIPLY_BY" value="" />
+  <parameter name="CLK3_PHASE_SHIFT" value="" />
+  <parameter name="CLK4_DIVIDE_BY" value="" />
+  <parameter name="CLK4_DUTY_CYCLE" value="" />
+  <parameter name="CLK4_MULTIPLY_BY" value="" />
+  <parameter name="CLK4_PHASE_SHIFT" value="" />
+  <parameter name="CLK5_DIVIDE_BY" value="" />
+  <parameter name="CLK5_DUTY_CYCLE" value="" />
+  <parameter name="CLK5_MULTIPLY_BY" value="" />
+  <parameter name="CLK5_PHASE_SHIFT" value="" />
+  <parameter name="CLK6_DIVIDE_BY" value="" />
+  <parameter name="CLK6_DUTY_CYCLE" value="" />
+  <parameter name="CLK6_MULTIPLY_BY" value="" />
+  <parameter name="CLK6_PHASE_SHIFT" value="" />
+  <parameter name="CLK7_DIVIDE_BY" value="" />
+  <parameter name="CLK7_DUTY_CYCLE" value="" />
+  <parameter name="CLK7_MULTIPLY_BY" value="" />
+  <parameter name="CLK7_PHASE_SHIFT" value="" />
+  <parameter name="CLK8_DIVIDE_BY" value="" />
+  <parameter name="CLK8_DUTY_CYCLE" value="" />
+  <parameter name="CLK8_MULTIPLY_BY" value="" />
+  <parameter name="CLK8_PHASE_SHIFT" value="" />
+  <parameter name="CLK9_DIVIDE_BY" value="" />
+  <parameter name="CLK9_DUTY_CYCLE" value="" />
+  <parameter name="CLK9_MULTIPLY_BY" value="" />
+  <parameter name="CLK9_PHASE_SHIFT" value="" />
+  <parameter name="COMPENSATE_CLOCK" value="CLK0" />
+  <parameter name="DOWN_SPREAD" value="" />
+  <parameter name="DPA_DIVIDER" value="" />
+  <parameter name="DPA_DIVIDE_BY" value="" />
+  <parameter name="DPA_MULTIPLY_BY" value="" />
+  <parameter name="ENABLE_SWITCH_OVER_COUNTER" value="" />
+  <parameter name="EXTCLK0_DIVIDE_BY" value="" />
+  <parameter name="EXTCLK0_DUTY_CYCLE" value="" />
+  <parameter name="EXTCLK0_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK0_PHASE_SHIFT" value="" />
+  <parameter name="EXTCLK1_DIVIDE_BY" value="" />
+  <parameter name="EXTCLK1_DUTY_CYCLE" value="" />
+  <parameter name="EXTCLK1_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK1_PHASE_SHIFT" value="" />
+  <parameter name="EXTCLK2_DIVIDE_BY" value="" />
+  <parameter name="EXTCLK2_DUTY_CYCLE" value="" />
+  <parameter name="EXTCLK2_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK2_PHASE_SHIFT" value="" />
+  <parameter name="EXTCLK3_DIVIDE_BY" value="" />
+  <parameter name="EXTCLK3_DUTY_CYCLE" value="" />
+  <parameter name="EXTCLK3_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK3_PHASE_SHIFT" value="" />
+  <parameter name="FEEDBACK_SOURCE" value="" />
+  <parameter name="GATE_LOCK_COUNTER" value="" />
+  <parameter name="GATE_LOCK_SIGNAL" value="" />
+  <parameter name="HIDDEN_CONSTANTS">CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 9 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_UNUSED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {MAX 10} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 5 CT#PORT_LOCKED PORT_UNUSED</parameter>
+  <parameter name="HIDDEN_CUSTOM_ELABORATION">altpll_avalon_elaboration</parameter>
+  <parameter name="HIDDEN_CUSTOM_POST_EDIT">altpll_avalon_post_edit</parameter>
+  <parameter name="HIDDEN_IF_PORTS">IF#phasecounterselect {input 3} IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#phaseupdown {input 0} IF#scandone {output 0} IF#readdata {output 32} IF#write {input 0} IF#scanclk {input 0} IF#phasedone {output 0} IF#c4 {output 0} IF#c3 {output 0} IF#c2 {output 0} IF#address {input 2} IF#c1 {output 0} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0} IF#scanclkena {input 0} IF#scandataout {output 0} IF#configupdate {input 0} IF#phasestep {input 0} IF#scandata {input 0}</parameter>
+  <parameter name="HIDDEN_IS_FIRST_EDIT" value="0" />
+  <parameter name="HIDDEN_IS_NUMERIC">IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1</parameter>
+  <parameter name="HIDDEN_MF_PORTS">MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1</parameter>
+  <parameter name="HIDDEN_PRIVATES">PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 90.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 90.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK4 0 PT#STICKY_CLK3 0 PT#STICKY_CLK2 0 PT#STICKY_CLK1 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {MAX 10} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1655028613689119.mif PT#ACTIVECLK_CHECK 0</parameter>
+  <parameter name="HIDDEN_USED_PORTS">UP#locked used UP#c0 used UP#areset used UP#inclk0 used</parameter>
+  <parameter name="INCLK0_INPUT_FREQUENCY" value="20000" />
+  <parameter name="INCLK1_INPUT_FREQUENCY" value="" />
+  <parameter name="INTENDED_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="INVALID_LOCK_MULTIPLIER" value="" />
+  <parameter name="LOCK_HIGH" value="" />
+  <parameter name="LOCK_LOW" value="" />
+  <parameter name="OPERATION_MODE" value="NORMAL" />
+  <parameter name="PLL_TYPE" value="AUTO" />
+  <parameter name="PORT_ACTIVECLOCK" value="PORT_UNUSED" />
+  <parameter name="PORT_ARESET" value="PORT_UNUSED" />
+  <parameter name="PORT_CLKBAD0" value="PORT_UNUSED" />
+  <parameter name="PORT_CLKBAD1" value="PORT_UNUSED" />
+  <parameter name="PORT_CLKLOSS" value="PORT_UNUSED" />
+  <parameter name="PORT_CLKSWITCH" value="PORT_UNUSED" />
+  <parameter name="PORT_CONFIGUPDATE" value="PORT_UNUSED" />
+  <parameter name="PORT_ENABLE0" value="" />
+  <parameter name="PORT_ENABLE1" value="" />
+  <parameter name="PORT_FBIN" value="PORT_UNUSED" />
+  <parameter name="PORT_FBOUT" value="" />
+  <parameter name="PORT_INCLK0" value="PORT_USED" />
+  <parameter name="PORT_INCLK1" value="PORT_UNUSED" />
+  <parameter name="PORT_LOCKED" value="PORT_UNUSED" />
+  <parameter name="PORT_PFDENA" value="PORT_UNUSED" />
+  <parameter name="PORT_PHASECOUNTERSELECT" value="PORT_UNUSED" />
+  <parameter name="PORT_PHASEDONE" value="PORT_UNUSED" />
+  <parameter name="PORT_PHASESTEP" value="PORT_UNUSED" />
+  <parameter name="PORT_PHASEUPDOWN" value="PORT_UNUSED" />
+  <parameter name="PORT_PLLENA" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANACLR" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANCLK" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANCLKENA" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANDATA" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANDATAOUT" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANDONE" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANREAD" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANWRITE" value="PORT_UNUSED" />
+  <parameter name="PORT_SCLKOUT0" value="" />
+  <parameter name="PORT_SCLKOUT1" value="" />
+  <parameter name="PORT_VCOOVERRANGE" value="" />
+  <parameter name="PORT_VCOUNDERRANGE" value="" />
+  <parameter name="PORT_clk0" value="PORT_USED" />
+  <parameter name="PORT_clk1" value="PORT_UNUSED" />
+  <parameter name="PORT_clk2" value="PORT_UNUSED" />
+  <parameter name="PORT_clk3" value="PORT_UNUSED" />
+  <parameter name="PORT_clk4" value="PORT_UNUSED" />
+  <parameter name="PORT_clk5" value="PORT_UNUSED" />
+  <parameter name="PORT_clk6" value="" />
+  <parameter name="PORT_clk7" value="" />
+  <parameter name="PORT_clk8" value="" />
+  <parameter name="PORT_clk9" value="" />
+  <parameter name="PORT_clkena0" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena1" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena2" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena3" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena4" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena5" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk0" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk1" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk2" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk3" value="PORT_UNUSED" />
+  <parameter name="PORT_extclkena0" value="" />
+  <parameter name="PORT_extclkena1" value="" />
+  <parameter name="PORT_extclkena2" value="" />
+  <parameter name="PORT_extclkena3" value="" />
+  <parameter name="PRIMARY_CLOCK" value="" />
+  <parameter name="QUALIFY_CONF_DONE" value="" />
+  <parameter name="SCAN_CHAIN" value="" />
+  <parameter name="SCAN_CHAIN_MIF_FILE" value="" />
+  <parameter name="SCLKOUT0_PHASE_SHIFT" value="" />
+  <parameter name="SCLKOUT1_PHASE_SHIFT" value="" />
+  <parameter name="SELF_RESET_ON_GATED_LOSS_LOCK" value="" />
+  <parameter name="SELF_RESET_ON_LOSS_LOCK" value="" />
+  <parameter name="SKIP_VCO" value="" />
+  <parameter name="SPREAD_FREQUENCY" value="" />
+  <parameter name="SWITCH_OVER_COUNTER" value="" />
+  <parameter name="SWITCH_OVER_ON_GATED_LOCK" value="" />
+  <parameter name="SWITCH_OVER_ON_LOSSCLK" value="" />
+  <parameter name="SWITCH_OVER_TYPE" value="" />
+  <parameter name="USING_FBMIMICBIDIR_PORT" value="" />
+  <parameter name="VALID_LOCK_MULTIPLIER" value="" />
+  <parameter name="VCO_DIVIDE_BY" value="" />
+  <parameter name="VCO_FREQUENCY_CONTROL" value="" />
+  <parameter name="VCO_MULTIPLY_BY" value="" />
+  <parameter name="VCO_PHASE_SHIFT_STEP" value="" />
+  <parameter name="WIDTH_CLOCK" value="5" />
+  <parameter name="WIDTH_PHASECOUNTERSELECT" value="" />
+ </module>
+ <module name="altpll_2" kind="altpll" version="18.1" enabled="1">
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE" value="50000000" />
+  <parameter name="AVALON_USE_SEPARATE_SYSCLK" value="NO" />
+  <parameter name="BANDWIDTH" value="" />
+  <parameter name="BANDWIDTH_TYPE" value="AUTO" />
+  <parameter name="CLK0_DIVIDE_BY" value="5" />
+  <parameter name="CLK0_DUTY_CYCLE" value="50" />
   <parameter name="CLK0_MULTIPLY_BY" value="8" />
   <parameter name="CLK0_PHASE_SHIFT" value="0" />
   <parameter name="CLK1_DIVIDE_BY" value="" />
@@ -1068,7 +1700,7 @@
   <parameter name="HIDDEN_IS_FIRST_EDIT" value="0" />
   <parameter name="HIDDEN_IS_NUMERIC">IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1</parameter>
   <parameter name="HIDDEN_MF_PORTS">MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1</parameter>
-  <parameter name="HIDDEN_PRIVATES">PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 80.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 80.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK4 0 PT#STICKY_CLK3 0 PT#STICKY_CLK2 0 PT#STICKY_CLK1 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {MAX 10} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1655028613689119.mif PT#ACTIVECLK_CHECK 0</parameter>
+  <parameter name="HIDDEN_PRIVATES">PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 80.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 80.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK4 0 PT#STICKY_CLK3 0 PT#STICKY_CLK2 0 PT#STICKY_CLK1 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {MAX 10} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1655588269344766.mif PT#ACTIVECLK_CHECK 0</parameter>
   <parameter name="HIDDEN_USED_PORTS">UP#locked used UP#c0 used UP#areset used UP#inclk0 used</parameter>
   <parameter name="INCLK0_INPUT_FREQUENCY" value="20000" />
   <parameter name="INCLK1_INPUT_FREQUENCY" value="" />
@@ -1192,7 +1824,7 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="64" />
+  <parameter name="FIFO_DEPTH" value="128" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="3" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
@@ -1210,13 +1842,187 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="16" />
+  <parameter name="FIFO_DEPTH" value="128" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="3" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
   <parameter name="USE_OUT_FILL_LEVEL" value="0" />
   <parameter name="USE_PACKETS" value="1" />
   <parameter name="WR_SYNC_DEPTH" value="3" />
+ </module>
+ <module name="eop_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="2" />
+ </module>
+ <module name="fir_0_0" kind="alt_vip_cl_2dfir" version="18.1" enabled="1">
+  <parameter name="ALGORITHM_NAME" value="STANDARD_FIR" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="BITS_PER_SYMBOL_IN" value="8" />
+  <parameter name="BITS_PER_SYMBOL_OUT" value="8" />
+  <parameter name="COEFF_FRACTION_BITS" value="7" />
+  <parameter name="COEFF_INTEGER_BITS" value="2" />
+  <parameter name="COEFF_SIGNED" value="1" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DEFAULT_LOWER_BLUR" value="0" />
+  <parameter name="DEFAULT_UPPER_BLUR" value="15" />
+  <parameter name="DIAG_SYMMETRIC" value="0" />
+  <parameter name="DO_MIRRORING" value="1" />
+  <parameter name="ENABLE_WIDE_BLUR_SHARPEN" value="1" />
+  <parameter name="EXTRA_PIPELINING" value="1" />
+  <parameter name="FAMILY" value="MAX 10" />
+  <parameter name="FIXED_COEFF_FILE">C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\ip\coefficients.csv</parameter>
+  <parameter name="H_SYMMETRIC" value="0" />
+  <parameter name="H_TAPS" value="3" />
+  <parameter name="INPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="INPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="INPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="IS_422" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="MAX_HEIGHT" value="480" />
+  <parameter name="MAX_WIDTH" value="640" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="OUTPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
+  <parameter name="RUNTIME_CONTROL" value="1" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="V_SYMMETRIC" value="0" />
+  <parameter name="V_TAPS" value="3" />
+ </module>
+ <module name="fir_0_1" kind="alt_vip_cl_2dfir" version="18.1" enabled="1">
+  <parameter name="ALGORITHM_NAME" value="STANDARD_FIR" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="BITS_PER_SYMBOL_IN" value="8" />
+  <parameter name="BITS_PER_SYMBOL_OUT" value="8" />
+  <parameter name="COEFF_FRACTION_BITS" value="7" />
+  <parameter name="COEFF_INTEGER_BITS" value="2" />
+  <parameter name="COEFF_SIGNED" value="1" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DEFAULT_LOWER_BLUR" value="0" />
+  <parameter name="DEFAULT_UPPER_BLUR" value="15" />
+  <parameter name="DIAG_SYMMETRIC" value="0" />
+  <parameter name="DO_MIRRORING" value="1" />
+  <parameter name="ENABLE_WIDE_BLUR_SHARPEN" value="1" />
+  <parameter name="EXTRA_PIPELINING" value="1" />
+  <parameter name="FAMILY" value="MAX 10" />
+  <parameter name="FIXED_COEFF_FILE">C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\ip\coefficients.csv</parameter>
+  <parameter name="H_SYMMETRIC" value="0" />
+  <parameter name="H_TAPS" value="3" />
+  <parameter name="INPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="INPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="INPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="IS_422" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="MAX_HEIGHT" value="480" />
+  <parameter name="MAX_WIDTH" value="640" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="OUTPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
+  <parameter name="RUNTIME_CONTROL" value="1" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="V_SYMMETRIC" value="0" />
+  <parameter name="V_TAPS" value="3" />
+ </module>
+ <module name="fir_1" kind="alt_vip_cl_2dfir" version="18.1" enabled="1">
+  <parameter name="ALGORITHM_NAME" value="STANDARD_FIR" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="BITS_PER_SYMBOL_IN" value="8" />
+  <parameter name="BITS_PER_SYMBOL_OUT" value="8" />
+  <parameter name="COEFF_FRACTION_BITS" value="7" />
+  <parameter name="COEFF_INTEGER_BITS" value="2" />
+  <parameter name="COEFF_SIGNED" value="1" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DEFAULT_LOWER_BLUR" value="0" />
+  <parameter name="DEFAULT_UPPER_BLUR" value="15" />
+  <parameter name="DIAG_SYMMETRIC" value="0" />
+  <parameter name="DO_MIRRORING" value="1" />
+  <parameter name="ENABLE_WIDE_BLUR_SHARPEN" value="1" />
+  <parameter name="EXTRA_PIPELINING" value="1" />
+  <parameter name="FAMILY" value="MAX 10" />
+  <parameter name="FIXED_COEFF_FILE">C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\ip\coefficients.csv</parameter>
+  <parameter name="H_SYMMETRIC" value="0" />
+  <parameter name="H_TAPS" value="3" />
+  <parameter name="INPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="INPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="INPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="IS_422" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="MAX_HEIGHT" value="480" />
+  <parameter name="MAX_WIDTH" value="640" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="OUTPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
+  <parameter name="RUNTIME_CONTROL" value="1" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="V_SYMMETRIC" value="0" />
+  <parameter name="V_TAPS" value="3" />
+ </module>
+ <module name="fir_2" kind="alt_vip_cl_2dfir" version="18.1" enabled="1">
+  <parameter name="ALGORITHM_NAME" value="STANDARD_FIR" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="BITS_PER_SYMBOL_IN" value="8" />
+  <parameter name="BITS_PER_SYMBOL_OUT" value="8" />
+  <parameter name="COEFF_FRACTION_BITS" value="7" />
+  <parameter name="COEFF_INTEGER_BITS" value="2" />
+  <parameter name="COEFF_SIGNED" value="1" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DEFAULT_LOWER_BLUR" value="0" />
+  <parameter name="DEFAULT_UPPER_BLUR" value="15" />
+  <parameter name="DIAG_SYMMETRIC" value="0" />
+  <parameter name="DO_MIRRORING" value="1" />
+  <parameter name="ENABLE_WIDE_BLUR_SHARPEN" value="1" />
+  <parameter name="EXTRA_PIPELINING" value="1" />
+  <parameter name="FAMILY" value="MAX 10" />
+  <parameter name="FIXED_COEFF_FILE">C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\ip\coefficients.csv</parameter>
+  <parameter name="H_SYMMETRIC" value="0" />
+  <parameter name="H_TAPS" value="3" />
+  <parameter name="INPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="INPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="INPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="IS_422" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="MAX_HEIGHT" value="480" />
+  <parameter name="MAX_WIDTH" value="640" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="OUTPUT_GUARD_BANDS_ENABLE" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_LOWER" value="0" />
+  <parameter name="OUTPUT_GUARD_BAND_UPPER" value="255" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
+  <parameter name="RUNTIME_CONTROL" value="1" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="V_SYMMETRIC" value="0" />
+  <parameter name="V_TAPS" value="3" />
  </module>
  <module
    name="i2c_opencores_camera"
@@ -1312,15 +2118,15 @@
   <parameter name="width" value="1" />
  </module>
  <module name="nios2_gen2" kind="altera_nios2_gen2" version="18.1" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="8" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="8" />
   <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="bht_ramBlockType" value="Automatic" />
   <parameter name="breakOffset" value="32" />
   <parameter name="breakSlave" value="None" />
   <parameter name="cdx_enabled" value="false" />
-  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequency" value="80000000" />
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
@@ -1328,10 +2134,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="19" />
+  <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='RGB_TO_HSV.avalon_mm_slave' start='0x41000' end='0x41040' type='RGB_TO_HSV.avalon_mm_slave' /><slave name='COLOR_FILTER_1.avalon_mm_slave' start='0x41040' end='0x41080' type='COLOR_FILTER.avalon_mm_slave' /><slave name='COM_COUNTER_1.avalon_mm_slave' start='0x41080' end='0x410C0' type='COM_COUNTER.avalon_mm_slave' /><slave name='LINEAR_BLUR_0.avalon_mm_slave' start='0x410C0' end='0x41100' type='LINEAR_BLUR.avalon_mm_slave' /><slave name='COM_COUNTER_0.avalon_mm_slave' start='0x41100' end='0x41140' type='COM_COUNTER.avalon_mm_slave' /><slave name='COLOR_FILTER_0.avalon_mm_slave' start='0x41140' end='0x41180' type='COLOR_FILTER.avalon_mm_slave' /><slave name='uart_0.s1' start='0x41180' end='0x411A0' type='altera_avalon_uart.s1' /><slave name='timer.s1' start='0x411A0' end='0x411C0' type='altera_avalon_timer.s1' /><slave name='TERASIC_AUTO_FOCUS_0.mm_ctrl' start='0x411C0' end='0x411E0' type='TERASIC_AUTO_FOCUS.mm_ctrl' /><slave name='i2c_opencores_camera.avalon_slave_0' start='0x411E0' end='0x41200' type='i2c_opencores.avalon_slave_0' /><slave name='i2c_opencores_mipi.avalon_slave_0' start='0x41200' end='0x41220' type='i2c_opencores.avalon_slave_0' /><slave name='mipi_pwdn_n.s1' start='0x41220' end='0x41230' type='altera_avalon_pio.s1' /><slave name='mipi_reset_n.s1' start='0x41230' end='0x41240' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x41240' end='0x41250' type='altera_avalon_pio.s1' /><slave name='sw.s1' start='0x41250' end='0x41260' type='altera_avalon_pio.s1' /><slave name='led.s1' start='0x41260' end='0x41270' type='altera_avalon_pio.s1' /><slave name='altpll_1.pll_slave' start='0x41270' end='0x41280' type='altpll.pll_slave' /><slave name='altpll_0.pll_slave' start='0x41280' end='0x41290' type='altpll.pll_slave' /><slave name='sysid_qsys.control_slave' start='0x41290' end='0x41298' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x41298' end='0x412A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='PIXEL_BUFFER_0.avalon_mm_slave' start='0x0' end='0x10000' type='PIXEL_BUFFER.avalon_mm_slave' /><slave name='onchip_memory2_0.s1' start='0x20000' end='0x2EA60' type='altera_avalon_onchip_memory2.s1' /><slave name='fir_2.control' start='0x30800' end='0x31000' type='alt_vip_cl_2dfir.control' /><slave name='fir_1.control' start='0x31000' end='0x31800' type='alt_vip_cl_2dfir.control' /><slave name='fir_0_1.control' start='0x31800' end='0x32000' type='alt_vip_cl_2dfir.control' /><slave name='nios2_gen2.debug_mem_slave' start='0x32000' end='0x32800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='fir_0_0.control' start='0x32800' end='0x33000' type='alt_vip_cl_2dfir.control' /><slave name='EDGE_BINS_0.avalon_mm_slave' start='0x33000' end='0x33080' type='EDGE_BINS.avalon_mm_slave' /><slave name='COM_COUNTER_2.avalon_mm_slave' start='0x33080' end='0x330C0' type='COM_COUNTER.avalon_mm_slave' /><slave name='COLOR_FILTER_2.avalon_mm_slave' start='0x330C0' end='0x33100' type='COLOR_FILTER.avalon_mm_slave' /><slave name='COM_COUNTER_1.avalon_mm_slave' start='0x33100' end='0x33140' type='COM_COUNTER.avalon_mm_slave' /><slave name='COLOR_FILTER_1.avalon_mm_slave' start='0x33140' end='0x33180' type='COLOR_FILTER.avalon_mm_slave' /><slave name='OBSTACLE_DIST_0.avalon_mm_slave' start='0x33180' end='0x331C0' type='OBSTACLE_DIST.avalon_mm_slave' /><slave name='PIXEL_GRABBER_HSV.avalon_mm_slave' start='0x331C0' end='0x33200' type='PIXEL_GRABBER.avalon_mm_slave' /><slave name='PIXEL_GRABBER_RGB.avalon_mm_slave' start='0x33200' end='0x33240' type='PIXEL_GRABBER.avalon_mm_slave' /><slave name='RGB_TO_HSV.avalon_mm_slave' start='0x33240' end='0x33280' type='RGB_TO_HSV.avalon_mm_slave' /><slave name='COM_COUNTER_0.avalon_mm_slave' start='0x33280' end='0x332C0' type='COM_COUNTER.avalon_mm_slave' /><slave name='COLOR_FILTER_0.avalon_mm_slave' start='0x332C0' end='0x33300' type='COLOR_FILTER.avalon_mm_slave' /><slave name='timer_1.s1' start='0x33300' end='0x33320' type='altera_avalon_timer.s1' /><slave name='timer_0.s1' start='0x33320' end='0x33340' type='altera_avalon_timer.s1' /><slave name='uart_0.s1' start='0x33340' end='0x33360' type='altera_avalon_uart.s1' /><slave name='timer.s1' start='0x33360' end='0x33380' type='altera_avalon_timer.s1' /><slave name='TERASIC_AUTO_FOCUS_0.mm_ctrl' start='0x33380' end='0x333A0' type='TERASIC_AUTO_FOCUS.mm_ctrl' /><slave name='i2c_opencores_camera.avalon_slave_0' start='0x333A0' end='0x333C0' type='i2c_opencores.avalon_slave_0' /><slave name='i2c_opencores_mipi.avalon_slave_0' start='0x333C0' end='0x333E0' type='i2c_opencores.avalon_slave_0' /><slave name='altpll_2.pll_slave' start='0x333F0' end='0x33400' type='altpll.pll_slave' /><slave name='eop_pio.s1' start='0x33400' end='0x33410' type='altera_avalon_pio.s1' /><slave name='pio_0.s1' start='0x33410' end='0x33420' type='altera_avalon_pio.s1' /><slave name='mipi_pwdn_n.s1' start='0x33420' end='0x33430' type='altera_avalon_pio.s1' /><slave name='mipi_reset_n.s1' start='0x33430' end='0x33440' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x33440' end='0x33450' type='altera_avalon_pio.s1' /><slave name='sw.s1' start='0x33450' end='0x33460' type='altera_avalon_pio.s1' /><slave name='led.s1' start='0x33460' end='0x33470' type='altera_avalon_pio.s1' /><slave name='altpll_1.pll_slave' start='0x33470' end='0x33480' type='altpll.pll_slave' /><slave name='altpll_0.pll_slave' start='0x33480' end='0x33490' type='altpll.pll_slave' /><slave name='sysid_qsys.control_slave' start='0x33490' end='0x33498' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x33498' end='0x334A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1339,7 +2145,7 @@
   <parameter name="dcache_bursts" value="false" />
   <parameter name="dcache_numTCDM" value="0" />
   <parameter name="dcache_ramBlockType" value="Automatic" />
-  <parameter name="dcache_size" value="2048" />
+  <parameter name="dcache_size" value="4096" />
   <parameter name="dcache_tagramBlockType" value="Automatic" />
   <parameter name="dcache_victim_buf_impl" value="ram" />
   <parameter name="debug_OCIOnchipTrace" value="_128" />
@@ -1369,15 +2175,15 @@
   <parameter name="icache_size" value="4096" />
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
-  <parameter name="instAddrWidth" value="19" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="18" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x20000' end='0x2EA60' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2.debug_mem_slave' start='0x32000' end='0x32800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='pio_0.s1' start='0x33410' end='0x33420' type='altera_avalon_pio.s1' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="63" />
+  <parameter name="internalIrqMaskSystemInfo" value="511" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -1509,7 +2315,7 @@
   <parameter name="initMemContent" value="false" />
   <parameter name="initializationFileName" value="onchip_mem.hex" />
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="131072" />
+  <parameter name="memorySize" value="60000" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="resetrequest_enabled" value="true" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
@@ -1520,6 +2326,20 @@
   <parameter name="useNonDefaultInitFile" value="false" />
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
+ </module>
+ <module name="pio_0" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="80000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
  </module>
  <module
    name="sdram"
@@ -1582,7 +2402,7 @@
   <parameter name="ERROR_DESCRIPTOR" value="" />
   <parameter name="ERROR_WIDTH" value="1" />
   <parameter name="MAX_CHANNELS" value="1" />
-  <parameter name="NUMBER_OF_OUTPUTS" value="2" />
+  <parameter name="NUMBER_OF_OUTPUTS" value="3" />
   <parameter name="QUALIFY_VALID_OUT" value="1" />
   <parameter name="READY_LATENCY" value="1" />
   <parameter name="USE_CHANNEL" value="0" />
@@ -1621,7 +2441,31 @@
   <parameter name="periodUnits" value="MSEC" />
   <parameter name="resetOutput" value="false" />
   <parameter name="snapshot" value="true" />
-  <parameter name="systemFrequency" value="50000000" />
+  <parameter name="systemFrequency" value="80000000" />
+  <parameter name="timeoutPulseOutput" value="false" />
+  <parameter name="watchdogPulse" value="2" />
+ </module>
+ <module name="timer_0" kind="altera_avalon_timer" version="18.1" enabled="1">
+  <parameter name="alwaysRun" value="true" />
+  <parameter name="counterSize" value="32" />
+  <parameter name="fixedPeriod" value="true" />
+  <parameter name="period" value="1" />
+  <parameter name="periodUnits" value="SEC" />
+  <parameter name="resetOutput" value="false" />
+  <parameter name="snapshot" value="false" />
+  <parameter name="systemFrequency" value="80000000" />
+  <parameter name="timeoutPulseOutput" value="false" />
+  <parameter name="watchdogPulse" value="2" />
+ </module>
+ <module name="timer_1" kind="altera_avalon_timer" version="18.1" enabled="1">
+  <parameter name="alwaysRun" value="true" />
+  <parameter name="counterSize" value="32" />
+  <parameter name="fixedPeriod" value="true" />
+  <parameter name="period" value="1" />
+  <parameter name="periodUnits" value="SEC" />
+  <parameter name="resetOutput" value="false" />
+  <parameter name="snapshot" value="false" />
+  <parameter name="systemFrequency" value="80000000" />
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
  </module>
@@ -1647,7 +2491,7 @@
    start="nios2_gen2.data_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041298" />
+  <parameter name="baseAddress" value="0x00033498" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1656,7 +2500,7 @@
    start="nios2_gen2.data_master"
    end="COLOR_FILTER_0.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041140" />
+  <parameter name="baseAddress" value="0x000332c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1665,34 +2509,7 @@
    start="nios2_gen2.data_master"
    end="COM_COUNTER_0.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041100" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2.data_master"
-   end="LINEAR_BLUR_0.avalon_mm_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000410c0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2.data_master"
-   end="COM_COUNTER_1.avalon_mm_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041080" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2.data_master"
-   end="COLOR_FILTER_1.avalon_mm_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041040" />
+  <parameter name="baseAddress" value="0x00033280" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1701,7 +2518,88 @@
    start="nios2_gen2.data_master"
    end="RGB_TO_HSV.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041000" />
+  <parameter name="baseAddress" value="0x00033240" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="PIXEL_GRABBER_RGB.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033200" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="PIXEL_GRABBER_HSV.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x000331c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="EDGE_BINS_0.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="PIXEL_BUFFER_0.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="OBSTACLE_DIST_0.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033180" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="COLOR_FILTER_1.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033140" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="COM_COUNTER_1.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="COLOR_FILTER_2.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x000330c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="COM_COUNTER_2.avalon_mm_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1710,7 +2608,7 @@
    start="nios2_gen2.data_master"
    end="i2c_opencores_mipi.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041200" />
+  <parameter name="baseAddress" value="0x000333c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1719,7 +2617,43 @@
    start="nios2_gen2.data_master"
    end="i2c_opencores_camera.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000411e0" />
+  <parameter name="baseAddress" value="0x000333a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="fir_0_0.control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00032800" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="fir_0_1.control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00031800" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="fir_1.control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00031000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="fir_2.control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00030800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1728,7 +2662,7 @@
    start="nios2_gen2.data_master"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041290" />
+  <parameter name="baseAddress" value="0x00033490" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1737,7 +2671,7 @@
    start="nios2_gen2.data_master"
    end="nios2_gen2.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00040800" />
+  <parameter name="baseAddress" value="0x00032000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1746,7 +2680,7 @@
    start="nios2_gen2.data_master"
    end="TERASIC_AUTO_FOCUS_0.mm_ctrl">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000411c0" />
+  <parameter name="baseAddress" value="0x00033380" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1755,7 +2689,7 @@
    start="nios2_gen2.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041280" />
+  <parameter name="baseAddress" value="0x00033480" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1764,7 +2698,16 @@
    start="nios2_gen2.data_master"
    end="altpll_1.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041270" />
+  <parameter name="baseAddress" value="0x00033470" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="altpll_2.pll_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x000333f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1782,7 +2725,7 @@
    start="nios2_gen2.data_master"
    end="timer.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000411a0" />
+  <parameter name="baseAddress" value="0x00033360" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1791,7 +2734,7 @@
    start="nios2_gen2.data_master"
    end="led.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041260" />
+  <parameter name="baseAddress" value="0x00033460" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1800,7 +2743,7 @@
    start="nios2_gen2.data_master"
    end="sw.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041250" />
+  <parameter name="baseAddress" value="0x00033450" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1809,7 +2752,7 @@
    start="nios2_gen2.data_master"
    end="key.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041240" />
+  <parameter name="baseAddress" value="0x00033440" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1818,7 +2761,7 @@
    start="nios2_gen2.data_master"
    end="mipi_reset_n.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041230" />
+  <parameter name="baseAddress" value="0x00033430" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1827,7 +2770,7 @@
    start="nios2_gen2.data_master"
    end="mipi_pwdn_n.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041220" />
+  <parameter name="baseAddress" value="0x00033420" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1836,7 +2779,43 @@
    start="nios2_gen2.data_master"
    end="uart_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00041180" />
+  <parameter name="baseAddress" value="0x00033340" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="timer_0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033320" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="pio_0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033410" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="eop_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033400" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.data_master"
+   end="timer_1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033300" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1845,7 +2824,7 @@
    start="nios2_gen2.instruction_master"
    end="nios2_gen2.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00040800" />
+  <parameter name="baseAddress" value="0x00032000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1855,6 +2834,15 @@
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00020000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2.instruction_master"
+   end="pio_0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00033410" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1878,18 +2866,33 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
+   start="COM_COUNTER_0.avalon_streaming_source"
+   end="EDGE_BINS_0.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="PIXEL_GRABBER_RGB.avalon_streaming_source"
+   end="PIXEL_BUFFER_0.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="RGB_TO_HSV.avalon_streaming_source"
+   end="PIXEL_GRABBER_HSV.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="EDGE_BINS_0.avalon_streaming_source"
+   end="OBSTACLE_DIST_0.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
    start="COM_COUNTER_1.avalon_streaming_source"
-   end="ST_TERMINATOR_0.avalon_streaming_sink" />
+   end="ST_TERMINATOR_1.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="COLOR_FILTER_1.avalon_streaming_source"
-   end="LINEAR_BLUR_0.avalon_streaming_sink" />
- <connection
-   kind="avalon_streaming"
-   version="18.1"
-   start="LINEAR_BLUR_0.avalon_streaming_source"
-   end="COM_COUNTER_1.avalon_streaming_sink" />
+   start="COM_COUNTER_2.avalon_streaming_source"
+   end="ST_TERMINATOR_2.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
@@ -1899,27 +2902,57 @@
    kind="avalon_streaming"
    version="18.1"
    start="COLOR_FILTER_0.avalon_streaming_source"
-   end="alt_vip_cl_2dfir_0.din" />
+   end="fir_0_0.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="COM_COUNTER_0.avalon_streaming_source"
-   end="st_splitter_1.in" />
+   start="COLOR_FILTER_1.avalon_streaming_source"
+   end="fir_1.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="RGB_TO_HSV.avalon_streaming_source"
+   start="COLOR_FILTER_2.avalon_streaming_source"
+   end="fir_2.din" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="OBSTACLE_DIST_0.avalon_streaming_source"
    end="st_splitter_0.in" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="alt_vip_cl_2dfir_0.dout"
+   start="PIXEL_GRABBER_HSV.avalon_streaming_source"
+   end="st_splitter_1.in" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="PIXEL_BUFFER_0.avalon_streaming_source_1"
+   end="RGB_TO_HSV.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="fir_0_1.dout"
    end="COM_COUNTER_0.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="fir_1.dout"
+   end="COM_COUNTER_1.avalon_streaming_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="fir_2.dout"
+   end="COM_COUNTER_2.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
    start="alt_vip_vfb_0.dout"
    end="TERASIC_AUTO_FOCUS_0.din" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="fir_0_0.dout"
+   end="fir_0_1.din" />
  <connection
    kind="avalon_streaming"
    version="18.1"
@@ -1929,7 +2962,7 @@
    kind="avalon_streaming"
    version="18.1"
    start="dc_fifo_0.out"
-   end="RGB_TO_HSV.avalon_streaming_sink" />
+   end="PIXEL_GRABBER_RGB.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
@@ -1943,28 +2976,28 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="st_splitter_0.out0"
+   start="st_splitter_1.out0"
    end="COLOR_FILTER_0.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="st_splitter_1.out0"
+   start="st_splitter_0.out0"
    end="dc_fifo_1.in" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="st_splitter_1.out1"
+   start="st_splitter_0.out1"
    end="EOP_IRQ_0.avalon_streaming_sink" />
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="st_splitter_0.out1"
+   start="st_splitter_1.out1"
    end="COLOR_FILTER_1.avalon_streaming_sink" />
  <connection
-   kind="clock"
+   kind="avalon_streaming"
    version="18.1"
-   start="altpll_1.c0"
-   end="st_splitter_1.clk" />
+   start="st_splitter_1.out2"
+   end="COLOR_FILTER_2.avalon_streaming_sink" />
  <connection
    kind="clock"
    version="18.1"
@@ -1974,23 +3007,22 @@
    kind="clock"
    version="18.1"
    start="altpll_1.c0"
-   end="COM_COUNTER_1.clock" />
+   end="st_splitter_1.clk" />
+ <connection kind="clock" version="18.1" start="altpll_2.c0" end="nios2_gen2.clk" />
+ <connection kind="clock" version="18.1" start="altpll_2.c0" end="pio_0.clk" />
+ <connection kind="clock" version="18.1" start="altpll_2.c0" end="timer_1.clk" />
+ <connection kind="clock" version="18.1" start="altpll_2.c0" end="timer_0.clk" />
+ <connection kind="clock" version="18.1" start="altpll_2.c0" end="timer.clk" />
  <connection
    kind="clock"
    version="18.1"
-   start="altpll_1.c0"
-   end="COLOR_FILTER_1.clock" />
- <connection kind="clock" version="18.1" start="altpll_1.c0" end="EOP_IRQ_0.clock" />
+   start="altpll_2.c0"
+   end="onchip_memory2_0.clk1" />
  <connection
    kind="clock"
    version="18.1"
    start="altpll_1.c0"
    end="COM_COUNTER_0.clock" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="altpll_1.c0"
-   end="LINEAR_BLUR_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -2005,7 +3037,58 @@
    kind="clock"
    version="18.1"
    start="altpll_1.c0"
-   end="ST_TERMINATOR_0.clock" />
+   end="PIXEL_GRABBER_RGB.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="PIXEL_GRABBER_HSV.clock" />
+ <connection kind="clock" version="18.1" start="altpll_1.c0" end="EOP_IRQ_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="EDGE_BINS_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="PIXEL_BUFFER_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="OBSTACLE_DIST_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="COLOR_FILTER_1.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="COM_COUNTER_1.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="ST_TERMINATOR_1.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="COLOR_FILTER_2.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="COM_COUNTER_2.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="ST_TERMINATOR_2.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -2015,7 +3098,22 @@
    kind="clock"
    version="18.1"
    start="altpll_1.c0"
-   end="alt_vip_cl_2dfir_0.main_clock" />
+   end="fir_0_0.main_clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="fir_0_1.main_clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="fir_1.main_clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_1.c0"
+   end="fir_2.main_clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -2057,21 +3155,15 @@
    version="18.1"
    start="altpll_0.c2"
    end="dc_fifo_1.out_clk" />
- <connection kind="clock" version="18.1" start="clk_50.clk" end="jtag_uart.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="sysid_qsys.clk" />
- <connection kind="clock" version="18.1" start="clk_50.clk" end="timer.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="led.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="sw.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="key.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="mipi_reset_n.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="mipi_pwdn_n.clk" />
- <connection kind="clock" version="18.1" start="clk_50.clk" end="nios2_gen2.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="eop_pio.clk" />
  <connection kind="clock" version="18.1" start="clk_50.clk" end="uart_0.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_50.clk"
-   end="onchip_memory2_0.clk1" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="jtag_uart.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -2093,6 +3185,11 @@
    start="clk_50.clk"
    end="altpll_1.inclk_interface" />
  <connection
+   kind="clock"
+   version="18.1"
+   start="clk_50.clk"
+   end="altpll_2.inclk_interface" />
+ <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2.irq"
@@ -2110,29 +3207,50 @@
    kind="interrupt"
    version="18.1"
    start="nios2_gen2.irq"
-   end="EOP_IRQ_0.interrupt_sender">
+   end="jtag_uart.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2.irq"
-   end="jtag_uart.irq">
+   end="timer.irq">
   <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2.irq"
-   end="timer.irq">
+   end="uart_0.irq">
   <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2.irq"
-   end="uart_0.irq">
+   end="timer_0.irq">
   <parameter name="irqNumber" value="5" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="nios2_gen2.irq"
+   end="pio_0.irq">
+  <parameter name="irqNumber" value="6" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="nios2_gen2.irq"
+   end="eop_pio.irq">
+  <parameter name="irqNumber" value="7" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="nios2_gen2.irq"
+   end="timer_1.irq">
+  <parameter name="irqNumber" value="8" />
  </connection>
  <connection
    kind="reset"
@@ -2173,12 +3291,32 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
+   end="altpll_2.inclk_interface_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
    end="alt_vip_itc_0.is_clk_rst_reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="alt_vip_cl_2dfir_0.main_reset" />
+   end="fir_0_0.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="fir_0_1.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="fir_1.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="fir_2.main_reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2256,12 +3394,67 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="LINEAR_BLUR_0.reset" />
+   end="COM_COUNTER_0.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="COM_COUNTER_0.reset" />
+   end="data_format_adapter_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="PIXEL_GRABBER_RGB.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="PIXEL_GRABBER_HSV.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="st_splitter_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="EOP_IRQ_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="timer_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="pio_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="EDGE_BINS_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="PIXEL_BUFFER_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="eop_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="OBSTACLE_DIST_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="ST_TERMINATOR_1.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2276,27 +3469,27 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="EOP_IRQ_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
    end="st_splitter_1.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="data_format_adapter_0.reset" />
+   end="COLOR_FILTER_2.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="ST_TERMINATOR_0.reset" />
+   end="COM_COUNTER_2.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="st_splitter_0.reset" />
+   end="ST_TERMINATOR_2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="timer_1.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2337,6 +3530,26 @@
    version="18.1"
    start="nios2_gen2.debug_reset_request"
    end="alt_vip_itc_0.is_clk_rst_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="fir_0_0.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="fir_0_1.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="fir_1.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="fir_2.main_reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2426,22 +3639,7 @@
    kind="reset"
    version="18.1"
    start="nios2_gen2.debug_reset_request"
-   end="LINEAR_BLUR_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2.debug_reset_request"
    end="COM_COUNTER_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2.debug_reset_request"
-   end="EOP_IRQ_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2.debug_reset_request"
-   end="st_splitter_1.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2451,12 +3649,87 @@
    kind="reset"
    version="18.1"
    start="nios2_gen2.debug_reset_request"
-   end="ST_TERMINATOR_0.reset" />
+   end="PIXEL_GRABBER_RGB.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="PIXEL_GRABBER_HSV.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="nios2_gen2.debug_reset_request"
    end="st_splitter_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="EOP_IRQ_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="timer_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="pio_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="EDGE_BINS_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="PIXEL_BUFFER_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="eop_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="OBSTACLE_DIST_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="ST_TERMINATOR_1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="COLOR_FILTER_1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="COM_COUNTER_1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="st_splitter_1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="COLOR_FILTER_2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="COM_COUNTER_2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2.debug_reset_request"
+   end="ST_TERMINATOR_2.reset" />
  <connection
    kind="reset"
    version="18.1"

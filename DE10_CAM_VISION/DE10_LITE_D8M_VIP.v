@@ -88,7 +88,8 @@ wire  [23:0]  disp_data;
 wire  [7 :0]  mVGA_R;
 wire  [7 :0]  mVGA_G;
 wire  [7 :0]  mVGA_B; 
-
+wire sop_irq;
+wire eop_irq;
 
 
 //=======================================================
@@ -176,8 +177,12 @@ Qsys u0 (
 		.altpll_0_locked_conduit_export            (),            				//          altpll_0_locked_conduit.export
 		.altpll_0_phasedone_conduit_export         (),         					//       altpll_0_phasedone_conduit.export		
 	
-		.uart_0_rx_tx_rxd                          (ARDUINO_IO[1]),                          //                     uart_0_rx_tx.rxd
-		.uart_0_rx_tx_txd                          (ARDUINO_IO[0])                           //
+		.uart_0_rx_tx_rxd                          (ARDUINO_IO[8]),                          //                     uart_0_rx_tx.rxd
+		.uart_0_rx_tx_txd                          (ARDUINO_IO[9]),                           //
+	
+		.eop_irq_raw_eop                           (eop_irq),                           //                          eop_irq.raw_eop
+		.eop_irq_raw_sop                           (sop_irq),                           //                                 .raw_sop
+		.eop_pio_export  									({sop_irq, eop_irq})                          //                          eop_pio.export
 	);
 
 FpsMonitor uFps(

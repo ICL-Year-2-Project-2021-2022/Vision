@@ -1,0 +1,88 @@
+#include "input.h"
+
+
+void process_input(){
+	static alt_u8  manual_focus_step = 10;
+	static alt_u16  current_focus = 300;
+	alt_u32 exposureTime = EXPOSURE_INIT;
+	alt_u16 gain = GAIN_INIT;
+
+	// touch KEY0 to trigger Auto focus
+		   if((IORD(KEY_BASE,0)&0x03) == 0x02){
+
+	    	   current_focus = Focus_Window(320,240);
+	       }
+		   // touch KEY1 with selected routine to run
+		   else if ((IORD(KEY_BASE,0)&0x03) == 0x01){
+	    	   int sw = (IORD(SW_BASE, 0)& 0x03FF);
+
+	    	   switch(sw){
+				   case 1 : {
+					   auto_gain(110,2);
+					   break;
+				   }case 2: {
+					   auto_wb(127 , 3);
+					   break;
+				   }case 4: {
+					   IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, ~IORD(RGB_TO_HSV_BASE, HSV_ENABLED));
+					   break;
+				   }case 8: {
+					   IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, ~IORD(COLOR_FILTER_0_BASE, APPLY_MASK));
+					   IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, ~IORD(COM_COUNTER_0_BASE, THRESH_ENABLED));
+					   break;
+				   }case 16: {
+					   fir_load_unit();
+					   break;
+				   }case 32: {
+					   fir_load_avg();
+					   break;
+				   }case 64: {
+					   fir_load_sobel();
+					   break;
+				   }
+	    	   }
+	    	   printf("SW: %x", sw);
+
+	       }
+
+		   //Process input commands
+		  int in = alt_getchar();
+		  switch (in) {
+			   case 'R': {
+				   //Process request
+				   print_observations(observations);
+				   break;}
+			   case 'e': {
+			   exposureTime += EXPOSURE_STEP;
+			   OV8865SetExposure(exposureTime);
+			   printf("\nExposure = %x ", exposureTime);
+			   break;}
+			   case 'd': {
+				   exposureTime -= EXPOSURE_STEP;
+				   OV8865SetExposure(exposureTime);
+				   printf("\nExposure = %x ", exposureTime);
+				   break;}
+			   case 't': {
+				   gain += GAIN_STEP;
+				   OV8865SetGain(gain);
+				   printf("\nGain = %x ", gain);
+				   break;}
+			   case 'g': {
+				   gain -= GAIN_STEP;
+				   OV8865SetGain(gain);
+				   printf("\nGain = %x ", gain);
+				   break;}
+			   case 'r': {
+			   current_focus += manual_focus_step;
+			   if(current_focus >1023) current_focus = 1023;
+			   OV8865_FOCUS_Move_to(current_focus);
+			   printf("\nFocus = %x ",current_focus);
+				   break;}
+			   case 'f': {
+			   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
+			   OV8865_FOCUS_Move_to(current_focus);
+			   printf("\nFocus = %x ",current_focus);
+				   break;}
+		  	  };
+
+}

@@ -42,17 +42,17 @@
 //   in_use_valid:       true
 //   out_use_valid:      true
 //   use_packets:        true
-//   use_empty:          0
-//   empty_width:        0
+//   use_empty:          1
+//   empty_width:        2
 //   data_width:         24
 //   channel_width:      0
 //   error_width:        0
 //   in_ready_latency:   1
 //   out_ready_latency:  0
-//   in_payload_width:   26
-//   out_payload_width:  26
-//   in_payload_map:     in_data,in_startofpacket,in_endofpacket
-//   out_payload_map:    out_data,out_startofpacket,out_endofpacket
+//   in_payload_width:   28
+//   out_payload_width:  28
+//   in_payload_map:     in_data,in_startofpacket,in_endofpacket,in_empty
+//   out_payload_map:    out_data,out_startofpacket,out_endofpacket,out_empty
 // ------------------------------------------
 
 
@@ -64,12 +64,14 @@ module Qsys_avalon_st_adapter_timing_adapter_0
  input     [24-1: 0]  in_data,
  input              in_startofpacket,
  input              in_endofpacket,
+ input     [2-1: 0] in_empty,
  // Interface: out
  input               out_ready,
  output reg          out_valid,
  output reg [24-1: 0] out_data,
  output reg          out_startofpacket,
  output reg          out_endofpacket,
+ output reg [2-1: 0] out_empty,
   // Interface: clk
  input              clk,
  // Interface: reset
@@ -81,8 +83,8 @@ module Qsys_avalon_st_adapter_timing_adapter_0
    //| Signal Declarations
    // ---------------------------------------------------------------------
    
-   reg  [26-1:0]   in_payload;
-   wire [26-1:0]   out_payload;
+   reg  [28-1:0]   in_payload;
+   wire [28-1:0]   out_payload;
    wire            in_ready_wire;
    wire            out_valid_wire;
    wire [3:0]      fifo_fill;
@@ -92,8 +94,8 @@ module Qsys_avalon_st_adapter_timing_adapter_0
    //| Payload Mapping
    // ---------------------------------------------------------------------
    always @* begin
-     in_payload = {in_data,in_startofpacket,in_endofpacket};
-     {out_data,out_startofpacket,out_endofpacket} = out_payload;
+     in_payload = {in_data,in_startofpacket,in_endofpacket,in_empty};
+     {out_data,out_startofpacket,out_endofpacket,out_empty} = out_payload;
    end
 
    // ---------------------------------------------------------------------

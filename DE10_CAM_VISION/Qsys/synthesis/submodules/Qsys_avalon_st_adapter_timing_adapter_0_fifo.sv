@@ -38,7 +38,7 @@
 //   output_name:        Qsys_avalon_st_adapter_timing_adapter_0_fifo
 //   depth:              8
 //   depthBits:          3
-//   data_width          26
+//   data_width          28
 //   use_fill_level:     true
 //   in_use_ready:       true
 //   in_use_valid:       true
@@ -56,11 +56,11 @@ module Qsys_avalon_st_adapter_timing_adapter_0_fifo (
 //Interface: in
   output reg         in_ready,
   input              in_valid,
-  input [26-1:0]      in_data,
+  input [28-1:0]      in_data,
 //Interface: out
   input              out_ready,
   output reg         out_valid,
-  output reg [26-1:0] out_data,
+  output reg [28-1:0] out_data,
   // Interface: clk
  input              clk,
  // Interface: reset
@@ -73,7 +73,7 @@ module Qsys_avalon_st_adapter_timing_adapter_0_fifo (
    //| Internal Parameters
    // ---------------------------------------------------------------------
    parameter DEPTH = 8;
-   parameter DATA_WIDTH = 26;   
+   parameter DATA_WIDTH = 28;   
    parameter ADDR_WIDTH = 3;
              
    // ---------------------------------------------------------------------

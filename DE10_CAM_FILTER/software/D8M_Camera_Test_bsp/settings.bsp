@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>18.1</BspVersion>
-        <BspGeneratedTimeStamp>Jun 11, 2022 8:34:32 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1654976072088</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 16, 2022 11:15:41 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1655417741416</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\micha\Desktop\Vision\DE10_CAM_FILTER\software\D8M_Camera_Test_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
@@ -922,6 +922,12 @@
                 <Enabled>false</Enabled>
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
+        <MemoryMap>
+                <slaveDescriptor>RGB_TO_HSV_0</slaveDescriptor>
+                <addressRange>0x00000000 - 0x0000003F</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
                 <addressRange>0x00020000 - 0x0003FFFF</addressRange>

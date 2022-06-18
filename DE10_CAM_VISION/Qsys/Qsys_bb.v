@@ -15,6 +15,9 @@ module Qsys (
 	clk_sdram_clk,
 	clk_vga_clk,
 	d8m_xclkin_clk,
+	eop_irq_raw_eop,
+	eop_irq_raw_sop,
+	eop_pio_export,
 	i2c_opencores_camera_export_scl_pad_io,
 	i2c_opencores_camera_export_sda_pad_io,
 	i2c_opencores_mipi_export_scl_pad_io,
@@ -34,6 +37,7 @@ module Qsys (
 	sdram_wire_ras_n,
 	sdram_wire_we_n,
 	sw_external_connection_export,
+	switch_export,
 	terasic_auto_focus_0_conduit_vcm_i2c_sda,
 	terasic_auto_focus_0_conduit_clk50,
 	terasic_auto_focus_0_conduit_vcm_i2c_scl,
@@ -59,6 +63,9 @@ module Qsys (
 	output		clk_sdram_clk;
 	output		clk_vga_clk;
 	output		d8m_xclkin_clk;
+	output		eop_irq_raw_eop;
+	output		eop_irq_raw_sop;
+	input	[1:0]	eop_pio_export;
 	inout		i2c_opencores_camera_export_scl_pad_io;
 	inout		i2c_opencores_camera_export_sda_pad_io;
 	inout		i2c_opencores_mipi_export_scl_pad_io;
@@ -78,6 +85,7 @@ module Qsys (
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
 	input	[9:0]	sw_external_connection_export;
+	input		switch_export;
 	inout		terasic_auto_focus_0_conduit_vcm_i2c_sda;
 	input		terasic_auto_focus_0_conduit_clk50;
 	inout		terasic_auto_focus_0_conduit_vcm_i2c_scl;

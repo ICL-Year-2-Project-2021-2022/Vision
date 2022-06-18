@@ -147,6 +147,8 @@ C_SRCS += auto_focus.c
 C_SRCS += main.c
 C_SRCS += mipi_bridge_config.c
 C_SRCS += mipi_camera_config.c
+C_SRCS += support.c
+C_SRCS += mipi_setup.c
 CXX_SRCS :=
 ASM_SRCS :=
 

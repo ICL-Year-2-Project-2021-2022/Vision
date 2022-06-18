@@ -15,14 +15,14 @@ module Qsys_avalon_st_adapter_004 #(
 		parameter inUseEmptyPort  = 1,
 		parameter inUseValid      = 1,
 		parameter inUseReady      = 1,
-		parameter inReadyLatency  = 0,
+		parameter inReadyLatency  = 1,
 		parameter outDataWidth    = 24,
 		parameter outChannelWidth = 0,
 		parameter outErrorWidth   = 0,
 		parameter outUseEmptyPort = 1,
 		parameter outUseValid     = 1,
 		parameter outUseReady     = 1,
-		parameter outReadyLatency = 1
+		parameter outReadyLatency = 0
 	) (
 		input  wire        in_clk_0_clk,        // in_clk_0.clk
 		input  wire        in_rst_0_reset,      // in_rst_0.reset
@@ -118,7 +118,7 @@ module Qsys_avalon_st_adapter_004 #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					inuseready_check ( .error(1'b1) );
 		end
-		if (inReadyLatency != 0)
+		if (inReadyLatency != 1)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -181,7 +181,7 @@ module Qsys_avalon_st_adapter_004 #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					outuseready_check ( .error(1'b1) );
 		end
-		if (outReadyLatency != 1)
+		if (outReadyLatency != 0)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -192,7 +192,7 @@ module Qsys_avalon_st_adapter_004 #(
 		end
 	endgenerate
 
-	Qsys_avalon_st_adapter_004_timing_adapter_0 timing_adapter_0 (
+	Qsys_avalon_st_adapter_001_timing_adapter_0 timing_adapter_0 (
 		.clk               (in_clk_0_clk),        //   clk.clk
 		.reset_n           (~in_rst_0_reset),     // reset.reset_n
 		.in_data           (in_0_data),           //    in.data

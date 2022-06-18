@@ -2,6 +2,7 @@ module EOP_INTERRUPT_TB ();
 	logic [23:0] sink_data, source_data;
 	logic clk, reset;
 	logic sink_sop, sink_eop, sink_valid, sink_ready, source_sop, source_eop, source_ready, source_valid, irq;
+	logic sop, eop;
 
 
     initial begin
@@ -64,13 +65,14 @@ module EOP_INTERRUPT_TB ();
 	sink_valid = 0;
 	sink_sop = 0;
 	sink_eop = 0;
-	source_ready = 0;
+	source_ready = 1;
 	
 	#2;
 	
-	source_ready = 0;
+	source_ready = 1;
 	
-	#4;
+	#20;
+
 	
 	
 	//Control packet
@@ -119,7 +121,8 @@ EOP_INTERRUPT dut(
 	.sink_sop(sink_sop),
 	.sink_eop(sink_eop),
 	
-	.irq(irq)
+	.raw_eop(eop),
+	.raw_sop(sop)
 	);
 
 endmodule

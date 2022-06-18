@@ -9,7 +9,6 @@
 #include "I2C_core.h"
 #include "terasic_includes.h"
 #include "mipi_bridge_config.h"
-#include "system.h"
 
 
 typedef struct{

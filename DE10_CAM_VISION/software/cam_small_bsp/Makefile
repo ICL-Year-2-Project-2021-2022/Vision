@@ -208,6 +208,18 @@ GENERATED_C_LIB_SRCS += alt_sys_init.c
 # used to build each file.
 #-------------------------------------------------------------------------------
 
+# alt_vip_cl_2dfir_driver sources root 
+alt_vip_cl_2dfir_driver_SRCS_ROOT := drivers/vip
+
+# alt_vip_cl_2dfir_driver sources 
+alt_vip_cl_2dfir_driver_CPP_LIB_SRCS := \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/VipUtil.cpp \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/VipCore.cpp \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/VipMath.cpp \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/QuantizedCoefficients.cpp \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/FirCoefficients.cpp \
+	$(alt_vip_cl_2dfir_driver_SRCS_ROOT)/../../drivers/vip/src/Fir_Filter.cpp
+
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
 
@@ -362,6 +374,7 @@ COMPONENT_ASM_LIB_SRCS += \
 
 # Assemble all component C++ source files 
 COMPONENT_CPP_LIB_SRCS += \
+	$(alt_vip_cl_2dfir_driver_CPP_LIB_SRCS)
 
 #END MANAGED
 

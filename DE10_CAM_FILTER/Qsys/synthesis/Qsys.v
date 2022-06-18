@@ -54,17 +54,33 @@ module Qsys (
 	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
 	wire         terasic_camera_0_avalon_streaming_source_startofpacket;            // TERASIC_CAMERA_0:st_sop -> alt_vip_vfb_0:din_startofpacket
 	wire         terasic_camera_0_avalon_streaming_source_endofpacket;              // TERASIC_CAMERA_0:st_eop -> alt_vip_vfb_0:din_endofpacket
+	wire         control_demux_0_avalon_streaming_source_data_valid;                // CONTROL_DEMUX_0:source_valid -> data_format_adapter_1:in_valid
+	wire  [23:0] control_demux_0_avalon_streaming_source_data_data;                 // CONTROL_DEMUX_0:source_data -> data_format_adapter_1:in_data
+	wire         control_demux_0_avalon_streaming_source_data_ready;                // data_format_adapter_1:in_ready -> CONTROL_DEMUX_0:source_ready
+	wire         control_demux_0_avalon_streaming_source_data_startofpacket;        // CONTROL_DEMUX_0:source_sop -> data_format_adapter_1:in_startofpacket
+	wire         control_demux_0_avalon_streaming_source_data_endofpacket;          // CONTROL_DEMUX_0:source_eop -> data_format_adapter_1:in_endofpacket
+	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> CONTROL_DEMUX_0:sink_valid
+	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> CONTROL_DEMUX_0:sink_data
+	wire         terasic_auto_focus_0_dout_ready;                                   // CONTROL_DEMUX_0:sink_ready -> TERASIC_AUTO_FOCUS_0:source_ready
+	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> CONTROL_DEMUX_0:sink_sop
+	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> CONTROL_DEMUX_0:sink_eop
 	wire         alt_vip_vfb_0_dout_valid;                                          // alt_vip_vfb_0:dout_valid -> TERASIC_AUTO_FOCUS_0:sink_valid
 	wire  [23:0] alt_vip_vfb_0_dout_data;                                           // alt_vip_vfb_0:dout_data -> TERASIC_AUTO_FOCUS_0:sink_data
 	wire         alt_vip_vfb_0_dout_ready;                                          // TERASIC_AUTO_FOCUS_0:sink_ready -> alt_vip_vfb_0:dout_ready
 	wire         alt_vip_vfb_0_dout_startofpacket;                                  // alt_vip_vfb_0:dout_startofpacket -> TERASIC_AUTO_FOCUS_0:sink_sop
 	wire         alt_vip_vfb_0_dout_endofpacket;                                    // alt_vip_vfb_0:dout_endofpacket -> TERASIC_AUTO_FOCUS_0:sink_eop
-	wire         terasic_auto_focus_0_dout_valid;                                   // TERASIC_AUTO_FOCUS_0:source_valid -> alt_vip_itc_0:is_valid
-	wire  [23:0] terasic_auto_focus_0_dout_data;                                    // TERASIC_AUTO_FOCUS_0:source_data -> alt_vip_itc_0:is_data
-	wire         terasic_auto_focus_0_dout_ready;                                   // alt_vip_itc_0:is_ready -> TERASIC_AUTO_FOCUS_0:source_ready
-	wire         terasic_auto_focus_0_dout_startofpacket;                           // TERASIC_AUTO_FOCUS_0:source_sop -> alt_vip_itc_0:is_sop
-	wire         terasic_auto_focus_0_dout_endofpacket;                             // TERASIC_AUTO_FOCUS_0:source_eop -> alt_vip_itc_0:is_eop
-	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller:clk, sdram:clk]
+	wire         data_format_adapter_0_out_valid;                                   // data_format_adapter_0:out_valid -> alt_vip_itc_0:is_valid
+	wire  [23:0] data_format_adapter_0_out_data;                                    // data_format_adapter_0:out_data -> alt_vip_itc_0:is_data
+	wire         data_format_adapter_0_out_ready;                                   // alt_vip_itc_0:is_ready -> data_format_adapter_0:out_ready
+	wire         data_format_adapter_0_out_startofpacket;                           // data_format_adapter_0:out_startofpacket -> alt_vip_itc_0:is_sop
+	wire         data_format_adapter_0_out_endofpacket;                             // data_format_adapter_0:out_endofpacket -> alt_vip_itc_0:is_eop
+	wire         sc_fifo_0_out_valid;                                               // sc_fifo_0:out_valid -> multiplexer_0:in0_valid
+	wire  [23:0] sc_fifo_0_out_data;                                                // sc_fifo_0:out_data -> multiplexer_0:in0_data
+	wire         sc_fifo_0_out_ready;                                               // multiplexer_0:in0_ready -> sc_fifo_0:out_ready
+	wire         sc_fifo_0_out_startofpacket;                                       // sc_fifo_0:out_startofpacket -> multiplexer_0:in0_startofpacket
+	wire         sc_fifo_0_out_endofpacket;                                         // sc_fifo_0:out_endofpacket -> multiplexer_0:in0_endofpacket
+	wire   [1:0] sc_fifo_0_out_empty;                                               // sc_fifo_0:out_empty -> multiplexer_0:in0_empty
+	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [CONTROL_DEMUX_0:clk, RGB_TO_HSV_0:clk, TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter:in_clk_0_clk, avalon_st_adapter_001:in_clk_0_clk, avalon_st_adapter_002:in_clk_0_clk, avalon_st_adapter_003:in_clk_0_clk, avalon_st_adapter_004:in_clk_0_clk, data_format_adapter_0:clk, data_format_adapter_1:clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, multiplexer_0:clk, rst_controller:clk, sc_fifo_0:clk, sc_fifo_1:clk, sdram:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
 	wire         nios2_gen2_data_master_debugaccess;                                // nios2_gen2:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_data_master_debugaccess
@@ -86,6 +102,12 @@ module Qsys (
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;                // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;               // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;           // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
+	wire         mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_chipselect;         // mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_chipselect -> RGB_TO_HSV_0:s_chipselect
+	wire  [31:0] mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_readdata;           // RGB_TO_HSV_0:s_readdata -> mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_readdata
+	wire   [3:0] mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_address;            // mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_address -> RGB_TO_HSV_0:s_address
+	wire         mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_read;               // mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_read -> RGB_TO_HSV_0:s_read
+	wire         mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_write;              // mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_write -> RGB_TO_HSV_0:s_write
+	wire  [31:0] mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_writedata;          // mm_interconnect_0:RGB_TO_HSV_0_avalon_mm_slave_writedata -> RGB_TO_HSV_0:s_writedata
 	wire         mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_chipselect;    // mm_interconnect_0:i2c_opencores_mipi_avalon_slave_0_chipselect -> i2c_opencores_mipi:wb_stb_i
 	wire   [7:0] mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_readdata;      // i2c_opencores_mipi:wb_dat_o -> mm_interconnect_0:i2c_opencores_mipi_avalon_slave_0_readdata
 	wire         mm_interconnect_0_i2c_opencores_mipi_avalon_slave_0_waitrequest;   // i2c_opencores_mipi:wb_ack_o -> mm_interconnect_0:i2c_opencores_mipi_avalon_slave_0_waitrequest
@@ -183,11 +205,110 @@ module Qsys (
 	wire         irq_mapper_receiver3_irq;                                          // timer:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                          // uart_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_gen2_irq_irq;                                                // irq_mapper:sender_irq -> nios2_gen2:irq
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         rgb_to_hsv_0_avalon_streaming_source_valid;                        // RGB_TO_HSV_0:source_valid -> avalon_st_adapter:in_0_valid
+	wire  [23:0] rgb_to_hsv_0_avalon_streaming_source_data;                         // RGB_TO_HSV_0:source_data -> avalon_st_adapter:in_0_data
+	wire         rgb_to_hsv_0_avalon_streaming_source_ready;                        // avalon_st_adapter:in_0_ready -> RGB_TO_HSV_0:source_ready
+	wire         rgb_to_hsv_0_avalon_streaming_source_startofpacket;                // RGB_TO_HSV_0:source_sop -> avalon_st_adapter:in_0_startofpacket
+	wire         rgb_to_hsv_0_avalon_streaming_source_endofpacket;                  // RGB_TO_HSV_0:source_eop -> avalon_st_adapter:in_0_endofpacket
+	wire         avalon_st_adapter_out_0_valid;                                     // avalon_st_adapter:out_0_valid -> multiplexer_0:in1_valid
+	wire  [23:0] avalon_st_adapter_out_0_data;                                      // avalon_st_adapter:out_0_data -> multiplexer_0:in1_data
+	wire         avalon_st_adapter_out_0_ready;                                     // multiplexer_0:in1_ready -> avalon_st_adapter:out_0_ready
+	wire         avalon_st_adapter_out_0_startofpacket;                             // avalon_st_adapter:out_0_startofpacket -> multiplexer_0:in1_startofpacket
+	wire         avalon_st_adapter_out_0_endofpacket;                               // avalon_st_adapter:out_0_endofpacket -> multiplexer_0:in1_endofpacket
+	wire   [1:0] avalon_st_adapter_out_0_empty;                                     // avalon_st_adapter:out_0_empty -> multiplexer_0:in1_empty
+	wire         control_demux_0_avalon_streaming_source_control_valid;             // CONTROL_DEMUX_0:source_valid2 -> avalon_st_adapter_001:in_0_valid
+	wire  [23:0] control_demux_0_avalon_streaming_source_control_data;              // CONTROL_DEMUX_0:source_data2 -> avalon_st_adapter_001:in_0_data
+	wire         control_demux_0_avalon_streaming_source_control_ready;             // avalon_st_adapter_001:in_0_ready -> CONTROL_DEMUX_0:source_ready2
+	wire         control_demux_0_avalon_streaming_source_control_startofpacket;     // CONTROL_DEMUX_0:source_sop2 -> avalon_st_adapter_001:in_0_startofpacket
+	wire         control_demux_0_avalon_streaming_source_control_endofpacket;       // CONTROL_DEMUX_0:source_eop2 -> avalon_st_adapter_001:in_0_endofpacket
+	wire         avalon_st_adapter_001_out_0_valid;                                 // avalon_st_adapter_001:out_0_valid -> sc_fifo_0:in_valid
+	wire  [23:0] avalon_st_adapter_001_out_0_data;                                  // avalon_st_adapter_001:out_0_data -> sc_fifo_0:in_data
+	wire         avalon_st_adapter_001_out_0_ready;                                 // sc_fifo_0:in_ready -> avalon_st_adapter_001:out_0_ready
+	wire         avalon_st_adapter_001_out_0_startofpacket;                         // avalon_st_adapter_001:out_0_startofpacket -> sc_fifo_0:in_startofpacket
+	wire         avalon_st_adapter_001_out_0_endofpacket;                           // avalon_st_adapter_001:out_0_endofpacket -> sc_fifo_0:in_endofpacket
+	wire   [1:0] avalon_st_adapter_001_out_0_empty;                                 // avalon_st_adapter_001:out_0_empty -> sc_fifo_0:in_empty
+	wire         sc_fifo_1_out_valid;                                               // sc_fifo_1:out_valid -> avalon_st_adapter_002:in_0_valid
+	wire  [23:0] sc_fifo_1_out_data;                                                // sc_fifo_1:out_data -> avalon_st_adapter_002:in_0_data
+	wire         sc_fifo_1_out_ready;                                               // avalon_st_adapter_002:in_0_ready -> sc_fifo_1:out_ready
+	wire         sc_fifo_1_out_startofpacket;                                       // sc_fifo_1:out_startofpacket -> avalon_st_adapter_002:in_0_startofpacket
+	wire         sc_fifo_1_out_endofpacket;                                         // sc_fifo_1:out_endofpacket -> avalon_st_adapter_002:in_0_endofpacket
+	wire   [1:0] sc_fifo_1_out_empty;                                               // sc_fifo_1:out_empty -> avalon_st_adapter_002:in_0_empty
+	wire         avalon_st_adapter_002_out_0_valid;                                 // avalon_st_adapter_002:out_0_valid -> RGB_TO_HSV_0:sink_valid
+	wire  [23:0] avalon_st_adapter_002_out_0_data;                                  // avalon_st_adapter_002:out_0_data -> RGB_TO_HSV_0:sink_data
+	wire         avalon_st_adapter_002_out_0_ready;                                 // RGB_TO_HSV_0:sink_ready -> avalon_st_adapter_002:out_0_ready
+	wire         avalon_st_adapter_002_out_0_startofpacket;                         // avalon_st_adapter_002:out_0_startofpacket -> RGB_TO_HSV_0:sink_sop
+	wire         avalon_st_adapter_002_out_0_endofpacket;                           // avalon_st_adapter_002:out_0_endofpacket -> RGB_TO_HSV_0:sink_eop
+	wire         multiplexer_0_out_valid;                                           // multiplexer_0:out_valid -> avalon_st_adapter_003:in_0_valid
+	wire  [23:0] multiplexer_0_out_data;                                            // multiplexer_0:out_data -> avalon_st_adapter_003:in_0_data
+	wire         multiplexer_0_out_ready;                                           // avalon_st_adapter_003:in_0_ready -> multiplexer_0:out_ready
+	wire         multiplexer_0_out_channel;                                         // multiplexer_0:out_channel -> avalon_st_adapter_003:in_0_channel
+	wire         multiplexer_0_out_startofpacket;                                   // multiplexer_0:out_startofpacket -> avalon_st_adapter_003:in_0_startofpacket
+	wire         multiplexer_0_out_endofpacket;                                     // multiplexer_0:out_endofpacket -> avalon_st_adapter_003:in_0_endofpacket
+	wire   [1:0] multiplexer_0_out_empty;                                           // multiplexer_0:out_empty -> avalon_st_adapter_003:in_0_empty
+	wire         avalon_st_adapter_003_out_0_valid;                                 // avalon_st_adapter_003:out_0_valid -> data_format_adapter_0:in_valid
+	wire  [23:0] avalon_st_adapter_003_out_0_data;                                  // avalon_st_adapter_003:out_0_data -> data_format_adapter_0:in_data
+	wire         avalon_st_adapter_003_out_0_ready;                                 // data_format_adapter_0:in_ready -> avalon_st_adapter_003:out_0_ready
+	wire         avalon_st_adapter_003_out_0_startofpacket;                         // avalon_st_adapter_003:out_0_startofpacket -> data_format_adapter_0:in_startofpacket
+	wire         avalon_st_adapter_003_out_0_endofpacket;                           // avalon_st_adapter_003:out_0_endofpacket -> data_format_adapter_0:in_endofpacket
+	wire   [1:0] avalon_st_adapter_003_out_0_empty;                                 // avalon_st_adapter_003:out_0_empty -> data_format_adapter_0:in_empty
+	wire         data_format_adapter_1_out_valid;                                   // data_format_adapter_1:out_valid -> avalon_st_adapter_004:in_0_valid
+	wire  [23:0] data_format_adapter_1_out_data;                                    // data_format_adapter_1:out_data -> avalon_st_adapter_004:in_0_data
+	wire         data_format_adapter_1_out_ready;                                   // avalon_st_adapter_004:in_0_ready -> data_format_adapter_1:out_ready
+	wire         data_format_adapter_1_out_startofpacket;                           // data_format_adapter_1:out_startofpacket -> avalon_st_adapter_004:in_0_startofpacket
+	wire         data_format_adapter_1_out_endofpacket;                             // data_format_adapter_1:out_endofpacket -> avalon_st_adapter_004:in_0_endofpacket
+	wire   [1:0] data_format_adapter_1_out_empty;                                   // data_format_adapter_1:out_empty -> avalon_st_adapter_004:in_0_empty
+	wire         avalon_st_adapter_004_out_0_valid;                                 // avalon_st_adapter_004:out_0_valid -> sc_fifo_1:in_valid
+	wire  [23:0] avalon_st_adapter_004_out_0_data;                                  // avalon_st_adapter_004:out_0_data -> sc_fifo_1:in_data
+	wire         avalon_st_adapter_004_out_0_ready;                                 // sc_fifo_1:in_ready -> avalon_st_adapter_004:out_0_ready
+	wire         avalon_st_adapter_004_out_0_startofpacket;                         // avalon_st_adapter_004:out_0_startofpacket -> sc_fifo_1:in_startofpacket
+	wire         avalon_st_adapter_004_out_0_endofpacket;                           // avalon_st_adapter_004:out_0_endofpacket -> sc_fifo_1:in_endofpacket
+	wire   [1:0] avalon_st_adapter_004_out_0_empty;                                 // avalon_st_adapter_004:out_0_empty -> sc_fifo_1:in_empty
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [CONTROL_DEMUX_0:reset_n, RGB_TO_HSV_0:reset_n, TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, avalon_st_adapter:in_rst_0_reset, avalon_st_adapter_001:in_rst_0_reset, avalon_st_adapter_002:in_rst_0_reset, avalon_st_adapter_003:in_rst_0_reset, avalon_st_adapter_004:in_rst_0_reset, data_format_adapter_0:reset_n, data_format_adapter_1:reset_n, mm_interconnect_0:RGB_TO_HSV_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, multiplexer_0:reset_n, sc_fifo_0:reset, sc_fifo_1:reset, sdram:reset_n]
 	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
 	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [i2c_opencores_camera:wb_rst_i, i2c_opencores_mipi:wb_rst_i, irq_mapper:reset, jtag_uart:rst_n, key:reset_n, led:reset_n, mipi_pwdn_n:reset_n, mipi_reset_n:reset_n, mm_interconnect_0:nios2_gen2_reset_reset_bridge_in_reset_reset, nios2_gen2:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sw:reset_n, sysid_qsys:reset_n, timer:reset_n, uart_0:reset_n]
 	wire         rst_controller_002_reset_out_reset_req;                            // rst_controller_002:reset_req -> [nios2_gen2:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
+
+	CONTROL_DEMUX control_demux_0 (
+		.clk           (altpll_0_c2_clk),                                               //                           clock.clk
+		.reset_n       (~rst_controller_reset_out_reset),                               //                           reset.reset_n
+		.sink_data     (terasic_auto_focus_0_dout_data),                                //           avalon_streaming_sink.data
+		.sink_eop      (terasic_auto_focus_0_dout_endofpacket),                         //                                .endofpacket
+		.sink_ready    (terasic_auto_focus_0_dout_ready),                               //                                .ready
+		.sink_sop      (terasic_auto_focus_0_dout_startofpacket),                       //                                .startofpacket
+		.sink_valid    (terasic_auto_focus_0_dout_valid),                               //                                .valid
+		.source_data2  (control_demux_0_avalon_streaming_source_control_data),          // avalon_streaming_source_control.data
+		.source_eop2   (control_demux_0_avalon_streaming_source_control_endofpacket),   //                                .endofpacket
+		.source_ready2 (control_demux_0_avalon_streaming_source_control_ready),         //                                .ready
+		.source_sop2   (control_demux_0_avalon_streaming_source_control_startofpacket), //                                .startofpacket
+		.source_valid2 (control_demux_0_avalon_streaming_source_control_valid),         //                                .valid
+		.source_eop    (control_demux_0_avalon_streaming_source_data_endofpacket),      //    avalon_streaming_source_data.endofpacket
+		.source_ready  (control_demux_0_avalon_streaming_source_data_ready),            //                                .ready
+		.source_sop    (control_demux_0_avalon_streaming_source_data_startofpacket),    //                                .startofpacket
+		.source_valid  (control_demux_0_avalon_streaming_source_data_valid),            //                                .valid
+		.source_data   (control_demux_0_avalon_streaming_source_data_data)              //                                .data
+	);
+
+	RGB_TO_HSV_PIPELINED_TOP rgb_to_hsv_0 (
+		.clk          (altpll_0_c2_clk),                                           //                   clock.clk
+		.reset_n      (~rst_controller_reset_out_reset),                           //                   reset.reset_n
+		.sink_data    (avalon_st_adapter_002_out_0_data),                          //   avalon_streaming_sink.data
+		.sink_eop     (avalon_st_adapter_002_out_0_endofpacket),                   //                        .endofpacket
+		.sink_ready   (avalon_st_adapter_002_out_0_ready),                         //                        .ready
+		.sink_sop     (avalon_st_adapter_002_out_0_startofpacket),                 //                        .startofpacket
+		.sink_valid   (avalon_st_adapter_002_out_0_valid),                         //                        .valid
+		.source_data  (rgb_to_hsv_0_avalon_streaming_source_data),                 // avalon_streaming_source.data
+		.source_eop   (rgb_to_hsv_0_avalon_streaming_source_endofpacket),          //                        .endofpacket
+		.source_ready (rgb_to_hsv_0_avalon_streaming_source_ready),                //                        .ready
+		.source_sop   (rgb_to_hsv_0_avalon_streaming_source_startofpacket),        //                        .startofpacket
+		.source_valid (rgb_to_hsv_0_avalon_streaming_source_valid),                //                        .valid
+		.s_chipselect (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_chipselect), //         avalon_mm_slave.chipselect
+		.s_read       (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_read),       //                        .read
+		.s_write      (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_write),      //                        .write
+		.s_readdata   (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_readdata),   //                        .readdata
+		.s_writedata  (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_writedata),  //                        .writedata
+		.s_address    (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_address)     //                        .address
+	);
 
 	TERASIC_AUTO_FOCUS #(
 		.VIDEO_W (640),
@@ -270,11 +391,11 @@ module Qsys (
 	) alt_vip_itc_0 (
 		.is_clk        (altpll_0_c2_clk),                           //       is_clk_rst.clk
 		.rst           (rst_controller_reset_out_reset),            // is_clk_rst_reset.reset
-		.is_data       (terasic_auto_focus_0_dout_data),            //              din.data
-		.is_valid      (terasic_auto_focus_0_dout_valid),           //                 .valid
-		.is_ready      (terasic_auto_focus_0_dout_ready),           //                 .ready
-		.is_sop        (terasic_auto_focus_0_dout_startofpacket),   //                 .startofpacket
-		.is_eop        (terasic_auto_focus_0_dout_endofpacket),     //                 .endofpacket
+		.is_data       (data_format_adapter_0_out_data),            //              din.data
+		.is_valid      (data_format_adapter_0_out_valid),           //                 .valid
+		.is_ready      (data_format_adapter_0_out_ready),           //                 .ready
+		.is_sop        (data_format_adapter_0_out_startofpacket),   //                 .startofpacket
+		.is_eop        (data_format_adapter_0_out_endofpacket),     //                 .endofpacket
 		.vid_clk       (alt_vip_itc_0_clocked_video_vid_clk),       //    clocked_video.export
 		.vid_data      (alt_vip_itc_0_clocked_video_vid_data),      //                 .export
 		.underflow     (alt_vip_itc_0_clocked_video_underflow),     //                 .export
@@ -337,6 +458,38 @@ module Qsys (
 		.scanclkena         (1'b0),                                           //           (terminated)
 		.scandata           (1'b0),                                           //           (terminated)
 		.configupdate       (1'b0)                                            //           (terminated)
+	);
+
+	Qsys_data_format_adapter_0 data_format_adapter_0 (
+		.clk               (altpll_0_c2_clk),                           //   clk.clk
+		.reset_n           (~rst_controller_reset_out_reset),           // reset.reset_n
+		.in_data           (avalon_st_adapter_003_out_0_data),          //    in.data
+		.in_valid          (avalon_st_adapter_003_out_0_valid),         //      .valid
+		.in_ready          (avalon_st_adapter_003_out_0_ready),         //      .ready
+		.in_startofpacket  (avalon_st_adapter_003_out_0_startofpacket), //      .startofpacket
+		.in_endofpacket    (avalon_st_adapter_003_out_0_endofpacket),   //      .endofpacket
+		.in_empty          (avalon_st_adapter_003_out_0_empty),         //      .empty
+		.out_data          (data_format_adapter_0_out_data),            //   out.data
+		.out_valid         (data_format_adapter_0_out_valid),           //      .valid
+		.out_ready         (data_format_adapter_0_out_ready),           //      .ready
+		.out_startofpacket (data_format_adapter_0_out_startofpacket),   //      .startofpacket
+		.out_endofpacket   (data_format_adapter_0_out_endofpacket)      //      .endofpacket
+	);
+
+	Qsys_data_format_adapter_1 data_format_adapter_1 (
+		.clk               (altpll_0_c2_clk),                                            //   clk.clk
+		.reset_n           (~rst_controller_reset_out_reset),                            // reset.reset_n
+		.in_data           (control_demux_0_avalon_streaming_source_data_data),          //    in.data
+		.in_valid          (control_demux_0_avalon_streaming_source_data_valid),         //      .valid
+		.in_ready          (control_demux_0_avalon_streaming_source_data_ready),         //      .ready
+		.in_startofpacket  (control_demux_0_avalon_streaming_source_data_startofpacket), //      .startofpacket
+		.in_endofpacket    (control_demux_0_avalon_streaming_source_data_endofpacket),   //      .endofpacket
+		.out_data          (data_format_adapter_1_out_data),                             //   out.data
+		.out_valid         (data_format_adapter_1_out_valid),                            //      .valid
+		.out_ready         (data_format_adapter_1_out_ready),                            //      .ready
+		.out_startofpacket (data_format_adapter_1_out_startofpacket),                    //      .startofpacket
+		.out_endofpacket   (data_format_adapter_1_out_endofpacket),                      //      .endofpacket
+		.out_empty         (data_format_adapter_1_out_empty)                             //      .empty
 	);
 
 	i2c_opencores i2c_opencores_camera (
@@ -421,6 +574,30 @@ module Qsys (
 		.out_port   (mipi_reset_n_external_connection_export)       // external_connection.export
 	);
 
+	Qsys_multiplexer_0 multiplexer_0 (
+		.clk               (altpll_0_c2_clk),                       //   clk.clk
+		.reset_n           (~rst_controller_reset_out_reset),       // reset.reset_n
+		.out_data          (multiplexer_0_out_data),                //   out.data
+		.out_valid         (multiplexer_0_out_valid),               //      .valid
+		.out_ready         (multiplexer_0_out_ready),               //      .ready
+		.out_startofpacket (multiplexer_0_out_startofpacket),       //      .startofpacket
+		.out_endofpacket   (multiplexer_0_out_endofpacket),         //      .endofpacket
+		.out_empty         (multiplexer_0_out_empty),               //      .empty
+		.out_channel       (multiplexer_0_out_channel),             //      .channel
+		.in0_data          (sc_fifo_0_out_data),                    //   in0.data
+		.in0_valid         (sc_fifo_0_out_valid),                   //      .valid
+		.in0_ready         (sc_fifo_0_out_ready),                   //      .ready
+		.in0_startofpacket (sc_fifo_0_out_startofpacket),           //      .startofpacket
+		.in0_endofpacket   (sc_fifo_0_out_endofpacket),             //      .endofpacket
+		.in0_empty         (sc_fifo_0_out_empty),                   //      .empty
+		.in1_data          (avalon_st_adapter_out_0_data),          //   in1.data
+		.in1_valid         (avalon_st_adapter_out_0_valid),         //      .valid
+		.in1_ready         (avalon_st_adapter_out_0_ready),         //      .ready
+		.in1_startofpacket (avalon_st_adapter_out_0_startofpacket), //      .startofpacket
+		.in1_endofpacket   (avalon_st_adapter_out_0_endofpacket),   //      .endofpacket
+		.in1_empty         (avalon_st_adapter_out_0_empty)          //      .empty
+	);
+
 	Qsys_nios2_gen2 nios2_gen2 (
 		.clk                                 (clk_clk),                                                  //                       clk.clk
 		.reset_n                             (~rst_controller_002_reset_out_reset),                      //                     reset.reset_n
@@ -464,6 +641,88 @@ module Qsys (
 		.reset      (rst_controller_002_reset_out_reset),               // reset1.reset
 		.reset_req  (rst_controller_002_reset_out_reset_req),           //       .reset_req
 		.freeze     (1'b0)                                              // (terminated)
+	);
+
+	altera_avalon_sc_fifo #(
+		.SYMBOLS_PER_BEAT    (3),
+		.BITS_PER_SYMBOL     (8),
+		.FIFO_DEPTH          (16),
+		.CHANNEL_WIDTH       (0),
+		.ERROR_WIDTH         (0),
+		.USE_PACKETS         (1),
+		.USE_FILL_LEVEL      (0),
+		.EMPTY_LATENCY       (3),
+		.USE_MEMORY_BLOCKS   (1),
+		.USE_STORE_FORWARD   (0),
+		.USE_ALMOST_FULL_IF  (0),
+		.USE_ALMOST_EMPTY_IF (0)
+	) sc_fifo_0 (
+		.clk               (altpll_0_c2_clk),                           //       clk.clk
+		.reset             (rst_controller_reset_out_reset),            // clk_reset.reset
+		.in_data           (avalon_st_adapter_001_out_0_data),          //        in.data
+		.in_valid          (avalon_st_adapter_001_out_0_valid),         //          .valid
+		.in_ready          (avalon_st_adapter_001_out_0_ready),         //          .ready
+		.in_startofpacket  (avalon_st_adapter_001_out_0_startofpacket), //          .startofpacket
+		.in_endofpacket    (avalon_st_adapter_001_out_0_endofpacket),   //          .endofpacket
+		.in_empty          (avalon_st_adapter_001_out_0_empty),         //          .empty
+		.out_data          (sc_fifo_0_out_data),                        //       out.data
+		.out_valid         (sc_fifo_0_out_valid),                       //          .valid
+		.out_ready         (sc_fifo_0_out_ready),                       //          .ready
+		.out_startofpacket (sc_fifo_0_out_startofpacket),               //          .startofpacket
+		.out_endofpacket   (sc_fifo_0_out_endofpacket),                 //          .endofpacket
+		.out_empty         (sc_fifo_0_out_empty),                       //          .empty
+		.csr_address       (2'b00),                                     // (terminated)
+		.csr_read          (1'b0),                                      // (terminated)
+		.csr_write         (1'b0),                                      // (terminated)
+		.csr_readdata      (),                                          // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),      // (terminated)
+		.almost_full_data  (),                                          // (terminated)
+		.almost_empty_data (),                                          // (terminated)
+		.in_error          (1'b0),                                      // (terminated)
+		.out_error         (),                                          // (terminated)
+		.in_channel        (1'b0),                                      // (terminated)
+		.out_channel       ()                                           // (terminated)
+	);
+
+	altera_avalon_sc_fifo #(
+		.SYMBOLS_PER_BEAT    (3),
+		.BITS_PER_SYMBOL     (8),
+		.FIFO_DEPTH          (16),
+		.CHANNEL_WIDTH       (0),
+		.ERROR_WIDTH         (0),
+		.USE_PACKETS         (1),
+		.USE_FILL_LEVEL      (0),
+		.EMPTY_LATENCY       (3),
+		.USE_MEMORY_BLOCKS   (1),
+		.USE_STORE_FORWARD   (0),
+		.USE_ALMOST_FULL_IF  (0),
+		.USE_ALMOST_EMPTY_IF (0)
+	) sc_fifo_1 (
+		.clk               (altpll_0_c2_clk),                           //       clk.clk
+		.reset             (rst_controller_reset_out_reset),            // clk_reset.reset
+		.in_data           (avalon_st_adapter_004_out_0_data),          //        in.data
+		.in_valid          (avalon_st_adapter_004_out_0_valid),         //          .valid
+		.in_ready          (avalon_st_adapter_004_out_0_ready),         //          .ready
+		.in_startofpacket  (avalon_st_adapter_004_out_0_startofpacket), //          .startofpacket
+		.in_endofpacket    (avalon_st_adapter_004_out_0_endofpacket),   //          .endofpacket
+		.in_empty          (avalon_st_adapter_004_out_0_empty),         //          .empty
+		.out_data          (sc_fifo_1_out_data),                        //       out.data
+		.out_valid         (sc_fifo_1_out_valid),                       //          .valid
+		.out_ready         (sc_fifo_1_out_ready),                       //          .ready
+		.out_startofpacket (sc_fifo_1_out_startofpacket),               //          .startofpacket
+		.out_endofpacket   (sc_fifo_1_out_endofpacket),                 //          .endofpacket
+		.out_empty         (sc_fifo_1_out_empty),                       //          .empty
+		.csr_address       (2'b00),                                     // (terminated)
+		.csr_read          (1'b0),                                      // (terminated)
+		.csr_write         (1'b0),                                      // (terminated)
+		.csr_readdata      (),                                          // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),      // (terminated)
+		.almost_full_data  (),                                          // (terminated)
+		.almost_empty_data (),                                          // (terminated)
+		.in_error          (1'b0),                                      // (terminated)
+		.out_error         (),                                          // (terminated)
+		.in_channel        (1'b0),                                      // (terminated)
+		.out_channel       ()                                           // (terminated)
 	);
 
 	Qsys_sdram sdram (
@@ -535,7 +794,7 @@ module Qsys (
 		.clk_50_clk_clk                                             (clk_clk),                                                            //                                           clk_50_clk.clk
 		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                 // altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_reset_reset_bridge_in_reset_reset               (rst_controller_002_reset_out_reset),                                 //               nios2_gen2_reset_reset_bridge_in_reset.reset
-		.TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset     (rst_controller_reset_out_reset),                                     //     TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset.reset
+		.RGB_TO_HSV_0_reset_reset_bridge_in_reset_reset             (rst_controller_reset_out_reset),                                     //             RGB_TO_HSV_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_data_master_address                             (nios2_gen2_data_master_address),                                     //                               nios2_gen2_data_master.address
 		.nios2_gen2_data_master_waitrequest                         (nios2_gen2_data_master_waitrequest),                                 //                                                     .waitrequest
 		.nios2_gen2_data_master_byteenable                          (nios2_gen2_data_master_byteenable),                                  //                                                     .byteenable
@@ -606,6 +865,12 @@ module Qsys (
 		.onchip_memory2_0_s1_byteenable                             (mm_interconnect_0_onchip_memory2_0_s1_byteenable),                   //                                                     .byteenable
 		.onchip_memory2_0_s1_chipselect                             (mm_interconnect_0_onchip_memory2_0_s1_chipselect),                   //                                                     .chipselect
 		.onchip_memory2_0_s1_clken                                  (mm_interconnect_0_onchip_memory2_0_s1_clken),                        //                                                     .clken
+		.RGB_TO_HSV_0_avalon_mm_slave_address                       (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_address),             //                         RGB_TO_HSV_0_avalon_mm_slave.address
+		.RGB_TO_HSV_0_avalon_mm_slave_write                         (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_write),               //                                                     .write
+		.RGB_TO_HSV_0_avalon_mm_slave_read                          (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_read),                //                                                     .read
+		.RGB_TO_HSV_0_avalon_mm_slave_readdata                      (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_readdata),            //                                                     .readdata
+		.RGB_TO_HSV_0_avalon_mm_slave_writedata                     (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_writedata),           //                                                     .writedata
+		.RGB_TO_HSV_0_avalon_mm_slave_chipselect                    (mm_interconnect_0_rgb_to_hsv_0_avalon_mm_slave_chipselect),          //                                                     .chipselect
 		.sw_s1_address                                              (mm_interconnect_0_sw_s1_address),                                    //                                                sw_s1.address
 		.sw_s1_readdata                                             (mm_interconnect_0_sw_s1_readdata),                                   //                                                     .readdata
 		.sysid_qsys_control_slave_address                           (mm_interconnect_0_sysid_qsys_control_slave_address),                 //                             sysid_qsys_control_slave.address
@@ -664,6 +929,174 @@ module Qsys (
 		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.receiver4_irq (irq_mapper_receiver4_irq),           // receiver4.irq
 		.sender_irq    (nios2_gen2_irq_irq)                  //    sender.irq
+	);
+
+	Qsys_avalon_st_adapter #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (0),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (1),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter (
+		.in_clk_0_clk        (altpll_0_c2_clk),                                    // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),                     // in_rst_0.reset
+		.in_0_data           (rgb_to_hsv_0_avalon_streaming_source_data),          //     in_0.data
+		.in_0_valid          (rgb_to_hsv_0_avalon_streaming_source_valid),         //         .valid
+		.in_0_ready          (rgb_to_hsv_0_avalon_streaming_source_ready),         //         .ready
+		.in_0_startofpacket  (rgb_to_hsv_0_avalon_streaming_source_startofpacket), //         .startofpacket
+		.in_0_endofpacket    (rgb_to_hsv_0_avalon_streaming_source_endofpacket),   //         .endofpacket
+		.out_0_data          (avalon_st_adapter_out_0_data),                       //    out_0.data
+		.out_0_valid         (avalon_st_adapter_out_0_valid),                      //         .valid
+		.out_0_ready         (avalon_st_adapter_out_0_ready),                      //         .ready
+		.out_0_startofpacket (avalon_st_adapter_out_0_startofpacket),              //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_out_0_endofpacket),                //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_out_0_empty)                       //         .empty
+	);
+
+	Qsys_avalon_st_adapter #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (0),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (1),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter_001 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                                               // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),                                // in_rst_0.reset
+		.in_0_data           (control_demux_0_avalon_streaming_source_control_data),          //     in_0.data
+		.in_0_valid          (control_demux_0_avalon_streaming_source_control_valid),         //         .valid
+		.in_0_ready          (control_demux_0_avalon_streaming_source_control_ready),         //         .ready
+		.in_0_startofpacket  (control_demux_0_avalon_streaming_source_control_startofpacket), //         .startofpacket
+		.in_0_endofpacket    (control_demux_0_avalon_streaming_source_control_endofpacket),   //         .endofpacket
+		.out_0_data          (avalon_st_adapter_001_out_0_data),                              //    out_0.data
+		.out_0_valid         (avalon_st_adapter_001_out_0_valid),                             //         .valid
+		.out_0_ready         (avalon_st_adapter_001_out_0_ready),                             //         .ready
+		.out_0_startofpacket (avalon_st_adapter_001_out_0_startofpacket),                     //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_001_out_0_endofpacket),                       //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_001_out_0_empty)                              //         .empty
+	);
+
+	Qsys_avalon_st_adapter_002 #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (1),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (0),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (0),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (1)
+	) avalon_st_adapter_002 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),            // in_rst_0.reset
+		.in_0_data           (sc_fifo_1_out_data),                        //     in_0.data
+		.in_0_valid          (sc_fifo_1_out_valid),                       //         .valid
+		.in_0_ready          (sc_fifo_1_out_ready),                       //         .ready
+		.in_0_startofpacket  (sc_fifo_1_out_startofpacket),               //         .startofpacket
+		.in_0_endofpacket    (sc_fifo_1_out_endofpacket),                 //         .endofpacket
+		.in_0_empty          (sc_fifo_1_out_empty),                       //         .empty
+		.out_0_data          (avalon_st_adapter_002_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_002_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_002_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_002_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_002_out_0_endofpacket)    //         .endofpacket
+	);
+
+	Qsys_avalon_st_adapter_003 #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (1),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (1),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (0),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (1)
+	) avalon_st_adapter_003 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),            // in_rst_0.reset
+		.in_0_data           (multiplexer_0_out_data),                    //     in_0.data
+		.in_0_valid          (multiplexer_0_out_valid),                   //         .valid
+		.in_0_ready          (multiplexer_0_out_ready),                   //         .ready
+		.in_0_startofpacket  (multiplexer_0_out_startofpacket),           //         .startofpacket
+		.in_0_endofpacket    (multiplexer_0_out_endofpacket),             //         .endofpacket
+		.in_0_empty          (multiplexer_0_out_empty),                   //         .empty
+		.in_0_channel        (multiplexer_0_out_channel),                 //         .channel
+		.out_0_data          (avalon_st_adapter_003_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_003_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_003_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_003_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_003_out_0_endofpacket),   //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_003_out_0_empty)          //         .empty
+	);
+
+	Qsys_avalon_st_adapter_004 #(
+		.inBitsPerSymbol (8),
+		.inUsePackets    (1),
+		.inDataWidth     (24),
+		.inChannelWidth  (0),
+		.inErrorWidth    (0),
+		.inUseEmptyPort  (1),
+		.inUseValid      (1),
+		.inUseReady      (1),
+		.inReadyLatency  (1),
+		.outDataWidth    (24),
+		.outChannelWidth (0),
+		.outErrorWidth   (0),
+		.outUseEmptyPort (1),
+		.outUseValid     (1),
+		.outUseReady     (1),
+		.outReadyLatency (0)
+	) avalon_st_adapter_004 (
+		.in_clk_0_clk        (altpll_0_c2_clk),                           // in_clk_0.clk
+		.in_rst_0_reset      (rst_controller_reset_out_reset),            // in_rst_0.reset
+		.in_0_data           (data_format_adapter_1_out_data),            //     in_0.data
+		.in_0_valid          (data_format_adapter_1_out_valid),           //         .valid
+		.in_0_ready          (data_format_adapter_1_out_ready),           //         .ready
+		.in_0_startofpacket  (data_format_adapter_1_out_startofpacket),   //         .startofpacket
+		.in_0_endofpacket    (data_format_adapter_1_out_endofpacket),     //         .endofpacket
+		.in_0_empty          (data_format_adapter_1_out_empty),           //         .empty
+		.out_0_data          (avalon_st_adapter_004_out_0_data),          //    out_0.data
+		.out_0_valid         (avalon_st_adapter_004_out_0_valid),         //         .valid
+		.out_0_ready         (avalon_st_adapter_004_out_0_ready),         //         .ready
+		.out_0_startofpacket (avalon_st_adapter_004_out_0_startofpacket), //         .startofpacket
+		.out_0_endofpacket   (avalon_st_adapter_004_out_0_endofpacket),   //         .endofpacket
+		.out_0_empty         (avalon_st_adapter_004_out_0_empty)          //         .empty
 	);
 
 	altera_reset_controller #(

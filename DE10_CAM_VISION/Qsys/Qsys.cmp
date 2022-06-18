@@ -15,6 +15,9 @@
 			clk_sdram_clk                             : out   std_logic;                                        -- clk
 			clk_vga_clk                               : out   std_logic;                                        -- clk
 			d8m_xclkin_clk                            : out   std_logic;                                        -- clk
+			eop_irq_raw_eop                           : out   std_logic;                                        -- raw_eop
+			eop_irq_raw_sop                           : out   std_logic;                                        -- raw_sop
+			eop_pio_export                            : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
 			i2c_opencores_camera_export_scl_pad_io    : inout std_logic                     := 'X';             -- scl_pad_io
 			i2c_opencores_camera_export_sda_pad_io    : inout std_logic                     := 'X';             -- sda_pad_io
 			i2c_opencores_mipi_export_scl_pad_io      : inout std_logic                     := 'X';             -- scl_pad_io
@@ -34,6 +37,7 @@
 			sdram_wire_ras_n                          : out   std_logic;                                        -- ras_n
 			sdram_wire_we_n                           : out   std_logic;                                        -- we_n
 			sw_external_connection_export             : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
+			switch_export                             : in    std_logic                     := 'X';             -- export
 			terasic_auto_focus_0_conduit_vcm_i2c_sda  : inout std_logic                     := 'X';             -- vcm_i2c_sda
 			terasic_auto_focus_0_conduit_clk50        : in    std_logic                     := 'X';             -- clk50
 			terasic_auto_focus_0_conduit_vcm_i2c_scl  : inout std_logic                     := 'X';             -- vcm_i2c_scl

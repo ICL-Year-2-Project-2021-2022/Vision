@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sat Jun 11 20:34:32 BST 2022
+ * Generated: Thu Jun 16 23:12:42 BST 2022
  */
 
 /*
@@ -150,7 +150,22 @@
 #define __ALTERA_NIOS2_GEN2
 #define __ALTPLL
 #define __I2C_OPENCORES
+#define __RGB_TO_HSV
 #define __TERASIC_AUTO_FOCUS
+
+
+/*
+ * RGB_TO_HSV_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_RGB_TO_HSV_0 RGB_TO_HSV
+#define RGB_TO_HSV_0_BASE 0x0
+#define RGB_TO_HSV_0_IRQ -1
+#define RGB_TO_HSV_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define RGB_TO_HSV_0_NAME "/dev/RGB_TO_HSV_0"
+#define RGB_TO_HSV_0_SPAN 64
+#define RGB_TO_HSV_0_TYPE "RGB_TO_HSV"
 
 
 /*
@@ -450,7 +465,7 @@
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1654975153
+#define SYSID_QSYS_TIMESTAMP 1655416857
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 

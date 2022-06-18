@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sun Jun 12 13:41:51 BST 2022
+ * Generated: Fri Jun 17 17:45:03 BST 2022
  */
 
 /*
@@ -61,7 +61,7 @@
  */
 
 #define ALT_MODULE_CLASS_COLOR_FILTER_0 COLOR_FILTER
-#define COLOR_FILTER_0_BASE 0x41140
+#define COLOR_FILTER_0_BASE 0x51980
 #define COLOR_FILTER_0_IRQ -1
 #define COLOR_FILTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define COLOR_FILTER_0_NAME "/dev/COLOR_FILTER_0"
@@ -70,45 +70,17 @@
 
 
 /*
- * COLOR_FILTER_1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_COLOR_FILTER_1 COLOR_FILTER
-#define COLOR_FILTER_1_BASE 0x41040
-#define COLOR_FILTER_1_IRQ -1
-#define COLOR_FILTER_1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define COLOR_FILTER_1_NAME "/dev/COLOR_FILTER_1"
-#define COLOR_FILTER_1_SPAN 64
-#define COLOR_FILTER_1_TYPE "COLOR_FILTER"
-
-
-/*
  * COM_COUNTER_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_COM_COUNTER_0 COM_COUNTER
-#define COM_COUNTER_0_BASE 0x41100
+#define COM_COUNTER_0_BASE 0x51940
 #define COM_COUNTER_0_IRQ -1
 #define COM_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define COM_COUNTER_0_NAME "/dev/COM_COUNTER_0"
 #define COM_COUNTER_0_SPAN 64
 #define COM_COUNTER_0_TYPE "COM_COUNTER"
-
-
-/*
- * COM_COUNTER_1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_COM_COUNTER_1 COM_COUNTER
-#define COM_COUNTER_1_BASE 0x41080
-#define COM_COUNTER_1_IRQ -1
-#define COM_COUNTER_1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define COM_COUNTER_1_NAME "/dev/COM_COUNTER_1"
-#define COM_COUNTER_1_SPAN 64
-#define COM_COUNTER_1_TYPE "COM_COUNTER"
 
 
 /*
@@ -118,7 +90,7 @@
 
 #define ALT_CPU_ARCHITECTURE "altera_nios2_gen2"
 #define ALT_CPU_BIG_ENDIAN 0
-#define ALT_CPU_BREAK_ADDR 0x00040820
+#define ALT_CPU_BREAK_ADDR 0x00050820
 #define ALT_CPU_CPU_ARCH_NIOS2_R1
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
@@ -159,7 +131,7 @@
  */
 
 #define NIOS2_BIG_ENDIAN 0
-#define NIOS2_BREAK_ADDR 0x00040820
+#define NIOS2_BREAK_ADDR 0x00050820
 #define NIOS2_CPU_ARCH_NIOS2_R1
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
@@ -205,26 +177,71 @@
 #define __ALTERA_AVALON_UART
 #define __ALTERA_NIOS2_GEN2
 #define __ALTPLL
+#define __ALT_VIP_CL_2DFIR
 #define __COLOR_FILTER
 #define __COM_COUNTER
+#define __EDGE_BINS
 #define __I2C_OPENCORES
-#define __LINEAR_BLUR
+#define __PIXEL_BUFFER
+#define __PIXEL_GRABBER
 #define __RGB_TO_HSV
 #define __TERASIC_AUTO_FOCUS
 
 
 /*
- * LINEAR_BLUR_0 configuration
+ * EDGE_BINS_0 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_LINEAR_BLUR_0 LINEAR_BLUR
-#define LINEAR_BLUR_0_BASE 0x410c0
-#define LINEAR_BLUR_0_IRQ -1
-#define LINEAR_BLUR_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LINEAR_BLUR_0_NAME "/dev/LINEAR_BLUR_0"
-#define LINEAR_BLUR_0_SPAN 64
-#define LINEAR_BLUR_0_TYPE "LINEAR_BLUR"
+#define ALT_MODULE_CLASS_EDGE_BINS_0 EDGE_BINS
+#define EDGE_BINS_0_BASE 0x51800
+#define EDGE_BINS_0_IRQ -1
+#define EDGE_BINS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define EDGE_BINS_0_NAME "/dev/EDGE_BINS_0"
+#define EDGE_BINS_0_SPAN 128
+#define EDGE_BINS_0_TYPE "EDGE_BINS"
+
+
+/*
+ * PIXEL_BUFFER_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_PIXEL_BUFFER_0 PIXEL_BUFFER
+#define PIXEL_BUFFER_0_BASE 0x40000
+#define PIXEL_BUFFER_0_IRQ -1
+#define PIXEL_BUFFER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIXEL_BUFFER_0_NAME "/dev/PIXEL_BUFFER_0"
+#define PIXEL_BUFFER_0_SPAN 65536
+#define PIXEL_BUFFER_0_TYPE "PIXEL_BUFFER"
+
+
+/*
+ * PIXEL_GRABBER_HSV configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_PIXEL_GRABBER_HSV PIXEL_GRABBER
+#define PIXEL_GRABBER_HSV_BASE 0x51880
+#define PIXEL_GRABBER_HSV_IRQ -1
+#define PIXEL_GRABBER_HSV_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIXEL_GRABBER_HSV_NAME "/dev/PIXEL_GRABBER_HSV"
+#define PIXEL_GRABBER_HSV_SPAN 64
+#define PIXEL_GRABBER_HSV_TYPE "PIXEL_GRABBER"
+
+
+/*
+ * PIXEL_GRABBER_RGB configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_PIXEL_GRABBER_RGB PIXEL_GRABBER
+#define PIXEL_GRABBER_RGB_BASE 0x518c0
+#define PIXEL_GRABBER_RGB_IRQ -1
+#define PIXEL_GRABBER_RGB_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIXEL_GRABBER_RGB_NAME "/dev/PIXEL_GRABBER_RGB"
+#define PIXEL_GRABBER_RGB_SPAN 64
+#define PIXEL_GRABBER_RGB_TYPE "PIXEL_GRABBER"
 
 
 /*
@@ -233,7 +250,7 @@
  */
 
 #define ALT_MODULE_CLASS_RGB_TO_HSV RGB_TO_HSV
-#define RGB_TO_HSV_BASE 0x41000
+#define RGB_TO_HSV_BASE 0x51900
 #define RGB_TO_HSV_IRQ -1
 #define RGB_TO_HSV_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define RGB_TO_HSV_NAME "/dev/RGB_TO_HSV"
@@ -257,19 +274,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x41298
+#define ALT_STDERR_BASE 0x51b28
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x41298
+#define ALT_STDIN_BASE 0x51b28
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x41298
+#define ALT_STDOUT_BASE 0x51b28
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -283,7 +300,7 @@
  */
 
 #define ALT_MODULE_CLASS_TERASIC_AUTO_FOCUS_0 TERASIC_AUTO_FOCUS
-#define TERASIC_AUTO_FOCUS_0_BASE 0x411c0
+#define TERASIC_AUTO_FOCUS_0_BASE 0x51a20
 #define TERASIC_AUTO_FOCUS_0_IRQ -1
 #define TERASIC_AUTO_FOCUS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define TERASIC_AUTO_FOCUS_0_NAME "/dev/TERASIC_AUTO_FOCUS_0"
@@ -296,7 +313,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x41280
+#define ALTPLL_0_BASE 0x51b10
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -310,13 +327,27 @@
  *
  */
 
-#define ALTPLL_1_BASE 0x41270
+#define ALTPLL_1_BASE 0x51b00
 #define ALTPLL_1_IRQ -1
 #define ALTPLL_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_1_NAME "/dev/altpll_1"
 #define ALTPLL_1_SPAN 16
 #define ALTPLL_1_TYPE "altpll"
 #define ALT_MODULE_CLASS_altpll_1 altpll
+
+
+/*
+ * fir_0_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fir_0_0 alt_vip_cl_2dfir
+#define FIR_0_0_BASE 0x51000
+#define FIR_0_0_IRQ -1
+#define FIR_0_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIR_0_0_NAME "/dev/fir_0_0"
+#define FIR_0_0_SPAN 2048
+#define FIR_0_0_TYPE "alt_vip_cl_2dfir"
 
 
 /*
@@ -336,7 +367,7 @@
  */
 
 #define ALT_MODULE_CLASS_i2c_opencores_camera i2c_opencores
-#define I2C_OPENCORES_CAMERA_BASE 0x411e0
+#define I2C_OPENCORES_CAMERA_BASE 0x51a40
 #define I2C_OPENCORES_CAMERA_IRQ 1
 #define I2C_OPENCORES_CAMERA_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define I2C_OPENCORES_CAMERA_NAME "/dev/i2c_opencores_camera"
@@ -350,7 +381,7 @@
  */
 
 #define ALT_MODULE_CLASS_i2c_opencores_mipi i2c_opencores
-#define I2C_OPENCORES_MIPI_BASE 0x41200
+#define I2C_OPENCORES_MIPI_BASE 0x51a60
 #define I2C_OPENCORES_MIPI_IRQ 0
 #define I2C_OPENCORES_MIPI_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define I2C_OPENCORES_MIPI_NAME "/dev/i2c_opencores_mipi"
@@ -364,8 +395,8 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x41298
-#define JTAG_UART_IRQ 3
+#define JTAG_UART_BASE 0x51b28
+#define JTAG_UART_IRQ 4
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
 #define JTAG_UART_READ_DEPTH 64
@@ -382,7 +413,7 @@
  */
 
 #define ALT_MODULE_CLASS_key altera_avalon_pio
-#define KEY_BASE 0x41240
+#define KEY_BASE 0x51ad0
 #define KEY_BIT_CLEARING_EDGE_REGISTER 0
 #define KEY_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define KEY_CAPTURE 0
@@ -409,7 +440,7 @@
  */
 
 #define ALT_MODULE_CLASS_led altera_avalon_pio
-#define LED_BASE 0x41260
+#define LED_BASE 0x51af0
 #define LED_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_CAPTURE 0
@@ -436,7 +467,7 @@
  */
 
 #define ALT_MODULE_CLASS_mipi_pwdn_n altera_avalon_pio
-#define MIPI_PWDN_N_BASE 0x41220
+#define MIPI_PWDN_N_BASE 0x51ab0
 #define MIPI_PWDN_N_BIT_CLEARING_EDGE_REGISTER 0
 #define MIPI_PWDN_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIPI_PWDN_N_CAPTURE 0
@@ -463,7 +494,7 @@
  */
 
 #define ALT_MODULE_CLASS_mipi_reset_n altera_avalon_pio
-#define MIPI_RESET_N_BASE 0x41230
+#define MIPI_RESET_N_BASE 0x51ac0
 #define MIPI_RESET_N_BIT_CLEARING_EDGE_REGISTER 0
 #define MIPI_RESET_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIPI_RESET_N_CAPTURE 0
@@ -507,10 +538,64 @@
 #define ONCHIP_MEMORY2_0_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEMORY2_0_SINGLE_CLOCK_OP 0
 #define ONCHIP_MEMORY2_0_SIZE_MULTIPLE 1
-#define ONCHIP_MEMORY2_0_SIZE_VALUE 131072
-#define ONCHIP_MEMORY2_0_SPAN 131072
+#define ONCHIP_MEMORY2_0_SIZE_VALUE 120000
+#define ONCHIP_MEMORY2_0_SPAN 120000
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
+
+
+/*
+ * pio_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_0 altera_avalon_pio
+#define PIO_0_BASE 0x51aa0
+#define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_0_CAPTURE 1
+#define PIO_0_DATA_WIDTH 1
+#define PIO_0_DO_TEST_BENCH_WIRING 0
+#define PIO_0_DRIVEN_SIM_VALUE 0
+#define PIO_0_EDGE_TYPE "RISING"
+#define PIO_0_FREQ 50000000
+#define PIO_0_HAS_IN 1
+#define PIO_0_HAS_OUT 0
+#define PIO_0_HAS_TRI 0
+#define PIO_0_IRQ 8
+#define PIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define PIO_0_IRQ_TYPE "EDGE"
+#define PIO_0_NAME "/dev/pio_0"
+#define PIO_0_RESET_VALUE 0
+#define PIO_0_SPAN 16
+#define PIO_0_TYPE "altera_avalon_pio"
+
+
+/*
+ * pio_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_1 altera_avalon_pio
+#define PIO_1_BASE 0x51a90
+#define PIO_1_BIT_CLEARING_EDGE_REGISTER 1
+#define PIO_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_1_CAPTURE 1
+#define PIO_1_DATA_WIDTH 2
+#define PIO_1_DO_TEST_BENCH_WIRING 0
+#define PIO_1_DRIVEN_SIM_VALUE 0
+#define PIO_1_EDGE_TYPE "RISING"
+#define PIO_1_FREQ 50000000
+#define PIO_1_HAS_IN 1
+#define PIO_1_HAS_OUT 0
+#define PIO_1_HAS_TRI 0
+#define PIO_1_IRQ 9
+#define PIO_1_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define PIO_1_IRQ_TYPE "LEVEL"
+#define PIO_1_NAME "/dev/pio_1"
+#define PIO_1_RESET_VALUE 0
+#define PIO_1_SPAN 16
+#define PIO_1_TYPE "altera_avalon_pio"
 
 
 /*
@@ -519,7 +604,7 @@
  */
 
 #define ALT_MODULE_CLASS_sw altera_avalon_pio
-#define SW_BASE 0x41250
+#define SW_BASE 0x51ae0
 #define SW_BIT_CLEARING_EDGE_REGISTER 0
 #define SW_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SW_CAPTURE 0
@@ -546,13 +631,13 @@
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys altera_avalon_sysid_qsys
-#define SYSID_QSYS_BASE 0x41290
+#define SYSID_QSYS_BASE 0x51b20
 #define SYSID_QSYS_ID 0
 #define SYSID_QSYS_IRQ -1
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1655036690
+#define SYSID_QSYS_TIMESTAMP 1655482096
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -563,11 +648,11 @@
 
 #define ALT_MODULE_CLASS_timer altera_avalon_timer
 #define TIMER_ALWAYS_RUN 0
-#define TIMER_BASE 0x411a0
+#define TIMER_BASE 0x51a00
 #define TIMER_COUNTER_SIZE 32
 #define TIMER_FIXED_PERIOD 0
 #define TIMER_FREQ 50000000
-#define TIMER_IRQ 4
+#define TIMER_IRQ 5
 #define TIMER_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define TIMER_LOAD_VALUE 49999
 #define TIMER_MULT 0.001
@@ -583,17 +668,43 @@
 
 
 /*
+ * timer_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_timer_0 altera_avalon_timer
+#define TIMER_0_ALWAYS_RUN 1
+#define TIMER_0_BASE 0x519c0
+#define TIMER_0_COUNTER_SIZE 32
+#define TIMER_0_FIXED_PERIOD 1
+#define TIMER_0_FREQ 50000000
+#define TIMER_0_IRQ 7
+#define TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define TIMER_0_LOAD_VALUE 49999999
+#define TIMER_0_MULT 1.0
+#define TIMER_0_NAME "/dev/timer_0"
+#define TIMER_0_PERIOD 1
+#define TIMER_0_PERIOD_UNITS "s"
+#define TIMER_0_RESET_OUTPUT 0
+#define TIMER_0_SNAPSHOT 0
+#define TIMER_0_SPAN 32
+#define TIMER_0_TICKS_PER_SEC 1
+#define TIMER_0_TIMEOUT_PULSE_OUTPUT 0
+#define TIMER_0_TYPE "altera_avalon_timer"
+
+
+/*
  * uart_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_uart_0 altera_avalon_uart
-#define UART_0_BASE 0x41180
+#define UART_0_BASE 0x519e0
 #define UART_0_BAUD 115200
 #define UART_0_DATA_BITS 8
 #define UART_0_FIXED_BAUD 1
 #define UART_0_FREQ 50000000
-#define UART_0_IRQ 5
+#define UART_0_IRQ 6
 #define UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define UART_0_NAME "/dev/uart_0"
 #define UART_0_PARITY 'N'

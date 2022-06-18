@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 12, 2022 1:54:42 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1655038482436</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 17, 2022 5:39:43 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1655483983331</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_vision_std_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspSettingsFile>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_vision_std_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2</Cpu>
@@ -924,127 +924,157 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
-                <addressRange>0x00020000 - 0x0003FFFF</addressRange>
-                <addressSpan>131072</addressSpan>
+                <addressRange>0x00020000 - 0x0003D4BF</addressRange>
+                <addressSpan>120000</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>PIXEL_BUFFER_0</slaveDescriptor>
+                <addressRange>0x00040000 - 0x0004FFFF</addressRange>
+                <addressSpan>65536</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>fir_0_0</slaveDescriptor>
+                <addressRange>0x00051000 - 0x000517FF</addressRange>
+                <addressSpan>2048</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>EDGE_BINS_0</slaveDescriptor>
+                <addressRange>0x00051800 - 0x0005187F</addressRange>
+                <addressSpan>128</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>PIXEL_GRABBER_HSV</slaveDescriptor>
+                <addressRange>0x00051880 - 0x000518BF</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>PIXEL_GRABBER_RGB</slaveDescriptor>
+                <addressRange>0x000518C0 - 0x000518FF</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>RGB_TO_HSV</slaveDescriptor>
-                <addressRange>0x00041000 - 0x0004103F</addressRange>
-                <addressSpan>64</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>COLOR_FILTER_1</slaveDescriptor>
-                <addressRange>0x00041040 - 0x0004107F</addressRange>
-                <addressSpan>64</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>COM_COUNTER_1</slaveDescriptor>
-                <addressRange>0x00041080 - 0x000410BF</addressRange>
-                <addressSpan>64</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>LINEAR_BLUR_0</slaveDescriptor>
-                <addressRange>0x000410C0 - 0x000410FF</addressRange>
+                <addressRange>0x00051900 - 0x0005193F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>COM_COUNTER_0</slaveDescriptor>
-                <addressRange>0x00041100 - 0x0004113F</addressRange>
+                <addressRange>0x00051940 - 0x0005197F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>COLOR_FILTER_0</slaveDescriptor>
-                <addressRange>0x00041140 - 0x0004117F</addressRange>
+                <addressRange>0x00051980 - 0x000519BF</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>timer_0</slaveDescriptor>
+                <addressRange>0x000519C0 - 0x000519DF</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>uart_0</slaveDescriptor>
-                <addressRange>0x00041180 - 0x0004119F</addressRange>
+                <addressRange>0x000519E0 - 0x000519FF</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer</slaveDescriptor>
-                <addressRange>0x000411A0 - 0x000411BF</addressRange>
+                <addressRange>0x00051A00 - 0x00051A1F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>TERASIC_AUTO_FOCUS_0</slaveDescriptor>
-                <addressRange>0x000411C0 - 0x000411DF</addressRange>
+                <addressRange>0x00051A20 - 0x00051A3F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>i2c_opencores_camera</slaveDescriptor>
-                <addressRange>0x000411E0 - 0x000411FF</addressRange>
+                <addressRange>0x00051A40 - 0x00051A5F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>i2c_opencores_mipi</slaveDescriptor>
-                <addressRange>0x00041200 - 0x0004121F</addressRange>
+                <addressRange>0x00051A60 - 0x00051A7F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>pio_1</slaveDescriptor>
+                <addressRange>0x00051A90 - 0x00051A9F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_0</slaveDescriptor>
+                <addressRange>0x00051AA0 - 0x00051AAF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>mipi_pwdn_n</slaveDescriptor>
-                <addressRange>0x00041220 - 0x0004122F</addressRange>
+                <addressRange>0x00051AB0 - 0x00051ABF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mipi_reset_n</slaveDescriptor>
-                <addressRange>0x00041230 - 0x0004123F</addressRange>
+                <addressRange>0x00051AC0 - 0x00051ACF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>key</slaveDescriptor>
-                <addressRange>0x00041240 - 0x0004124F</addressRange>
+                <addressRange>0x00051AD0 - 0x00051ADF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sw</slaveDescriptor>
-                <addressRange>0x00041250 - 0x0004125F</addressRange>
+                <addressRange>0x00051AE0 - 0x00051AEF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>led</slaveDescriptor>
-                <addressRange>0x00041260 - 0x0004126F</addressRange>
+                <addressRange>0x00051AF0 - 0x00051AFF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_1</slaveDescriptor>
-                <addressRange>0x00041270 - 0x0004127F</addressRange>
+                <addressRange>0x00051B00 - 0x00051B0F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_0</slaveDescriptor>
-                <addressRange>0x00041280 - 0x0004128F</addressRange>
+                <addressRange>0x00051B10 - 0x00051B1F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid_qsys</slaveDescriptor>
-                <addressRange>0x00041290 - 0x00041297</addressRange>
+                <addressRange>0x00051B20 - 0x00051B27</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x00041298 - 0x0004129F</addressRange>
+                <addressRange>0x00051B28 - 0x00051B2F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
@@ -1072,4 +1102,28 @@
                 <sectionName>.stack</sectionName>
                 <regionName>onchip_memory2_0</regionName>
         </LinkerSection>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>VipUtil.cpp</fileName>
+        </IgnoredFileInfo>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>VipCore.cpp</fileName>
+        </IgnoredFileInfo>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>VipMath.cpp</fileName>
+        </IgnoredFileInfo>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>QuantizedCoefficients.cpp</fileName>
+        </IgnoredFileInfo>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>FirCoefficients.cpp</fileName>
+        </IgnoredFileInfo>
+        <IgnoredFileInfo>
+                <componentName>alt_vip_cl_2dfir_driver</componentName>
+                <fileName>Fir_Filter.cpp</fileName>
+        </IgnoredFileInfo>
 </sch:Settings>

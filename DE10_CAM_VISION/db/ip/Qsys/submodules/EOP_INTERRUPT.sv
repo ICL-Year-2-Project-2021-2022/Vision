@@ -10,7 +10,11 @@ module EOP_INTERRUPT(
 	input logic sink_sop,
 	input logic sink_eop,
 	
-	output logic irq
+	output logic irq_eop,
+	output logic irq_sop,
+	
+	output logic raw_eop,
+	output logic raw_sop
 	
 );
 
@@ -18,7 +22,8 @@ module EOP_INTERRUPT(
 logic[23:0] data;
 logic sop, eop, ready, valid;
 logic video_packet;
-logic [5:0] irq_d;
+logic [7:0] irq_d;
+logic [7:0] irq_d_sop;
 
 
 always @(posedge clk) begin
@@ -36,15 +41,28 @@ always @(posedge clk) begin
 		irq_d[0] <= 0;
 	end
 	
+	if ((data[3:0] == 3'h0) && sop && valid) begin
+		irq_d_sop[0] <= 1;
+	end else begin
+		irq_d_sop[0] <= 0;
+	end
+	
 	//Shift irq
-	for (int i = 0; i  < 5; i= i + 1) begin
+	for (int i = 0; i  < 7; i= i + 1) begin
 		irq_d[i+1] <= irq_d[i];
+	end
+	
+	for (int i = 0; i  <7; i= i + 1) begin
+		irq_d_sop[i+1] <= irq_d_sop[i];
 	end
 end
 
 always @(*) begin	
-	if (irq_d > 0) irq = 1;
-	else irq = 0;
+	if (irq_d > 0) irq_eop = 1;
+	else irq_eop = 0;
+	
+	if (irq_d_sop > 0) irq_sop = 1;
+	else irq_sop = 0;
 end
 
 

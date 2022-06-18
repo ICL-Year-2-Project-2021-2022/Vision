@@ -37,12 +37,17 @@ module Qsys_alt_vip_cl_2dfir_0_alg_core
       output   wire  [56 - 1 : 0]    av_st_dout_data,
       input    wire                                av_st_dout_ready,
       
+      input    wire                                av_st_coeff_valid,
+      input    wire                                av_st_coeff_startofpacket,
+      input    wire                                av_st_coeff_endofpacket,
+      input    wire  [42 - 1 : 0]   av_st_coeff_data,
+      output   wire                                av_st_coeff_ready,
       
       input    wire   clock,
       input    wire   reset
    );
    
-   localparam  integer  FIXED_COEFFS  [0 : 80] =  '{14,  14,  14,  0,  0,  0,  0,  0,  0,
+   localparam  integer  FIXED_COEFFS  [0 : 80] =  '{0,  0,  0,  0,  0,  0,  0,  0,  0,
                                                     0,  0, 0, 0, 0, 0, 0, 0, 0,
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -52,11 +57,6 @@ module Qsys_alt_vip_cl_2dfir_0_alg_core
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                     0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-   wire                                av_st_coeff_valid;
-   wire                                av_st_coeff_startofpacket;
-   wire                                av_st_coeff_endofpacket;
-   wire  [1 - 1 : 0]   av_st_coeff_data;
-   wire                                av_st_coeff_ready;
 
    alt_vip_fir_alg_core # (
       .NUMBER_OF_COLOR_PLANES          (3),
@@ -68,19 +68,19 @@ module Qsys_alt_vip_cl_2dfir_0_alg_core
       .MOVE_BINARY_POINT_RIGHT         (0),
       .ROUNDING_METHOD                 ("ROUND_HALF_UP"),
       .EDGE_ADAPTIVE_SHARPEN           (0),
-      .DO_MIRRORING                    (1),
+      .DO_MIRRORING                    (0),
       .ENABLE_WIDE_BLUR_SHARPEN        (1),
-      .RUNTIME_CONTROL                 (0),
+      .RUNTIME_CONTROL                 (1),
       .UPPER_BLUR_LIM                  (15),
       .LOWER_BLUR_LIM                  (0),
       .H_TAPS                          (3),
       .V_TAPS                          (3),
-      .COEFF_SIGNED                    (0),
-      .COEFF_INTEGER_BITS              (1),
+      .COEFF_SIGNED                    (1),
+      .COEFF_INTEGER_BITS              (2),
       .COEFF_FRACTION_BITS             (7),
-      .V_SYMMETRIC                     (1),
-      .H_SYMMETRIC                     (1),
-      .DIAG_SYMMETRIC                  (1),
+      .V_SYMMETRIC                     (0),
+      .H_SYMMETRIC                     (0),
+      .DIAG_SYMMETRIC                  (0),
       .SRC_WIDTH                       (8),
       .DST_WIDTH                       (8),
       .CONTEXT_WIDTH                   (8),

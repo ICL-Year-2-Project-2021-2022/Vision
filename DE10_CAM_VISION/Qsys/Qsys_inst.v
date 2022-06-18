@@ -14,6 +14,9 @@
 		.clk_sdram_clk                             (<connected-to-clk_sdram_clk>),                             //                        clk_sdram.clk
 		.clk_vga_clk                               (<connected-to-clk_vga_clk>),                               //                          clk_vga.clk
 		.d8m_xclkin_clk                            (<connected-to-d8m_xclkin_clk>),                            //                       d8m_xclkin.clk
+		.eop_irq_raw_eop                           (<connected-to-eop_irq_raw_eop>),                           //                          eop_irq.raw_eop
+		.eop_irq_raw_sop                           (<connected-to-eop_irq_raw_sop>),                           //                                 .raw_sop
+		.eop_pio_export                            (<connected-to-eop_pio_export>),                            //                          eop_pio.export
 		.i2c_opencores_camera_export_scl_pad_io    (<connected-to-i2c_opencores_camera_export_scl_pad_io>),    //      i2c_opencores_camera_export.scl_pad_io
 		.i2c_opencores_camera_export_sda_pad_io    (<connected-to-i2c_opencores_camera_export_sda_pad_io>),    //                                 .sda_pad_io
 		.i2c_opencores_mipi_export_scl_pad_io      (<connected-to-i2c_opencores_mipi_export_scl_pad_io>),      //        i2c_opencores_mipi_export.scl_pad_io
@@ -33,6 +36,7 @@
 		.sdram_wire_ras_n                          (<connected-to-sdram_wire_ras_n>),                          //                                 .ras_n
 		.sdram_wire_we_n                           (<connected-to-sdram_wire_we_n>),                           //                                 .we_n
 		.sw_external_connection_export             (<connected-to-sw_external_connection_export>),             //           sw_external_connection.export
+		.switch_export                             (<connected-to-switch_export>),                             //                           switch.export
 		.terasic_auto_focus_0_conduit_vcm_i2c_sda  (<connected-to-terasic_auto_focus_0_conduit_vcm_i2c_sda>),  //     terasic_auto_focus_0_conduit.vcm_i2c_sda
 		.terasic_auto_focus_0_conduit_clk50        (<connected-to-terasic_auto_focus_0_conduit_clk50>),        //                                 .clk50
 		.terasic_auto_focus_0_conduit_vcm_i2c_scl  (<connected-to-terasic_auto_focus_0_conduit_vcm_i2c_scl>),  //                                 .vcm_i2c_scl

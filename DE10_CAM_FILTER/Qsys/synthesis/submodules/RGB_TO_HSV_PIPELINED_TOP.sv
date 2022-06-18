@@ -15,7 +15,15 @@ module RGB_TO_HSV_PIPELINED_TOP(
 	output logic source_valid,
 	input logic source_ready,
 	output logic source_sop,
-	output logic source_eop
+	output logic source_eop,
+	
+	// mm slave
+	input logic s_chipselect,
+	input logic s_read,
+	input logic s_write,
+	output logic[31:0] s_readdata,
+	input logic[31:0] s_writedata,
+	input logic[3:0] s_address
 	
 );
 
@@ -29,6 +37,7 @@ logic sop_1, sop_2;
 logic eop_1, eop_2;
 logic advance, ready_d;
 logic video_packet_1, video_packet_2, video_packet_3;
+logic hsv_enabled;
 
 always @(posedge clk) begin
 	//Control logic
@@ -66,7 +75,7 @@ always @(posedge clk) begin
 end
 
 always @(*) begin
-	selected_hsv = video_packet_2 && (~sop_2);
+	selected_hsv = video_packet_2 && (~sop_2) && hsv_enabled;
 	if (selected_hsv) begin
 		hsv = hsv_comb;
 	end else begin
@@ -79,7 +88,7 @@ end
 
 
 //Streaming registers to buffer video signal
-STREAM_REG #(.DATA_WIDTH(26)) in_reg (
+STREAM_REG_HSV #(.DATA_WIDTH(26)) in_reg (
 	//Global clocks
 	.clk(clk),
 	.rst_n(reset_n),
@@ -95,7 +104,7 @@ STREAM_REG #(.DATA_WIDTH(26)) in_reg (
 	.data_out({rgb,sop,eop})
 );
 
-STREAM_REG #(.DATA_WIDTH(26)) out_reg (
+STREAM_REG_HSV #(.DATA_WIDTH(26)) out_reg (
 	//Global clocks
 	.clk(clk),
 	.rst_n(reset_n),
@@ -113,6 +122,34 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 );
 
 RGB_TO_HSV_PIPELINED  rgbtohsv (.rgb(rgb), .hsv(hsv_comb), .advance(advance), .clk(clk), .reset(reset_n));
+
+
+/////////////////////////////////
+/// Memory-mapped port		 /////
+/////////////////////////////////
+
+// Addresses
+`define HSV_ENABLED				0
+
+
+
+// Copy the requested word to the output port when there is a read.
+always @ (posedge clk)
+begin
+   if (~reset_n) begin
+	   s_readdata <= {32'b0};
+	   hsv_enabled <= 1;
+	end
+	
+	else if (s_chipselect & s_read) begin
+		//Enabled
+		if	 (s_address == `HSV_ENABLED) s_readdata <= hsv_enabled;
+	end
+
+	else if (s_chipselect & s_write) begin
+		if (s_address == `HSV_ENABLED) hsv_enabled <= s_writedata[0];
+	end
+end
 
 endmodule
 

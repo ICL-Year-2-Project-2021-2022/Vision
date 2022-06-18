@@ -1,5 +1,5 @@
-obj/default/main.o: main.c ../cam_small_bsp//HAL/inc/sys/alt_stdio.h \
- I2C_core.h ../cam_small_bsp//HAL/inc/alt_types.h terasic_includes.h \
+obj/default/main.o: main.c I2C_core.h \
+ ../cam_small_bsp//HAL/inc/alt_types.h terasic_includes.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash_types.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash_dev.h \
@@ -17,10 +17,10 @@ obj/default/main.o: main.c ../cam_small_bsp//HAL/inc/sys/alt_stdio.h \
  ../cam_small_bsp//HAL/inc/sys/alt_timestamp.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
- ../cam_small_bsp//HAL/inc/sys/alt_warning.h mipi_camera_config.h \
- mipi_bridge_config.h auto_focus.h
-
-../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
+ ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h mipi_camera_config.h \
+ mipi_bridge_config.h auto_focus.h definitions.h mipi_setup.h support.h \
+ global.h
 
 I2C_core.h:
 
@@ -70,8 +70,18 @@ terasic_includes.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_warning.h:
 
+../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
+
 mipi_camera_config.h:
 
 mipi_bridge_config.h:
 
 auto_focus.h:
+
+definitions.h:
+
+mipi_setup.h:
+
+support.h:
+
+global.h:

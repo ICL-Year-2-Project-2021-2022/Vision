@@ -51,14 +51,14 @@ logic gate_enabled;
 //assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? new_image : {red,green,blue};
 
 //Count valid pixels to tget the image coordinates. Reset and detect packet type on Start of Packet.
-logic [10:0] x, y;
+logic [10:0] x, y, thresh_y, thresh_x;
 logic packet_video;
 
 always @(*) begin
 	
 	if (~sop & packet_video) begin
 		if (gate_enabled) begin
-			if (blue >= threshold_gate) begin
+			if (blue >= threshold_gate && y >= thresh_y && x >= thresh_x) begin
 			{red_out, green_out, blue_out} = 24'hffffff;
 			end else begin
 				{red_out, green_out, blue_out} = 24'h000000;
@@ -159,6 +159,8 @@ STREAM_REG_COM #(.DATA_WIDTH(26)) out_reg (
 `define BB_HIGH_X					6
 `define BB_HIGH_Y						7
 `define THRESH_ENABLED				8
+`define THRESH_Y						9
+`define THRESH_X						9
 
 
 
@@ -169,6 +171,8 @@ begin
 	   s_readdata <= {32'b0};
 	   threshold_gate <= 127;
 	   gate_enabled <=1;
+	   thresh_y <= 0;
+	   thresh_x <= 5;
 	end
 	
 	else if (s_chipselect & s_read) begin
@@ -185,6 +189,8 @@ begin
 		if	 (s_address == `BB_LOW_Y) s_readdata <= top;
 		if	 (s_address == `BB_HIGH_X) s_readdata <= right;
 		if	 (s_address == `BB_HIGH_Y) s_readdata <= bottom;
+		if	 (s_address == `THRESH_Y) s_readdata <= thresh_y;
+		if	 (s_address == `THRESH_X) s_readdata <= thresh_x;
 		
 		//Enabled
 		if	 (s_address == `THRESH_ENABLED) s_readdata <= gate_enabled;
@@ -193,6 +199,8 @@ begin
 	else if (s_chipselect & s_write) begin
 		if (s_address == `THRESHOLD_GATE) threshold_gate <= s_writedata[7:0];
 		if (s_address == `THRESH_ENABLED) gate_enabled <= s_writedata[0];
+		if	(s_address == `THRESH_Y) thresh_y <= s_writedata;
+		if	(s_address == `THRESH_X) thresh_x <= s_writedata;
 	end
 end
 

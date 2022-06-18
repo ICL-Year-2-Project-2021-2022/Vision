@@ -1,155 +1,152 @@
-
-
 #include <stdio.h>
-#include "sys/alt_stdio.h"
 #include "I2C_core.h"
 #include "terasic_includes.h"
 #include "mipi_camera_config.h"
 #include "mipi_bridge_config.h"
-#include "system.h"
-#include <system.h>
-#include "auto_focus.h"
-//#include "altera_up_avalon_video_dma_controller_rgb.h"
 
+#include "auto_focus.h"
+#include "system.h"
 #include <fcntl.h>
 #include <unistd.h>
-
-//Color mask offsets
-#define COLOR_FILTER_BASE COLOR_FILTER_0_BASE
-#define THRESHOLD_LOW 0
-#define THRESHOLD_HIGH 1
-#define APPLY_MASK 2
+#include <string.h>
+#include "sys/alt_irq.h"
+#include "sys/alt_stdio.h"
 
 
-//Linear Blur
-#define LINEAR_BLUR_BASE 0x41000
-#define BLUR_ENABLED 0
+#include "definitions.h"
+#include "mipi_setup.h"
+#include "support.h"
+#include "global.h"
 
-//Com counter
-#define COM_COUNTER_BASE 0x41040
-#define THRESHOLD_GATE 0
-#define COM_X 1
-#define COM_Y 2
-#define COM_MASS 3
-#define BB_LOW_X 4
-#define BB_LOW_Y 5
-#define BB_HIGH_X 6
-#define BB_HIGH_Y 7
-#define THRESH_ENABLED 8
+int number_observations = 9;
+int frames_elapsed  = 0;
+int histogram[20];
+int histogram_processed[20];
 
 
 
-#define EXPOSURE_INIT 0x002200
-#define EXPOSURE_STEP 0x100
-#define GAIN_INIT 0x280
-#define GAIN_STEP 0x040
-#define DEFAULT_LEVEL 3
 
-#define MIPI_REG_PHYClkCtl		0x0056
-#define MIPI_REG_PHYData0Ctl	0x0058
-#define MIPI_REG_PHYData1Ctl	0x005A
-#define MIPI_REG_PHYData2Ctl	0x005C
-#define MIPI_REG_PHYData3Ctl	0x005E
-#define MIPI_REG_PHYTimDly		0x0060
-#define MIPI_REG_PHYSta			0x0062
-#define MIPI_REG_CSIStatus		0x0064
-#define MIPI_REG_CSIErrEn		0x0066
-#define MIPI_REG_MDLSynErr		0x0068
-#define MIPI_REG_FrmErrCnt		0x0080
-#define MIPI_REG_MDLErrCnt		0x0090
-
-void mipi_clear_error(void){
-	MipiBridgeRegWrite(MIPI_REG_CSIStatus,0x01FF); // clear error
-	MipiBridgeRegWrite(MIPI_REG_MDLSynErr,0x0000); // clear error
-	MipiBridgeRegWrite(MIPI_REG_FrmErrCnt,0x0000); // clear error
-	MipiBridgeRegWrite(MIPI_REG_MDLErrCnt, 0x0000); // clear error
-
-  	MipiBridgeRegWrite(0x0082,0x00);
-  	MipiBridgeRegWrite(0x0084,0x00);
-  	MipiBridgeRegWrite(0x0086,0x00);
-  	MipiBridgeRegWrite(0x0088,0x00);
-  	MipiBridgeRegWrite(0x008A,0x00);
-  	MipiBridgeRegWrite(0x008C,0x00);
-  	MipiBridgeRegWrite(0x008E,0x00);
-  	MipiBridgeRegWrite(0x0090,0x00);
+void fir_load_unit(){
+	//Clear filter coefficients
+	for (int i = 7; i < 7+9; i++){
+		IOWR(ALT_VIP_CL_2DFIR_0_BASE, i, 0);
+	}
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 11, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 6, 1);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 0, 1);
 }
 
-void mipi_show_error_info(void){
-
-	alt_u16 PHY_status, SCI_status, MDLSynErr, FrmErrCnt, MDLErrCnt;
-
-	PHY_status = MipiBridgeRegRead(MIPI_REG_PHYSta);
-	SCI_status = MipiBridgeRegRead(MIPI_REG_CSIStatus);
-	MDLSynErr = MipiBridgeRegRead(MIPI_REG_MDLSynErr);
-	FrmErrCnt = MipiBridgeRegRead(MIPI_REG_FrmErrCnt);
-	MDLErrCnt = MipiBridgeRegRead(MIPI_REG_MDLErrCnt);
-	printf("PHY_status=%xh, CSI_status=%xh, MDLSynErr=%xh, FrmErrCnt=%xh, MDLErrCnt=%xh\r\n", PHY_status, SCI_status, MDLSynErr,FrmErrCnt, MDLErrCnt);
-}
-
-void mipi_show_error_info_more(void){
-    printf("FrmErrCnt = %d\n",MipiBridgeRegRead(0x0080));
-    printf("CRCErrCnt = %d\n",MipiBridgeRegRead(0x0082));
-    printf("CorErrCnt = %d\n",MipiBridgeRegRead(0x0084));
-    printf("HdrErrCnt = %d\n",MipiBridgeRegRead(0x0086));
-    printf("EIDErrCnt = %d\n",MipiBridgeRegRead(0x0088));
-    printf("CtlErrCnt = %d\n",MipiBridgeRegRead(0x008A));
-    printf("SoTErrCnt = %d\n",MipiBridgeRegRead(0x008C));
-    printf("SynErrCnt = %d\n",MipiBridgeRegRead(0x008E));
-    printf("MDLErrCnt = %d\n",MipiBridgeRegRead(0x0090));
-    printf("FIFOSTATUS = %d\n",MipiBridgeRegRead(0x00F8));
-    printf("DataType = 0x%04x\n",MipiBridgeRegRead(0x006A));
-    printf("CSIPktLen = %d\n",MipiBridgeRegRead(0x006E));
+void fir_load_avg(){
+	for (int i = 7; i < 7+9; i++){
+		IOWR(ALT_VIP_CL_2DFIR_0_BASE, i, 14);
+	}
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 6, 1);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 0, 1);
 }
 
 
+void fir_load_sobel(){
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 7, -128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 8, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 9, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 10, -128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 11, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 12, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 13, -128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 14, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 15, 128);
 
-bool MIPI_Init(void){
-	bool bSuccess;
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 6, 1);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 0, 1);
 
-	bSuccess = oc_i2c_init_ex(I2C_OPENCORES_MIPI_BASE, 50*1000*1000,400*1000); //I2C: 400K
-	if (!bSuccess)
-		printf("failed to init MIPI- Bridge i2c\r\n");
-
-    usleep(50*1000);
-    MipiBridgeInit();
-
-    usleep(500*1000);
-
-    MipiCameraInit();
-    MIPI_BIN_LEVEL(DEFAULT_LEVEL);
-
- 	usleep(1000);
-
-	return bSuccess;
 }
 
+void fir_load_inv_sobel(){
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 7, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 8, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 9, -128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 10, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 11, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 12, -128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 13, 128);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 14, 0);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 15, -128);
 
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 6, 1);
+	IOWR(ALT_VIP_CL_2DFIR_0_BASE, 0, 1);
+
+}
+
+int uart_rready(){
+	return (IORD(UART_0_BASE,2)& 0x080);
+}
+
+void get_building_hist(){
+	fir_load_sobel();
+	IOWR(COM_COUNTER_0_BASE, THRESH_Y, 64);
+	IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
+	wait_sop();
+	wait_eop();
+
+	for (int i = 0; i<20; i++){
+		histogram[i] = IORD(EDGE_BINS_0_BASE, i);
+		alt_printf("Bin %x: %x \n", i, histogram[i]);
+	}
+
+	//fir_load_avg();
+	return;
+}
+
+void print_image(int dest){
+	int x = 0;
+	int y = 0;
+	int burst = 0;
+
+	for(int i = 0; i <60*80; i++){
+		IOWR(PIXEL_BUFFER_0_BASE, 5000, 1);
+		alt_u32 pixel =(IORD(PIXEL_BUFFER_0_BASE, 64*x + y));
+		char upper = (pixel & 0xf0)>>4;
+		char lower = (pixel & 0x0f);
+
+		alt_putchar(97 + upper);
+		alt_putchar(97 + lower);
+
+		burst++;
+		if (burst == 30){
+			burst = 0;
+			if (y == 59 && x > 50){
+				alt_putchar('\n');
+			}else {
+				alt_putchar(',');
+			}
+//			while(alt_getchar() != 'A'){
+//				usleep(10);
+//			}
+			IOWR(PIXEL_BUFFER_0_BASE, 5000, 1);
+		}
+
+
+
+		//XY indexing
+		x = x+1;
+		if (x == 80){
+			x = 0;
+			y = y + 1;
+		}
+	}
+	return;
+}
 
 
 int main()
 {
-
-	alt_u32 enableMask = 0;
+	int rgb, hsv;
+	//Sets stdin to nonblocking
 	fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
 
-  printf("DE10-LITE D8M VGA Demo\n");
   printf("Imperial College EEE2 Project version\n");
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
   IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
-
-  //Color filter setup
-//  IOWR(COLOR_FILTER_BASE, THRESHOLD_LOW, 0x323050);
-//  IOWR(COLOR_FILTER_BASE, THRESHOLD_HIGH, 0x46ffff);
-  IOWR(COLOR_FILTER_0_BASE, THRESHOLD_LOW, 0x0000b0);
-  IOWR(COLOR_FILTER_0_BASE, THRESHOLD_HIGH, 0xffffff);
-  IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
-
-  //Linear blue disable
-  IOWR(LINEAR_BLUR_0_BASE, BLUR_ENABLED, 0);
-
-  //COM counter setup
-  IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 0);
-
 
   usleep(2000);
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
@@ -162,141 +159,158 @@ int main()
   // MIPI Init
    if (!MIPI_Init()){
 	  printf("MIPI_Init Init failed!\r\n");
+  }else{
+	  printf("MIPI_Init Init successfully!\r\n");
   }
 
- 	    mipi_clear_error();
-	 	usleep(50*1000);
- 	    mipi_clear_error();
-	 	usleep(1000*1000);
-	    mipi_show_error_info();
-	    printf("\n");
+	mipi_clear_error();
+	usleep(50*1000);
+	mipi_clear_error();
+	usleep(1000*1000);
+	mipi_show_error_info();
+	printf("\n");
+
+//Camera parameters initialization
+//////////////////////////////////////////////////////////
+
+	OV8865SetExposure(EXPOSURE_INIT);
+
+	//Manual calibration
+	OV8865SetGain(926);
+	OV8865SetRedGain(930);
+	OV8865SetGreenGain(800);
+	OV8865SetBlueGain(1222);
+
+	//Autocalibration
+//	Focus_Init();
+//	auto_gain(160,2);
+//	//auto_wb(210 ,2);
+//	auto_gain(160,2);
+//	Focus_Init();
 
 
-#if 0  // focus sweep
-	    printf("\nFocus sweep\n");
- 	 	alt_u16 ii= 350;
- 	    alt_u8  dir = 0;
- 	 	while(1){
- 	 		if(ii< 50) dir = 1;
- 	 		else if (ii> 1000) dir =0;
+////////////////////////////////////////////////////////////////
 
- 	 		if(dir) ii += 20;
- 	 		else    ii -= 20;
+	//Apply HSV transform
+	IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, 0x0);
 
- 	    	printf("%d\n",ii);
- 	     OV8865_FOCUS_Move_to(ii);
- 	     usleep(50*1000);
- 	    }
-#endif
+	//Color filter setup
+	IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
+
+	//COM counter setup
+	IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 0);
+	IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+
+	//Force disable center dots
+	IOWR(PIXEL_GRABBER_HSV_BASE, GRAB_INDICATOR, 0);
+	IOWR(PIXEL_GRABBER_RGB_BASE, GRAB_INDICATOR, 0);
+
+	fir_load_unit();
+	//fir_load_avg();
+	//fir_load_sobel();
+
+	usleep(100000);
+	print_image(0);
+
+	get_building_hist();
 
 
-    //////////////////////////////////////////////////////////
-        alt_u16 bin_level = DEFAULT_LEVEL;
-        alt_u8  manual_focus_step = 10;
-        alt_u16  current_focus = 300;
-    	int boundingBoxColour = 0;
-    	alt_u32 exposureTime = EXPOSURE_INIT;
-    	alt_u16 gain = GAIN_INIT;
+/////////////////////////////////////////////////////////////////////
+//	//Open UART for arduino communication
+//	FILE* fp = fopen("/dev/uart_0", "r+");
+//	if(fp){
+//		printf("Opened UART\n");
+//	} else {
+//		printf("Failed to open UART\n");
+//		while (1);
+//	}
 
-        OV8865SetExposure(exposureTime);
-        OV8865SetGain(gain);
-        Focus_Init();
+
+
+
+	//Initialize observation data structures
+	observations = initialize_observations();
+	int observation_idx = 2;
+
+	//Register frame interrupt
+	//alt_irq_register(2, 0, frame_isr);
+	//alt_ic_isr_register(2, 0, frame_isr, 0, 0);
+	//alt_ic_irq_enable (0, 2);
+	//alt_ic_isr_register(0,2, frame_isr,0,0);
+
+
 
 
   while(1){
-
-	#if 0
-
-	  // touch KEY0 to trigger Auto focus
-	   if((IORD(KEY_BASE,0)&0x03) == 0x02){
-
-		   current_focus = Focus_Window(320,240);
-		 }
-	#endif
+	   //Read Pixel Grab
+	   rgb = IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE);
+	   hsv = IORD(PIXEL_GRABBER_HSV_BASE, GRAB_VALUE);
+	   print_as_rgb(rgb, hsv);
 
 
 
-       //Process input commands
-       int in = alt_getchar();
-       switch (in) {
-		   case 'a': {
-			   //current_focus = Focus_Window(320,240);
-			   Focus_Init();
-			   printf("Autofocused/n");
-			   break;}
-       	   case 'e': {
-       		   exposureTime += EXPOSURE_STEP;
-       		   OV8865SetExposure(exposureTime);
-       		   printf("\nExposure = %x ", exposureTime);
-       	   	   break;}
-       	   case 'd': {
-       		   exposureTime -= EXPOSURE_STEP;
-       		   OV8865SetExposure(exposureTime);
-       		   printf("\nExposure = %x ", exposureTime);
-       	   	   break;}
-       	   case 't': {
-       		   gain += GAIN_STEP;
-       		   OV8865SetGain(gain);
-       		   printf("\nGain = %x ", gain);
-       	   	   break;}
-       	   case 'g': {
-       		   gain -= GAIN_STEP;
-       		   OV8865SetGain(gain);
-       		   printf("\nGain = %x ", gain);
-       	   	   break;}
-       	   case 'r': {
-        	   current_focus += manual_focus_step;
-        	   if(current_focus >1023) current_focus = 1023;
-        	   OV8865_FOCUS_Move_to(current_focus);
-        	   printf("\nFocus = %x ",current_focus);
-       	   	   break;}
-       	   case 'f': {
-        	   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
-        	   OV8865_FOCUS_Move_to(current_focus);
-        	   printf("\nFocus = %x ",current_focus);
-       	   	   break;}
-       	   case 'm': {
-       		   if (enableMask == 1) {
-           		   enableMask = 0;
-       		   } else {
-       			   enableMask = 1;
-       		   }
-       		   IOWR(0x41200, APPLY_MASK, enableMask);
-        	   printf("Mask mode = %x ", IORD(0x41200, APPLY_MASK));
-       	   	   break;
-       	   }
-//       	   case 'w': {
-//       		   int x_raw = IORD(0x41200, COM_COUNTER_READ_COM_X);
-//       		   int y_raw = IORD(0x41200, COM_COUNTER_READ_COM_Y);
-//       		   int mass = IORD(0x41200, COM_COUNTER_READ_COM_MASS);
-//       		   int pixels_count = IORD(0x41200, COM_COUNTER_READ_PIXELS_COUNTER);
-//       		   int sop_count = IORD(0x41200, COM_COUNTER_READ_SOP_COUNTER);
-//       		   int eop_count = IORD(0x41200, COM_COUNTER_READ_EOP_COUNTER);
-//       		   int video_packet_count = IORD(0x41200, COM_COUNTER_READ_VIDEO_PACKET_COUNTER);
-//       		   int convertedX = x_raw / mass;
-//       		   int convertedY = y_raw / mass;
-//       		   printf("pixels count: %d, sop_count: %d, end_count: %d, video_packet_count: %d", pixels_count, sop_count, eop_count, video_packet_count);
-//       		   printf("X raw: %d, Y raw: %d, mass: %d\n", x_raw, y_raw, mass);
-//       		   printf("Converted X: %d, converted Y: %d", convertedX, convertedY);
-//       		   break;
-//       	   }
-       }
+	   //Update observation parameters
 
-//       int* vidata = 0x03000000;
-//       printf("init: %x\n", vidata);
+	   	printf("Collecting %c \n", observations[observation_idx].code );
+
+	   	//Apply HSV transform
+	   	IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, 0x1);
+
+		//Color filter setup
+		IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 1);
+		IOWR(COLOR_FILTER_0_BASE, THRESHOLD_LOW, observations[observation_idx].mask_bottom);
+		IOWR(COLOR_FILTER_0_BASE, THRESHOLD_HIGH, observations[observation_idx].mask_top);
+
+		//Load filter
+		if (observations[observation_idx].code == 'W' ){
+			fir_load_sobel();
+		}else if (observations[observation_idx].code == 'X'){
+			fir_load_inv_sobel();
+		} else {
+			fir_load_avg();
+		}
+
+		//COM counter setup
+		IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
+		IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+		IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, observations[observation_idx].threshold);
+
+
+		//Wait two frame times
+		usleep(100000);
+
+
+		//Collect results
+		observations[observation_idx].mass = IORD(COM_COUNTER_0_BASE, COM_MASS);
+		observations[observation_idx].com_x = IORD(COM_COUNTER_0_BASE, COM_X)/observations[observation_idx].mass;
+		observations[observation_idx].com_y = IORD(COM_COUNTER_0_BASE, COM_Y)/observations[observation_idx].mass;
+
+		observations[observation_idx].bb_left = IORD(COM_COUNTER_0_BASE, BB_LOW_X);
+		observations[observation_idx].bb_top = IORD(COM_COUNTER_0_BASE, BB_LOW_Y);
+		observations[observation_idx].bb_right = IORD(COM_COUNTER_0_BASE, BB_HIGH_X);
+		observations[observation_idx].bb_bottom = IORD(COM_COUNTER_0_BASE, BB_HIGH_Y);
+
+
+		if (observations[observation_idx].code == 'X'){
+			//merge
+		}
+
+		//Merge together
+	   observation_idx++;
+	   if (observation_idx == number_observations)observation_idx = 1;
+
+
+
+	   //For normal usar operation
+//	   if (uart_rready() && getc(fp) == 'R') {
 //
+//		   printf("Got rready\n");
+//		   print_observations(fp, observations);
+//	   }
 
-//	   //Main loop delay
-//       for(int i = 0; i<100000; i++){
-//    	   vidata[i] = 0xFFFFFF;
-//       }
-
-
+	   process_input();
 
 
 
-	   usleep(1000);
-
-   };
-  return 0;
+  }
 }

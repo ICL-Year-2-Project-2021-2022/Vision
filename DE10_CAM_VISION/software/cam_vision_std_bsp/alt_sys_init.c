@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sun Jun 12 13:53:14 BST 2022
+ * Generated: Wed Jun 15 23:30:07 BST 2022
  */
 
 /*
@@ -72,6 +72,7 @@ ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS2_GEN2, nios2_gen2);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID_QSYS, sysid_qsys);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
+ALTERA_AVALON_TIMER_INSTANCE ( TIMER_0, timer_0);
 ALTERA_AVALON_UART_INSTANCE ( UART_0, uart_0);
 
 /*
@@ -96,6 +97,7 @@ void alt_irq_init ( const void* base )
 void alt_sys_init( void )
 {
     ALTERA_AVALON_TIMER_INIT ( TIMER, timer);
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID_QSYS, sysid_qsys);
     ALTERA_AVALON_UART_INIT ( UART_0, uart_0);

@@ -51,10 +51,6 @@ always @(posedge clk) begin
 	if (sop_in) begin
 		video_packet[0] <= (data_in[3:0] == 3'h0);
 		
-		for (int i = 0; i < length; i++) begin
-			data[i] <= 0;
-		end
-		
 	end
 	if (~reset_n)begin
 		valid <= 0;

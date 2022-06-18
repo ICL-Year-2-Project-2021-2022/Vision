@@ -1,4 +1,4 @@
-module STREAM_REG(ready_out, valid_out, data_out, ready_in, valid_in, data_in, clk, rst_n);
+module STREAM_REG_HSV(ready_out, valid_out, data_out, ready_in, valid_in, data_in, clk, rst_n);
 
 	// Input Port(s)
 	input clk, rst_n;
@@ -34,6 +34,7 @@ module STREAM_REG(ready_out, valid_out, data_out, ready_in, valid_in, data_in, c
 	
 	assign ready_out = (~data_valid & ~valid_in) | ready_in;
 	assign valid_out = ready_in_d & data_valid;
+	//assign advance = valid_in & (~data_valid | ready_in_d);
 
 
 endmodule
