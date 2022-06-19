@@ -211,7 +211,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                 }
                 neighbour_x = current->x_coor + i;
                 neighbour_y = current->y_coor + j;
-                // printQueue(&open);
+
                 if (neighbour_x < 0 || neighbour_y < 0) {
                     continue;
                 }
@@ -281,10 +281,10 @@ int main() {
     printf("Total test cases: %d, success: %d", totalTestCases, passedTestCases);
 
     int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0,  0, 0, 0,
+                       0, 0, 0, 0, 0}, {0, 0, 0, 1,1,1,1,1,0, 0, 0},
                        {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
     //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
     int start_x = 7;
