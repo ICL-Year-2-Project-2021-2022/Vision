@@ -183,8 +183,8 @@ Qsys u0 (
 		.i2c_0_external_connection_scl_in (ARDUINO_IO[12]), // i2c_0_external_connection_scl_in
 		.i2c_0_external_connection_sda_in (ARDUINO_IO[13]), // i2c_0_external_connection_sda_in
 		
-		.uart_0_rx_tx_rxd                          (ARDUINO_IO[1]),                          //                     uart_0_rx_tx.rxd
-		.uart_0_rx_tx_txd                          (ARDUINO_IO[0])                           //
+		.uart_0_rx_tx_rxd                          (ARDUINO_IO[8]),                          //                     uart_0_rx_tx.rxd
+		.uart_0_rx_tx_txd                          (ARDUINO_IO[9])                           //
 	);
 
 FpsMonitor uFps(

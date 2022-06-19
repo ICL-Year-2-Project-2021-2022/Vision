@@ -208,11 +208,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "ARDUINO_IO[0]",
+					"name" : "ARDUINO_IO[8]",
 					"strict" : false
 				},
 				{
-					"name" : "ARDUINO_IO[1]",
+					"name" : "ARDUINO_IO[9]",
 					"strict" : false
 				},
 				{
