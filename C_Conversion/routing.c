@@ -175,9 +175,10 @@ void printPathToGoal(Node* currentNode){
 void printQueue(Node** head){
     Node* start = (*head);
     while (start != NULL) {
-        printf("Coordinate: %d %d\n", start->x_coor, start->y_coor);
+        printf("Coordinate: %d %d %f\n", start->x_coor, start->y_coor, start->priority);
         start = start->next;
     }
+    printf("\n\n");
 }
 
 
@@ -204,7 +205,6 @@ void A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int go
             pushNode(&close, current);
         }
         
-        
         if (isReachedObj(current->x_coor, current->y_coor, goal_x, goal_y)){
             printPathToGoal(current);
             break;
@@ -216,8 +216,8 @@ void A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int go
                 }
                 neighbour_x = current->x_coor+i;
                 neighbour_y = current->y_coor+j;
-                printf("Coor: %d, %d\n", neighbour_x,neighbour_y);
-                // printQueue(&open);
+                // printf("Coor: %d, %d\n", neighbour_x,neighbour_y);
+                
                 if (neighbour_x <0 || neighbour_y<0){
                     continue;
                 }
@@ -233,15 +233,16 @@ void A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int go
                 
                 priority = distanceStart + distanceToGoal(neighbour_x,neighbour_y, goal_x, goal_y);
                 neighbour_node = newNode(neighbour_x, neighbour_y, distanceStart, priority, current);
-                if (grid[neighbour_x][neighbour_y]==1 || isInClose(&close, neighbour_node)){ //assume 1 means occupied
+                if (grid[neighbour_y][neighbour_x]==1 || isInClose(&close, neighbour_node)){ //assume 1 means occupied
                     continue;
                 }
                 
                 
                 if (!isInOpen(&open, neighbour_node)){
+                    
                     pushNode(&open, neighbour_node);
                 }
-                else if (distanceStart<getDistanceStart(&open, close)){
+                else if (distanceStart<getDistanceStart(&open, neighbour_node)){
                     changeCostParent(&open, neighbour_node, current);
                 }
             }
@@ -252,11 +253,11 @@ void A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int go
 
 int main(){
     int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,1,0,0,0,0,0,0,0},
-                    {0,0,0,1,1,1,1,1,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0}};
+                       {0,0,0,0,0,0,0,0,0,0,0},
+                       {0,0,0,0,0,0,0,0,0,0,0},
+                       {0,0,0,1,1,1,1,1,0,0,0},
+                       {0,0,0,1,0,0,0,0,0,0,0},
+                       {0,0,0,0,0,0,0,0,0,0,0}};
     //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
     int start_x = 7;
     int start_y = 1;
