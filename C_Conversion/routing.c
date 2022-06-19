@@ -165,7 +165,6 @@ void changeCostParent(Node **head, Node *neighbourNode, Node *currentNode) {
 void printPathToGoal(Node *currentNode) {
     Node *start = (currentNode);
     while (start != NULL) {
-        printf("Coordinate: %d %d\n", start->x_coor, start->y_coor);
         start = start->parent;
     }
 }
@@ -173,7 +172,6 @@ void printPathToGoal(Node *currentNode) {
 void printQueue(Node **head) {
     Node *start = (*head);
     while (start != NULL) {
-        printf("Coordinate: %d %d\n", start->x_coor, start->y_coor);
         start = start->next;
     }
 }
@@ -202,6 +200,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
         }
 
         if (isReachedObj(current->x_coor, current->y_coor, goal_x, goal_y)) {
+            printPathToGoal(current);
             break;
         }
         for (int i = -1; i <= 1; i++) {
@@ -242,6 +241,15 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
     return current;
 }
 
+Node *createPathFromArray(size_t pathLength, int arrayPath[pathLength][2]) {
+    Node *result = newNode(arrayPath[0][0], arrayPath[0][1], 0, 1, NULL);
+    for (int i = 1; i < pathLength; i++) {
+        Node *tmp = newNode(arrayPath[i][0], arrayPath[i][1], i, 1, result);
+        result = tmp;
+    }
+    return result;
+}
+
 int comparePathsBasedOnCoords(Node *pathA, Node *pathB) {
     if (pathA == NULL && pathB == NULL) {
         return 0;
@@ -266,30 +274,51 @@ int testGrid2x2WithStraightLine() {
     return comparePathsBasedOnCoords(expectedPath, resultPath);
 }
 
+int testGrid6x11WithLShapeObstacle() {
+    int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+                       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    int start_x = 7;
+    int start_y = 1;
+    int goal_x = 4;
+    int goal_y = 4;
+
+    int expectedPathArray[7][2] = {{7, 1},
+                                   {7, 2},
+                                   {8, 3},
+                                   {7, 4},
+                                   {6, 4},
+                                   {5, 4},
+                                   {4, 4}};
+    Node *expectedPath = createPathFromArray(7, expectedPathArray);
+    Node *pathFromTheAlgorithm = A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
+    return comparePathsBasedOnCoords(expectedPath, pathFromTheAlgorithm);
+}
+
 int main() {
     int totalTestCases = 0;
     int passedTestCases = 0;
 
     if (testGrid2x2WithStraightLine() == 0) {
-        passedTestCases++;
         printf("testGrid2x2WithStraightLine - PASS\n");
+        passedTestCases++;
     } else {
         printf("testGrid2x2WithStraightLine - FAIL\n");
     }
     totalTestCases++;
 
+    if (testGrid6x11WithLShapeObstacle() == 0) {
+        printf("testGrid6x11WithLShapeObstacle - PASS\n");
+        passedTestCases++;
+    } else {
+        printf("testGrid6x11WithLShapeObstacle - FAIL\n");
+    }
+    totalTestCases++;
+
     printf("Total test cases: %d, success: %d", totalTestCases, passedTestCases);
 
-    int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0,  0, 0, 0,
-                       0, 0, 0, 0, 0}, {0, 0, 0, 1,1,1,1,1,0, 0, 0},
-                       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
     //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-    int start_x = 7;
-    int start_y = 1;
-    int goal_x = 4;
-    int goal_y = 4;
-    A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
 }

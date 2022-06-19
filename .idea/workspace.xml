@@ -18,9 +18,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="">
+    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="add test output to the A* algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/routing.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/routing.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,8 +102,16 @@
       <workItem from="1655219365478" duration="3721000" />
       <workItem from="1655223548201" duration="1995000" />
       <workItem from="1655232018273" duration="5756000" />
-      <workItem from="1655667881162" duration="2072000" />
+      <workItem from="1655667881162" duration="4120000" />
     </task>
+    <task id="LOCAL-00001" summary="add test output to the A* algorithm">
+      <created>1655670276573</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655670276573</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +127,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add test output to the A* algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test output to the A* algorithm" />
   </component>
 </project>
