@@ -66,6 +66,7 @@ correctionStep(size_t state_size, float pred_state[state_size][1], float pred_va
 
         }
     }
+    
 }
 
 void calculatePredictedState(size_t state_size, float old_state[state_size][1], float displacement[3][1],
@@ -82,7 +83,7 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
 
     add_matrix(state_size, 1, old_state, displace_vector, pred_state);
     printf("Predicted State\n");
-    for (i=0; i<state_size; i++){
+    for (i = 0; i < state_size; i++) {
         printf("%f ", pred_state[i][0]);
     }
 }

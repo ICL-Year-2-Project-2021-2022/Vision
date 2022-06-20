@@ -6,7 +6,7 @@ data = [header]
 
 input_header = True
 
-with open('assets/camera-calibraion.csv', newline='') as csvfile:
+with open('assets\camera-calibrationLime.csv', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
         if not input_header:
@@ -20,7 +20,7 @@ with open('assets/camera-calibraion.csv', newline='') as csvfile:
         else:
             input_header = False
 
-with open("assets/camera_converted.csv", "w+") as result_file:
+with open("assets/camera_convertedLime.csv", "w+") as result_file:
     for row in data:
         result_file.write(','.join(list(map(lambda num: str(num), row))) + "\n")
     result_file.close()
