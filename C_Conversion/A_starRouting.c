@@ -254,7 +254,8 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
             if (isEmpty(&open)){
                 printf("Cannot reach target\n");
                 freeList(&close);
-                break;
+                freeList(&open);
+                return NULL;
             }
             current = popGet(&open);
             pushNode(&close, current);
