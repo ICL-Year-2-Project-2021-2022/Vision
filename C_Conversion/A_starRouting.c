@@ -77,7 +77,7 @@ void push(Node **head, float x_coor, float y_coor, float distance_start, float p
 void pushNode(Node **head, Node *new_node) {
     Node *start = (*head);
     if (start == NULL) {
-        start = new_node;
+        *head = new_node;
     } else {
         if ((*head)->priority > new_node->priority) {
             new_node->next = *head;
@@ -225,9 +225,11 @@ void printQueue(Node** head){
     if (start==NULL){
         printf("List is Empty\n");
     }
+    int i=1;
     while (start != NULL) {
-        printf("Coordinates: %d %d \n", start->x_coor, start->y_coor);
+        printf("Step %d Coordinates: %d %d \n", i, start->x_coor, start->y_coor);
         start = start->next;
+        i++;
     }
 }
 
@@ -282,6 +284,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                 if (neighbour_x >= col || neighbour_y >= row) {
                     continue;
                 }
+               
                 if (abs(i) == 1 && abs(j) == 1) { //go diagonally
                     distanceStart = current->distance_start + 14;
                 } else {
@@ -294,9 +297,11 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                     isInClose(&close, neighbour_node)) { //assume 1 means occupied
                     continue;
                 }
-
-                if (!isInOpen(&open, neighbour_node)) {
+                //printf("Neighbour %d %d\n", neighbour_x, neighbour_y );
+                
+                if (isInOpen(&open, neighbour_node)==0) {
                     pushNode(&open, neighbour_node);
+
                 } else if (distanceStart < getDistanceStart(&open, neighbour_node)) {
                     changeCostParent(&open, neighbour_node, current);
                 }
@@ -342,6 +347,7 @@ int test_noObstacles(){
     int goal_x = 4;
     int goal_y = 4;
     Node *path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
 }
 
 int test_withObstacles(){
@@ -375,12 +381,46 @@ int test_cannotReach(){
     int goal_x = 4;
     int goal_y = 4;
     Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
-
+    printQueue(&path);
 }
 
+int test_hardToReach(){
+    int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
+                       {0,0,0,0,0,0,0,0,0,0,0},
+                       {0,0,0,0,0,0,0,0,0,0,1},
+                       {0,0,0,1,1,1,1,1,1,1,0},
+                       {0,1,1,1,0,0,0,0,0,0,0},
+                       {0,0,0,0,0,0,0,0,0,0,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 7;
+    int start_y = 1;
+    int goal_x = 4;
+    int goal_y = 4;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+}
 
+int test_Maze(){
+    int grid[6][11] = {{0,1,0,1,0,1,0,0,0,0,0},
+                       {0,1,0,0,1,1,0,1,1,1,0},
+                       {0,1,0,1,0,1,0,1,0,0,1},
+                       {0,0,1,1,0,1,0,1,1,1,0},
+                       {0,1,1,0,1,1,0,1,0,0,1},
+                       {0,1,0,0,0,0,1,1,0,1,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 10;
+    int goal_y = 5;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+}
+
+ 
 int main(){
     //test_noObstacles();
-    test_withObstacles();
+    //test_withObstacles();
     //test_cannotReach();
+    //test_hardToReach();
+    test_Maze();
 }
