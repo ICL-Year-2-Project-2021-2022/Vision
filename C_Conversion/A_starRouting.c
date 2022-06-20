@@ -178,16 +178,11 @@ void printPathToGoal(Node *currentNode) {
     }
 }
 
-<<<<<<< HEAD:C_Conversion/A_starRouting.c
 void printQueue(Node** head){
     Node* start = (*head);
     if (start==NULL){
         printf("List is Empty\n");
     }
-=======
-void printQueue(Node **head) {
-    Node *start = (*head);
->>>>>>> 6115c8bc11c14511dd127c4787fb9d521935d37c:C_Conversion/routing.c
     while (start != NULL) {
         start = start->next;
     }
@@ -304,7 +299,6 @@ int test_noObstacles(){
     A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
 }
 
-<<<<<<< HEAD:C_Conversion/A_starRouting.c
 int test_withObstacles(){
     int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
                        {0,0,0,0,0,0,0,0,0,0,0},
@@ -313,29 +307,10 @@ int test_withObstacles(){
                        {0,0,0,1,0,0,0,0,0,0,0},
                        {0,0,0,0,0,0,0,0,0,0,0}};
     //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-=======
-int testGrid2x2WithStraightLine() {
-    int grid[2][2] = {{0, 0},
-                      {0, 0}};
-    Node *start = newNode(0, 0, 0, 1, NULL);
-    Node *expectedPath = newNode(1, 0, 1, 1, start);
-    Node *resultPath = A_star(2, 2, 0, 0, 1, 0, grid);
-    return comparePathsBasedOnCoords(expectedPath, resultPath);
-}
-
-int testGrid6x11WithLShapeObstacle() {
-    int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
-                       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
->>>>>>> 6115c8bc11c14511dd127c4787fb9d521935d37c:C_Conversion/routing.c
     int start_x = 7;
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-<<<<<<< HEAD:C_Conversion/A_starRouting.c
     A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
 
 }
@@ -362,42 +337,4 @@ int main(){
     //test_noObstacles();
     test_withObstacles();
     //test_cannotReach();
-=======
-
-    int expectedPathArray[7][2] = {{7, 1},
-                                   {7, 2},
-                                   {8, 3},
-                                   {7, 4},
-                                   {6, 4},
-                                   {5, 4},
-                                   {4, 4}};
-    Node *expectedPath = createPathFromArray(7, expectedPathArray);
-    Node *pathFromTheAlgorithm = A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
-    return comparePathsBasedOnCoords(expectedPath, pathFromTheAlgorithm);
-}
-
-int main() {
-    int totalTestCases = 0;
-    int passedTestCases = 0;
-
-    if (testGrid2x2WithStraightLine() == 0) {
-        printf("testGrid2x2WithStraightLine - PASS\n");
-        passedTestCases++;
-    } else {
-        printf("testGrid2x2WithStraightLine - FAIL\n");
-    }
-    totalTestCases++;
-
-    if (testGrid6x11WithLShapeObstacle() == 0) {
-        printf("testGrid6x11WithLShapeObstacle - PASS\n");
-        passedTestCases++;
-    } else {
-        printf("testGrid6x11WithLShapeObstacle - FAIL\n");
-    }
-    totalTestCases++;
-
-    printf("Total test cases: %d, success: %d", totalTestCases, passedTestCases);
-
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
->>>>>>> 6115c8bc11c14511dd127c4787fb9d521935d37c:C_Conversion/routing.c
 }
