@@ -24,15 +24,19 @@ Node *newNode(int x_coor, int y_coor, float distance_start, float priority, stru
 }
 
 Node *copyNode(Node *old) {
-    Node *temp = (Node *) malloc(sizeof(Node));
-    temp->x_coor = old->x_coor;
-    temp->y_coor = old->y_coor;
-    temp->distance_start = old->distance_start;
-    temp->priority = old->priority;
-    temp->parent = old->parent;
-    temp->next = NULL;
-    return temp;
-
+    if (old ==NULL){
+        return NULL;
+    }
+    else{
+        Node *temp = (Node *) malloc(sizeof(Node));
+        temp->x_coor = old->x_coor;
+        temp->y_coor = old->y_coor;
+        temp->distance_start = old->distance_start;
+        temp->priority = old->priority;
+        temp->parent = old->parent;
+        temp->next = NULL;
+        return temp;
+    }
 }
 
 float peek_x(Node **head) {
@@ -171,9 +175,47 @@ void changeCostParent(Node **head, Node *neighbourNode, Node *currentNode) {
     }
 }
 
+
+void reverseList(Node** head){
+    Node* prev = NULL;
+    Node* current = *head;
+    Node* next = NULL;
+    while (current!=NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    *head = prev;
+}
+
+
+
+Node* copyList(Node* head){
+    if ((head) == NULL){
+        return NULL;
+    }
+    else{
+        Node* newNode = (Node*)malloc(sizeof(Node));
+        newNode = copyNode(head);
+        newNode->next = copyList((head)->parent);
+        return newNode;
+    }
+}
+
+Node *getPathNodes(Node **head){
+    Node *start = (*head);
+    Node *path = NULL;
+    path = copyList(start);
+    reverseList(&path);
+    return path;
+}
+
+
 void printPathToGoal(Node *currentNode) {
     Node *start = (currentNode);
     while (start != NULL) {
+        printf("Coordinates: %d %d \n", start->x_coor, start->y_coor);
         start = start->parent;
     }
 }
@@ -184,6 +226,7 @@ void printQueue(Node** head){
         printf("List is Empty\n");
     }
     while (start != NULL) {
+        printf("Coordinates: %d %d \n", start->x_coor, start->y_coor);
         start = start->next;
     }
 }
@@ -218,10 +261,11 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
         }
 
         if (isReachedObj(current->x_coor, current->y_coor, goal_x, goal_y)) {
-            printPathToGoal(current);
+            Node *result= getPathNodes(&current);
+            //printPathToGoal(current);
             freeList(&open);
-            printQueue(&close);
-            break;
+            freeList(&close);
+            return result;
         }
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -296,7 +340,7 @@ int test_noObstacles(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    Node *path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
 }
 
 int test_withObstacles(){
@@ -311,7 +355,8 @@ int test_withObstacles(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
 
 }
 
@@ -328,7 +373,7 @@ int test_cannotReach(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
 
 }
 
