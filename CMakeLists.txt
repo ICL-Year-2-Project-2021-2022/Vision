@@ -14,4 +14,7 @@ add_executable(Vision
         C_Conversion/kalman.c
         C_Conversion/kalman_test.c)
 
+add_executable(Routing
+        C_Conversion/routing.c)
+
 target_link_libraries(Vision m)

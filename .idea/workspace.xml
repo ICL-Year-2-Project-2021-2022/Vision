@@ -8,6 +8,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="Vision" targetName="Routing" />
       <config projectName="Vision" targetName="Vision" />
     </generated>
   </component>
@@ -17,10 +18,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="">
+    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="add test output to the A* algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C_Conversion/kalman.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C_Conversion/kalman_test.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman_test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/routing.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/routing.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,11 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sunday-evening-before-report" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
@@ -65,12 +70,26 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="CMake Application.Routing">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Routing" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Routing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Routing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Vision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Vision" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Vision">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.Routing" />
+      <item itemvalue="CMake Application.Vision" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -83,21 +102,34 @@
       <workItem from="1655219365478" duration="3721000" />
       <workItem from="1655223548201" duration="1995000" />
       <workItem from="1655232018273" duration="5756000" />
+      <workItem from="1655667881162" duration="4120000" />
     </task>
+    <task id="LOCAL-00001" summary="add test output to the A* algorithm">
+      <created>1655670276573</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655670276573</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/C_Conversion/kalman.c</url>
-          <line>176</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add test output to the A* algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test output to the A* algorithm" />
   </component>
 </project>
