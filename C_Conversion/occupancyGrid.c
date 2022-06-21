@@ -7,7 +7,18 @@ int **generateArrayWithOnesAtIndexes() {
 }
 
 int **getGrid(size_t state_size, float** state, float** var) {
-    int grid[40][60] = {0};
+    int **grid;
+    grid = malloc(sizeof(int*)*40);
+    for (int i =0; i<40; i++){
+        grid[i] = malloc(sizeof(int*)*60);
+    }
+    for(int i=0; i<40; i++){
+        for (int j=0; j<60; j++){
+            grid[i][j] = 0;
+        }
+    }
+
+
     for (int i = 0; i < (state_size - 3) / 2; i++) {
         int radius_x, radius_y;
         int numSquaresOccupiedRadius_x, numSquaresOccupiedRadius_y;
@@ -40,9 +51,19 @@ int **getGrid(size_t state_size, float** state, float** var) {
         for (int j = 0; j < 60; j++) {
             if (grid[i][j] )
             printf("%d", grid[i][j]);
+    return grid;
+
+}
+
+
+void freeMatrix(size_t row, size_t col, int **grid){
+    for (int i=0;i <row; i++){
+        for (int j=0; j<col; j++){
+            free(grid[i][j]);
         }
         printf("\n");
     }
+
 }
 
 
@@ -84,4 +105,13 @@ int main() {
     }
 
     int **grid = getGrid(state_size, stateDynamic, varDynamic);
+
+    for (int i=0; i<40; i++){
+        for (int j=0; j<60; j++){
+            printf("%d",grid[i][j]);
+        }
+        printf("\n");
+    }
+
+    freeMatrix(40,60, grid);
 }
