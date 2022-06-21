@@ -8,19 +8,21 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="Vision" targetName="OccupancyGrid" />
       <config projectName="Vision" targetName="Routing" />
       <config projectName="Vision" targetName="Vision" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="add test output to the A* algorithm">
+    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="reformat Marco's test case">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C_Conversion/routing.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/routing.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/occupancyGrid.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/occupancyGrid.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +72,10 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="CMake Application.Routing">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake Application.OccupancyGrid">
+    <configuration name="OccupancyGrid" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="OccupancyGrid" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="OccupancyGrid">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Routing" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Routing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Routing">
@@ -86,7 +88,13 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="CMake Application.OccupancyGrid" />
       <item itemvalue="CMake Application.Routing" />
       <item itemvalue="CMake Application.Vision" />
     </list>

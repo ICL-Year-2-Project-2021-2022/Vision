@@ -15,6 +15,11 @@ add_executable(Vision
         C_Conversion/kalman_test.c)
 
 add_executable(Routing
-        C_Conversion/routing.c)
+        C_Conversion/A_starRouting.c)
+
+add_executable(OccupancyGrid
+        C_Conversion/occupancyGrid.c)
+
+target_link_libraries(OccupancyGrid m)
 
 target_link_libraries(Vision m)
