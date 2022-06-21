@@ -2,22 +2,47 @@
 #include <stdio.h>
 #include <math.h>
 
-int **generateArrayWithOnesAtIndexes() {
-
+int compareMatrices(int rows, int columns, int **matrixA, int **matrixB) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            if (matrixA[i][j] != matrixB[i][j]) {
+                return -1;
+            }
+        }
+    }
+    return 0;
 }
 
-int **getGrid(size_t state_size, float** state, float** var) {
-    int **grid;
-    grid = malloc(sizeof(int*)*40);
-    for (int i =0; i<40; i++){
-        grid[i] = malloc(sizeof(int*)*60);
+int **generateArrayWithOnesAtIndexes(int rowsCount, int colsCount, int length, int **onesIndices) {
+    int **grid = (int **) malloc(sizeof(int *) * rowsCount);
+    for (int i = 0; i < rowsCount; i++) {
+        grid[i] = (int *) malloc(sizeof(int *) * colsCount);
     }
-    for(int i=0; i<40; i++){
-        for (int j=0; j<60; j++){
+    for (int i = 0; i < rowsCount; i++) {
+        for (int j = 0; j < colsCount; j++) {
             grid[i][j] = 0;
         }
     }
+    for (int i = 0; i < length; i++) {
+        int row = onesIndices[i][0];
+        int col = onesIndices[i][1];
+        grid[row][col] = 1;
+    }
+    return grid;
+}
 
+int **getGrid(size_t state_size, float **state, float **var, int cellWidth, int cellHeight, int rowCount,
+              int columnCount) {
+    int **grid = (int **) malloc(sizeof(int *) * rowCount);
+    for (int i = 0; i < rowCount; i++) {
+        grid[i] = (int *) malloc(sizeof(int *) * columnCount);
+    }
+
+    for (int i = 0; i < rowCount; i++) {
+        for (int j = 0; j < columnCount; j++) {
+            grid[i][j] = 0;
+        }
+    }
 
     for (int i = 0; i < (state_size - 3) / 2; i++) {
         int radius_x, radius_y;
@@ -25,49 +50,46 @@ int **getGrid(size_t state_size, float** state, float** var) {
         int offset_x;
         int offset_y;
 
-
         radius_x = (int) sqrt(var[2 * i + 3][2 * i + 3]);
-        numSquaresOccupiedRadius_x = radius_x / 50;
-        offset_x = state[2 * i + 3][0] / 50;
-        offset_y = state[2 * i + 4][0] / 50;
+        numSquaresOccupiedRadius_x = radius_x / cellWidth;
+        offset_x = state[2 * i + 3][0] / cellWidth;
+        offset_y = state[2 * i + 4][0] / cellHeight;
 
         radius_y = (int) sqrt(var[2 * i + 4][2 * i + 4]);
-        numSquaresOccupiedRadius_y = radius_y / 50;
-
+        numSquaresOccupiedRadius_y = radius_y / cellHeight;
 
         for (int i = -numSquaresOccupiedRadius_y; i < numSquaresOccupiedRadius_y; i++) {
             for (int j = -numSquaresOccupiedRadius_x; j < numSquaresOccupiedRadius_x; j++) {
                 if (i + offset_y < 0 || j + offset_x < 0) {
                     continue;
                 }
-                if (i + offset_y > 40 || j + offset_x > 60) {
+                if (i + offset_y > rowCount || j + offset_x > columnCount) {
                     continue;
                 }
                 grid[i + offset_y][j + offset_x] = 1;
             }
         }
     }
-    for (int i = 0; i < 40; i++) {
-        for (int j = 0; j < 60; j++) {
-            if (grid[i][j] )
-            printf("%d", grid[i][j]);
-    return grid;
 
-}
-
-
-void freeMatrix(size_t row, size_t col, int **grid){
-    for (int i=0;i <row; i++){
-        for (int j=0; j<col; j++){
-            free(grid[i][j]);
+    for (int i = 0; i < rowCount; i++) {
+        for (int j = 0; j < columnCount; j++) {
+            if (grid[i][j] == 1) {
+                printf("{%d, %d},\n", i, j);
+            }
         }
-        printf("\n");
     }
 
+    return grid;
 }
 
+void freeMatrix(size_t row, size_t col, int **grid) {
+    for (int i = 0; i < row; i++) {
+        free(grid[i]);
+    }
+    free(grid);
+}
 
-int main() {
+/*int basicTestCaseFromMarco() {
     int state_size = 7;
     float state[7][1] = {{492.619354},
                          {601.678772},
@@ -104,14 +126,60 @@ int main() {
         }
     }
 
-    int **grid = getGrid(state_size, stateDynamic, varDynamic);
+    int **grid = getGrid(state_size, stateDynamic, varDynamic, 50, 50, 40, 60);
 
-    for (int i=0; i<40; i++){
-        for (int j=0; j<60; j++){
-            printf("%d",grid[i][j]);
+    for (int i = 0; i < 40; i++) {
+        for (int j = 0; j < 60; j++) {
+            printf("%d", grid[i][j]);
         }
         printf("\n");
     }
 
-    freeMatrix(40,60, grid);
+    int rows = 40;
+    int cols = 60;
+
+    int onesIndicesStatic[32][2] = {{9,  12},
+                                    {9,  13},
+                                    {9,  14},
+                                    {9,  15},
+                                    {10, 12},
+                                    {10, 13},
+                                    {10, 14},
+                                    {10, 15},
+                                    {23, 38},
+                                    {23, 39},
+                                    {23, 40},
+                                    {23, 41},
+                                    {24, 38},
+                                    {24, 39},
+                                    {24, 40},
+                                    {24, 41},
+                                    {25, 38},
+                                    {25, 39},
+                                    {25, 40},
+                                    {25, 41},
+                                    {26, 38},
+                                    {26, 39},
+                                    {26, 40},
+                                    {26, 41},
+                                    {27, 38},
+                                    {27, 39},
+                                    {27, 40},
+                                    {27, 41},
+                                    {28, 38},
+                                    {28, 39},
+                                    {28, 40},
+                                    {28, 41}};
+
+    int** expectedGrid = generateArrayWithOnesAtIndexes(rows, cols, 32, onesIndicesStatic);
+
+    freeMatrix(rows, cols, grid);
+}*/
+
+int main() {
+    /*if (basicTestCaseFromMarco() == 0) {
+        printf("basicTestCaseFromMarco() - PASS");
+    } else {
+        printf("basicTestCaseFromMarco() - FAIL");
+    }*/
 }
