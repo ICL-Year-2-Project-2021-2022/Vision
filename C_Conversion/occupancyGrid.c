@@ -3,7 +3,18 @@
 #include <math.h>
 
 int **getGrid(size_t state_size,float state[7][1], float var[7][7]){
-    int grid[40][60]= {0};
+    int **grid;
+    grid = malloc(sizeof(int*)*40);
+    for (int i =0; i<40; i++){
+        grid[i] = malloc(sizeof(int*)*60);
+    }
+    for(int i=0; i<40; i++){
+        for (int j=0; j<60; j++){
+            grid[i][j] = 0;
+        }
+    }
+
+    
     for (int i=0;i<(state_size-3)/2; i++ ){
         int radius_x, radius_y;
         int numSquaresOccupiedRadius_x,numSquaresOccupiedRadius_y ;
@@ -36,13 +47,16 @@ int **getGrid(size_t state_size,float state[7][1], float var[7][7]){
 
        
     }
-    for (int i=0; i<40; i++){
-        for (int j=0; j<60; j++){
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+    return grid;
 
+}
+
+
+void freeMatrix(size_t row, int **grid){
+    for (int i=0; i<row; i++){
+        free(grid[i]); 
+    }
+    free(grid);
 }
 
 
@@ -57,4 +71,13 @@ int main(){
                         {2367.584229, -1739.127686, -5.555127, 7051.759277, -3964.061768, 17174.513672, -9432.500000 },
                         {-3275.499268, 2847.541748, 9.689510, -11535.420898, 6565.240723, -9432.562500, 27102.423828}};
     int **grid = getGrid(7, state, var);
+
+    for (int i=0; i<40; i++){
+        for (int j=0; j<60; j++){
+            printf("%d",grid[i][j]);
+        }
+        printf("\n");
+    }
+
+    freeMatrix(40, grid);
 }
