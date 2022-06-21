@@ -19,7 +19,7 @@ obj/default/mipi_setup.o: mipi_setup.c mipi_setup.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h
 
 mipi_setup.h:
 
@@ -72,3 +72,5 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_warning.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
+
+global.h:

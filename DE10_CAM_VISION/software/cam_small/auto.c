@@ -18,7 +18,9 @@ void auto_gain(int target, int epsilon){
 		value = OV8865ReadAvg();
 		delta = target - value;
 
-		printf("Delta: %d, gain: %d\n", delta, currentgain);
+		if (print){
+			printf("Delta: %d, gain: %d\n", delta, currentgain);
+		}
 	}
 
 }
@@ -44,8 +46,9 @@ void auto_wb(int target, int epsilon){
 		value = red_average();
 
 		delta = target - value;
-
-		printf("Red Delta: %d, gain: %d\n", delta, currentgain);
+		if(print){
+			printf("Red Delta: %d, gain: %d\n", delta, currentgain);
+		}
 	}
 
 	//Green Balance

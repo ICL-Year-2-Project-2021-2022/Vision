@@ -4,6 +4,7 @@
 #include "definitions.h"
 #include "terasic_includes.h"
 #include "alt_types.h"
+#include "global.h"
 
 int number_observations, frames_elapsed;
 struct observation;

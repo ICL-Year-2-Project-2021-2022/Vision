@@ -121,7 +121,9 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
 //       printf("\nI2C core is enabled! \r\n");
    }
    else
-       printf("\nI2C core is not enabled successfully! \r\n");
+	   if (print){
+		   printf("\nI2C core is not enabled successfully! \r\n");
+	   }
 
    return bSuccess;
 
@@ -143,7 +145,9 @@ bool oc_i2c_uninit(alt_32 i2c_base)
 //       printf("\I2C core  is disabled! \r\n");
    }
    else
-       printf("\I2C core is failed to disable! \r\n");
+	   if (print){
+		   printf("\I2C core is failed to disable! \r\n");
+	   }
 
    return bSuccess;
 
@@ -190,37 +194,49 @@ bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt
 
    //set the tx reg audio chip dev address with write bit
    if (!Write32_Data( i2c_base, 3,device_address)){
-       printf("OC_I2C_Write error[0]\r\n");
+	   if (print){
+		   printf("OC_I2C_Write error[0]\r\n");
+	   }
        return FALSE;
    }
    //set STA and WR bits(bit7 and bit4)
    if (!Write32_Data( i2c_base, 4,0x90)){
-       printf("OC_I2C_Write error[1]\r\n");
+	   if (print){
+		   printf("OC_I2C_Write error[1]\r\n");
+	   }
        return FALSE;
    }
 
    //wait TIP bit go to 0 to end Tx
     if(!ACK_check( i2c_base)){
-        printf("OC_I2C_Write error[2]\r\n");
+    	if (print){
+    		printf("OC_I2C_Write error[2]\r\n");
+    	}
         return FALSE;
     }
   // printf("\n receive ACK-device address! \n");
 
    //set the txr reg data with reg address + 1 data MSB
    if (!Write32_Data( i2c_base, 3,sub_address)){
-       printf("OC_I2C_Write error[3]\r\n");
+	   if (print){
+		   printf("OC_I2C_Write error[3]\r\n");
+	   }
        return FALSE;
    }
 
    //set WR bits(bit4)
     if (!Write32_Data( i2c_base, 4,0x10)){
-        printf("OC_I2C_Write error[4]\r\n");
+    	if (print){
+    		printf("OC_I2C_Write error[4]\r\n");
+    	}
         return FALSE;
     }
 
    //wait TIP bit go to 0 to end Tx
     if(!ACK_check( i2c_base)){
+    	if (print){
         printf("OC_I2C_Write error[5]\r\n");
+    	}
         return FALSE;
     }
  //  printf("\n receive ACK-reg address! \n");
@@ -229,19 +245,25 @@ bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt
         for( i=nWriteLength-1;i>=0;i--){
         //set the txr reg data with the data
           if (!Write32_Data( i2c_base, 3,*(pData+i))){
-              printf("OC_I2C_Write error[6]\r\n");
+        	  if (print){
+        		  printf("OC_I2C_Write error[6]\r\n");
+        	  }
               return FALSE;
           }
 
         //set STO and WR bits(bit7 and bit4)
          if (!Write32_Data( i2c_base, 4,0x10)){
-             printf("OC_I2C_Write error[7]\r\n");
+        	 if (print){
+        		 printf("OC_I2C_Write error[7]\r\n");
+        	 }
               return FALSE;
          }
 
          //wait TIP bit go to 0 to end Tx
           if(!ACK_check( i2c_base)){
-              printf("OC_I2C_Write error[8]\r\n");
+        	  if (print){
+        		  printf("OC_I2C_Write error[8]\r\n");
+        	  }
               return FALSE;
           }
     }
@@ -261,7 +283,9 @@ bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt
 #endif
 
      if (!Write32_Data( i2c_base, 4,0x40)){
-         printf("OC_I2C_Write error[9]\r\n");
+    	 if (print){
+    		 printf("OC_I2C_Write error[9]\r\n");
+    	 }
          return FALSE;
      }
          //Sleep(10);
@@ -309,7 +333,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    //set STA and WR bits(bit7 and bit4)
    IOWR( i2c_base, 4,0x90);
    //wait TIP bit go to 0 to end Tx
-   if (!ACK_check( i2c_base)){
+   if (!ACK_check( i2c_base && print)){
        printf("OC_I2C_Read error[2]\r\n");
        return FALSE;
    }
@@ -318,7 +342,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    //set WR bits(bit4)
    IOWR( i2c_base, 4,0x10);
    //wait TIP bit go to 0 to end Tx
-    if (!ACK_check( i2c_base)){
+    if (!ACK_check( i2c_base) && print){
         printf("OC_I2C_Read error[5]\r\n");
         return FALSE;
     }
@@ -333,7 +357,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
     IOWR( i2c_base, 4,0x90);
 
    //wait TIP bit go to 0 to end Tx
-    if (!ACK_check( i2c_base)){
+    if (!ACK_check( i2c_base) && print){
         printf("OC_I2C_Read error[8]\r\n");
         return FALSE;
     }
@@ -343,7 +367,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    //set the RD and ACK bit(bit5 and bit3)
     	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
 
-        if (!ACK_judge_for_read( i2c_base)){
+        if (!ACK_judge_for_read( i2c_base) && print){
             printf("OC_I2C_Read error[10]\r\n");
             return FALSE;
         }
@@ -376,7 +400,7 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
     IOWR( i2c_base, 4,0x90);
 //usleep(5*1000);
    //wait TIP bit go to 0 to end Tx
-    if (!ACK_check( i2c_base)){
+    if (!ACK_check( i2c_base) && print){
         printf("OC_I2C_Read error[8]\r\n");
         return FALSE;
     }
@@ -386,7 +410,7 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
    //set the RD and ACK bit(bit5 and bit3)
     	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
 
-        if (!ACK_judge_for_read( i2c_base)){
+        if (!ACK_judge_for_read( i2c_base) && print){
             printf("OC_I2C_Read error[10]\r\n");
             return FALSE;
         }
@@ -429,7 +453,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
        return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Write error[0]\r\n");
         return FALSE;
     }
@@ -446,7 +470,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
         return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Write error[1]\r\n");
         return FALSE;
     }
@@ -460,7 +484,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
     Write32_Data( i2c_base, 4,0x10);
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Write error[2]\r\n");
         return FALSE;
     }
@@ -477,7 +501,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
             return FALSE;
 
         //wait TIP bit go to 0 to end Tx
-         if(!ACK_check( i2c_base)){
+         if(!ACK_check( i2c_base) && print){
              printf("OC_I2CL_Write error[3]\r\n");
              return FALSE;
          }
@@ -624,7 +648,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
        return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Read error[0]\r\n");
         return FALSE;
     }
@@ -641,7 +665,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
         return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Read error[1]\r\n");
         return FALSE;
     }
@@ -655,7 +679,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
         return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Read error[2]\r\n");
         return FALSE;
     }
@@ -672,7 +696,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
          return FALSE;
 
    //wait TIP bit go to 0 to end Tx
-    if(!ACK_check( i2c_base)){
+    if(!ACK_check( i2c_base) && print){
         printf("OC_I2CL_Read error[3]\r\n");
         return FALSE;
     }
@@ -686,7 +710,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
    //set the RD and ACK bit(bit5 and bit3)
     	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
 
-        if (!ACK_judge_for_read( i2c_base)){
+        if (!ACK_judge_for_read( i2c_base) && print){
             printf("OC_I2CL_Read error[4]\r\n");
             return FALSE;
         }

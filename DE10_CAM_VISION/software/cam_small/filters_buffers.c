@@ -72,22 +72,31 @@ void print_image(){
 	IOWR(PIXEL_BUFFER_0_BASE, 5000, 1);
 	usleep(10);
 
+	int count = 0;
+
 	for(int y = 0; y <60; y++){
 		for (int x = 0; x < 80; x++){
 			alt_u32 pixel =(IORD(PIXEL_BUFFER_0_BASE, 64*x + y));
+			alt_u8 chr = (alt_u8) ((pixel)& 0x000000ff);
 
-			alt_putchar((alt_u8) (pixel)& 0x000000ff);
-		}
+			if (chr == '\n') chr--;
+			if(chr == ',') chr--;
 
-		if (y == 59){
-			alt_putchar('\n');
-		}else {
-			alt_putchar(',');
-		}
-		while(alt_getchar() != 'A'){
-			usleep(1);
-		}
+			alt_putchar(chr);
 
+			count++;
+			if (count == 60) {
+				count = 0;
+				if (y >= 59 && x >= 79){
+					alt_putchar('\n');
+					} else {
+						alt_putchar(',');
+					}
+				while(alt_getchar() != 'A'){
+						usleep(1);
+					}
+			}
+		}
 	}
 
 	IOWR(PIXEL_BUFFER_0_BASE, 5000, 0);

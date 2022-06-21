@@ -16,6 +16,8 @@ void process_input(){
 		   else if ((IORD(KEY_BASE,0)&0x03) == 0x01){
 	    	   int sw = (IORD(SW_BASE, 0)& 0x03FF);
 
+	    	   debug = 0;
+
 	    	   switch(sw){
 				   case 1 : {
 					   auto_gain(128 , 2);
@@ -49,7 +51,6 @@ void process_input(){
 
 					   break;
 				   }case 512: {
-					   debug = ~debug;
 					   break;
 				   }
 	    	   }
@@ -67,6 +68,21 @@ void process_input(){
 				   //Process request
 				   print_image();
 				   break;}
+
+			   case 'H': {
+					   for(int i = 0; i<20; i++){
+						   alt_printf("%x ", histogram[i]);
+						   if( i == 19 ){
+							   alt_putchar('\n');
+						   }else{
+							   alt_putchar(' ');
+						   }
+					   }
+				   break;}
+			   case 'D': {
+				   delay = 1000000;
+				   break;}
+
 
 			   case 'e': {
 				   exposureTime += EXPOSURE_STEP;

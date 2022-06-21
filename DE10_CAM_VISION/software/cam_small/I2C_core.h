@@ -9,6 +9,7 @@
 #define I2C_OCRE_H_
 #include "alt_types.h"  // alt_u32
 #include "terasic_includes.h"
+#include "global.h"
 
 #define DEBUG_I2C
 

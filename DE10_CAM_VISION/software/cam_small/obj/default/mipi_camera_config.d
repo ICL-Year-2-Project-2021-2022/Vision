@@ -18,7 +18,7 @@ obj/default/mipi_camera_config.o: mipi_camera_config.c I2C_core.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h mipi_camera_config.h \
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h mipi_camera_config.h \
  auto_focus.h
 
 I2C_core.h:
@@ -70,6 +70,8 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_warning.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
+
+global.h:
 
 mipi_camera_config.h:
 

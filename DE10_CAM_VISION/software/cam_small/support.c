@@ -4,24 +4,6 @@
 #include <stdio.h>
 #include "definitions.h"
 
-struct observation {
-	char code;
-	//Per color parameters
-	int mask_bottom;
-	int mask_top;
-	int threshold;
-
-	//Up most up to date data
-	int com_x;
-	int com_y;
-	int mass;
-	int bb_left;
-	int bb_top;
-	int bb_right;
-	int bb_bottom;
-
-};
-
 void wait_eop(){
 	usleep(100000);
 }
@@ -41,62 +23,54 @@ struct observation* initialize_observations(){
 	struct observation* arr = malloc(number_observations * sizeof(struct observation));
 
 //Initialize Red low ball parameters --
-	arr[1].code = 'R';
-	arr[1].mask_bottom = to_hex_code(0,140,150);
-	arr[1].mask_top = to_hex_code(8,255,250);
-	arr[1].threshold = 192;
-
-//	//Initialize Red high ball parameters --
-//	arr[1].code = 'S';
-//	arr[1].mask_bottom = to_hex_code(175,140,150);
-//	arr[1].mask_top = to_hex_code(180,255,250);
-//	arr[1].threshold = 192;
+	arr[0].code = 'R';
+	arr[0].mask_bottom = to_hex_code(0,140,150);
+	arr[0].mask_top = to_hex_code(8,255,250);
+	arr[0].threshold = 192;
 
 	//Initialize lime ball parameters +
-	arr[2].code = 'L';
-	arr[2].mask_bottom = to_hex_code(55,60,100);
-	arr[2].mask_top = to_hex_code(75,160,250);
-	arr[2].threshold = 192;
+	arr[1].code = 'L';
+	arr[1].mask_bottom = to_hex_code(55,60,100);
+	arr[1].mask_top = to_hex_code(75,160,250);
+	arr[1].threshold = 192;
 
 	//Initialize blue ball parameters --
-	arr[3].code = 'B';
-	arr[3].mask_bottom = to_hex_code(105,80,50);
-	arr[3].mask_top = to_hex_code(125,255,128);
-	arr[3].threshold = 192;
+	arr[2].code = 'B';
+	arr[2].mask_bottom = to_hex_code(105,80,50);
+	arr[2].mask_top = to_hex_code(125,255,128);
+	arr[2].threshold = 192;
 
 	//Initialize yellow ball parameters
-	arr[4].code = 'Y';
-	arr[4].mask_bottom = to_hex_code(8,100,180);
-	arr[4].mask_top = to_hex_code(25,140,240);
-	arr[4].threshold = 192;
+	arr[3].code = 'Y';
+	arr[3].mask_bottom = to_hex_code(8,100,180);
+	arr[3].mask_top = to_hex_code(25,140,240);
+	arr[3].threshold = 192;
 
 	//Initialize green ball parameters
-	arr[5].code = 'G';
-	arr[5].mask_bottom = to_hex_code(80,60,50);
-	arr[5].mask_top = to_hex_code(90,128, 128);
-	arr[5].threshold = 192;
+	arr[4].code = 'G';
+	arr[4].mask_bottom = to_hex_code(80,60,50);
+	arr[4].mask_top = to_hex_code(90,128, 128);
+	arr[4].threshold = 192;
 
 
 	//Initialize pink ball parameters +
-	arr[6].code = 'P';
-//	arr[6].mask_bottom = to_hex_code(160,80,150);
-//	arr[6].mask_top = to_hex_code(180,128,255);
-	arr[6].mask_bottom = to_hex_code(0,80,150);
-	arr[6].mask_top = to_hex_code(10,128,250);
-	arr[6].threshold = 192;
+	arr[5].code = 'P';
+	arr[5].mask_bottom = to_hex_code(0,80,150);
+	arr[5].mask_top = to_hex_code(10,128,250);
+	arr[5].threshold = 192;
 
 	//Initialize Building 1 parameters
-	arr[7].code = 'W';
-	arr[7].mask_bottom = to_hex_code(0,00,0);
-	arr[7].mask_top = to_hex_code(255, 255, 255);
-	arr[7].threshold = 64;
+	arr[6].code = 'W';
+	arr[6].mask_bottom = to_hex_code(0,00,0);
+	arr[6].mask_top = to_hex_code(255, 255, 255);
+	arr[6].threshold = 64;
 
 
 	//Initialize Building 2 parameters --
-	arr[8].code = 'X';
-	arr[8].mask_bottom = to_hex_code(0,0,0);
-	arr[8].mask_top = to_hex_code(255, 255, 255);
-	arr[8].threshold = 64;
+	arr[7].code = 'X';
+	arr[7].mask_bottom = to_hex_code(0,0,0);
+	arr[7].mask_top = to_hex_code(255, 255, 255);
+	arr[7].threshold = 64;
 
 	return arr;
 }
@@ -113,36 +87,28 @@ void merge_observations (struct observation* base, struct observation* merge){
 }
 
 
-#define UART_DEBUG 1
-
 void print_observations (struct observation* obs) {
 	static char observation_buf[64];
 
-	for (int i = 1; i < number_observations-2 ; i++){
+	for (int i = 0; i < number_observations-1 ; i++){
 
-//				if (obs[i].code == 'R'){
-//					merge_observations(&obs[i], &obs[i+1]);
-//					i++;
-//				}
 
-		sprintf(observation_buf, "%c %x %x %x %x %x %x %x", obs[i].code, obs[i].com_x,
+		sprintf(observation_buf, "%c %01x %x %x %x %x %x %x", obs[i].code, obs[i].com_x,
 				obs[i].com_y, obs[i].mass, obs[i].bb_left, obs[i].bb_top,
 				obs[i].bb_right, obs[i].bb_bottom);
 
-		if (UART_DEBUG){
 
-			printf ("%s", observation_buf);
+		printf ("%s", observation_buf);
 
-			//Last iteration
-			if(i == number_observations-3 ){
-				printf ("\n");
-			} else{
-				printf (" ,");
+		//Last iteration
+		if(i == number_observations -1 ){
+			printf ("\n");
+		} else{
+			printf (" ,");
 
-			}
-			while (alt_getchar() != 'A'){
-				usleep(1);
-			}
+		}
+		while (alt_getchar() != 'A'){
+			usleep(1);
 		}
 	}
 }
@@ -150,8 +116,9 @@ void print_observations (struct observation* obs) {
 
 
 void print_as_rgb(alt_u32 val, alt_u32 hsv){
-	//printf("RGB: %d, %d, %d\n", (val>>16)&0x0000ff, (val>>8)&0x0000ff, (val>>0)&0x0000ff);
-	printf("RGB: %x, HSV: %x\n", val, hsv);
+	if(print){
+		printf("RGB: %x, HSV: %x\n", val, hsv);
+	}
 }
 
 

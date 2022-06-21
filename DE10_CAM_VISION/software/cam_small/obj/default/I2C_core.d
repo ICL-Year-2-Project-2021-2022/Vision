@@ -18,7 +18,7 @@ obj/default/I2C_core.o: I2C_core.c terasic_includes.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h I2C_core.h
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h I2C_core.h global.h
 
 terasic_includes.h:
 
@@ -69,3 +69,5 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
 
 I2C_core.h:
+
+global.h:

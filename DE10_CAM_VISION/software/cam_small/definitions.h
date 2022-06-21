@@ -53,6 +53,8 @@
 #define THRESH_ENABLED 8
 #define THRESH_Y 9
 #define THRESH_X 10
+#define THRESH_Y_MAX 11
+#define THRESH_X_MAX 12
 
 //Pixel grabber
 #define GRAB_POINT 0

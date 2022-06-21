@@ -5,6 +5,7 @@
 #include "definitions.h"
 #include "terasic_includes.h"
 #include "alt_types.h"
+#include "global.h"
 
 #define MIPI_REG_PHYClkCtl		0x0056
 #define MIPI_REG_PHYData0Ctl	0x0058

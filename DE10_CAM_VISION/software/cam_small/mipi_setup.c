@@ -27,22 +27,26 @@ void mipi_show_error_info(void){
 	MDLSynErr = MipiBridgeRegRead(MIPI_REG_MDLSynErr);
 	FrmErrCnt = MipiBridgeRegRead(MIPI_REG_FrmErrCnt);
 	MDLErrCnt = MipiBridgeRegRead(MIPI_REG_MDLErrCnt);
+	if (print){
 	printf("PHY_status=%xh, CSI_status=%xh, MDLSynErr=%xh, FrmErrCnt=%xh, MDLErrCnt=%xh\r\n", PHY_status, SCI_status, MDLSynErr,FrmErrCnt, MDLErrCnt);
+	}
 }
 
 void mipi_show_error_info_more(void){
-    printf("FrmErrCnt = %d\n",MipiBridgeRegRead(0x0080));
-    printf("CRCErrCnt = %d\n",MipiBridgeRegRead(0x0082));
-    printf("CorErrCnt = %d\n",MipiBridgeRegRead(0x0084));
-    printf("HdrErrCnt = %d\n",MipiBridgeRegRead(0x0086));
-    printf("EIDErrCnt = %d\n",MipiBridgeRegRead(0x0088));
-    printf("CtlErrCnt = %d\n",MipiBridgeRegRead(0x008A));
-    printf("SoTErrCnt = %d\n",MipiBridgeRegRead(0x008C));
-    printf("SynErrCnt = %d\n",MipiBridgeRegRead(0x008E));
-    printf("MDLErrCnt = %d\n",MipiBridgeRegRead(0x0090));
-    printf("FIFOSTATUS = %d\n",MipiBridgeRegRead(0x00F8));
-    printf("DataType = 0x%04x\n",MipiBridgeRegRead(0x006A));
-    printf("CSIPktLen = %d\n",MipiBridgeRegRead(0x006E));
+	if (print){
+		printf("FrmErrCnt = %d\n",MipiBridgeRegRead(0x0080));
+		printf("CRCErrCnt = %d\n",MipiBridgeRegRead(0x0082));
+		printf("CorErrCnt = %d\n",MipiBridgeRegRead(0x0084));
+		printf("HdrErrCnt = %d\n",MipiBridgeRegRead(0x0086));
+		printf("EIDErrCnt = %d\n",MipiBridgeRegRead(0x0088));
+		printf("CtlErrCnt = %d\n",MipiBridgeRegRead(0x008A));
+		printf("SoTErrCnt = %d\n",MipiBridgeRegRead(0x008C));
+		printf("SynErrCnt = %d\n",MipiBridgeRegRead(0x008E));
+		printf("MDLErrCnt = %d\n",MipiBridgeRegRead(0x0090));
+		printf("FIFOSTATUS = %d\n",MipiBridgeRegRead(0x00F8));
+		printf("DataType = 0x%04x\n",MipiBridgeRegRead(0x006A));
+		printf("CSIPktLen = %d\n",MipiBridgeRegRead(0x006E));
+	}
 }
 
 
@@ -52,7 +56,7 @@ bool MIPI_Init(void){
 
 
 	bSuccess = oc_i2c_init_ex(I2C_OPENCORES_MIPI_BASE, 50*1000*1000,400*1000); //I2C: 400K
-	if (!bSuccess)
+	if (!bSuccess & print)
 		printf("failed to init MIPI- Bridge i2c\r\n");
 
     usleep(50*1000);

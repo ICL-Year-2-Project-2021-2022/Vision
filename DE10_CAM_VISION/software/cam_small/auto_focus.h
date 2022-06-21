@@ -8,6 +8,8 @@
 #ifndef AUTO_FOCUS_H_
 #define AUTO_FOCUS_H_
 
+#include "global.h"
+
 // write
 #define REG_GO    			0
 #define REG_CTRL   			1

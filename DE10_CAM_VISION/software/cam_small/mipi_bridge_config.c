@@ -6,9 +6,11 @@
  */
 
 #include <stdio.h>
+#include "system.h"
 #include "I2C_core.h"
 #include "terasic_includes.h"
 #include "mipi_bridge_config.h"
+#include "global.h"
 
 
 typedef struct{
@@ -98,12 +100,14 @@ void MipiBridgeInit(void){
 	alt_u16 data;
     int i, num;
 
-	printf("\nStart MipiBridgeInit!\n");
-
+    if (print){
+    	printf("\nStart MipiBridgeInit!\n");
+    }
 	data = MipiBridgeRegRead(0x0000); // read chip and revision id;
 
-	printf("Chip and Revision ID is 0x%04xh(expected: 0x4401);\n",data);
-
+	if (print){
+		printf("Chip and Revision ID is 0x%04xh(expected: 0x4401);\n",data);
+	}
 
     num = sizeof(MipiBridgeReg)/sizeof(MipiBridgeReg[0]);
 
@@ -124,9 +128,9 @@ void MipiBridgeInit(void){
 //     MipiBridgeRegWrite(0x005C,((cap<<6) + (HsRxRs<<4) + ClkDly_data));
 //     MipiBridgeRegWrite(0x005E,((cap<<6) + (HsRxRs<<4) + ClkDly_data));
 //
-
-    printf("End MipiBridgeInit!\n\n");
-
+    if (print){
+    	printf("End MipiBridgeInit!\n\n");
+    }
 }
 
 

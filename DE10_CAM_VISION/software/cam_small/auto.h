@@ -5,6 +5,7 @@
 #include "alt_types.h"
 #include "io.h"
 #include "filters_buffers.h"
+#include "global.h"
 
 
 void auto_gain(int target, int epsilon);

@@ -18,7 +18,7 @@ obj/default/auto_focus.o: auto_focus.c I2C_core.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h auto_focus.h
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h auto_focus.h
 
 I2C_core.h:
 
@@ -69,5 +69,7 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_warning.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
+
+global.h:
 
 auto_focus.h:

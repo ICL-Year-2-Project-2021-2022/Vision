@@ -59,8 +59,9 @@ alt_u16 Focus_Window(int x,int y){
 	   if(( y -  focus_height/2) < 0 ) y_start = 0;
 	   else if(( y + focus_height/2 ) > video_h )  y_start = video_h -1 -focus_height;
 	   else y_start = y - focus_height/2;
-
-	   printf("x_start= %d,y_start= %d\n",x_start,y_start);
+	   if (print){
+		   printf("x_start= %d,y_start= %d\n",x_start,y_start);
+	   }
 
 	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_X_START, x_start);//x_start
 	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_Y_START, y_start);//y_start
@@ -73,7 +74,9 @@ alt_u16 Focus_Window(int x,int y){
 	   Focus_Released();
 
 	   end_focus = IORD(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x0FFF;
-	   printf("end_focus = %d \n",end_focus);
+	   if(print){
+		   printf("end_focus = %d \n",end_focus);
+	   }
 
 	   return end_focus;
 
@@ -91,7 +94,7 @@ int Focus_Released(void){
   while((IORD(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x8000) ==0 && alt_nticks() < TimeOut ); // waiting for VCM release I2C bus
 
   if(alt_nticks() < TimeOut ) Released = TRUE;
-  else printf("\n =>¡¡Released check TimeOut!\n");
+  else if (print) printf("\n =>¡¡Released check TimeOut!\n");
 
   usleep(10000);
 
