@@ -150,6 +150,8 @@ C_SRCS += mipi_camera_config.c
 C_SRCS += mipi_setup.c
 C_SRCS += support.c
 C_SRCS += input.c
+C_SRCS += filters_buffers.c
+C_SRCS += auto.c
 CXX_SRCS :=
 ASM_SRCS :=
 

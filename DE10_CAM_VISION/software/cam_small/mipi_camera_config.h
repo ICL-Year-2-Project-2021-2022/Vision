@@ -25,6 +25,12 @@ void BLC_LEVEL(alt_u8 blc0,alt_u8 blc1);
 
 void MipiCameraInit(void);
 
+//New functions
+void OV8865SetRedGain(alt_u16 gain);
+void OV8865SetGreenGain(alt_u16 gain);
+void OV8865SetBlueGain(alt_u16 gain);
+alt_u32 OV8865ReadAvg();
+
 
 
 #endif /* MIPI_CAMERA_CONFIG_H_ */

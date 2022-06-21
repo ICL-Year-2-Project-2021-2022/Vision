@@ -19,7 +19,8 @@ obj/default/input.o: input.c input.h ../cam_small_bsp/system.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h filters_buffers.h \
+ auto.h
 
 input.h:
 
@@ -76,3 +77,7 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
 
 global.h:
+
+filters_buffers.h:
+
+auto.h:

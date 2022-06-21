@@ -5,6 +5,8 @@
 	#include "alt_types.h"
 	#include "support.h"
 	#include "global.h"
+	#include "filters_buffers.h"
+	#include "auto.h"
 
 	void process_input();
 #endif

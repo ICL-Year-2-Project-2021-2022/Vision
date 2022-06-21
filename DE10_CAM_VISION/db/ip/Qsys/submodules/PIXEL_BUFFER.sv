@@ -55,12 +55,13 @@ logic[12:0] wraddress, rdaddress, s_address_d;
 ////////////////////////////////////////////////////////////////////////
 
 always @(*) begin	
-	grab_px = x_pixel[clog_sub_factor -1 :0] == 0 && y_pixel[ clog_sub_factor -1 : 0] == 0 && ~halt_current && packet_video;
+	grab_px = x_pixel[clog_sub_factor -1 :0] == 4 && y_pixel[ clog_sub_factor -1 : 0] == 4 && ~halt_current && packet_video;
 	compressed = {red[7:6], green[7:5], blue[7:5]};
 	//compressed = {red, green, blue};
 	wraddress = {x_pixel[9:3], y_pixel[8:3]};
 	rdaddress = s_address;
 	
+	s_readdata = 0;
 	if (s_chipselect_d & s_read_d)begin
 		if(s_address_d == `FRAME_HALT)begin
 			s_readdata = {31'b0, halt};

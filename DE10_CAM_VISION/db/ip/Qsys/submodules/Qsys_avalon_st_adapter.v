@@ -22,7 +22,7 @@ module Qsys_avalon_st_adapter #(
 		parameter outUseEmptyPort = 1,
 		parameter outUseValid     = 1,
 		parameter outUseReady     = 1,
-		parameter outReadyLatency = 1
+		parameter outReadyLatency = 0
 	) (
 		input  wire        in_clk_0_clk,        // in_clk_0.clk
 		input  wire        in_rst_0_reset,      // in_rst_0.reset
@@ -38,6 +38,13 @@ module Qsys_avalon_st_adapter #(
 		output wire        out_0_endofpacket,   //         .endofpacket
 		output wire [1:0]  out_0_empty          //         .empty
 	);
+
+	wire         data_format_adapter_0_out_valid;         // data_format_adapter_0:out_valid -> timing_adapter_0:in_valid
+	wire  [23:0] data_format_adapter_0_out_data;          // data_format_adapter_0:out_data -> timing_adapter_0:in_data
+	wire         data_format_adapter_0_out_ready;         // timing_adapter_0:in_ready -> data_format_adapter_0:out_ready
+	wire         data_format_adapter_0_out_startofpacket; // data_format_adapter_0:out_startofpacket -> timing_adapter_0:in_startofpacket
+	wire         data_format_adapter_0_out_endofpacket;   // data_format_adapter_0:out_endofpacket -> timing_adapter_0:in_endofpacket
+	wire   [1:0] data_format_adapter_0_out_empty;         // data_format_adapter_0:out_empty -> timing_adapter_0:in_empty
 
 	generate
 		// If any of the display statements (or deliberately broken
@@ -180,7 +187,7 @@ module Qsys_avalon_st_adapter #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					outuseready_check ( .error(1'b1) );
 		end
-		if (outReadyLatency != 1)
+		if (outReadyLatency != 0)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -192,19 +199,36 @@ module Qsys_avalon_st_adapter #(
 	endgenerate
 
 	Qsys_avalon_st_adapter_data_format_adapter_0 data_format_adapter_0 (
-		.clk               (in_clk_0_clk),        //   clk.clk
-		.reset_n           (~in_rst_0_reset),     // reset.reset_n
-		.in_data           (in_0_data),           //    in.data
-		.in_valid          (in_0_valid),          //      .valid
-		.in_ready          (in_0_ready),          //      .ready
-		.in_startofpacket  (in_0_startofpacket),  //      .startofpacket
-		.in_endofpacket    (in_0_endofpacket),    //      .endofpacket
-		.out_data          (out_0_data),          //   out.data
-		.out_valid         (out_0_valid),         //      .valid
-		.out_ready         (out_0_ready),         //      .ready
-		.out_startofpacket (out_0_startofpacket), //      .startofpacket
-		.out_endofpacket   (out_0_endofpacket),   //      .endofpacket
-		.out_empty         (out_0_empty)          //      .empty
+		.clk               (in_clk_0_clk),                            //   clk.clk
+		.reset_n           (~in_rst_0_reset),                         // reset.reset_n
+		.in_data           (in_0_data),                               //    in.data
+		.in_valid          (in_0_valid),                              //      .valid
+		.in_ready          (in_0_ready),                              //      .ready
+		.in_startofpacket  (in_0_startofpacket),                      //      .startofpacket
+		.in_endofpacket    (in_0_endofpacket),                        //      .endofpacket
+		.out_data          (data_format_adapter_0_out_data),          //   out.data
+		.out_valid         (data_format_adapter_0_out_valid),         //      .valid
+		.out_ready         (data_format_adapter_0_out_ready),         //      .ready
+		.out_startofpacket (data_format_adapter_0_out_startofpacket), //      .startofpacket
+		.out_endofpacket   (data_format_adapter_0_out_endofpacket),   //      .endofpacket
+		.out_empty         (data_format_adapter_0_out_empty)          //      .empty
+	);
+
+	Qsys_avalon_st_adapter_timing_adapter_0 timing_adapter_0 (
+		.clk               (in_clk_0_clk),                            //   clk.clk
+		.reset_n           (~in_rst_0_reset),                         // reset.reset_n
+		.in_data           (data_format_adapter_0_out_data),          //    in.data
+		.in_valid          (data_format_adapter_0_out_valid),         //      .valid
+		.in_ready          (data_format_adapter_0_out_ready),         //      .ready
+		.in_startofpacket  (data_format_adapter_0_out_startofpacket), //      .startofpacket
+		.in_endofpacket    (data_format_adapter_0_out_endofpacket),   //      .endofpacket
+		.in_empty          (data_format_adapter_0_out_empty),         //      .empty
+		.out_data          (out_0_data),                              //   out.data
+		.out_valid         (out_0_valid),                             //      .valid
+		.out_ready         (out_0_ready),                             //      .ready
+		.out_startofpacket (out_0_startofpacket),                     //      .startofpacket
+		.out_endofpacket   (out_0_endofpacket),                       //      .endofpacket
+		.out_empty         (out_0_empty)                              //      .empty
 	);
 
 endmodule

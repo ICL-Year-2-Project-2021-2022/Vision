@@ -61,6 +61,7 @@ always @(*) begin
 	wraddress = {x_pixel[9:3], y_pixel[8:3]};
 	rdaddress = s_address;
 	
+	s_readdata = 0;
 	if (s_chipselect_d & s_read_d)begin
 		if(s_address_d == `FRAME_HALT)begin
 			s_readdata = {31'b0, halt};

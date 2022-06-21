@@ -14,9 +14,6 @@
 		.clk_sdram_clk                             (<connected-to-clk_sdram_clk>),                             //                        clk_sdram.clk
 		.clk_vga_clk                               (<connected-to-clk_vga_clk>),                               //                          clk_vga.clk
 		.d8m_xclkin_clk                            (<connected-to-d8m_xclkin_clk>),                            //                       d8m_xclkin.clk
-		.eop_irq_raw_eop                           (<connected-to-eop_irq_raw_eop>),                           //                          eop_irq.raw_eop
-		.eop_irq_raw_sop                           (<connected-to-eop_irq_raw_sop>),                           //                                 .raw_sop
-		.eop_pio_export                            (<connected-to-eop_pio_export>),                            //                          eop_pio.export
 		.i2c_opencores_camera_export_scl_pad_io    (<connected-to-i2c_opencores_camera_export_scl_pad_io>),    //      i2c_opencores_camera_export.scl_pad_io
 		.i2c_opencores_camera_export_sda_pad_io    (<connected-to-i2c_opencores_camera_export_sda_pad_io>),    //                                 .sda_pad_io
 		.i2c_opencores_mipi_export_scl_pad_io      (<connected-to-i2c_opencores_mipi_export_scl_pad_io>),      //        i2c_opencores_mipi_export.scl_pad_io

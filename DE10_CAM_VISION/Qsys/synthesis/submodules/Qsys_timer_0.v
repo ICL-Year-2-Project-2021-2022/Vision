@@ -67,7 +67,7 @@ reg              timeout_occurred;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          internal_counter <= 27'h4C4B3FF;
+          internal_counter <= 27'h42C1D7F;
       else if (counter_is_running || force_reload)
           if (counter_is_zero    || force_reload)
               internal_counter <= counter_load_value;
@@ -77,7 +77,7 @@ reg              timeout_occurred;
 
 
   assign counter_is_zero = internal_counter == 0;
-  assign counter_load_value = 27'h4C4B3FF;
+  assign counter_load_value = 27'h42C1D7F;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)

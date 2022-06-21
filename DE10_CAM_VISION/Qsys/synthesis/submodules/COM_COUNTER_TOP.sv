@@ -160,7 +160,7 @@ STREAM_REG_COM #(.DATA_WIDTH(26)) out_reg (
 `define BB_HIGH_Y						7
 `define THRESH_ENABLED				8
 `define THRESH_Y						9
-`define THRESH_X						9
+`define THRESH_X					10
 
 
 
@@ -172,7 +172,7 @@ begin
 	   threshold_gate <= 127;
 	   gate_enabled <=1;
 	   thresh_y <= 0;
-	   thresh_x <= 5;
+	   thresh_x <= 0;
 	end
 	
 	else if (s_chipselect & s_read) begin

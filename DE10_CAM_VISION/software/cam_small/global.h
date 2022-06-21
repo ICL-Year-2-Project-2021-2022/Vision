@@ -6,6 +6,7 @@ int number_observations;
 int frames_elapsed;
 int histogram[20];
 int histogram_processed[20];
+int debug;
 
 struct observation {
 	char code;

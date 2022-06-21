@@ -113,13 +113,21 @@ reg         MIPI_PIXEL_VS_d;
 reg         MIPI_PIXEL_HS_d;
 reg   [9:0] MIPI_PIXEL_D_d;
 
+reg[1:0]irq_d, irq_dd, irq_ddd, irq_dddd;
+
 assign MIPI_PIXEL_CLK_d = ~MIPI_PIXEL_CLK;
 
 always @ (posedge MIPI_PIXEL_CLK_d) begin
    MIPI_PIXEL_VS_d <= MIPI_PIXEL_VS;
    MIPI_PIXEL_HS_d <= MIPI_PIXEL_HS;
    MIPI_PIXEL_D_d  <= MIPI_PIXEL_D;
+	
 end
+
+//	irq_d <= {sop_irq, eop_irq};
+//	irq_dd <= irq_d;
+//	irq_ddd <= irq_dd;
+//	irq_dddd <= irq_ddd;
 
 
 
@@ -180,9 +188,9 @@ Qsys u0 (
 		.uart_0_rx_tx_rxd                          (ARDUINO_IO[8]),                          //                     uart_0_rx_tx.rxd
 		.uart_0_rx_tx_txd                          (ARDUINO_IO[9]),                           //
 	
-		.eop_irq_raw_eop                           (eop_irq),                           //                          eop_irq.raw_eop
-		.eop_irq_raw_sop                           (sop_irq),                           //                                 .raw_sop
-		.eop_pio_export  									({sop_irq, eop_irq})                          //                          eop_pio.export
+		//.eop_irq_raw_eop                           (eop_irq),                           //                          eop_irq.raw_eop
+		//.eop_irq_raw_sop                           (sop_irq),                           //                                 .raw_sop
+		//.eop_pio_export  									(irq_dddd)                          //                          eop_pio.export
 	);
 
 FpsMonitor uFps(

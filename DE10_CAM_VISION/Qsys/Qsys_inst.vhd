@@ -15,9 +15,6 @@
 			clk_sdram_clk                             : out   std_logic;                                        -- clk
 			clk_vga_clk                               : out   std_logic;                                        -- clk
 			d8m_xclkin_clk                            : out   std_logic;                                        -- clk
-			eop_irq_raw_eop                           : out   std_logic;                                        -- raw_eop
-			eop_irq_raw_sop                           : out   std_logic;                                        -- raw_sop
-			eop_pio_export                            : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
 			i2c_opencores_camera_export_scl_pad_io    : inout std_logic                     := 'X';             -- scl_pad_io
 			i2c_opencores_camera_export_sda_pad_io    : inout std_logic                     := 'X';             -- sda_pad_io
 			i2c_opencores_mipi_export_scl_pad_io      : inout std_logic                     := 'X';             -- scl_pad_io
@@ -67,9 +64,6 @@
 			clk_sdram_clk                             => CONNECTED_TO_clk_sdram_clk,                             --                        clk_sdram.clk
 			clk_vga_clk                               => CONNECTED_TO_clk_vga_clk,                               --                          clk_vga.clk
 			d8m_xclkin_clk                            => CONNECTED_TO_d8m_xclkin_clk,                            --                       d8m_xclkin.clk
-			eop_irq_raw_eop                           => CONNECTED_TO_eop_irq_raw_eop,                           --                          eop_irq.raw_eop
-			eop_irq_raw_sop                           => CONNECTED_TO_eop_irq_raw_sop,                           --                                 .raw_sop
-			eop_pio_export                            => CONNECTED_TO_eop_pio_export,                            --                          eop_pio.export
 			i2c_opencores_camera_export_scl_pad_io    => CONNECTED_TO_i2c_opencores_camera_export_scl_pad_io,    --      i2c_opencores_camera_export.scl_pad_io
 			i2c_opencores_camera_export_sda_pad_io    => CONNECTED_TO_i2c_opencores_camera_export_sda_pad_io,    --                                 .sda_pad_io
 			i2c_opencores_mipi_export_scl_pad_io      => CONNECTED_TO_i2c_opencores_mipi_export_scl_pad_io,      --        i2c_opencores_mipi_export.scl_pad_io

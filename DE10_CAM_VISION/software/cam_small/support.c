@@ -147,106 +147,7 @@ void print_observations (struct observation* obs) {
 	}
 }
 
-void auto_gain(int target, int epsilon){
-	int currentgain = 0x280;
-	OV8865SetGain(currentgain);
-	usleep(100000);
 
-	int value = OV8865ReadAvg();
-	int delta = target - value;
-	int kp = 1;
-
-	while ( delta > epsilon || delta < -epsilon){
-		currentgain = currentgain + delta*kp;
-		if (currentgain < 0) currentgain = 0;
-		OV8865SetGain(currentgain);
-		usleep(100000);
-
-		value = OV8865ReadAvg();
-		delta = target - value;
-
-		printf("Delta: %d, gain: %d\n", delta, currentgain);
-	}
-
-}
-
-void auto_wb(int target, int epsilon){
-	int delay = 100000;
-	int kp = 1;
-	alt_u32 value2;
-	//Red Balance
-	int currentgain = 0x400;
-	OV8865SetRedGain(currentgain);
-	usleep(delay);
-	 alt_u32 value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x00FF0000) >> 16;
-	int delta = target - value;
-
-	while ( delta > epsilon || delta < -epsilon){
-		currentgain = currentgain + delta/4;
-		if (currentgain < 0) currentgain = 0;
-		OV8865SetRedGain(currentgain);
-		usleep(delay);
-
-		value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x00FF0000) >> 16;
-
-		usleep(delay);
-
-		value2 = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x00FF0000) >> 16;
-
-		delta = target - (value+value2)/2;
-
-		printf("Red Delta: %d, gain: %d\n", delta, currentgain);
-	}
-
-	//Green Balance
-	currentgain = 0x400;
-	OV8865SetGreenGain(currentgain);
-	usleep(delay);
-	value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x0000FF00) >> 8;
-	delta = target - value;
-
-	while ( delta > epsilon || delta < -epsilon){
-		currentgain = currentgain + delta/2;
-		if (currentgain < 0) currentgain = 0;
-		OV8865SetGreenGain(currentgain);
-		usleep(delay);
-
-		value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x0000FF00) >> 8;
-
-		usleep(delay);
-
-		value2 = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x0000FF00) >> 8;
-
-		delta = target - (value+value2)/2;
-
-		printf("Green Delta: %d, gain: %d\n", delta, currentgain);
-	}
-
-	//Blue Balance
-	currentgain = 0x400;
-	OV8865SetBlueGain(currentgain);
-	usleep(delay);
-	value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x000000FF);
-	delta = target - value;
-
-	while ( delta > epsilon || delta < -epsilon){
-		currentgain = currentgain + delta/2;
-		if (currentgain < 0) currentgain = 0;
-		OV8865SetBlueGain(currentgain);
-		usleep(delay);
-
-		value = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x000000FF);
-
-		usleep(delay);
-
-		value2 = ((IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE)) & 0x000000FF);
-
-		delta = target - (value+value2)/2;
-
-		printf("Blue Delta: %d, gain: %d\n", delta, currentgain);
-		}
-
-}
 
 void print_as_rgb(alt_u32 val, alt_u32 hsv){
 	//printf("RGB: %d, %d, %d\n", (val>>16)&0x0000ff, (val>>8)&0x0000ff, (val>>0)&0x0000ff);
@@ -269,3 +170,5 @@ void wait_frame(int number){
 	while(current_frame > frames_elapsed - number){}
 	return;
 }
+
+

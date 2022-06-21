@@ -15,9 +15,6 @@ module Qsys (
 	clk_sdram_clk,
 	clk_vga_clk,
 	d8m_xclkin_clk,
-	eop_irq_raw_eop,
-	eop_irq_raw_sop,
-	eop_pio_export,
 	i2c_opencores_camera_export_scl_pad_io,
 	i2c_opencores_camera_export_sda_pad_io,
 	i2c_opencores_mipi_export_scl_pad_io,
@@ -63,9 +60,6 @@ module Qsys (
 	output		clk_sdram_clk;
 	output		clk_vga_clk;
 	output		d8m_xclkin_clk;
-	output		eop_irq_raw_eop;
-	output		eop_irq_raw_sop;
-	input	[1:0]	eop_pio_export;
 	inout		i2c_opencores_camera_export_scl_pad_io;
 	inout		i2c_opencores_camera_export_sda_pad_io;
 	inout		i2c_opencores_mipi_export_scl_pad_io;

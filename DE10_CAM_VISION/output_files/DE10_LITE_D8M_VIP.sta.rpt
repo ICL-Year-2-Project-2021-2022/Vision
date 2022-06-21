@@ -1,5 +1,5 @@
 Timing Analyzer report for DE10_LITE_D8M_VIP
-Fri Jun 17 17:24:24 2022
+Tue Jun 21 17:17:26 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -94,15 +94,15 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 3.28        ;
+; Average used               ; 3.48        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  37.3%      ;
-;     Processor 3            ;  33.1%      ;
-;     Processor 4            ;  31.9%      ;
-;     Processors 5-8         ;  31.4%      ;
+;     Processor 2            ;  39.7%      ;
+;     Processor 3            ;  36.7%      ;
+;     Processor 4            ;  34.7%      ;
+;     Processors 5-8         ;  34.2%      ;
 +----------------------------+-------------+
 
 
@@ -111,13 +111,13 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                                                                                     ; Status ; Read at                  ;
 +-----------------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
-; DE10_LITE_D8M_VIP.SDC                                                                                                             ; OK     ; Fri Jun 17 17:24:02 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/qsys_nios2_gen2_cpu.sdc                                       ; OK     ; Fri Jun 17 17:24:02 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/alt_vipitc131_cvo.sdc                                         ; OK     ; Fri Jun 17 17:24:02 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_avalon_dc_fifo.sdc                                     ; OK     ; Fri Jun 17 17:24:03 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_avalon_st_handshake_clock_crosser.sdc                  ; OK     ; Fri Jun 17 17:24:03 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_reset_controller.sdc                                   ; OK     ; Fri Jun 17 17:24:03 2022 ;
-; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc ; OK     ; Fri Jun 17 17:24:03 2022 ;
+; DE10_LITE_D8M_VIP.SDC                                                                                                             ; OK     ; Tue Jun 21 17:16:58 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/qsys_nios2_gen2_cpu.sdc                                       ; OK     ; Tue Jun 21 17:16:58 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/alt_vipitc131_cvo.sdc                                         ; OK     ; Tue Jun 21 17:16:59 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_avalon_dc_fifo.sdc                                     ; OK     ; Tue Jun 21 17:16:59 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_avalon_st_handshake_clock_crosser.sdc                  ; OK     ; Tue Jun 21 17:16:59 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/altera_reset_controller.sdc                                   ; OK     ; Tue Jun 21 17:16:59 2022 ;
+; c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc ; OK     ; Tue Jun 21 17:16:59 2022 ;
 +-----------------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -138,6 +138,7 @@ refer to the applicable agreement for further details.
 ; u0|altpll_0|sd1|pll7|clk[3] ; Generated ; 40.000  ; 25.0 MHz  ; 0.000 ; 20.000 ; 50.00      ; 2         ; 1           ;       ;        ;           ;            ; false    ; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|inclk[0] ; { u0|altpll_0|sd1|pll7|clk[3] } ;
 ; u0|altpll_0|sd1|pll7|clk[4] ; Generated ; 50.000  ; 20.0 MHz  ; 0.000 ; 25.000 ; 50.00      ; 5         ; 2           ;       ;        ;           ;            ; false    ; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|inclk[0] ; { u0|altpll_0|sd1|pll7|clk[4] } ;
 ; u0|altpll_1|sd1|pll7|clk[0] ; Generated ; 11.111  ; 90.0 MHz  ; 0.000 ; 5.555  ; 50.00      ; 5         ; 9           ;       ;        ;           ;            ; false    ; MAX10_CLK1_50               ; u0|altpll_1|sd1|pll7|inclk[0] ; { u0|altpll_1|sd1|pll7|clk[0] } ;
+; u0|altpll_2|sd1|pll7|clk[0] ; Generated ; 14.285  ; 70.0 MHz  ; 0.000 ; 7.142  ; 50.00      ; 5         ; 7           ;       ;        ;           ;            ; false    ; MAX10_CLK1_50               ; u0|altpll_2|sd1|pll7|inclk[0] ; { u0|altpll_2|sd1|pll7|clk[0] } ;
 +-----------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-----------------------------+-------------------------------+---------------------------------+
 
 
@@ -146,13 +147,14 @@ refer to the applicable agreement for further details.
 +------------+-----------------+-----------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                  ; Note ;
 +------------+-----------------+-----------------------------+------+
-; 70.85 MHz  ; 70.85 MHz       ; MAX10_CLK1_50               ;      ;
-; 79.52 MHz  ; 79.52 MHz       ; MIPI_PIXEL_CLK              ;      ;
-; 91.02 MHz  ; 91.02 MHz       ; u0|altpll_0|sd1|pll7|clk[3] ;      ;
-; 100.42 MHz ; 100.42 MHz      ; u0|altpll_1|sd1|pll7|clk[0] ;      ;
-; 106.67 MHz ; 106.67 MHz      ; u0|altpll_0|sd1|pll7|clk[2] ;      ;
-; 109.29 MHz ; 109.29 MHz      ; altera_reserved_tck         ;      ;
-; 115.01 MHz ; 115.01 MHz      ; MAX10_CLK2_50               ;      ;
+; 59.1 MHz   ; 59.1 MHz        ; MIPI_PIXEL_CLK              ;      ;
+; 80.21 MHz  ; 80.21 MHz       ; u0|altpll_2|sd1|pll7|clk[0] ;      ;
+; 92.66 MHz  ; 92.66 MHz       ; altera_reserved_tck         ;      ;
+; 96.87 MHz  ; 96.87 MHz       ; u0|altpll_1|sd1|pll7|clk[0] ;      ;
+; 103.3 MHz  ; 103.3 MHz       ; u0|altpll_0|sd1|pll7|clk[2] ;      ;
+; 105.05 MHz ; 105.05 MHz      ; u0|altpll_0|sd1|pll7|clk[3] ;      ;
+; 132.66 MHz ; 132.66 MHz      ; MAX10_CLK1_50               ;      ;
+; 147.43 MHz ; 147.43 MHz      ; MAX10_CLK2_50               ;      ;
 +------------+-----------------+-----------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -162,14 +164,15 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_0|sd1|pll7|clk[2] ; 0.625  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 1.153  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 0.319  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 0.788  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 1.817  ; 0.000         ;
 ; clk_dram_ext                ; 3.922  ; 0.000         ;
-; MAX10_CLK1_50               ; 5.886  ; 0.000         ;
-; MAX10_CLK2_50               ; 8.694  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 12.665 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 29.013 ; 0.000         ;
-; altera_reserved_tck         ; 45.425 ; 0.000         ;
+; MAX10_CLK2_50               ; 8.993  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 11.540 ; 0.000         ;
+; MAX10_CLK1_50               ; 12.462 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 30.481 ; 0.000         ;
+; altera_reserved_tck         ; 44.604 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -178,10 +181,11 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
-; MAX10_CLK1_50               ; 0.288 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 0.323 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 0.325 ; 0.000         ;
-; altera_reserved_tck         ; 0.340 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 0.232 ; 0.000         ;
+; MAX10_CLK1_50               ; 0.233 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.322 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 0.327 ; 0.000         ;
+; altera_reserved_tck         ; 0.338 ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; 0.341 ; 0.000         ;
 ; MAX10_CLK2_50               ; 0.348 ; 0.000         ;
 ; MIPI_PIXEL_CLK              ; 0.378 ; 0.000         ;
@@ -194,12 +198,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_1|sd1|pll7|clk[0] ; 2.926  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 3.232  ; 0.000         ;
-; MAX10_CLK1_50               ; 4.169  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 4.329  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 36.889 ; 0.000         ;
-; altera_reserved_tck         ; 47.480 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 3.622  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 3.939  ; 0.000         ;
+; MAX10_CLK1_50               ; 4.576  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 5.072  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 7.780  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 37.041 ; 0.000         ;
+; altera_reserved_tck         ; 47.569 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -208,12 +213,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
+; altera_reserved_tck         ; 0.905 ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; 0.929 ; 0.000         ;
-; MAX10_CLK1_50               ; 0.968 ; 0.000         ;
-; altera_reserved_tck         ; 0.972 ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 1.755 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 2.536 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 4.348 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.964 ; 0.000         ;
+; MAX10_CLK1_50               ; 1.140 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 1.885 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 2.808 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 4.326 ; 0.000         ;
 +-----------------------------+-------+---------------+
 
 
@@ -222,15 +228,16 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_0|sd1|pll7|clk[2] ; 4.676  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 4.674  ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[1] ; 4.853  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 5.129  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 5.139  ; 0.000         ;
 ; clk_dram_ext                ; 5.790  ; 0.000         ;
-; MAX10_CLK1_50               ; 9.439  ; 0.000         ;
-; MAX10_CLK2_50               ; 9.661  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 19.540 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 19.707 ; 0.000         ;
-; altera_reserved_tck         ; 49.625 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 6.752  ; 0.000         ;
+; MAX10_CLK1_50               ; 9.504  ; 0.000         ;
+; MAX10_CLK2_50               ; 9.658  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 19.544 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 19.709 ; 0.000         ;
+; altera_reserved_tck         ; 49.621 ; 0.000         ;
 ; ADC_CLK_10                  ; 96.000 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
@@ -241,10 +248,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 145
+Number of Synchronizer Chains Found: 209
 Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-Worst Case Available Settling Time: 10.990 ns
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+Worst Case Available Settling Time: 11.859 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -258,13 +265,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------+-----------------+-----------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                  ; Note ;
 +------------+-----------------+-----------------------------+------+
-; 77.1 MHz   ; 77.1 MHz        ; MAX10_CLK1_50               ;      ;
-; 86.85 MHz  ; 86.85 MHz       ; MIPI_PIXEL_CLK              ;      ;
-; 99.32 MHz  ; 99.32 MHz       ; u0|altpll_0|sd1|pll7|clk[3] ;      ;
-; 108.35 MHz ; 108.35 MHz      ; u0|altpll_1|sd1|pll7|clk[0] ;      ;
-; 116.93 MHz ; 116.93 MHz      ; u0|altpll_0|sd1|pll7|clk[2] ;      ;
-; 119.65 MHz ; 119.65 MHz      ; altera_reserved_tck         ;      ;
-; 123.85 MHz ; 123.85 MHz      ; MAX10_CLK2_50               ;      ;
+; 64.35 MHz  ; 64.35 MHz       ; MIPI_PIXEL_CLK              ;      ;
+; 87.37 MHz  ; 87.37 MHz       ; u0|altpll_2|sd1|pll7|clk[0] ;      ;
+; 100.46 MHz ; 100.46 MHz      ; altera_reserved_tck         ;      ;
+; 105.43 MHz ; 105.43 MHz      ; u0|altpll_1|sd1|pll7|clk[0] ;      ;
+; 111.3 MHz  ; 111.3 MHz       ; u0|altpll_0|sd1|pll7|clk[2] ;      ;
+; 113.84 MHz ; 113.84 MHz      ; u0|altpll_0|sd1|pll7|clk[3] ;      ;
+; 142.67 MHz ; 142.67 MHz      ; MAX10_CLK1_50               ;      ;
+; 159.87 MHz ; 159.87 MHz      ; MAX10_CLK2_50               ;      ;
 +------------+-----------------+-----------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -274,14 +282,15 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_0|sd1|pll7|clk[2] ; 1.448  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 1.882  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 1.015  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 1.626  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 2.840  ; 0.000         ;
 ; clk_dram_ext                ; 4.040  ; 0.000         ;
-; MAX10_CLK1_50               ; 7.030  ; 0.000         ;
-; MAX10_CLK2_50               ; 9.193  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 12.797 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 29.932 ; 0.000         ;
-; altera_reserved_tck         ; 45.821 ; 0.000         ;
+; MAX10_CLK2_50               ; 9.480  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 12.230 ; 0.000         ;
+; MAX10_CLK1_50               ; 12.991 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 31.216 ; 0.000         ;
+; altera_reserved_tck         ; 45.023 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -290,11 +299,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
-; MAX10_CLK1_50               ; 0.279 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 0.290 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 0.291 ; 0.000         ;
-; altera_reserved_tck         ; 0.305 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 0.306 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 0.230 ; 0.000         ;
+; MAX10_CLK1_50               ; 0.232 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.289 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 0.294 ; 0.000         ;
+; altera_reserved_tck         ; 0.304 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 0.305 ; 0.000         ;
 ; MAX10_CLK2_50               ; 0.312 ; 0.000         ;
 ; MIPI_PIXEL_CLK              ; 0.338 ; 0.000         ;
 ; clk_dram_ext                ; 2.124 ; 0.000         ;
@@ -306,12 +316,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_1|sd1|pll7|clk[0] ; 3.727  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 3.792  ; 0.000         ;
-; MAX10_CLK1_50               ; 4.271  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 4.773  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 37.074 ; 0.000         ;
-; altera_reserved_tck         ; 47.660 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 4.278  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 4.514  ; 0.000         ;
+; MAX10_CLK1_50               ; 4.682  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 5.556  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 8.262  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 37.212 ; 0.000         ;
+; altera_reserved_tck         ; 47.752 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -320,12 +331,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
-; u0|altpll_0|sd1|pll7|clk[3] ; 0.854 ; 0.000         ;
-; MAX10_CLK1_50               ; 0.894 ; 0.000         ;
-; altera_reserved_tck         ; 0.894 ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 1.580 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 2.358 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 3.944 ; 0.000         ;
+; altera_reserved_tck         ; 0.830 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 0.855 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.889 ; 0.000         ;
+; MAX10_CLK1_50               ; 1.035 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 1.680 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 2.614 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 3.871 ; 0.000         ;
 +-----------------------------+-------+---------------+
 
 
@@ -334,15 +346,16 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_0|sd1|pll7|clk[2] ; 4.686  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 4.685  ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[1] ; 4.876  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 5.148  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 5.159  ; 0.000         ;
 ; clk_dram_ext                ; 5.790  ; 0.000         ;
-; MAX10_CLK1_50               ; 9.454  ; 0.000         ;
-; MAX10_CLK2_50               ; 9.668  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 19.610 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 19.693 ; 0.000         ;
-; altera_reserved_tck         ; 49.648 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 6.766  ; 0.000         ;
+; MAX10_CLK1_50               ; 9.517  ; 0.000         ;
+; MAX10_CLK2_50               ; 9.667  ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 19.609 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 19.699 ; 0.000         ;
+; altera_reserved_tck         ; 49.649 ; 0.000         ;
 ; ADC_CLK_10                  ; 96.000 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
@@ -353,10 +366,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 145
+Number of Synchronizer Chains Found: 209
 Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-Worst Case Available Settling Time: 11.705 ns
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+Worst Case Available Settling Time: 12.430 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -371,13 +384,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
 ; clk_dram_ext                ; 4.001  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 4.072  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 6.846  ; 0.000         ;
-; MAX10_CLK2_50               ; 11.223 ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 13.370 ; 0.000         ;
-; MAX10_CLK1_50               ; 13.608 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 35.327 ; 0.000         ;
-; altera_reserved_tck         ; 48.337 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 4.065  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 6.826  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 8.891  ; 0.000         ;
+; MAX10_CLK2_50               ; 11.382 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 13.380 ; 0.000         ;
+; MAX10_CLK1_50               ; 16.788 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 35.973 ; 0.000         ;
+; altera_reserved_tck         ; 47.941 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -386,13 +400,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
-; MAX10_CLK1_50               ; 0.117 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 0.140 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 0.141 ; 0.000         ;
-; altera_reserved_tck         ; 0.147 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 0.079 ; 0.000         ;
+; MAX10_CLK1_50               ; 0.090 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.140 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 0.143 ; 0.000         ;
+; altera_reserved_tck         ; 0.146 ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; 0.148 ; 0.000         ;
 ; MAX10_CLK2_50               ; 0.152 ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 0.165 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 0.159 ; 0.000         ;
 ; clk_dram_ext                ; 1.838 ; 0.000         ;
 +-----------------------------+-------+---------------+
 
@@ -402,12 +417,13 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-----------------------------+--------+---------------+
 ; Clock                       ; Slack  ; End Point TNS ;
 +-----------------------------+--------+---------------+
-; u0|altpll_0|sd1|pll7|clk[2] ; 6.712  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 6.908  ; 0.000         ;
-; MAX10_CLK1_50               ; 6.941  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[3] ; 7.123  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 38.578 ; 0.000         ;
-; altera_reserved_tck         ; 49.064 ; 0.000         ;
+; MAX10_CLK1_50               ; 7.040  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 7.106  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[3] ; 7.508  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 7.622  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 11.105 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 38.658 ; 0.000         ;
+; altera_reserved_tck         ; 49.126 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
 
@@ -416,12 +432,13 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-----------------------------+-------+---------------+
 ; Clock                       ; Slack ; End Point TNS ;
 +-----------------------------+-------+---------------+
+; altera_reserved_tck         ; 0.405 ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; 0.405 ; 0.000         ;
-; altera_reserved_tck         ; 0.421 ; 0.000         ;
-; MAX10_CLK1_50               ; 0.423 ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 0.792 ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 1.074 ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 2.127 ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 0.419 ; 0.000         ;
+; MAX10_CLK1_50               ; 0.485 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 0.818 ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 1.175 ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 2.040 ; 0.000         ;
 +-----------------------------+-------+---------------+
 
 
@@ -432,13 +449,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-----------------------------+--------+---------------+
 ; clk_dram_ext                ; 2.000  ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[1] ; 2.000  ; 0.000         ;
-; u0|altpll_0|sd1|pll7|clk[2] ; 4.713  ; 0.000         ;
-; u0|altpll_1|sd1|pll7|clk[0] ; 5.267  ; 0.000         ;
-; MAX10_CLK1_50               ; 9.264  ; 0.000         ;
+; u0|altpll_0|sd1|pll7|clk[2] ; 4.712  ; 0.000         ;
+; u0|altpll_1|sd1|pll7|clk[0] ; 5.271  ; 0.000         ;
+; u0|altpll_2|sd1|pll7|clk[0] ; 6.853  ; 0.000         ;
+; MAX10_CLK1_50               ; 9.256  ; 0.000         ;
 ; MAX10_CLK2_50               ; 9.331  ; 0.000         ;
-; MIPI_PIXEL_CLK              ; 19.186 ; 0.000         ;
+; MIPI_PIXEL_CLK              ; 19.171 ; 0.000         ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; 19.725 ; 0.000         ;
-; altera_reserved_tck         ; 49.419 ; 0.000         ;
+; altera_reserved_tck         ; 49.416 ; 0.000         ;
 ; ADC_CLK_10                  ; 96.000 ; 0.000         ;
 +-----------------------------+--------+---------------+
 
@@ -449,10 +467,10 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 145
+Number of Synchronizer Chains Found: 209
 Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-Worst Case Available Settling Time: 16.061 ns
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+Worst Case Available Settling Time: 16.421 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -466,17 +484,18 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                        ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack             ; 0.625  ; 0.117 ; 2.926    ; 0.405   ; 2.000               ;
+; Worst-case Slack             ; 0.319  ; 0.079 ; 3.622    ; 0.405   ; 2.000               ;
 ;  ADC_CLK_10                  ; N/A    ; N/A   ; N/A      ; N/A     ; 96.000              ;
-;  MAX10_CLK1_50               ; 5.886  ; 0.117 ; 4.169    ; 0.423   ; 9.264               ;
-;  MAX10_CLK2_50               ; 8.694  ; 0.152 ; N/A      ; N/A     ; 9.331               ;
-;  MIPI_PIXEL_CLK              ; 12.665 ; 0.165 ; 36.889   ; 0.792   ; 19.186              ;
-;  altera_reserved_tck         ; 45.425 ; 0.147 ; 47.480   ; 0.421   ; 49.419              ;
+;  MAX10_CLK1_50               ; 12.462 ; 0.090 ; 4.576    ; 0.485   ; 9.256               ;
+;  MAX10_CLK2_50               ; 8.993  ; 0.152 ; N/A      ; N/A     ; 9.331               ;
+;  MIPI_PIXEL_CLK              ; 11.540 ; 0.159 ; 37.041   ; 0.818   ; 19.171              ;
+;  altera_reserved_tck         ; 44.604 ; 0.146 ; 47.569   ; 0.405   ; 49.416              ;
 ;  clk_dram_ext                ; 3.922  ; 1.838 ; N/A      ; N/A     ; 2.000               ;
 ;  u0|altpll_0|sd1|pll7|clk[1] ; N/A    ; N/A   ; N/A      ; N/A     ; 2.000               ;
-;  u0|altpll_0|sd1|pll7|clk[2] ; 0.625  ; 0.141 ; 3.232    ; 1.074   ; 4.676               ;
-;  u0|altpll_0|sd1|pll7|clk[3] ; 29.013 ; 0.148 ; 4.329    ; 0.405   ; 19.693              ;
-;  u0|altpll_1|sd1|pll7|clk[0] ; 1.153  ; 0.140 ; 2.926    ; 2.127   ; 5.129               ;
+;  u0|altpll_0|sd1|pll7|clk[2] ; 0.319  ; 0.079 ; 3.939    ; 1.175   ; 4.674               ;
+;  u0|altpll_0|sd1|pll7|clk[3] ; 30.481 ; 0.148 ; 5.072    ; 0.405   ; 19.699              ;
+;  u0|altpll_1|sd1|pll7|clk[0] ; 0.788  ; 0.143 ; 3.622    ; 2.040   ; 5.139               ;
+;  u0|altpll_2|sd1|pll7|clk[0] ; 1.817  ; 0.140 ; 7.780    ; 0.419   ; 6.752               ;
 ; Design-wide TNS              ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  ADC_CLK_10                  ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
 ;  MAX10_CLK1_50               ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
@@ -488,6 +507,7 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ;  u0|altpll_0|sd1|pll7|clk[2] ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 ;  u0|altpll_0|sd1|pll7|clk[3] ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 ;  u0|altpll_1|sd1|pll7|clk[0] ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  u0|altpll_2|sd1|pll7|clk[0] ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 +------------------------------+--------+-------+----------+---------+---------------------+
 
 
@@ -600,14 +620,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; MIPI_RESET_n        ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; GSENSOR_SDI         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; GSENSOR_SDO         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[2]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[3]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[4]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[5]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[6]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[7]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[10]      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[11]      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; ARDUINO_IO[12]      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -631,8 +651,8 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; DRAM_DQ[13]         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; DRAM_DQ[14]         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; DRAM_DQ[15]         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; CAMERA_I2C_SCL      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; CAMERA_I2C_SDA      ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; MIPI_I2C_SCL        ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -651,14 +671,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; GSENSOR_INT[2]      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; GSENSOR_SDI         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; GSENSOR_SDO         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; ARDUINO_IO[0]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; ARDUINO_IO[1]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[2]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[3]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[4]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[5]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[6]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[7]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; ARDUINO_IO[8]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; ARDUINO_IO[9]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[10]      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[11]      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; ARDUINO_IO[12]      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
@@ -682,8 +702,8 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; DRAM_DQ[13]         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; DRAM_DQ[14]         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; DRAM_DQ[15]         ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; ARDUINO_IO[0]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; ARDUINO_IO[1]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; ARDUINO_IO[8]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; ARDUINO_IO[9]       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; CAMERA_I2C_SCL      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; CAMERA_I2C_SDA      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_I2C_SCL        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
@@ -692,19 +712,19 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; MAX10_CLK2_50       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_PIXEL_VS       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_PIXEL_CLK      ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; SW[0]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; MIPI_PIXEL_HS       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; KEY[0]              ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
+; SW[0]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[8]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[7]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[9]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[6]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[5]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[4]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[3]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[2]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; SW[1]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; KEY[1]              ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
-; SW[9]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; SW[7]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; SW[6]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; MIPI_PIXEL_HS       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_PIXEL_D[4]     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_PIXEL_D[3]     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MIPI_PIXEL_D[2]     ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
@@ -834,14 +854,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; MIPI_RESET_n        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; GSENSOR_SDI         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
 ; GSENSOR_SDO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.117 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.88e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.117 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.88e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[2]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[3]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[4]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[5]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
 ; ARDUINO_IO[6]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
 ; ARDUINO_IO[7]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.117 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.88e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.117 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.88e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
 ; ARDUINO_IO[10]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[11]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[12]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
@@ -865,8 +885,8 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; DRAM_DQ[13]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; DRAM_DQ[14]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; DRAM_DQ[15]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.118 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.9e-10 s                   ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.118 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.9e-10 s                  ; No                        ; No                        ;
 ; CAMERA_I2C_SCL      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.117 V            ; 0.262 V                              ; 0.424 V                              ; 4.61e-10 s                  ; 4.88e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.117 V           ; 0.262 V                             ; 0.424 V                             ; 4.61e-10 s                 ; 4.88e-10 s                 ; No                        ; No                        ;
 ; CAMERA_I2C_SDA      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.127 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.127 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
 ; MIPI_I2C_SCL        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-08 V                   ; 3.2 V               ; -0.128 V            ; 0.219 V                              ; 0.346 V                              ; 4.45e-10 s                  ; 4.51e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.73e-08 V                  ; 3.2 V              ; -0.128 V           ; 0.219 V                             ; 0.346 V                             ; 4.45e-10 s                 ; 4.51e-10 s                 ; No                        ; No                        ;
@@ -984,14 +1004,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; MIPI_RESET_n        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; GSENSOR_SDI         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; GSENSOR_SDO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0625 V           ; 0.334 V                              ; 0.27 V                               ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0625 V          ; 0.334 V                             ; 0.27 V                              ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[2]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[3]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[4]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[5]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[6]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[7]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0625 V           ; 0.334 V                              ; 0.27 V                               ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0625 V          ; 0.334 V                             ; 0.27 V                              ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[10]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[11]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; ARDUINO_IO[12]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
@@ -1015,8 +1035,8 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; DRAM_DQ[13]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; DRAM_DQ[14]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; DRAM_DQ[15]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
-; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0637 V           ; 0.337 V                              ; 0.271 V                              ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0637 V          ; 0.337 V                             ; 0.271 V                             ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; CAMERA_I2C_SCL      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.15 V              ; -0.0625 V           ; 0.334 V                              ; 0.27 V                               ; 5.02e-10 s                  ; 6.47e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.15 V             ; -0.0625 V          ; 0.334 V                             ; 0.27 V                              ; 5.02e-10 s                 ; 6.47e-10 s                 ; No                        ; No                        ;
 ; CAMERA_I2C_SDA      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0688 V           ; 0.26 V                               ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0688 V          ; 0.26 V                              ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
 ; MIPI_I2C_SCL        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.41e-06 V                   ; 3.16 V              ; -0.0694 V           ; 0.259 V                              ; 0.209 V                              ; 4.69e-10 s                  ; 6.21e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 3.41e-06 V                  ; 3.16 V             ; -0.0694 V          ; 0.259 V                             ; 0.209 V                             ; 4.69e-10 s                 ; 6.21e-10 s                 ; No                        ; No                        ;
@@ -1134,14 +1154,14 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; MIPI_RESET_n        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; GSENSOR_SDI         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; GSENSOR_SDO         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[2]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[3]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[4]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[5]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[6]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[7]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
-; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
-; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[10]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[11]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; ARDUINO_IO[12]      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
@@ -1165,8 +1185,8 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; DRAM_DQ[13]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; DRAM_DQ[14]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; DRAM_DQ[15]         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
-; ARDUINO_IO[0]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
-; ARDUINO_IO[1]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[8]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[9]       ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0257 V           ; 0.468 V                              ; 0.138 V                              ; 3.02e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0257 V          ; 0.468 V                             ; 0.138 V                             ; 3.02e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; CAMERA_I2C_SCL      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.63 V              ; -0.0264 V           ; 0.468 V                              ; 0.142 V                              ; 3.02e-10 s                  ; 4.42e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.63 V             ; -0.0264 V          ; 0.468 V                             ; 0.142 V                             ; 3.02e-10 s                 ; 4.42e-10 s                 ; No                        ; Yes                       ;
 ; CAMERA_I2C_SDA      ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.64 V              ; -0.0201 V           ; 0.391 V                              ; 0.088 V                              ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.64 V             ; -0.0201 V          ; 0.391 V                             ; 0.088 V                             ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
 ; MIPI_I2C_SCL        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.04e-07 V                   ; 3.65 V              ; -0.0209 V           ; 0.391 V                              ; 0.09 V                               ; 2.79e-10 s                  ; 3.95e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.04e-07 V                  ; 3.65 V             ; -0.0209 V          ; 0.391 V                             ; 0.09 V                              ; 2.79e-10 s                 ; 3.95e-10 s                 ; No                        ; Yes                       ;
@@ -1180,29 +1200,34 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
 ; From Clock                  ; To Clock                    ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths ;
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
-; altera_reserved_tck         ; altera_reserved_tck         ; 1873       ; 0          ; 58         ; 3        ;
+; altera_reserved_tck         ; altera_reserved_tck         ; 1881       ; 0          ; 58         ; 3        ;
 ; MAX10_CLK1_50               ; altera_reserved_tck         ; false path ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; altera_reserved_tck         ; false path ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; clk_dram_ext                ; 51         ; 0          ; 0          ; 0        ;
 ; altera_reserved_tck         ; MAX10_CLK1_50               ; false path ; false path ; 0          ; 0        ;
-; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 648151     ; 0          ; 0          ; 0        ;
-; u0|altpll_0|sd1|pll7|clk[2] ; MAX10_CLK1_50               ; 14         ; 0          ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 217        ; 0          ; 0          ; 0        ;
+; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 13343      ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 158        ; 0          ; 0          ; 0        ;
 ; MAX10_CLK2_50               ; MAX10_CLK2_50               ; 1823       ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK_ext          ; MAX10_CLK2_50               ; 9          ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; MIPI_PIXEL_CLK              ; 8281       ; 198        ; 113        ; 556      ;
 ; MIPI_PIXEL_CLK_ext          ; MIPI_PIXEL_CLK              ; 0          ; 0          ; 12         ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MIPI_PIXEL_CLK              ; false path ; 0          ; false path ; 0        ;
 ; clk_dram_ext                ; u0|altpll_0|sd1|pll7|clk[2] ; 16         ; 0          ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|clk[2] ; 25         ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; u0|altpll_0|sd1|pll7|clk[2] ; 0          ; false path ; 0          ; 0        ;
-; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 566031     ; 0          ; 0          ; 0        ;
+; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 568671     ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[2] ; 11         ; 0          ; 0          ; 0        ;
 ; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 16         ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 25         ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[3] ; 11         ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[3] ; 11767      ; 0          ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_1|sd1|pll7|clk[0] ; 233        ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_1|sd1|pll7|clk[0] ; 16         ; 0          ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 766104     ; 0          ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 766544     ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 269        ; 0          ; 0          ; 0        ;
+; altera_reserved_tck         ; u0|altpll_2|sd1|pll7|clk[0] ; false path ; 0          ; 0          ; 0        ;
+; MAX10_CLK1_50               ; u0|altpll_2|sd1|pll7|clk[0] ; 143        ; 0          ; 0          ; 0        ;
+; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_2|sd1|pll7|clk[0] ; 14         ; 0          ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 242        ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 333660     ; 0          ; 0          ; 0        ;
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1212,29 +1237,34 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
 ; From Clock                  ; To Clock                    ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths ;
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
-; altera_reserved_tck         ; altera_reserved_tck         ; 1873       ; 0          ; 58         ; 3        ;
+; altera_reserved_tck         ; altera_reserved_tck         ; 1881       ; 0          ; 58         ; 3        ;
 ; MAX10_CLK1_50               ; altera_reserved_tck         ; false path ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; altera_reserved_tck         ; false path ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; clk_dram_ext                ; 51         ; 0          ; 0          ; 0        ;
 ; altera_reserved_tck         ; MAX10_CLK1_50               ; false path ; false path ; 0          ; 0        ;
-; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 648151     ; 0          ; 0          ; 0        ;
-; u0|altpll_0|sd1|pll7|clk[2] ; MAX10_CLK1_50               ; 14         ; 0          ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 217        ; 0          ; 0          ; 0        ;
+; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 13343      ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 158        ; 0          ; 0          ; 0        ;
 ; MAX10_CLK2_50               ; MAX10_CLK2_50               ; 1823       ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK_ext          ; MAX10_CLK2_50               ; 9          ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; MIPI_PIXEL_CLK              ; 8281       ; 198        ; 113        ; 556      ;
 ; MIPI_PIXEL_CLK_ext          ; MIPI_PIXEL_CLK              ; 0          ; 0          ; 12         ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MIPI_PIXEL_CLK              ; false path ; 0          ; false path ; 0        ;
 ; clk_dram_ext                ; u0|altpll_0|sd1|pll7|clk[2] ; 16         ; 0          ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|clk[2] ; 25         ; 0          ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; u0|altpll_0|sd1|pll7|clk[2] ; 0          ; false path ; 0          ; 0        ;
-; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 566031     ; 0          ; 0          ; 0        ;
+; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 568671     ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[2] ; 11         ; 0          ; 0          ; 0        ;
 ; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 16         ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 25         ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[3] ; 11         ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[3] ; 11767      ; 0          ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_1|sd1|pll7|clk[0] ; 233        ; 0          ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_1|sd1|pll7|clk[0] ; 16         ; 0          ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 766104     ; 0          ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 766544     ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 269        ; 0          ; 0          ; 0        ;
+; altera_reserved_tck         ; u0|altpll_2|sd1|pll7|clk[0] ; false path ; 0          ; 0          ; 0        ;
+; MAX10_CLK1_50               ; u0|altpll_2|sd1|pll7|clk[0] ; 143        ; 0          ; 0          ; 0        ;
+; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_2|sd1|pll7|clk[0] ; 14         ; 0          ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 242        ; 0          ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 333660     ; 0          ; 0          ; 0        ;
 +-----------------------------+-----------------------------+------------+------------+------------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1245,16 +1275,18 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock                  ; To Clock                    ; RR Paths   ; FR Paths ; RF Paths   ; FF Paths ;
 +-----------------------------+-----------------------------+------------+----------+------------+----------+
 ; altera_reserved_tck         ; altera_reserved_tck         ; 100        ; 0        ; 2          ; 0        ;
-; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 2583       ; 0        ; 0          ; 0        ;
+; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 894        ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MAX10_CLK1_50               ; 17         ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 3          ; 0        ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; MIPI_PIXEL_CLK              ; 36         ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MIPI_PIXEL_CLK              ; false path ; 0        ; false path ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|clk[2] ; 3          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 2486       ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 3          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[3] ; 4          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[3] ; 190        ; 0        ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_1|sd1|pll7|clk[0] ; 3          ; 0        ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 1762       ; 0        ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 1971       ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 3          ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 2893       ; 0        ; 0          ; 0        ;
 +-----------------------------+-----------------------------+------------+----------+------------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1265,16 +1297,18 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock                  ; To Clock                    ; RR Paths   ; FR Paths ; RF Paths   ; FF Paths ;
 +-----------------------------+-----------------------------+------------+----------+------------+----------+
 ; altera_reserved_tck         ; altera_reserved_tck         ; 100        ; 0        ; 2          ; 0        ;
-; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 2583       ; 0        ; 0          ; 0        ;
+; MAX10_CLK1_50               ; MAX10_CLK1_50               ; 894        ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MAX10_CLK1_50               ; 17         ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; MAX10_CLK1_50               ; 3          ; 0        ; 0          ; 0        ;
 ; MIPI_PIXEL_CLK              ; MIPI_PIXEL_CLK              ; 36         ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; MIPI_PIXEL_CLK              ; false path ; 0        ; false path ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_0|sd1|pll7|clk[2] ; 3          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[2] ; 2486       ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_0|sd1|pll7|clk[2] ; 3          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[2] ; u0|altpll_0|sd1|pll7|clk[3] ; 4          ; 0        ; 0          ; 0        ;
 ; u0|altpll_0|sd1|pll7|clk[3] ; u0|altpll_0|sd1|pll7|clk[3] ; 190        ; 0        ; 0          ; 0        ;
-; MAX10_CLK1_50               ; u0|altpll_1|sd1|pll7|clk[0] ; 3          ; 0        ; 0          ; 0        ;
-; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 1762       ; 0        ; 0          ; 0        ;
+; u0|altpll_1|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 1971       ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_1|sd1|pll7|clk[0] ; 3          ; 0        ; 0          ; 0        ;
+; u0|altpll_2|sd1|pll7|clk[0] ; u0|altpll_2|sd1|pll7|clk[0] ; 2893       ; 0        ; 0          ; 0        ;
 +-----------------------------+-----------------------------+------------+----------+------------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1297,7 +1331,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 4     ; 4    ;
+; Unconstrained Clocks            ; 3     ; 3    ;
 ; Unconstrained Input Ports       ; 6     ; 6    ;
 ; Unconstrained Input Port Paths  ; 65    ; 65   ;
 ; Unconstrained Output Ports      ; 23    ; 23   ;
@@ -1316,7 +1350,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; MAX10_CLK1_50                                                                            ; MAX10_CLK1_50               ; Base      ; Constrained   ;
 ; MAX10_CLK2_50                                                                            ; MAX10_CLK2_50               ; Base      ; Constrained   ;
 ; MIPI_PIXEL_CLK                                                                           ; MIPI_PIXEL_CLK              ; Base      ; Constrained   ;
-; Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d                                       ;                             ; Base      ; Unconstrained ;
 ; Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket ;                             ; Base      ; Unconstrained ;
 ; Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK     ;                             ; Base      ; Unconstrained ;
 ; Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C          ;                             ; Base      ; Unconstrained ;
@@ -1326,6 +1359,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; u0|altpll_0|sd1|pll7|clk[3]                                                              ; u0|altpll_0|sd1|pll7|clk[3] ; Generated ; Constrained   ;
 ; u0|altpll_0|sd1|pll7|clk[4]                                                              ; u0|altpll_0|sd1|pll7|clk[4] ; Generated ; Constrained   ;
 ; u0|altpll_1|sd1|pll7|clk[0]                                                              ; u0|altpll_1|sd1|pll7|clk[0] ; Generated ; Constrained   ;
+; u0|altpll_2|sd1|pll7|clk[0]                                                              ; u0|altpll_2|sd1|pll7|clk[0] ; Generated ; Constrained   ;
 +------------------------------------------------------------------------------------------+-----------------------------+-----------+---------------+
 
 
@@ -1348,7 +1382,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------+---------------------------------------------------------------------------------------+
 ; Output Port         ; Comment                                                                               ;
 +---------------------+---------------------------------------------------------------------------------------+
-; ARDUINO_IO[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ARDUINO_IO[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_I2C_SCL      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_I2C_SDA      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_PWDN_n       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1393,7 +1427,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------+---------------------------------------------------------------------------------------+
 ; Output Port         ; Comment                                                                               ;
 +---------------------+---------------------------------------------------------------------------------------+
-; ARDUINO_IO[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ARDUINO_IO[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_I2C_SCL      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_I2C_SDA      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; CAMERA_PWDN_n       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1425,14 +1459,14 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Jun 17 17:23:56 2022
+    Info: Processing started: Tue Jun 21 17:16:51 2022
 Info: Command: quartus_sta DE10_LITE_D8M_VIP -c DE10_LITE_D8M_VIP
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): The Timing Analyzer is analyzing 19 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
+Warning (335093): The Timing Analyzer is analyzing 11 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
 Info (332164): Evaluating HDL-embedded SDC commands
     Info (332165): Entity GHVD5181
         Info (332166): set_disable_timing [get_cells -hierarchical QXXQ6833_0]
@@ -1490,6 +1524,7 @@ Info (332164): Evaluating HDL-embedded SDC commands
         Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
 Info (332104): Reading SDC File: 'DE10_LITE_D8M_VIP.SDC'
 Info (332110): Deriving PLL clocks
+    Info (332110): create_generated_clock -source {u0|altpll_2|sd1|pll7|inclk[0]} -divide_by 5 -multiply_by 7 -duty_cycle 50.00 -name {u0|altpll_2|sd1|pll7|clk[0]} {u0|altpll_2|sd1|pll7|clk[0]}
     Info (332110): create_generated_clock -source {u0|altpll_1|sd1|pll7|inclk[0]} -divide_by 5 -multiply_by 9 -duty_cycle 50.00 -name {u0|altpll_1|sd1|pll7|clk[0]} {u0|altpll_1|sd1|pll7|clk[0]}
     Info (332110): create_generated_clock -source {u0|altpll_0|sd1|pll7|inclk[0]} -multiply_by 2 -phase 270.00 -duty_cycle 50.00 -name {u0|altpll_0|sd1|pll7|clk[1]} {u0|altpll_0|sd1|pll7|clk[1]}
     Info (332110): create_generated_clock -source {u0|altpll_0|sd1|pll7|inclk[0]} -multiply_by 2 -duty_cycle 50.00 -name {u0|altpll_0|sd1|pll7|clk[2]} {u0|altpll_0|sd1|pll7|clk[2]}
@@ -1629,11 +1664,9 @@ Info (332104): Reading SDC File: 'c:/users/micha/desktop/vision/de10_cam_vision/
 Info (332104): Reading SDC File: 'c:/users/micha/desktop/vision/de10_cam_vision/db/ip/qsys/submodules/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc'
 Warning (332174): Ignored filter at alt_vip_common_fifo2.sdc(52): alt_vip_common_fifo2:*|* could not be matched with a keeper File: C:/Users/micha/Desktop/Vision/DE10_CAM_VISION/db/ip/Qsys/submodules/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc Line: 52
 Warning (332060): Node: Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
+    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|GO_F is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|STEP_f[7]~21 is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C
-Warning (332060): Node: Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Latch Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_readdata[0] is being clocked by Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|I2C_VCM_Controller:u0|SD_COUNTER[0] is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
@@ -1642,67 +1675,72 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
-Info (332146): Worst-case setup slack is 0.625
+Info (332146): Worst-case setup slack is 0.319
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.625               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     1.153               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     0.319               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     0.788               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     1.817               0.000 u0|altpll_2|sd1|pll7|clk[0] 
     Info (332119):     3.922               0.000 clk_dram_ext 
-    Info (332119):     5.886               0.000 MAX10_CLK1_50 
-    Info (332119):     8.694               0.000 MAX10_CLK2_50 
-    Info (332119):    12.665               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    29.013               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    45.425               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.288
+    Info (332119):     8.993               0.000 MAX10_CLK2_50 
+    Info (332119):    11.540               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    12.462               0.000 MAX10_CLK1_50 
+    Info (332119):    30.481               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):    44.604               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.232
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.288               0.000 MAX10_CLK1_50 
-    Info (332119):     0.323               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     0.325               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     0.340               0.000 altera_reserved_tck 
+    Info (332119):     0.232               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     0.233               0.000 MAX10_CLK1_50 
+    Info (332119):     0.322               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     0.327               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     0.338               0.000 altera_reserved_tck 
     Info (332119):     0.341               0.000 u0|altpll_0|sd1|pll7|clk[3] 
     Info (332119):     0.348               0.000 MAX10_CLK2_50 
     Info (332119):     0.378               0.000 MIPI_PIXEL_CLK 
     Info (332119):     2.177               0.000 clk_dram_ext 
-Info (332146): Worst-case recovery slack is 2.926
+Info (332146): Worst-case recovery slack is 3.622
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     2.926               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     3.232               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     4.169               0.000 MAX10_CLK1_50 
-    Info (332119):     4.329               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    36.889               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    47.480               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.929
+    Info (332119):     3.622               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     3.939               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     4.576               0.000 MAX10_CLK1_50 
+    Info (332119):     5.072               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):     7.780               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):    37.041               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    47.569               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.905
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
+    Info (332119):     0.905               0.000 altera_reserved_tck 
     Info (332119):     0.929               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):     0.968               0.000 MAX10_CLK1_50 
-    Info (332119):     0.972               0.000 altera_reserved_tck 
-    Info (332119):     1.755               0.000 MIPI_PIXEL_CLK 
-    Info (332119):     2.536               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     4.348               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 4.676
+    Info (332119):     0.964               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     1.140               0.000 MAX10_CLK1_50 
+    Info (332119):     1.885               0.000 MIPI_PIXEL_CLK 
+    Info (332119):     2.808               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     4.326               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+Info (332146): Worst-case minimum pulse width slack is 4.674
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.676               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     4.674               0.000 u0|altpll_0|sd1|pll7|clk[2] 
     Info (332119):     4.853               0.000 u0|altpll_0|sd1|pll7|clk[1] 
-    Info (332119):     5.129               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     5.139               0.000 u0|altpll_1|sd1|pll7|clk[0] 
     Info (332119):     5.790               0.000 clk_dram_ext 
-    Info (332119):     9.439               0.000 MAX10_CLK1_50 
-    Info (332119):     9.661               0.000 MAX10_CLK2_50 
-    Info (332119):    19.540               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    19.707               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    49.625               0.000 altera_reserved_tck 
+    Info (332119):     6.752               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     9.504               0.000 MAX10_CLK1_50 
+    Info (332119):     9.658               0.000 MAX10_CLK2_50 
+    Info (332119):    19.544               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    19.709               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):    49.621               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 145 synchronizer chains.
+Info (332114): Report Metastability: Found 209 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 145
+    Info (332114): Number of Synchronizer Chains Found: 209
     Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-    Info (332114): Worst Case Available Settling Time: 10.990 ns
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+    Info (332114): Worst Case Available Settling Time: 11.859 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -1712,77 +1750,80 @@ Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Warning (332060): Node: Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
+    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|GO_F is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|STEP_f[7]~21 is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C
-Warning (332060): Node: Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Latch Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_readdata[0] is being clocked by Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|I2C_VCM_Controller:u0|SD_COUNTER[0] is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 1.448
+Info (332146): Worst-case setup slack is 1.015
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.448               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     1.882               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     1.015               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     1.626               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     2.840               0.000 u0|altpll_2|sd1|pll7|clk[0] 
     Info (332119):     4.040               0.000 clk_dram_ext 
-    Info (332119):     7.030               0.000 MAX10_CLK1_50 
-    Info (332119):     9.193               0.000 MAX10_CLK2_50 
-    Info (332119):    12.797               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    29.932               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    45.821               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.279
+    Info (332119):     9.480               0.000 MAX10_CLK2_50 
+    Info (332119):    12.230               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    12.991               0.000 MAX10_CLK1_50 
+    Info (332119):    31.216               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):    45.023               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.230
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.279               0.000 MAX10_CLK1_50 
-    Info (332119):     0.290               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     0.291               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     0.305               0.000 altera_reserved_tck 
-    Info (332119):     0.306               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):     0.230               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     0.232               0.000 MAX10_CLK1_50 
+    Info (332119):     0.289               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     0.294               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     0.304               0.000 altera_reserved_tck 
+    Info (332119):     0.305               0.000 u0|altpll_0|sd1|pll7|clk[3] 
     Info (332119):     0.312               0.000 MAX10_CLK2_50 
     Info (332119):     0.338               0.000 MIPI_PIXEL_CLK 
     Info (332119):     2.124               0.000 clk_dram_ext 
-Info (332146): Worst-case recovery slack is 3.727
+Info (332146): Worst-case recovery slack is 4.278
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     3.727               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     3.792               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     4.271               0.000 MAX10_CLK1_50 
-    Info (332119):     4.773               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    37.074               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    47.660               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.854
+    Info (332119):     4.278               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     4.514               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     4.682               0.000 MAX10_CLK1_50 
+    Info (332119):     5.556               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):     8.262               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):    37.212               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    47.752               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.830
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.854               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):     0.894               0.000 MAX10_CLK1_50 
-    Info (332119):     0.894               0.000 altera_reserved_tck 
-    Info (332119):     1.580               0.000 MIPI_PIXEL_CLK 
-    Info (332119):     2.358               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     3.944               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 4.686
+    Info (332119):     0.830               0.000 altera_reserved_tck 
+    Info (332119):     0.855               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):     0.889               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     1.035               0.000 MAX10_CLK1_50 
+    Info (332119):     1.680               0.000 MIPI_PIXEL_CLK 
+    Info (332119):     2.614               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     3.871               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+Info (332146): Worst-case minimum pulse width slack is 4.685
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.686               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     4.685               0.000 u0|altpll_0|sd1|pll7|clk[2] 
     Info (332119):     4.876               0.000 u0|altpll_0|sd1|pll7|clk[1] 
-    Info (332119):     5.148               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     5.159               0.000 u0|altpll_1|sd1|pll7|clk[0] 
     Info (332119):     5.790               0.000 clk_dram_ext 
-    Info (332119):     9.454               0.000 MAX10_CLK1_50 
-    Info (332119):     9.668               0.000 MAX10_CLK2_50 
-    Info (332119):    19.610               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    19.693               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    49.648               0.000 altera_reserved_tck 
+    Info (332119):     6.766               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     9.517               0.000 MAX10_CLK1_50 
+    Info (332119):     9.667               0.000 MAX10_CLK2_50 
+    Info (332119):    19.609               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    19.699               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):    49.649               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 145 synchronizer chains.
+Info (332114): Report Metastability: Found 209 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 145
+    Info (332114): Number of Synchronizer Chains Found: 209
     Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-    Info (332114): Worst Case Available Settling Time: 11.705 ns
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+    Info (332114): Worst Case Available Settling Time: 12.430 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -1790,11 +1831,9 @@ Info (332114): Report Metastability: Found 145 synchronizer chains.
     Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 Info: Analyzing Fast 1200mV 0C Model
 Warning (332060): Node: Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
+    Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|GO_F is being clocked by Qsys:u0|Qsys_alt_vip_vfb_0:alt_vip_vfb_0|ALT_CUSP181_AVALON_ST_OUTPUT:dout|startofpacket
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|STEP_f[7]~21 is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|VCM_CTRL_P:vcm_ctrl|F_VCM:f|V_C
-Warning (332060): Node: Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Latch Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_readdata[0] is being clocked by Qsys:u0|PIXEL_BUFFER:pixel_buffer_0|s_chipselect_d
 Warning (332060): Node: Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|I2C_VCM_Controller:u0|SD_COUNTER[0] is being clocked by Qsys:u0|TERASIC_AUTO_FOCUS:terasic_auto_focus_0|I2C_VCM_Config:vcm_i2c|mI2C_CTRL_CLK
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
@@ -1804,63 +1843,68 @@ Info (332146): Worst-case setup slack is 4.001
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     4.001               0.000 clk_dram_ext 
-    Info (332119):     4.072               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     6.846               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):    11.223               0.000 MAX10_CLK2_50 
-    Info (332119):    13.370               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    13.608               0.000 MAX10_CLK1_50 
-    Info (332119):    35.327               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    48.337               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.117
+    Info (332119):     4.065               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     6.826               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     8.891               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):    11.382               0.000 MAX10_CLK2_50 
+    Info (332119):    13.380               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    16.788               0.000 MAX10_CLK1_50 
+    Info (332119):    35.973               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):    47.941               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.079
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.117               0.000 MAX10_CLK1_50 
-    Info (332119):     0.140               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     0.141               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     0.147               0.000 altera_reserved_tck 
+    Info (332119):     0.079               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     0.090               0.000 MAX10_CLK1_50 
+    Info (332119):     0.140               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     0.143               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     0.146               0.000 altera_reserved_tck 
     Info (332119):     0.148               0.000 u0|altpll_0|sd1|pll7|clk[3] 
     Info (332119):     0.152               0.000 MAX10_CLK2_50 
-    Info (332119):     0.165               0.000 MIPI_PIXEL_CLK 
+    Info (332119):     0.159               0.000 MIPI_PIXEL_CLK 
     Info (332119):     1.838               0.000 clk_dram_ext 
-Info (332146): Worst-case recovery slack is 6.712
+Info (332146): Worst-case recovery slack is 7.040
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     6.712               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     6.908               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     6.941               0.000 MAX10_CLK1_50 
-    Info (332119):     7.123               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    38.578               0.000 MIPI_PIXEL_CLK 
-    Info (332119):    49.064               0.000 altera_reserved_tck 
+    Info (332119):     7.040               0.000 MAX10_CLK1_50 
+    Info (332119):     7.106               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     7.508               0.000 u0|altpll_0|sd1|pll7|clk[3] 
+    Info (332119):     7.622               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):    11.105               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):    38.658               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    49.126               0.000 altera_reserved_tck 
 Info (332146): Worst-case removal slack is 0.405
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
+    Info (332119):     0.405               0.000 altera_reserved_tck 
     Info (332119):     0.405               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):     0.421               0.000 altera_reserved_tck 
-    Info (332119):     0.423               0.000 MAX10_CLK1_50 
-    Info (332119):     0.792               0.000 MIPI_PIXEL_CLK 
-    Info (332119):     1.074               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     2.127               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     0.419               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     0.485               0.000 MAX10_CLK1_50 
+    Info (332119):     0.818               0.000 MIPI_PIXEL_CLK 
+    Info (332119):     1.175               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     2.040               0.000 u0|altpll_1|sd1|pll7|clk[0] 
 Info (332146): Worst-case minimum pulse width slack is 2.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     2.000               0.000 clk_dram_ext 
     Info (332119):     2.000               0.000 u0|altpll_0|sd1|pll7|clk[1] 
-    Info (332119):     4.713               0.000 u0|altpll_0|sd1|pll7|clk[2] 
-    Info (332119):     5.267               0.000 u0|altpll_1|sd1|pll7|clk[0] 
-    Info (332119):     9.264               0.000 MAX10_CLK1_50 
+    Info (332119):     4.712               0.000 u0|altpll_0|sd1|pll7|clk[2] 
+    Info (332119):     5.271               0.000 u0|altpll_1|sd1|pll7|clk[0] 
+    Info (332119):     6.853               0.000 u0|altpll_2|sd1|pll7|clk[0] 
+    Info (332119):     9.256               0.000 MAX10_CLK1_50 
     Info (332119):     9.331               0.000 MAX10_CLK2_50 
-    Info (332119):    19.186               0.000 MIPI_PIXEL_CLK 
+    Info (332119):    19.171               0.000 MIPI_PIXEL_CLK 
     Info (332119):    19.725               0.000 u0|altpll_0|sd1|pll7|clk[3] 
-    Info (332119):    49.419               0.000 altera_reserved_tck 
+    Info (332119):    49.416               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 145 synchronizer chains.
+Info (332114): Report Metastability: Found 209 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 145
+    Info (332114): Number of Synchronizer Chains Found: 209
     Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.138
-    Info (332114): Worst Case Available Settling Time: 16.061 ns
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.105
+    Info (332114): Worst Case Available Settling Time: 16.421 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.8
@@ -1868,10 +1912,10 @@ Info (332114): Report Metastability: Found 145 synchronizer chains.
     Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 97 warnings
-    Info: Peak virtual memory: 5103 megabytes
-    Info: Processing ended: Fri Jun 17 17:24:24 2022
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:01:18
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 94 warnings
+    Info: Peak virtual memory: 5117 megabytes
+    Info: Processing ended: Tue Jun 21 17:17:26 2022
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:01:36
 
 

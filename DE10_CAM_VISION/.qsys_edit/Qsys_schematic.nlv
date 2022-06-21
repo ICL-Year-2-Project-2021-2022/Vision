@@ -1,101 +1,95 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
 preplace inst Qsys.nios2_gen2.clock_bridge -pg 1
-preplace inst Qsys.dc_fifo_0 -pg 1 -lvl 38 -y 480
-preplace inst Qsys.altpll_0 -pg 1 -lvl 3 -y 200
-preplace inst Qsys.i2c_opencores_camera -pg 1 -lvl 42 -y 140
-preplace inst Qsys.dc_fifo_1 -pg 1 -lvl 40 -y 820
-preplace inst Qsys.altpll_1 -pg 1 -lvl 3 -y 890
-preplace inst Qsys.alt_vip_itc_0 -pg 1 -lvl 42 -y 980
-preplace inst Qsys.onchip_memory2_0 -pg 1 -lvl 42 -y 720
+preplace inst Qsys.dc_fifo_0 -pg 1 -lvl 41 -y 460
+preplace inst Qsys.altpll_0 -pg 1 -lvl 5 -y 70
+preplace inst Qsys.i2c_opencores_camera -pg 1 -lvl 45 -y 90
+preplace inst Qsys.dc_fifo_1 -pg 1 -lvl 43 -y 800
+preplace inst Qsys.altpll_1 -pg 1 -lvl 5 -y 950
+preplace inst Qsys.alt_vip_itc_0 -pg 1 -lvl 45 -y 940
+preplace inst Qsys.onchip_memory2_0 -pg 1 -lvl 45 -y 700
 preplace inst Qsys.fir_0_0.user_bps_conv -pg 1
 preplace inst Qsys.fir_0_0.alg_core -pg 1
-preplace inst Qsys.COM_COUNTER_0 -pg 1 -lvl 38 -y 840
-preplace inst Qsys.COLOR_FILTER_0 -pg 1 -lvl 36 -y 1630
-preplace inst Qsys.led -pg 1 -lvl 42 -y 1530
-preplace inst Qsys.clk_50 -pg 1 -lvl 1 -y 890
-preplace inst Qsys.EDGE_BINS_0 -pg 1 -lvl 33 -y 940
-preplace inst Qsys.sysid_qsys -pg 1 -lvl 42 -y 1150
-preplace inst Qsys.sdram -pg 1 -lvl 6 -y 320
+preplace inst Qsys.altpll_2 -pg 1 -lvl 3 -y 360
+preplace inst Qsys.COM_COUNTER_0 -pg 1 -lvl 41 -y 830
+preplace inst Qsys.COLOR_FILTER_0 -pg 1 -lvl 39 -y 1620
+preplace inst Qsys.led -pg 1 -lvl 45 -y 1540
+preplace inst Qsys.clk_50 -pg 1 -lvl 1 -y 940
+preplace inst Qsys.sysid_qsys -pg 1 -lvl 45 -y 1140
+preplace inst Qsys.sdram -pg 1 -lvl 8 -y 120
 preplace inst Qsys.nios2_gen2.reset_bridge -pg 1
 preplace inst Qsys.fir_0_0.av_st_clk_bridge -pg 1
 preplace inst Qsys.fir_0_0.video_out -pg 1
-preplace inst Qsys.PIXEL_GRABBER_HSV -pg 1 -lvl 35 -y 1140
-preplace inst Qsys.jtag_uart -pg 1 -lvl 42 -y 520
+preplace inst Qsys.PIXEL_GRABBER_HSV -pg 1 -lvl 38 -y 1280
+preplace inst Qsys.jtag_uart -pg 1 -lvl 45 -y 500
 preplace inst Qsys.fir_0_0.scheduler -pg 1
-preplace inst Qsys.data_format_adapter_0 -pg 1 -lvl 41 -y 840
-preplace inst Qsys.TERASIC_CAMERA_0 -pg 1 -lvl 6 -y 830
-preplace inst Qsys.PIXEL_GRABBER_RGB -pg 1 -lvl 34 -y 640
-preplace inst Qsys.pio_0 -pg 1 -lvl 3 -y 380
+preplace inst Qsys.data_format_adapter_0 -pg 1 -lvl 44 -y 820
+preplace inst Qsys.TERASIC_CAMERA_0 -pg 1 -lvl 8 -y 1060
+preplace inst Qsys.PIXEL_GRABBER_RGB -pg 1 -lvl 37 -y 590
+preplace inst Qsys.pio_0 -pg 1 -lvl 5 -y 410
 preplace inst Qsys.fir_0_0.av_st_reset_bridge -pg 1
 preplace inst Qsys.fir_0_0.line_buffer -pg 1
-preplace inst Qsys.eop_pio -pg 1 -lvl 3 -y 80
-preplace inst Qsys.mipi_reset_n -pg 1 -lvl 42 -y 1330
+preplace inst Qsys.mipi_reset_n -pg 1 -lvl 45 -y 1340
 preplace inst Qsys.fir_0_0.input_demux -pg 1
-preplace inst Qsys.alt_vip_vfb_0 -pg 1 -lvl 5 -y 480
+preplace inst Qsys.alt_vip_vfb_0 -pg 1 -lvl 7 -y 620
 preplace inst Qsys -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst Qsys.fir_0_0.video_in_cmd -pg 1
-preplace inst Qsys.fir_0_0 -pg 1 -lvl 31 -y 590
-preplace inst Qsys.EOP_IRQ_0 -pg 1 -lvl 35 -y 520
-preplace inst Qsys.timer_0 -pg 1 -lvl 3 -y 560
-preplace inst Qsys.timer -pg 1 -lvl 42 -y 620
-preplace inst Qsys.mipi_pwdn_n -pg 1 -lvl 42 -y 1230
-preplace inst Qsys.st_splitter_0 -pg 1 -lvl 34 -y 940
-preplace inst Qsys.key -pg 1 -lvl 42 -y 800
-preplace inst Qsys.RGB_TO_HSV -pg 1 -lvl 39 -y 600
-preplace inst Qsys.uart_0 -pg 1 -lvl 3 -y 680
-preplace inst Qsys.sw -pg 1 -lvl 42 -y 1430
-preplace inst Qsys.TERASIC_AUTO_FOCUS_0 -pg 1 -lvl 37 -y 440
-preplace inst Qsys.PIXEL_BUFFER_0 -pg 1 -lvl 35 -y 660
+preplace inst Qsys.fir_0_0 -pg 1 -lvl 33 -y 710
+preplace inst Qsys.timer_0 -pg 1 -lvl 5 -y 570
+preplace inst Qsys.timer -pg 1 -lvl 45 -y 600
+preplace inst Qsys.mipi_pwdn_n -pg 1 -lvl 45 -y 1220
+preplace inst Qsys.timer_1 -pg 1 -lvl 4 -y 90
+preplace inst Qsys.key -pg 1 -lvl 45 -y 780
+preplace inst Qsys.RGB_TO_HSV -pg 1 -lvl 42 -y 590
+preplace inst Qsys.uart_0 -pg 1 -lvl 5 -y 750
+preplace inst Qsys.sw -pg 1 -lvl 45 -y 1440
+preplace inst Qsys.TERASIC_AUTO_FOCUS_0 -pg 1 -lvl 40 -y 380
+preplace inst Qsys.PIXEL_BUFFER_0 -pg 1 -lvl 38 -y 530
 preplace inst Qsys.nios2_gen2.cpu -pg 1
-preplace inst Qsys.nios2_gen2 -pg 1 -lvl 2 -y 450
-preplace inst Qsys.i2c_opencores_mipi -pg 1 -lvl 42 -y 350
+preplace inst Qsys.nios2_gen2 -pg 1 -lvl 4 -y 500
+preplace inst Qsys.i2c_opencores_mipi -pg 1 -lvl 45 -y 320
 preplace inst Qsys.fir_0_0.output_mux -pg 1
 preplace inst Qsys.fir_0_0.video_in_resp -pg 1
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.i2c_opencores_camera_export,(SLAVE)i2c_opencores_camera.export) 1 0 42 NJ 370 NJ 370 NJ 370 NJ 350 NJ 350 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)COM_COUNTER_0.avalon_streaming_source,(SLAVE)EDGE_BINS_0.avalon_streaming_sink) 1 32 7 12800 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 1010 15510
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)i2c_opencores_mipi.export,(SLAVE)Qsys.i2c_opencores_mipi_export) 1 0 42 NJ 330 NJ 330 NJ 330 NJ 430 NJ 430 NJ 430 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.alt_vip_itc_0_clocked_video,(SLAVE)alt_vip_itc_0.clocked_video) 1 0 42 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1090 NJ 1010 NJ 1010 NJ 1010 NJ 1050 NJ 990 NJ 990 NJ 990 NJ
-preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)RGB_TO_HSV.clock,(SLAVE)st_splitter_0.clk,(SLAVE)COM_COUNTER_0.clock,(SLAVE)PIXEL_GRABBER_HSV.clock,(SLAVE)EOP_IRQ_0.clock,(SLAVE)dc_fifo_1.in_clk,(SLAVE)PIXEL_GRABBER_RGB.clock,(SLAVE)fir_0_0.main_clock,(SLAVE)PIXEL_BUFFER_0.clock,(SLAVE)dc_fifo_0.out_clk,(SLAVE)COLOR_FILTER_0.clock,(SLAVE)EDGE_BINS_0.clock,(MASTER)altpll_1.c0) 1 3 37 NJ 920 NJ 920 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 11820 990 NJ 990 12800 1050 13370 930 13900 970 14410 890 NJ 890 15090 650 15610 710 16010
-preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)altpll_0.c4,(MASTER)Qsys.d8m_xclkin) 1 3 40 NJ 290 NJ 370 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)altpll_0.areset_conduit,(SLAVE)Qsys.altpll_0_areset_conduit) 1 0 3 NJ 210 NJ 210 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)dc_fifo_0.in,(MASTER)TERASIC_AUTO_FOCUS_0.dout) 1 37 1 N
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)dc_fifo_1.in,(MASTER)st_splitter_0.out0) 1 34 6 NJ 950 NJ 950 NJ 950 NJ 970 NJ 920 15970
-preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)pio_0.irq,(SLAVE)eop_pio.irq,(SLAVE)i2c_opencores_mipi.interrupt_sender,(SLAVE)uart_0.irq,(MASTER)nios2_gen2.irq,(SLAVE)timer.irq,(SLAVE)timer_0.irq,(SLAVE)i2c_opencores_camera.interrupt_sender,(SLAVE)jtag_uart.irq) 1 2 40 910 70 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 NJ 190 16440
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.sdram_wire,(SLAVE)sdram.wire) 1 0 6 NJ 90 NJ 90 NJ 50 NJ 170 NJ 170 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)TERASIC_AUTO_FOCUS_0.din,(MASTER)alt_vip_vfb_0.dout) 1 5 32 N 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.altpll_0_locked_conduit,(SLAVE)altpll_0.locked_conduit) 1 0 3 NJ 270 NJ 270 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)TERASIC_AUTO_FOCUS_0.Conduit,(SLAVE)Qsys.terasic_auto_focus_0_conduit) 1 0 37 NJ 410 NJ 410 NJ 510 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)clk_50.clk_in,(SLAVE)Qsys.clk) 1 0 1 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)fir_0_0.din,(MASTER)COLOR_FILTER_0.avalon_streaming_source) 1 30 7 11860 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 14790
-preplace netloc INTERCONNECT<net_container>Qsys</net_container>(SLAVE)TERASIC_AUTO_FOCUS_0.reset,(SLAVE)st_splitter_0.reset,(MASTER)clk_50.clk_reset,(SLAVE)alt_vip_itc_0.is_clk_rst_reset,(SLAVE)data_format_adapter_0.reset,(SLAVE)timer.reset,(SLAVE)pio_0.reset,(SLAVE)dc_fifo_0.in_clk_reset,(SLAVE)PIXEL_GRABBER_HSV.reset,(SLAVE)dc_fifo_1.out_clk_reset,(SLAVE)mipi_reset_n.reset,(SLAVE)EDGE_BINS_0.reset,(SLAVE)alt_vip_vfb_0.reset,(MASTER)nios2_gen2.debug_reset_request,(SLAVE)PIXEL_GRABBER_RGB.reset,(SLAVE)mipi_pwdn_n.reset,(SLAVE)sw.reset,(SLAVE)COM_COUNTER_0.reset,(SLAVE)nios2_gen2.reset,(SLAVE)key.reset,(SLAVE)COLOR_FILTER_0.reset,(SLAVE)dc_fifo_1.in_clk_reset,(SLAVE)PIXEL_BUFFER_0.reset,(SLAVE)jtag_uart.reset,(SLAVE)altpll_0.inclk_interface_reset,(SLAVE)fir_0_0.main_reset,(SLAVE)EOP_IRQ_0.reset,(SLAVE)uart_0.reset,(SLAVE)RGB_TO_HSV.reset,(SLAVE)eop_pio.reset,(SLAVE)TERASIC_CAMERA_0.clock_reset_reset,(SLAVE)sdram.reset,(SLAVE)led.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)i2c_opencores_camera.clock_reset,(SLAVE)altpll_1.inclk_interface_reset,(SLAVE)dc_fifo_0.out_clk_reset,(SLAVE)sysid_qsys.reset,(SLAVE)timer_0.reset,(SLAVE)i2c_opencores_mipi.clock_reset) 1 1 41 430 650 950 550 NJ 630 1430 590 1990 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 11840 1010 NJ 1010 12780 1070 13390 1040 13940 1130 14350 1600 14810 590 15150 670 15590 730 15990 970 16220 950 16520
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)RGB_TO_HSV.avalon_streaming_sink,(MASTER)PIXEL_BUFFER_0.avalon_streaming_source_1) 1 35 4 NJ 690 NJ 690 NJ 710 15570
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)sw.external_connection,(SLAVE)Qsys.sw_external_connection) 1 0 42 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)led.external_connection,(SLAVE)Qsys.led_external_connection) 1 0 42 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ
-preplace netloc INTERCONNECT<net_container>Qsys</net_container>(SLAVE)PIXEL_GRABBER_HSV.avalon_mm_slave,(SLAVE)COLOR_FILTER_0.avalon_mm_slave,(SLAVE)i2c_opencores_mipi.avalon_slave_0,(SLAVE)altpll_0.pll_slave,(SLAVE)sw.s1,(SLAVE)timer_0.s1,(SLAVE)led.s1,(SLAVE)RGB_TO_HSV.avalon_mm_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)sysid_qsys.control_slave,(SLAVE)uart_0.s1,(SLAVE)key.s1,(SLAVE)PIXEL_GRABBER_RGB.avalon_mm_slave,(SLAVE)PIXEL_BUFFER_0.avalon_mm_slave,(SLAVE)i2c_opencores_camera.avalon_slave_0,(SLAVE)EDGE_BINS_0.avalon_mm_slave,(SLAVE)COM_COUNTER_0.avalon_mm_slave,(SLAVE)TERASIC_AUTO_FOCUS_0.mm_ctrl,(SLAVE)pio_0.s1,(SLAVE)eop_pio.s1,(SLAVE)timer.s1,(MASTER)nios2_gen2.data_master,(SLAVE)fir_0_0.control,(SLAVE)jtag_uart.avalon_jtag_slave,(MASTER)nios2_gen2.instruction_master,(SLAVE)altpll_1.pll_slave,(SLAVE)nios2_gen2.debug_mem_slave,(SLAVE)mipi_reset_n.s1,(SLAVE)mipi_pwdn_n.s1) 1 1 41 450 590 890 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 11800 710 NJ 710 12780 650 13370 610 13860 990 14430 1580 14770 850 15130 630 15550 750 NJ 750 NJ 750 16480
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)key.external_connection,(SLAVE)Qsys.key_external_connection) 1 0 42 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 800 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 790 NJ 790 NJ 830 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)fir_0_0.dout,(SLAVE)COM_COUNTER_0.avalon_streaming_sink) 1 31 7 NJ 590 NJ 590 NJ 590 NJ 630 NJ 630 NJ 630 15110
-preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)Qsys.clk_vga,(MASTER)altpll_0.c3) 1 3 40 NJ 270 NJ 250 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 310 NJ
-preplace netloc FAN_IN<net_container>Qsys</net_container>(SLAVE)sdram.s1,(MASTER)alt_vip_vfb_0.read_master,(MASTER)alt_vip_vfb_0.write_master) 1 5 1 1930
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)data_format_adapter_0.out,(SLAVE)alt_vip_itc_0.din) 1 41 1 16440
-preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)altpll_0.c1,(MASTER)Qsys.clk_sdram) 1 3 40 NJ 230 NJ 230 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 90 NJ 290 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.switch,(SLAVE)pio_0.external_connection) 1 0 3 NJ 350 NJ 350 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)alt_vip_vfb_0.din,(MASTER)TERASIC_CAMERA_0.avalon_streaming_source) 1 4 3 1450 830 NJ 920 2390
-preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)i2c_opencores_camera.clock,(SLAVE)led.clk,(SLAVE)timer_0.clk,(SLAVE)key.clk,(SLAVE)mipi_reset_n.clk,(SLAVE)uart_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)i2c_opencores_mipi.clock,(SLAVE)sw.clk,(SLAVE)altpll_1.inclk_interface,(SLAVE)jtag_uart.clk,(SLAVE)mipi_pwdn_n.clk,(SLAVE)nios2_gen2.clk,(SLAVE)timer.clk,(MASTER)clk_50.clk,(SLAVE)sysid_qsys.clk,(SLAVE)pio_0.clk,(SLAVE)eop_pio.clk,(SLAVE)altpll_0.inclk_interface) 1 1 41 410 630 870 30 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 16460
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)EOP_IRQ_0.avalon_streaming_sink,(MASTER)st_splitter_0.out1) 1 34 1 13820
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.eop_pio,(SLAVE)eop_pio.external_connection) 1 0 3 NJ 110 NJ 110 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)PIXEL_GRABBER_RGB.avalon_streaming_source,(SLAVE)PIXEL_BUFFER_0.avalon_streaming_sink) 1 34 1 13840
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)uart_0.external_connection,(SLAVE)Qsys.uart_0_rx_tx) 1 0 3 NJ 710 NJ 710 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)dc_fifo_1.out,(SLAVE)data_format_adapter_0.in) 1 40 1 N
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)RGB_TO_HSV.avalon_streaming_source,(SLAVE)PIXEL_GRABBER_HSV.avalon_streaming_sink) 1 34 6 13980 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 15950
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)COLOR_FILTER_0.avalon_streaming_sink,(MASTER)PIXEL_GRABBER_HSV.avalon_streaming_source) 1 35 1 14370
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)PIXEL_GRABBER_RGB.avalon_streaming_sink,(MASTER)dc_fifo_0.out) 1 33 6 13390 630 NJ 650 NJ 650 NJ 650 NJ 690 15510
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.terasic_camera_0_conduit_end,(SLAVE)TERASIC_CAMERA_0.conduit_end) 1 0 6 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.sw_external_connection,(SLAVE)sw.external_connection) 1 0 45 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)i2c_opencores_camera.export,(SLAVE)Qsys.i2c_opencores_camera_export) 1 0 45 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc INTERCONNECT<net_container>Qsys</net_container>(SLAVE)COM_COUNTER_0.avalon_mm_slave,(SLAVE)sw.s1,(SLAVE)sysid_qsys.control_slave,(SLAVE)altpll_0.pll_slave,(SLAVE)uart_0.s1,(SLAVE)timer_1.s1,(SLAVE)altpll_1.pll_slave,(SLAVE)led.s1,(SLAVE)onchip_memory2_0.s1,(SLAVE)COLOR_FILTER_0.avalon_mm_slave,(SLAVE)mipi_reset_n.s1,(SLAVE)fir_0_0.control,(MASTER)nios2_gen2.instruction_master,(SLAVE)TERASIC_AUTO_FOCUS_0.mm_ctrl,(SLAVE)timer_0.s1,(SLAVE)altpll_2.pll_slave,(SLAVE)PIXEL_BUFFER_0.avalon_mm_slave,(SLAVE)i2c_opencores_mipi.avalon_slave_0,(SLAVE)PIXEL_GRABBER_HSV.avalon_mm_slave,(SLAVE)nios2_gen2.debug_mem_slave,(SLAVE)RGB_TO_HSV.avalon_mm_slave,(SLAVE)mipi_pwdn_n.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)timer.s1,(MASTER)nios2_gen2.data_master,(SLAVE)pio_0.s1,(SLAVE)PIXEL_GRABBER_RGB.avalon_mm_slave,(SLAVE)key.s1,(SLAVE)i2c_opencores_camera.avalon_slave_0) 1 2 43 670 350 1290 680 1870 560 NJ 560 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 12800 600 NJ 600 NJ 600 NJ 600 14540 560 15400 1210 16130 1590 16650 840 17010 800 17460 580 NJ 580 NJ 580 18390
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)i2c_opencores_mipi.export,(SLAVE)Qsys.i2c_opencores_mipi_export) 1 0 45 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 390 NJ 390 NJ 390 NJ 390 NJ
+preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)timer_1.irq,(SLAVE)uart_0.irq,(SLAVE)i2c_opencores_camera.interrupt_sender,(SLAVE)timer_0.irq,(MASTER)nios2_gen2.irq,(SLAVE)jtag_uart.irq,(SLAVE)pio_0.irq,(SLAVE)i2c_opencores_mipi.interrupt_sender,(SLAVE)timer.irq) 1 3 42 1290 80 1750 60 NJ 60 NJ 60 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 18490
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)COM_COUNTER_0.avalon_streaming_source,(SLAVE)dc_fifo_1.in) 1 41 2 17480 810 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)dc_fifo_0.in,(MASTER)TERASIC_AUTO_FOCUS_0.dout) 1 40 1 16930
+preplace netloc INTERCONNECT<net_container>Qsys</net_container>(SLAVE)jtag_uart.reset,(SLAVE)alt_vip_itc_0.is_clk_rst_reset,(SLAVE)dc_fifo_0.in_clk_reset,(SLAVE)COLOR_FILTER_0.reset,(SLAVE)i2c_opencores_camera.clock_reset,(SLAVE)PIXEL_GRABBER_HSV.reset,(SLAVE)dc_fifo_1.in_clk_reset,(SLAVE)uart_0.reset,(SLAVE)COM_COUNTER_0.reset,(SLAVE)altpll_1.inclk_interface_reset,(SLAVE)RGB_TO_HSV.reset,(MASTER)nios2_gen2.debug_reset_request,(SLAVE)TERASIC_AUTO_FOCUS_0.reset,(SLAVE)mipi_reset_n.reset,(SLAVE)sw.reset,(SLAVE)PIXEL_BUFFER_0.reset,(SLAVE)sdram.reset,(SLAVE)mipi_pwdn_n.reset,(SLAVE)timer_0.reset,(SLAVE)dc_fifo_1.out_clk_reset,(SLAVE)i2c_opencores_mipi.clock_reset,(SLAVE)altpll_2.inclk_interface_reset,(SLAVE)nios2_gen2.reset,(SLAVE)data_format_adapter_0.reset,(SLAVE)timer.reset,(SLAVE)led.reset,(SLAVE)PIXEL_GRABBER_RGB.reset,(SLAVE)fir_0_0.main_reset,(SLAVE)alt_vip_vfb_0.reset,(SLAVE)timer_1.reset,(SLAVE)sysid_qsys.reset,(SLAVE)key.reset,(MASTER)clk_50.clk_reset,(SLAVE)TERASIC_CAMERA_0.clock_reset_reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)pio_0.reset,(SLAVE)altpll_0.inclk_interface_reset,(SLAVE)dc_fifo_0.out_clk_reset) 1 1 44 NJ 970 650 560 1210 700 1850 710 NJ 710 2290 710 2820 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 12820 650 NJ 650 NJ 650 NJ 650 14560 580 15340 1250 16090 1610 16690 900 16970 820 17440 850 17920 790 18130 810 18470
+preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)altpll_0.c3,(MASTER)Qsys.clk_vga) 1 5 41 NJ 180 NJ 180 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ 270 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)dc_fifo_0.out,(SLAVE)PIXEL_GRABBER_RGB.avalon_streaming_sink) 1 36 6 14600 390 NJ 350 NJ 350 NJ 350 NJ 450 17440
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)data_format_adapter_0.in,(MASTER)dc_fifo_1.out) 1 43 1 N
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)PIXEL_GRABBER_HSV.avalon_streaming_source,(SLAVE)COLOR_FILTER_0.avalon_streaming_sink) 1 38 1 16110
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)PIXEL_BUFFER_0.avalon_streaming_source_1,(SLAVE)RGB_TO_HSV.avalon_streaming_sink) 1 38 4 16170 620 NJ 620 NJ 620 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)TERASIC_AUTO_FOCUS_0.din,(MASTER)alt_vip_vfb_0.dout) 1 7 33 2840 400 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 480 NJ 430 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)Qsys.clk_sdram,(MASTER)altpll_0.c1) 1 5 41 NJ 100 NJ 100 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ 250 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)TERASIC_CAMERA_0.avalon_streaming_source,(SLAVE)alt_vip_vfb_0.din) 1 6 3 2310 970 NJ 970 3230
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)COLOR_FILTER_0.avalon_streaming_source,(SLAVE)fir_0_0.din) 1 32 8 12840 920 NJ 920 NJ 920 NJ 930 NJ 930 NJ 970 NJ 970 16630
+preplace netloc FAN_OUT<net_container>Qsys</net_container>(MASTER)altpll_1.c0,(SLAVE)fir_0_0.main_clock,(SLAVE)dc_fifo_0.out_clk,(SLAVE)dc_fifo_1.in_clk,(SLAVE)COM_COUNTER_0.clock,(SLAVE)RGB_TO_HSV.clock,(SLAVE)PIXEL_GRABBER_RGB.clock,(SLAVE)COLOR_FILTER_0.clock,(SLAVE)PIXEL_BUFFER_0.clock,(SLAVE)PIXEL_GRABBER_HSV.clock) 1 5 38 NJ 980 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 12780 630 NJ 630 NJ 630 NJ 630 14580 700 15440 1230 16170 880 NJ 880 16990 640 17520 830 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.uart_0_rx_tx,(SLAVE)uart_0.external_connection) 1 0 5 NJ 780 NJ 780 NJ 780 NJ 780 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.altpll_0_locked_conduit,(SLAVE)altpll_0.locked_conduit) 1 0 5 NJ 220 NJ 220 NJ 220 NJ 220 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.terasic_auto_focus_0_conduit,(SLAVE)TERASIC_AUTO_FOCUS_0.Conduit) 1 0 40 NJ 490 NJ 490 NJ 490 NJ 400 NJ 400 NJ 400 NJ 400 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ
+preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)uart_0.clk,(SLAVE)mipi_reset_n.clk,(MASTER)clk_50.clk,(SLAVE)led.clk,(SLAVE)key.clk,(SLAVE)i2c_opencores_mipi.clock,(SLAVE)sysid_qsys.clk,(SLAVE)mipi_pwdn_n.clk,(SLAVE)jtag_uart.clk,(SLAVE)altpll_0.inclk_interface,(SLAVE)i2c_opencores_camera.clock,(SLAVE)altpll_2.inclk_interface,(SLAVE)sw.clk,(SLAVE)altpll_1.inclk_interface) 1 1 44 NJ 950 630 330 NJ 330 1810 220 NJ 220 NJ 220 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 NJ 310 18430
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)led.external_connection,(SLAVE)Qsys.led_external_connection) 1 0 45 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)key.external_connection,(SLAVE)Qsys.key_external_connection) 1 0 45 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)fir_0_0.dout,(SLAVE)COM_COUNTER_0.avalon_streaming_sink) 1 33 8 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 16950
+preplace netloc FAN_IN<net_container>Qsys</net_container>(SLAVE)sdram.s1,(MASTER)alt_vip_vfb_0.read_master,(MASTER)alt_vip_vfb_0.write_master) 1 7 1 2780
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)data_format_adapter_0.out,(SLAVE)alt_vip_itc_0.din) 1 44 1 18370
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.switch,(SLAVE)pio_0.external_connection) 1 0 5 NJ 640 NJ 640 NJ 640 NJ 640 NJ
+preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)nios2_gen2.clk,(SLAVE)timer.clk,(SLAVE)pio_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)timer_0.clk,(MASTER)altpll_2.c0,(SLAVE)timer_1.clk) 1 3 42 1250 660 1890 540 NJ 540 NJ 540 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 590 NJ 590 NJ 560 NJ 560 NJ 560 18450
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)sdram.wire,(SLAVE)Qsys.sdram_wire) 1 0 8 NJ 260 NJ 260 NJ 260 NJ 300 NJ 340 NJ 300 NJ 300 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(MASTER)Qsys.d8m_xclkin,(MASTER)altpll_0.c4) 1 5 41 NJ 200 NJ 200 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ 290 NJ
+preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)dc_fifo_0.in_clk,(SLAVE)TERASIC_CAMERA_0.clock_reset,(SLAVE)alt_vip_itc_0.is_clk_rst,(SLAVE)data_format_adapter_0.clk,(SLAVE)alt_vip_vfb_0.clock,(SLAVE)sdram.clk,(SLAVE)dc_fifo_1.out_clk,(MASTER)altpll_0.c2,(SLAVE)TERASIC_AUTO_FOCUS_0.clock) 1 5 40 2150 630 2290 590 2800 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 16670 510 16930 780 NJ 870 17900 770 18150 990 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)alt_vip_itc_0.clocked_video,(SLAVE)Qsys.alt_vip_itc_0_clocked_video) 1 0 45 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(MASTER)RGB_TO_HSV.avalon_streaming_source,(SLAVE)PIXEL_GRABBER_HSV.avalon_streaming_sink) 1 37 6 15460 1270 NJ 1270 NJ 1270 NJ 1270 NJ 1270 17880
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.clk,(SLAVE)clk_50.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.terasic_camera_0_conduit_end,(SLAVE)TERASIC_CAMERA_0.conduit_end) 1 0 8 NJ 1110 NJ 1110 NJ 1110 NJ 1110 NJ 1110 NJ 1110 NJ 1110 NJ
 preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.mipi_reset_n_external_connection,(SLAVE)mipi_reset_n.external_connection) 1 0 42 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ
-preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)st_splitter_0.in,(MASTER)EDGE_BINS_0.avalon_streaming_source) 1 33 1 N
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.mipi_pwdn_n_external_connection,(SLAVE)mipi_pwdn_n.external_connection) 1 0 42 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1310 NJ 1260 NJ 1260 NJ 1260 NJ 1260 NJ 1260 NJ 1260 NJ
-preplace netloc FAN_OUT<net_container>Qsys</net_container>(SLAVE)data_format_adapter_0.clk,(SLAVE)alt_vip_itc_0.is_clk_rst,(SLAVE)alt_vip_vfb_0.clock,(MASTER)altpll_0.c2,(SLAVE)sdram.clk,(SLAVE)TERASIC_CAMERA_0.clock_reset,(SLAVE)dc_fifo_0.in_clk,(SLAVE)dc_fifo_1.out_clk,(SLAVE)TERASIC_AUTO_FOCUS_0.clock) 1 3 39 NJ 370 1410 570 1970 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 14790 570 15110 610 NJ 590 16030 950 16200 1030 NJ
-preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.eop_irq,(SLAVE)EOP_IRQ_0.conduit_end) 1 0 35 NJ 610 NJ 610 NJ 530 NJ 610 NJ 610 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 NJ 570 NJ 570 NJ 570 NJ
-levelinfo -pg 1 0 200 16900
-levelinfo -hier Qsys 210 240 610 1020 1390 1700 2100 2530 2940 3160 3550 3860 4360 4650 5060 5340 5840 6240 6640 7050 7280 7840 8260 8690 9040 9290 9850 10330 10800 11340 11780 12300 12760 13060 13510 14030 14460 14920 15200 15640 16060 16310 16650 16800
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.mipi_reset_n_external_connection,(SLAVE)mipi_reset_n.external_connection) 1 0 45 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1410 NJ 1370 NJ 1370 NJ 1370 NJ 1370 NJ 1370 NJ 1370 NJ
+preplace netloc POINT_TO_POINT<net_container>Qsys</net_container>(SLAVE)PIXEL_BUFFER_0.avalon_streaming_sink,(MASTER)PIXEL_GRABBER_RGB.avalon_streaming_source) 1 37 1 15420
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.mipi_pwdn_n_external_connection,(SLAVE)mipi_pwdn_n.external_connection) 1 0 45 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1250 NJ 1250 NJ 1250 NJ 1250 NJ 1250 NJ 1250 NJ
+preplace netloc EXPORT<net_container>Qsys</net_container>(SLAVE)Qsys.altpll_0_areset_conduit,(SLAVE)altpll_0.areset_conduit) 1 0 5 NJ 200 NJ 200 NJ 200 NJ 200 NJ
+levelinfo -pg 1 0 200 18810
+levelinfo -hier Qsys 210 240 610 1020 1510 1940 2270 2530 2940 3290 3550 3860 4360 4650 5060 5340 5840 6240 6640 7050 7280 7840 8260 8690 9040 9290 9850 10330 10800 11340 11780 12300 12760 13060 13510 14030 14520 15030 15770 16320 16800 17130 17570 17990 18240 18560 18710

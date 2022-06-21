@@ -18,10 +18,10 @@ void process_input(){
 
 	    	   switch(sw){
 				   case 1 : {
-					   auto_gain(110,2);
+					   auto_gain(128 , 2);
 					   break;
 				   }case 2: {
-					   auto_wb(127 , 3);
+					   auto_wb(128 , 3);
 					   break;
 				   }case 4: {
 					   IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, ~IORD(RGB_TO_HSV_BASE, HSV_ENABLED));
@@ -31,17 +31,28 @@ void process_input(){
 					   IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, ~IORD(COM_COUNTER_0_BASE, THRESH_ENABLED));
 					   break;
 				   }case 16: {
-					   fir_load_unit();
+					   fir_load_unit(FIR_0_0_BASE);
+					   //fir_load_unit(FIR_0_1_BASE);
 					   break;
 				   }case 32: {
-					   fir_load_avg();
+					   fir_load_avg(FIR_0_0_BASE);
+					   //fir_load_unit(FIR_0_1_BASE);
 					   break;
 				   }case 64: {
-					   fir_load_sobel();
+					   fir_load_sobel(FIR_0_0_BASE);
+					   //fir_load_unit(FIR_0_1_BASE);
+					   break;
+				   }case 128: {
+
+					   break;
+				   }case 256: {
+
+					   break;
+				   }case 512: {
+					   debug = ~debug;
 					   break;
 				   }
 	    	   }
-	    	   printf("SW: %x", sw);
 
 	       }
 
@@ -52,36 +63,41 @@ void process_input(){
 				   //Process request
 				   print_observations(observations);
 				   break;}
+			   case 'P': {
+				   //Process request
+				   print_image();
+				   break;}
+
 			   case 'e': {
-			   exposureTime += EXPOSURE_STEP;
-			   OV8865SetExposure(exposureTime);
-			   printf("\nExposure = %x ", exposureTime);
-			   break;}
+				   exposureTime += EXPOSURE_STEP;
+				   OV8865SetExposure(exposureTime);
+				   //printf("\nExposure = %x ", exposureTime);
+				   break;}
 			   case 'd': {
 				   exposureTime -= EXPOSURE_STEP;
 				   OV8865SetExposure(exposureTime);
-				   printf("\nExposure = %x ", exposureTime);
+				   //printf("\nExposure = %x ", exposureTime);
 				   break;}
 			   case 't': {
 				   gain += GAIN_STEP;
 				   OV8865SetGain(gain);
-				   printf("\nGain = %x ", gain);
+				   //printf("\nGain = %x ", gain);
 				   break;}
 			   case 'g': {
 				   gain -= GAIN_STEP;
 				   OV8865SetGain(gain);
-				   printf("\nGain = %x ", gain);
+				   //printf("\nGain = %x ", gain);
 				   break;}
 			   case 'r': {
-			   current_focus += manual_focus_step;
-			   if(current_focus >1023) current_focus = 1023;
-			   OV8865_FOCUS_Move_to(current_focus);
-			   printf("\nFocus = %x ",current_focus);
+				   current_focus += manual_focus_step;
+				   if(current_focus >1023) current_focus = 1023;
+				   OV8865_FOCUS_Move_to(current_focus);
+				   //printf("\nFocus = %x ",current_focus);
 				   break;}
 			   case 'f': {
-			   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
-			   OV8865_FOCUS_Move_to(current_focus);
-			   printf("\nFocus = %x ",current_focus);
+				   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
+				   OV8865_FOCUS_Move_to(current_focus);
+				   //printf("\nFocus = %x ",current_focus);
 				   break;}
 		  	  };
 

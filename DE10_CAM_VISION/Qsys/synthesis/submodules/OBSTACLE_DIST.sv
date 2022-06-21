@@ -132,7 +132,6 @@ always @ (posedge clk) begin
 	   s_readdata <= {32'b0};
 	   stripe_count<= 0;
 	   stripe_count_d <= 0;
-	   stripe_dist_d <= 0;
 	   stripe_pos_min <= 0;
 	   stripe_pos_min_d <= 0;
 	   stripe_pos_max <= 0;
