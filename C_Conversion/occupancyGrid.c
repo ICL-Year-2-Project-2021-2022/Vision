@@ -52,12 +52,12 @@ int **getGrid(size_t state_size, float **state, float **var, int cellWidth, int 
 
 
         radius_x = sqrt(var[2 * i + 3][2 * i + 3]);
-        numSquaresOccupiedRadius_x = 1.5 * (int) ceil(radius_x / 50);
-        offset_x = state[2 * i + 3][0] / 50;
-        offset_y = state[2 * i + 4][0] / 50;
+        numSquaresOccupiedRadius_x = 1.5 * (int) ceil(radius_x / cellWidth);
+        offset_x = state[2 * i + 3][0] / cellWidth;
+        offset_y = state[2 * i + 4][0] / cellHeight;
 
         radius_y = ceil(sqrt(var[2 * i + 4][2 * i + 4]));
-        numSquaresOccupiedRadius_y = 1.5 * (int) ceil(radius_y / 50);
+        numSquaresOccupiedRadius_y = 1.5 * (int) ceil(radius_y / cellHeight);
 
         for (int i = -numSquaresOccupiedRadius_y; i < numSquaresOccupiedRadius_y; i++) {
             for (int j = -numSquaresOccupiedRadius_x; j < numSquaresOccupiedRadius_x; j++) {
@@ -68,14 +68,6 @@ int **getGrid(size_t state_size, float **state, float **var, int cellWidth, int 
                     continue;
                 }
                 grid[i + offset_y][j + offset_x] = 1;
-            }
-        }
-    }
-
-    for (int i = 0; i < rowCount; i++) {
-        for (int j = 0; j < columnCount; j++) {
-            if (grid[i][j] == 1) {
-                printf("{%d, %d},\n", i, j);
             }
         }
     }
@@ -178,6 +170,7 @@ void freeMatrix(size_t row, size_t col, int **grid) {
 }*/
 
 int test_case1() {
+    int state_size = 7;
     float state[7][1] = {{492.619354},
                          {601.678772},
                          {0.909130},
@@ -193,7 +186,27 @@ int test_case1() {
                        {-1510.707275, 1302.459961,  3.556431,  -4950.331543,  8081.208496,  -3964.069336, 6565.253418},
                        {2367.584229,  -1739.127686, -5.555127, 7051.759277,   -3964.061768, 17174.513672, -9432.500000},
                        {-3275.499268, 2847.541748,  9.689510,  -11535.420898, 6565.240723,  -9432.562500, 27102.423828}};
-    int **grid = getGrid(7, state, var);
+    float **stateDynamic = (float **) malloc(state_size * sizeof(float *));
+    for (int i = 0; i < state_size; i++) {
+        stateDynamic[i] = (float *) malloc(sizeof(float *));
+    }
+
+    for (int i = 0; i < state_size; i++) {
+        stateDynamic[i][0] = state[i][0];
+    }
+
+    float **varDynamic = (float **) malloc(state_size * sizeof(float *));
+    for (int i = 0; i < state_size; i++) {
+        varDynamic[i] = (float *) malloc(state_size * sizeof(float *));
+    }
+
+    for (int i = 0; i < state_size; i++) {
+        for (int j = 0; j < state_size; j++) {
+            varDynamic[i][j] = var[i][j];
+        }
+    }
+
+    int **grid = getGrid(7, stateDynamic, varDynamic, 50, 50, 40, 60);
 
     for (int i = 0; i < 40; i++) {
         for (int j = 0; j < 60; j++) {
@@ -207,6 +220,7 @@ int test_case1() {
 
 
 int test_case2() {
+    int state_size = 7;
     float state[7][1] = {{397.438538},
                          {302.258850},
                          {0.663889},
@@ -222,7 +236,27 @@ int test_case2() {
                        {-1440.826050, 2060.433838,  6.224683,   -8944.790039,  12291.801758, -6801.008301,  11104.898438},
                        {2425.621094,  -2999.974121, -10.035745, 10897.320313,  -6800.993164, 32886.863281,  -16521.056641},
                        {-3253.915527, 5088.693359,  16.638166,  -17582.310547, 11104.874023, -16521.312500, 49922.464844}};
-    int **grid = getGrid(7, state, var);
+    float **stateDynamic = (float **) malloc(state_size * sizeof(float *));
+    for (int i = 0; i < state_size; i++) {
+        stateDynamic[i] = (float *) malloc(sizeof(float *));
+    }
+
+    for (int i = 0; i < state_size; i++) {
+        stateDynamic[i][0] = state[i][0];
+    }
+
+    float **varDynamic = (float **) malloc(state_size * sizeof(float *));
+    for (int i = 0; i < state_size; i++) {
+        varDynamic[i] = (float *) malloc(state_size * sizeof(float *));
+    }
+
+    for (int i = 0; i < state_size; i++) {
+        for (int j = 0; j < state_size; j++) {
+            varDynamic[i][j] = var[i][j];
+        }
+    }
+
+    int **grid = getGrid(7, stateDynamic, varDynamic, 50, 50, 40, 60);
 
     for (int i = 0; i < 40; i++) {
         for (int j = 0; j < 60; j++) {
@@ -242,13 +276,13 @@ int main() {
         printf("basicTestCaseFromMarco() - FAIL");
     }*/
     if (test_case1() == 0) {
-        printf("test_case1() - PASS");
+        printf("test_case1() - PASS\n");
     } else {
-        printf("test_case1() - FAIL");
+        printf("test_case1() - FAIL\n");
     }
     if (test_case2() == 0) {
-        printf("test_case2() - PASS");
+        printf("test_case2() - PASS\n");
     } else {
-        printf("test_case2() - FAIL");
+        printf("test_case2() - FAIL\n");
     }
 }
