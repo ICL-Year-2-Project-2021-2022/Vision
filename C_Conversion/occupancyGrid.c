@@ -23,12 +23,12 @@ int **getGrid(size_t state_size,float state[7][1], float var[7][7]){
         
         
         radius_x = sqrt(var[2*i+3][2*i+3]);
-        numSquaresOccupiedRadius_x = (int)ceil(radius_x/50);
+        numSquaresOccupiedRadius_x = 1.5*(int)ceil(radius_x/50);
         offset_x =   state[2*i+3][0]/50;
         offset_y =   state[2*i+4][0]/50;
     
         radius_y = ceil(sqrt(var[2*i+4][2*i+4]));
-        numSquaresOccupiedRadius_y = (int) ceil(radius_y/50);
+        numSquaresOccupiedRadius_y = 1.5*(int) ceil(radius_y/50);
 
         
 
