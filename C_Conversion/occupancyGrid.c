@@ -52,11 +52,12 @@ int **getGrid(size_t state_size,float state[7][1], float var[7][7]){
 }
 
 
-void freeMatrix(size_t row, int **grid){
-    for (int i=0; i<row; i++){
-        free(grid[i]); 
+void freeMatrix(size_t row, size_t col, int **grid){
+    for (int i=0;i <row; i++){
+        for (int j=0; j<col; j++){
+            free(grid[i][j]);
+        }
     }
-    free(grid);
 }
 
 
@@ -79,5 +80,5 @@ int main(){
         printf("\n");
     }
 
-    freeMatrix(40, grid);
+    freeMatrix(40,60, grid);
 }
