@@ -8,6 +8,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="Vision" targetName="RoutingToDriveCommands" />
       <config projectName="Vision" targetName="Routing" />
       <config projectName="Vision" targetName="Vision" />
     </generated>
@@ -18,9 +19,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="add test output to the A* algorithm">
+    <list default="true" id="ef9e8af6-f6d2-4051-badb-ef3f5e892a6b" name="Changes" comment="change interface of the getGrid from static to dynamic">
+      <change afterPath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C_Conversion/routing.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/routing.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/A_starRouting.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/A_starRouting.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,28 +60,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vacla/Projects/Vision&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/vacla/Projects/Vision/C_Conversion",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RunManager" selected="CMake Application.Routing">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vacla\Projects\Vision\C_Conversion" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.RoutingToDriveCommands">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="Routing" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Routing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Routing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoutingToDriveCommands" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="RoutingToDriveCommands" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="RoutingToDriveCommands">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -88,6 +103,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.Routing" />
+      <item itemvalue="CMake Application.RoutingToDriveCommands" />
       <item itemvalue="CMake Application.Vision" />
     </list>
   </component>
@@ -131,5 +147,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add test output to the A* algorithm" />
     <option name="LAST_COMMIT_MESSAGE" value="add test output to the A* algorithm" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c</url>
+          <line>365</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

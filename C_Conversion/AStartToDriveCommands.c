@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "CommandQueue.h"
 
 // priority Node
 typedef struct node {
@@ -24,10 +25,9 @@ Node *newNode(int x_coor, int y_coor, float distance_start, float priority, stru
 }
 
 Node *copyNode(Node *old) {
-    if (old ==NULL){
+    if (old == NULL) {
         return NULL;
-    }
-    else{
+    } else {
         Node *temp = (Node *) malloc(sizeof(Node));
         temp->x_coor = old->x_coor;
         temp->y_coor = old->y_coor;
@@ -98,9 +98,9 @@ int isEmpty(Node **head) {
     return (*head) == NULL;
 }
 
-void freeList(Node** head){
-    Node* start;
-    while ((*head)!=NULL){
+void freeList(Node **head) {
+    Node *start;
+    while ((*head) != NULL) {
         start = (*head);
         *head = (*head)->next;
         free(start);
@@ -176,11 +176,11 @@ void changeCostParent(Node **head, Node *neighbourNode, Node *currentNode) {
 }
 
 
-void reverseList(Node** head){
-    Node* prev = NULL;
-    Node* current = *head;
-    Node* next = NULL;
-    while (current!=NULL){
+void reverseList(Node **head) {
+    Node *prev = NULL;
+    Node *current = *head;
+    Node *next = NULL;
+    while (current != NULL) {
         next = current->next;
         current->next = prev;
         prev = current;
@@ -190,20 +190,18 @@ void reverseList(Node** head){
 }
 
 
-
-Node* copyList(Node* head){
-    if ((head) == NULL){
+Node *copyList(Node *head) {
+    if ((head) == NULL) {
         return NULL;
-    }
-    else{
-        Node* newNode = (Node*)malloc(sizeof(Node));
+    } else {
+        Node *newNode = (Node *) malloc(sizeof(Node));
         newNode = copyNode(head);
         newNode->next = copyList((head)->parent);
         return newNode;
     }
 }
 
-Node *getPathNodes(Node **head){
+Node *getPathNodes(Node **head) {
     Node *start = (*head);
     Node *path = NULL;
     path = copyList(start);
@@ -220,12 +218,12 @@ void printPathToGoal(Node *currentNode) {
     }
 }
 
-void printQueue(Node** head){
-    Node* start = (*head);
-    if (start==NULL){
+void printQueue(Node **head) {
+    Node *start = (*head);
+    if (start == NULL) {
         printf("List is Empty\n");
     }
-    int i=1;
+    int i = 1;
     while (start != NULL) {
         printf("Step %d Coordinates: %d %d \n", i, start->x_coor, start->y_coor);
         start = start->next;
@@ -250,10 +248,9 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
     while (1) {
         if (initial) {
             current = copyNode(open);
-            initial=0;
-        }
-        else{
-            if (isEmpty(&open)){
+            initial = 0;
+        } else {
+            if (isEmpty(&open)) {
                 printf("Cannot reach target\n");
                 freeList(&close);
                 freeList(&open);
@@ -264,7 +261,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
         }
 
         if (isReachedObj(current->x_coor, current->y_coor, goal_x, goal_y)) {
-            Node *result= getPathNodes(&current);
+            Node *result = getPathNodes(&current);
             //printPathToGoal(current);
             freeList(&open);
             freeList(&close);
@@ -284,7 +281,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                 if (neighbour_x >= col || neighbour_y >= row) {
                     continue;
                 }
-               
+
                 if (abs(i) == 1 && abs(j) == 1) { //go diagonally
                     distanceStart = current->distance_start + 14;
                 } else {
@@ -298,8 +295,8 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                     continue;
                 }
                 //printf("Neighbour %d %d\n", neighbour_x, neighbour_y );
-                
-                if (isInOpen(&open, neighbour_node)==0) {
+
+                if (isInOpen(&open, neighbour_node) == 0) {
                     pushNode(&open, neighbour_node);
 
                 } else if (distanceStart < getDistanceStart(&open, neighbour_node)) {
@@ -335,92 +332,111 @@ int comparePathsBasedOnCoords(Node *pathA, Node *pathB) {
     }
 }
 
-int test_noObstacles(){
-    int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0}};
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-    int start_x = 7;
-    int start_y = 1;
-    int goal_x = 4;
-    int goal_y = 4;
-    Node *path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
-    printQueue(&path);
+struct CommandQueue *convertGridMovesToDriveCommands(Node *path, int cellWidth, int cellHeight, float initialRotation) {
+    CommandQueue *result = (CommandQueue *) malloc(sizeof(CommandQueue));
+    Node *previous = path;
+    float rotation = initialRotation;
+    if (path != NULL) {
+        path = path->next;
+    }
+    while (path != NULL) {
+        if (path->x_coor != previous->x_coor & path->y_coor != previous->y_coor) {
+            //rotate
+        } else {
+            if ((path->x_coor > previous->x_coor && rotation == 0) ||
+                (path->x_coor < previous->x_coor && rotation == M_PI)) {
+                Command *command = (Command *) malloc(sizeof(Command));
+                command->distance = cellWidth;
+                insertCommand(result, command);
+            } else if ((path->y_coor > previous->y_coor && rotation == M_PI / 2) ||
+                       (path->y_coor < previous->y_coor && rotation == 3 * M_PI / 2)) {
+                Command *command = (Command *) malloc(sizeof(Command));
+                command->distance = cellHeight;
+                insertCommand(result, command);
+            }
+        }
+        if (path != NULL) {
+            path = path->next;
+        }
+    }
+    return result;
 }
 
-int test_withObstacles(){
-    int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,1,1,1,1,1,0,0,0},
-                       {0,0,0,1,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0}};
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-    int start_x = 7;
-    int start_y = 1;
-    int goal_x = 4;
-    int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
-    printQueue(&path);
+int compareCommandQueues(CommandQueue *queueA, CommandQueue *queueB) {
+    while (!isQueueEmpty(queueA) && !isQueueEmpty(queueB)) {
+        Command *commandA = getNextCommand(queueA);
+        Command *commandB = getNextCommand(queueB);
+        if (commandA->distance != commandB->distance || commandA->initialAngle != commandB->initialAngle) {
+            return -1;
+        }
+    }
+    if (isQueueEmpty(queueA) && isQueueEmpty(queueB)) {
+        return 0;
+    } else {
+        return -1;
+    }
 }
 
-
-int test_cannotReach(){
-    int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {1,1,1,1,1,1,1,1,1,1,1},
-                       {0,0,0,1,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0}};
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-    int start_x = 7;
-    int start_y = 1;
-    int goal_x = 4;
-    int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
-    printQueue(&path);
-}
-
-int test_hardToReach(){
-    int grid[6][11] = {{0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,1},
-                       {0,0,0,1,1,1,1,1,1,1,0},
-                       {0,1,1,1,0,0,0,0,0,0,0},
-                       {0,0,0,0,0,0,0,0,0,0,0}};
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-    int start_x = 7;
-    int start_y = 1;
-    int goal_x = 4;
-    int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
-    printQueue(&path);
-}
-
-int test_Maze(){
-    int grid[6][11] = {{0,1,0,1,0,1,0,0,0,0,0},
-                       {0,1,0,0,1,1,0,1,1,1,0},
-                       {0,1,0,1,0,1,0,1,0,0,1},
-                       {0,0,1,1,0,1,0,1,1,1,0},
-                       {0,1,1,0,1,1,0,1,0,0,1},
-                       {0,1,0,0,0,0,1,1,0,1,0}};
-    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+int testDrivingOnHorizontalLine() {
+    int grid[2][2] = {{0, 0},
+                      {0, 0}};
     int start_x = 0;
     int start_y = 0;
-    int goal_x = 10;
-    int goal_y = 5;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int goal_x = 1;
+    int goal_y = 0;
+    Node *path = A_star(2, 2, start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+    CommandQueue *queue = convertGridMovesToDriveCommands(path, 50, 50, 0);
+
+    Command *command1 = (Command *) malloc(sizeof(Command));
+    command1->distance = 50;
+    command1->initialAngle = 0;
+
+    CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
+    insertCommand(expectedQueue, command1);
+
+    return compareCommandQueues(queue, expectedQueue);
+}
+
+int testConversionOfCommandsOnStraightLine() {
+    int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+                       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 8;
+    int start_y = 1;
+    int goal_x = 8;
+    int goal_y = 4;
+    int cellWidth = 20;
+    int cellHeight = 20;
+    Node *path = A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
     printQueue(&path);
 }
 
- 
-int main(){
-    test_noObstacles();
-    test_withObstacles();
-    test_cannotReach();
-    test_hardToReach();
-    test_Maze();
+int test_withObstacles() {
+    int grid[6][11] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+                       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 7;
+    int start_y = 1;
+    int goal_x = 4;
+    int goal_y = 4;
+    Node *path = A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+}
+
+int main() {
+    printf("Hello!\n");
+    if (testDrivingOnHorizontalLine() == 0) {
+        printf("testDrivingOnHorizontalLine() - PASS\n");
+    } else {
+        printf("testDrivingOnHorizontalLine() - FAIL\n");
+    }
 }
