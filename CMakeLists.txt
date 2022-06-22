@@ -23,3 +23,5 @@ add_executable(RoutingToDriveCommands
         C_Conversion/CommandQueue.c)
 
 target_link_libraries(Vision m)
+
+target_link_libraries(RoutingToDriveCommands m)

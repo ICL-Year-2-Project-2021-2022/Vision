@@ -332,6 +332,24 @@ int comparePathsBasedOnCoords(Node *pathA, Node *pathB) {
     }
 }
 
+float floatAbs(float a) {
+    if (a < 0) {
+        return -a;
+    }
+    return a;
+}
+
+// this needs to be tested with more angles
+float angleOfSmallestRotation(float start, float end) {
+    float first = floatAbs(end - start);
+    float second = floatAbs(end - (start + 2 * M_PI));
+    if (first < second) {
+        return end - start;
+    } else {
+        return end - (start + M_2_PI);
+    }
+}
+
 struct CommandQueue *convertGridMovesToDriveCommands(Node *path, int cellWidth, int cellHeight, float initialRotation) {
     CommandQueue *result = (CommandQueue *) malloc(sizeof(CommandQueue));
     Node *previous = path;
@@ -340,37 +358,95 @@ struct CommandQueue *convertGridMovesToDriveCommands(Node *path, int cellWidth, 
         path = path->next;
     }
     while (path != NULL) {
-        if (path->x_coor != previous->x_coor & path->y_coor != previous->y_coor) {
+        if (path->x_coor != previous->x_coor && path->y_coor != previous->y_coor) {
+            if (path->x_coor != previous->x_coor && path->y_coor != previous->y_coor) {
+                if (path->x_coor > previous->x_coor && path->y_coor > previous->y_coor && rotation != (float) M_PI_4) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI_4);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                } else if (path->x_coor > previous->x_coor && path->y_coor < previous->y_coor && rotation != (float) 7 * M_PI_4) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 7 * M_PI_4);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                } else if (path->x_coor < previous->x_coor && path->y_coor < previous->y_coor && rotation != (float) 5 * M_PI_4) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 5 * M_PI_4);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                } else if (rotation != (float) 3 * M_PI_4) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 3 * M_PI_4);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                }
+                Command *driveCommand = (Command *) malloc(sizeof(Command));
+                driveCommand->distance = sqrt(cellWidth * cellWidth + cellHeight * cellHeight);
+                insertCommand(result, driveCommand);
+            }
             //rotate
         } else {
-            if ((path->x_coor > previous->x_coor && rotation == 0) ||
-                (path->x_coor < previous->x_coor && rotation == M_PI)) {
-                Command *command = (Command *) malloc(sizeof(Command));
-                command->distance = cellWidth;
-                insertCommand(result, command);
-            } else if ((path->y_coor > previous->y_coor && rotation == M_PI / 2) ||
-                       (path->y_coor < previous->y_coor && rotation == 3 * M_PI / 2)) {
-                Command *command = (Command *) malloc(sizeof(Command));
-                command->distance = cellHeight;
-                insertCommand(result, command);
+            if (path->x_coor > previous->x_coor && path->y_coor == previous->y_coor) {
+                if (rotation != 0) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 0);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                }
+                Command *distanceCommand = (Command *) malloc(sizeof(Command));
+                distanceCommand->distance = cellWidth;
+                insertCommand(result, distanceCommand);
+            } else if (path->x_coor < previous->x_coor && path->y_coor == previous->y_coor) {
+                if (rotation != (float) M_PI) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                }
+                Command *distanceCommand = (Command *) malloc(sizeof(Command));
+                distanceCommand->distance = cellWidth;
+                insertCommand(result, distanceCommand);
+            } else if (path->y_coor > previous->y_coor && path->x_coor == previous->x_coor) {
+                if (rotation != (float) M_PI_2) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI_2);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                }
+                Command *distanceCommand = (Command *) malloc(sizeof(Command));
+                distanceCommand->distance = cellHeight;
+                insertCommand(result, distanceCommand);
+            } else if (path->y_coor < previous->y_coor && path->x_coor == previous->x_coor) {
+                if (rotation != (float) (3 * M_PI_2)) {
+                    Command *angleCommand = (Command *) malloc(sizeof(Command));
+                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 3 * M_PI_2);
+                    rotation += angleCommand->initialAngle;
+                    insertCommand(result, angleCommand);
+                }
+                Command *distanceCommand = (Command *) malloc(sizeof(Command));
+                distanceCommand->distance = cellHeight;
+                insertCommand(result, distanceCommand);
             }
         }
         if (path != NULL) {
+            previous = path;
             path = path->next;
         }
     }
     return result;
 }
 
-int compareCommandQueues(CommandQueue *queueA, CommandQueue *queueB) {
-    while (!isQueueEmpty(queueA) && !isQueueEmpty(queueB)) {
-        Command *commandA = getNextCommand(queueA);
-        Command *commandB = getNextCommand(queueB);
-        if (commandA->distance != commandB->distance || commandA->initialAngle != commandB->initialAngle) {
+int compareCommandQueues(CommandQueue *currentQueue, CommandQueue *expectedQueue) {
+    while (!isQueueEmpty(currentQueue) && !isQueueEmpty(expectedQueue)) {
+        Command *commandA = getNextCommand(currentQueue);
+        Command *commandB = getNextCommand(expectedQueue);
+        printf("Command A: dis -> %f, angle -> %f, Command B: dis -> %f, angle -> %f\n", commandA->distance, commandA->initialAngle, commandB->distance, commandB->initialAngle);
+        if (commandA->distance != commandB->distance || !(commandA->initialAngle + 0.0001f >= commandB->initialAngle && commandA->initialAngle - 0.0001f <= commandB->initialAngle)) {
             return -1;
         }
     }
-    if (isQueueEmpty(queueA) && isQueueEmpty(queueB)) {
+    if (isQueueEmpty(currentQueue) && isQueueEmpty(expectedQueue)) {
         return 0;
     } else {
         return -1;
@@ -394,6 +470,81 @@ int testDrivingOnHorizontalLine() {
 
     CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
     insertCommand(expectedQueue, command1);
+
+    return compareCommandQueues(queue, expectedQueue);
+}
+
+int testDrivingOnVerticalLine() {
+    int grid[2][2] = {{0, 0},
+                      {0, 0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 0;
+    int goal_y = 1;
+    Node *path = A_star(2, 2, start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+    CommandQueue *queue = convertGridMovesToDriveCommands(path, 50, 50, M_PI_2);
+
+    Command *command1 = (Command *) malloc(sizeof(Command));
+    command1->distance = 50;
+    command1->initialAngle = 0;
+
+    CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
+    insertCommand(expectedQueue, command1);
+
+    return compareCommandQueues(queue, expectedQueue);
+}
+
+int testRotateAndDriveVertical() {
+    int grid[2][2] = {{0, 0},
+                      {0, 0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 0;
+    int goal_y = 1;
+    Node *path = A_star(2, 2, start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+    CommandQueue *queue = convertGridMovesToDriveCommands(path, 50, 50, 0);
+
+    Command *command1 = (Command *) malloc(sizeof(Command));
+    command1->distance = 0;
+    command1->initialAngle = M_PI_2;
+
+    Command *command2 = (Command *) malloc(sizeof(Command));
+    command2->distance = 50;
+    command2->initialAngle = 0;
+
+    CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
+
+    insertCommand(expectedQueue, command1);
+    insertCommand(expectedQueue, command2);
+
+    return compareCommandQueues(queue, expectedQueue);
+}
+
+int testGoDiagonally() {
+    int grid[2][2] = {{0, 0},
+                      {0, 0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 1;
+    int goal_y = 1;
+    Node *path = A_star(2, 2, start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+    CommandQueue *queue = convertGridMovesToDriveCommands(path, 50, 50, 0);
+
+    Command *command1 = (Command *) malloc(sizeof(Command));
+    command1->distance = 0;
+    command1->initialAngle = M_PI / 4;
+
+    Command *command2 = (Command *) malloc(sizeof(Command));
+    command2->distance = sqrt(50 * 50 * 2);
+    command2->initialAngle = 0;
+
+    CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
+
+    insertCommand(expectedQueue, command1);
+    insertCommand(expectedQueue, command2);
 
     return compareCommandQueues(queue, expectedQueue);
 }
@@ -430,13 +581,90 @@ int test_withObstacles() {
     int goal_y = 4;
     Node *path = A_star(6, 11, start_x, start_y, goal_x, goal_y, grid);
     printQueue(&path);
+
+    CommandQueue *queue = convertGridMovesToDriveCommands(path, 50, 50, 0);
+    CommandQueue *expectedQueue = (CommandQueue *) malloc(sizeof(CommandQueue));
+
+    Command *command1 = (Command *) malloc(sizeof(Command));
+    command1->distance = 0;
+    command1->initialAngle = M_PI_2;
+    insertCommand(expectedQueue, command1);
+
+    Command *command2 = (Command *) malloc(sizeof(Command));
+    command2->distance = 50;
+    command2->initialAngle = 0;
+    insertCommand(expectedQueue, command2);
+
+    Command *command3 = (Command *) malloc(sizeof(Command));
+    command3->distance = 0;
+    command3->initialAngle = - (M_PI / 4);
+    insertCommand(expectedQueue, command3);
+
+    Command *command4 = (Command *) malloc(sizeof(Command));
+    command4->distance = sqrt(50 * 50 * 2);
+    command4->initialAngle = 0;
+    insertCommand(expectedQueue, command4);
+
+    Command *command5 = (Command *) malloc(sizeof(Command));
+    command5->distance = 0;
+    command5->initialAngle = M_PI_2;
+    insertCommand(expectedQueue, command5);
+
+    Command *command6 = (Command *) malloc(sizeof(Command));
+    command6->distance = sqrt(50 * 50 * 2);
+    command6->initialAngle = 0;
+    insertCommand(expectedQueue, command6);
+
+    Command *command7 = (Command *) malloc(sizeof(Command));
+    command7->distance = 0;
+    command7->initialAngle = (M_PI / 4);
+    insertCommand(expectedQueue, command7);
+
+    Command *command8 = (Command *) malloc(sizeof(Command));
+    command8->distance = 50;
+    insertCommand(expectedQueue, command8);
+
+    Command *command9 = (Command *) malloc(sizeof(Command));
+    command9->distance = 50;
+    insertCommand(expectedQueue, command9);
+
+    Command *command10 = (Command *) malloc(sizeof(Command));
+    command10->distance = 50;
+    insertCommand(expectedQueue, command10);
+
+    return compareCommandQueues(queue, expectedQueue);
 }
 
 int main() {
     printf("Hello!\n");
+
     if (testDrivingOnHorizontalLine() == 0) {
         printf("testDrivingOnHorizontalLine() - PASS\n");
     } else {
         printf("testDrivingOnHorizontalLine() - FAIL\n");
+    }
+
+    if (testDrivingOnVerticalLine() == 0) {
+        printf("testDrivingOnVerticalLine() - PASS\n");
+    } else {
+        printf("testDrivingOnVerticalLine() - FAIL\n");
+    }
+
+    if (testRotateAndDriveVertical() == 0) {
+        printf("testRotateAndDriveVertical() - PASS\n");
+    } else {
+        printf("testRotateAndDriveVertical() - FAIL\n");
+    }
+
+    if (testGoDiagonally() == 0) {
+        printf("testGoDiagonally() - PASS\n");
+    } else {
+        printf("testGoDiagonally() - FAIL\n");
+    }
+
+    if (test_withObstacles() == 0) {
+        printf("test_withObstacles() - PASS\n");
+    } else {
+        printf("test_withObstacles() - FAIL\n");
     }
 }

@@ -19,13 +19,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef9e8af6-f6d2-4051-badb-ef3f5e892a6b" name="Changes" comment="change interface of the getGrid from static to dynamic">
-      <change afterPath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.h" afterDir="false" />
+    <list default="true" id="ef9e8af6-f6d2-4051-badb-ef3f5e892a6b" name="Changes" comment="add conversion from grid moves to drive commands">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C_Conversion/A_starRouting.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/A_starRouting.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655670276573</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add conversion from grid moves to drive commands">
+      <created>1655892415092</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655892415092</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,15 +150,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add test output to the A* algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test output to the A* algorithm" />
+    <MESSAGE value="add conversion from grid moves to drive commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="add conversion from grid moves to drive commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c</url>
-          <line>365</line>
-          <option name="timeStamp" value="8" />
+          <line>584</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c</url>
+          <line>359</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
