@@ -592,11 +592,8 @@ int test_combined_2Steps_RightRight() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
@@ -644,11 +641,9 @@ int test_combined_2Steps_RightUp() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
+   
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
@@ -697,11 +692,8 @@ int test_combined_2Steps_RightUp_InaccurateMeasurements() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
@@ -749,11 +741,8 @@ int test_combined_3Steps_RightUpRight() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
@@ -813,11 +802,8 @@ int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
     land_list.item[0] = landmark1;
     land_list.size++;
     int seen_len;
-    struct Seen_Land seen_land1 = {.color = "red"}; //can remove coordinates
     struct Seen_Land_List seen_land_list;
     seen_land_list.size = 0;
-    seen_land_list.item[seen_land_list.size] = seen_land1;
-    seen_land_list.size++;
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
