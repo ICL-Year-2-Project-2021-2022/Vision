@@ -83,14 +83,14 @@ int main(){
 	OV8865SetExposure(EXPOSURE_INIT);
 
 //	//Manual calibration
-//	OV8865SetGain(926);
+	OV8865SetGain(910);
 	OV8865SetRedGain(930);
-	OV8865SetGreenGain(800);
+	OV8865SetGreenGain(760);
 	OV8865SetBlueGain(1222);
 
 	//Autocalibration
 	Focus_Init();
-	auto_gain(160,2);
+	//auto_gain(160,2);
 	//auto_wb(128 ,2);
 	//auto_gain(160,2);
 	//Focus_Init();
@@ -100,13 +100,13 @@ int main(){
 
 
 	//Apply HSV transform
-	IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, 0x1);
+	IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, 0x0);
 
 	//Color filter setup
-	IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 1);
+	IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
 
 	//COM counter setup
-	IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
+	IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 0);
 	IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
 	IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
 	IOWR(COM_COUNTER_0_BASE, THRESH_Y_MAX, 470);
@@ -117,7 +117,7 @@ int main(){
 	IOWR(PIXEL_GRABBER_RGB_BASE, GRAB_INDICATOR, 0);
 
 
-	//fir_load_unit(FIR_0_1_BASE);
+	fir_load_unit(FIR_0_0_BASE);
 	//fir_load_avg();
 	//fir_load_sobel();
 
@@ -141,7 +141,8 @@ int main(){
 	debug = 0;
 	char code;
 	delay = 50000;
-
+	halt = 0;
+	observation_idx = 0;
   while(1){
 
 	   //Read Pixel Grab
@@ -244,7 +245,7 @@ int main(){
 
 			}
 
-		   observation_idx++;
+			if (!halt) observation_idx++;
 		   if (observation_idx == number_observations)observation_idx = 0;
 	   }
 

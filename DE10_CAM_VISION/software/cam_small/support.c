@@ -24,14 +24,14 @@ struct observation* initialize_observations(){
 
 //Initialize Red low ball parameters --
 	arr[0].code = 'R';
-	arr[0].mask_bottom = to_hex_code(0,140,150);
-	arr[0].mask_top = to_hex_code(8,255,250);
+	arr[0].mask_bottom = to_hex_code(1,130,130);
+	arr[0].mask_top = to_hex_code(8,255,240);
 	arr[0].threshold = 192;
 
 	//Initialize lime ball parameters +
 	arr[1].code = 'L';
 	arr[1].mask_bottom = to_hex_code(55,60,100);
-	arr[1].mask_top = to_hex_code(75,160,250);
+	arr[1].mask_top = to_hex_code(75,160,240);
 	arr[1].threshold = 192;
 
 	//Initialize blue ball parameters --
@@ -42,21 +42,21 @@ struct observation* initialize_observations(){
 
 	//Initialize yellow ball parameters
 	arr[3].code = 'Y';
-	arr[3].mask_bottom = to_hex_code(8,100,180);
-	arr[3].mask_top = to_hex_code(25,140,240);
+	arr[3].mask_bottom = to_hex_code(10,100,160);
+	arr[3].mask_top = to_hex_code(30,140,240);
 	arr[3].threshold = 192;
 
 	//Initialize green ball parameters
 	arr[4].code = 'G';
-	arr[4].mask_bottom = to_hex_code(80,60,50);
-	arr[4].mask_top = to_hex_code(90,128, 128);
+	arr[4].mask_bottom = to_hex_code(77,60,50);
+	arr[4].mask_top = to_hex_code(93,140, 140);
 	arr[4].threshold = 192;
 
 
 	//Initialize pink ball parameters +
 	arr[5].code = 'P';
-	arr[5].mask_bottom = to_hex_code(0,80,150);
-	arr[5].mask_top = to_hex_code(10,128,250);
+	arr[5].mask_bottom = to_hex_code(170,80,150);
+	arr[5].mask_top = to_hex_code(180,160,240);
 	arr[5].threshold = 192;
 
 	//Initialize Building 1 parameters
@@ -118,6 +118,7 @@ void print_observations (struct observation* obs) {
 void print_as_rgb(alt_u32 val, alt_u32 hsv){
 	if(print){
 		printf("RGB: %x, HSV: %x\n", val, hsv);
+		usleep(100000);
 	}
 }
 

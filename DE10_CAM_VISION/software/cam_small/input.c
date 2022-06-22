@@ -15,15 +15,15 @@ void process_input(){
 		   // touch KEY1 with selected routine to run
 		   else if ((IORD(KEY_BASE,0)&0x03) == 0x01){
 	    	   int sw = (IORD(SW_BASE, 0)& 0x03FF);
-
+	    	   usleep(1000000);
 	    	   debug = 1;
 
 	    	   switch(sw){
 				   case 1 : {
-					   auto_gain(128 , 2);
+					   auto_gain(140 , 2);
 					   break;
 				   }case 2: {
-					   auto_wb(128 , 3);
+					   auto_wb(140 , 3);
 					   break;
 				   }case 4: {
 					   IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, ~IORD(RGB_TO_HSV_BASE, HSV_ENABLED));
@@ -51,6 +51,7 @@ void process_input(){
 
 					   break;
 				   }case 512: {
+					   Focus_Init();
 					   break;
 				   }
 	    	   }
@@ -82,7 +83,9 @@ void process_input(){
 			   case 'D': {
 				   delay = 1000000;
 				   break;}
-
+			   case 'S': {
+				   halt = !halt;
+				   break;}
 
 			   case 'e': {
 				   exposureTime += EXPOSURE_STEP;

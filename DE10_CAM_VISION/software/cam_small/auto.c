@@ -67,9 +67,10 @@ void auto_wb(int target, int epsilon){
 		value = green_average();
 
 		delta = target - value;
-
-		printf("Green Delta: %d, gain: %d\n", delta, currentgain);
-	}
+		if (print){
+			printf("Green Delta: %d, gain: %d\n", delta, currentgain);
+		}
+		}
 
 	//Blue Balance
 	currentgain = 0x400;
@@ -87,8 +88,9 @@ void auto_wb(int target, int epsilon){
 		value = blue_average();
 
 		delta = target - value;
-
+		if (print){
 		printf("Blue Delta: %d, gain: %d\n", delta, currentgain);
 		}
+	}
 
 }

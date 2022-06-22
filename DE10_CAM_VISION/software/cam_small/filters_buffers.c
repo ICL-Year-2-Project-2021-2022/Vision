@@ -87,11 +87,11 @@ void print_image(){
 			count++;
 			if (count == 60) {
 				count = 0;
-				if (y >= 59 && x >= 79){
+				if (y == 59 && x == 79){
 					alt_putchar('\n');
-					} else {
-						alt_putchar(',');
-					}
+				} else {
+					alt_putchar(',');
+				}
 				while(alt_getchar() != 'A'){
 						usleep(1);
 					}

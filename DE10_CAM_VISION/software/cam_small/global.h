@@ -9,6 +9,7 @@ int histogram_processed[20];
 int debug;
 int print;
 int delay;
+int halt;
 
 struct observation {
 	char code;
