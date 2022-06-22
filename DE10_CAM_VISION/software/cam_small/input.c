@@ -86,6 +86,14 @@ void process_input(){
 			   case 'S': {
 				   halt = !halt;
 				   break;}
+			   case 'C': {
+				   //Autocalibration
+				   	Focus_Init();
+				   	auto_gain(160,2);
+				   	auto_wb(128 ,2);
+				   	auto_gain(160,2);
+				   	Focus_Init();
+					break;}
 
 			   case 'e': {
 				   exposureTime += EXPOSURE_STEP;

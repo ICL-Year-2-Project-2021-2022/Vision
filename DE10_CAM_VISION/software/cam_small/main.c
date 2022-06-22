@@ -88,12 +88,12 @@ int main(){
 	OV8865SetGreenGain(760);
 	OV8865SetBlueGain(1222);
 
-	//Autocalibration
-	Focus_Init();
-	//auto_gain(160,2);
-	//auto_wb(128 ,2);
-	//auto_gain(160,2);
-	//Focus_Init();
+//	//Autocalibration
+//	Focus_Init();
+//	auto_gain(160,2);
+//	auto_wb(128 ,2);
+//	auto_gain(160,2);
+//	Focus_Init();
 
 
 ////////////////////////////////////////////////////////////////
