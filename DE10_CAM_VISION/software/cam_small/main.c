@@ -150,7 +150,10 @@ int main(){
 	   print_as_rgb(rgb, hsv);
 
 
-	   if(~debug){
+	   if(!debug){
+		   if ((IORD(KEY_BASE,0)&0x03) == 0x01){
+		  	    	   debug = 1;
+		   }
 
 		   //Update observation parameters
 		   	if(print){

@@ -101,7 +101,7 @@ void print_observations (struct observation* obs) {
 		printf ("%s", observation_buf);
 
 		//Last iteration
-		if(i == number_observations -1 ){
+		if(i == number_observations -2 ){
 			printf ("\n");
 		} else{
 			printf (" ,");

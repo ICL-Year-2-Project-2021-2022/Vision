@@ -16,7 +16,7 @@ void process_input(){
 		   else if ((IORD(KEY_BASE,0)&0x03) == 0x01){
 	    	   int sw = (IORD(SW_BASE, 0)& 0x03FF);
 
-	    	   debug = 0;
+	    	   debug = 1;
 
 	    	   switch(sw){
 				   case 1 : {
