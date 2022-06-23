@@ -122,14 +122,14 @@ int isReachedObj(int x_current, int y_current, int x_goal, int y_goal) {
     return (x_current == x_goal) && (y_current == y_goal);
 }
 
-int isInClose(Node **head, Node *currentNode) {
+int isInClose(Node **head, int x_coor, int y_coor) {
     Node *start = (*head);
     if (start == NULL) {
         return 0;
     }
 
     while (start != NULL) {
-        if (start->x_coor == currentNode->x_coor && start->y_coor == currentNode->y_coor) {
+        if (start->x_coor == x_coor && start->y_coor == y_coor) {
             return 1;
         }
 
@@ -292,13 +292,13 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
                 }
 
                 priority = distanceStart + distanceToGoal(neighbour_x, neighbour_y, goal_x, goal_y);
-                neighbour_node = newNode(neighbour_x, neighbour_y, distanceStart, priority, current);
+                
                 if (grid[neighbour_y][neighbour_x] == 1 ||
-                    isInClose(&close, neighbour_node)) { //assume 1 means occupied
+                    isInClose(&close, neighbour_x, neighbour_y)) { //assume 1 means occupied
                     continue;
                 }
                 //printf("Neighbour %d %d\n", neighbour_x, neighbour_y );
-                
+                neighbour_node = newNode(neighbour_x, neighbour_y, distanceStart, priority, current);
                 if (isInOpen(&open, neighbour_node)==0) {
                     pushNode(&open, neighbour_node);
 
