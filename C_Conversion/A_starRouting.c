@@ -132,7 +132,6 @@ int isInClose(Node **head, int x_coor, int y_coor) {
         if (start->x_coor == x_coor && start->y_coor == y_coor) {
             return 1;
         }
-
         start = start->next;
     }
     return 0;
@@ -147,6 +146,9 @@ int isInOpen(Node **head, Node *currentNode) {
         if (start->x_coor == currentNode->x_coor && start->y_coor == currentNode->y_coor) {
 
             return 1;
+        }
+        if (start->priority>currentNode->priority){
+            return 0;
         }
         start = start->next;
     }
