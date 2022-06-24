@@ -5,16 +5,18 @@
 #define COMMANDS_IN_QUEUE 5
 
 void insertCommand(CommandQueue *queue, Command *command) {
-    if (!queue->start) {
+    if (queue->start == NULL) {
         queue->start = command;
-    } else if (!queue->end) {
+        queue->end = command;
+    } else if (queue->start == queue->end) {
         queue->start->next = command;
+        queue->end = command;
+    } else if (queue->end == NULL) {
         queue->end = command;
     } else {
         queue->end->next = command;
         queue->end = queue->end->next;
     }
-    command->next = 0;
 }
 
 Command* getNextCommand(CommandQueue* queue) {

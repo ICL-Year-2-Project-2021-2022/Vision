@@ -22,6 +22,12 @@ add_executable(RoutingToDriveCommands
         C_Conversion/CommandQueue.h
         C_Conversion/CommandQueue.c)
 
+add_executable(Kalman
+        C_Conversion/kalman_combinedtest.c
+        C_Conversion/library/linalg.h)
+
 target_link_libraries(Vision m)
 
 target_link_libraries(RoutingToDriveCommands m)
+
+target_link_libraries(Kalman m)

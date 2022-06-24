@@ -7,7 +7,6 @@
 typedef struct command {
     float distance;
     float initialAngle;
-    float finalAngle;
     struct command *next;
 } Command;
 

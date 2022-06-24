@@ -43,7 +43,6 @@ float peek_x(Node **head) {
     return (*head)->x_coor;
 }
 
-
 float peek_y(Node **head) {
     return (*head)->y_coor;
 }
@@ -350,8 +349,18 @@ float angleOfSmallestRotation(float start, float end) {
     }
 }
 
+struct Command* createNewCommand(float distance, float angle) {
+    Command *command = (Command *) malloc(sizeof(Command));
+    command->initialAngle = angle;
+    command->distance = 0;
+    command->next = NULL;
+    return command;
+}
+
 struct CommandQueue *convertGridMovesToDriveCommands(Node *path, int cellWidth, int cellHeight, float initialRotation) {
     CommandQueue *result = (CommandQueue *) malloc(sizeof(CommandQueue));
+    result->start = NULL;
+    result->end = NULL;
     Node *previous = path;
     float rotation = initialRotation;
     if (path != NULL) {
@@ -361,71 +370,60 @@ struct CommandQueue *convertGridMovesToDriveCommands(Node *path, int cellWidth, 
         if (path->x_coor != previous->x_coor && path->y_coor != previous->y_coor) {
             if (path->x_coor != previous->x_coor && path->y_coor != previous->y_coor) {
                 if (path->x_coor > previous->x_coor && path->y_coor > previous->y_coor && rotation != (float) M_PI_4) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI_4);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, M_PI_4));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 } else if (path->x_coor > previous->x_coor && path->y_coor < previous->y_coor && rotation != (float) 7 * M_PI_4) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 7 * M_PI_4);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, 7 * M_PI_4));
+                    angleCommand->distance = 0;
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 } else if (path->x_coor < previous->x_coor && path->y_coor < previous->y_coor && rotation != (float) 5 * M_PI_4) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 5 * M_PI_4);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, 5 * M_PI_4));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 } else if (rotation != (float) 3 * M_PI_4) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 3 * M_PI_4);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, 3 * M_PI_4));
+                    angleCommand->distance = 0;
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 }
-                Command *driveCommand = (Command *) malloc(sizeof(Command));
-                driveCommand->distance = sqrt(cellWidth * cellWidth + cellHeight * cellHeight);
+                Command * driveCommand = createNewCommand(sqrt(cellWidth * cellWidth + cellHeight * cellHeight), 0);
                 insertCommand(result, driveCommand);
             }
             //rotate
         } else {
             if (path->x_coor > previous->x_coor && path->y_coor == previous->y_coor) {
                 if (rotation != 0) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 0);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, 0));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 }
-                Command *distanceCommand = (Command *) malloc(sizeof(Command));
-                distanceCommand->distance = cellWidth;
+                Command *distanceCommand = createNewCommand(cellWidth, 0);
                 insertCommand(result, distanceCommand);
             } else if (path->x_coor < previous->x_coor && path->y_coor == previous->y_coor) {
                 if (rotation != (float) M_PI) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, M_PI));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 }
-                Command *distanceCommand = (Command *) malloc(sizeof(Command));
-                distanceCommand->distance = cellWidth;
+                Command * distanceCommand = createNewCommand(cellWidth, 0);
                 insertCommand(result, distanceCommand);
             } else if (path->y_coor > previous->y_coor && path->x_coor == previous->x_coor) {
                 if (rotation != (float) M_PI_2) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, M_PI_2);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, M_PI_2));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 }
-                Command *distanceCommand = (Command *) malloc(sizeof(Command));
-                distanceCommand->distance = cellHeight;
+                Command * distanceCommand = createNewCommand(cellHeight, 0);
                 insertCommand(result, distanceCommand);
             } else if (path->y_coor < previous->y_coor && path->x_coor == previous->x_coor) {
                 if (rotation != (float) (3 * M_PI_2)) {
-                    Command *angleCommand = (Command *) malloc(sizeof(Command));
-                    angleCommand->initialAngle = angleOfSmallestRotation(rotation, 3 * M_PI_2);
+                    Command * angleCommand = createNewCommand(0, angleOfSmallestRotation(rotation, 3 * M_PI_2));
                     rotation += angleCommand->initialAngle;
                     insertCommand(result, angleCommand);
                 }
-                Command *distanceCommand = (Command *) malloc(sizeof(Command));
-                distanceCommand->distance = cellHeight;
+                Command * distanceCommand = createNewCommand(cellHeight, 0);
                 insertCommand(result, distanceCommand);
             }
         }

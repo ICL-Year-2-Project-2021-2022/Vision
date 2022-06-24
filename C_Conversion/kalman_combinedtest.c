@@ -1027,7 +1027,7 @@ int main(){
     int successTestCounter = 0;
 
     
-    if (test_combined_ObserveNegAngDisplaceNegAng() == 0) {
+    /*if (test_combined_ObserveNegAngDisplaceNegAng() == 0) {
         printf("test_combined_ObserveNegAngDisplaceNegAng - PASS\n");
         successTestCounter++;
     } else {
@@ -1074,7 +1074,7 @@ int main(){
     } else {
         printf("test_combined_ObservePositiveAngDisplaceNegAng_WrapAroundClockwise - FAIL\n");
     }
-    testCounter++;
+    testCounter++;*/
 
 
     if (test_combined_2Steps_RightRight() == 0) {
@@ -1083,7 +1083,7 @@ int main(){
     } else {
         printf("test_combined_2Steps_RightRight - FAIL\n");
     }
-    testCounter++;
+    testCounter++;/*
 
     if (test_combined_2Steps_RightUp() == 0) {
         printf("test_combined_2Steps_RightUp - PASS\n");
@@ -1132,7 +1132,7 @@ int main(){
     } else {
         printf("test_combined_4Steps_UpUp - FAIL\n");
     }
-    testCounter++;
+    testCounter++;*/
 
    
     

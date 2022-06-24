@@ -9,13 +9,14 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Vision" targetName="RoutingToDriveCommands" />
+      <config projectName="Vision" targetName="Kalman" />
       <config projectName="Vision" targetName="Routing" />
       <config projectName="Vision" targetName="Vision" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-MinGW" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW" />
     </configurations>
   </component>
   <component name="ChangeListManager">
@@ -23,6 +24,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/CommandQueue.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/CommandQueue.h" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/CommandQueue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C_Conversion/kalman_combinedtest.c" beforeDir="false" afterPath="$PROJECT_DIR$/C_Conversion/kalman_combinedtest.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +36,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -57,48 +61,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/vacla/Projects/Vision/C_Conversion",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vacla/Projects/Vision/C_Conversion&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vacla\Projects\Vision\C_Conversion" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.RoutingToDriveCommands">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Routing" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Routing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Routing">
+    <configuration name="Kalman" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Kalman" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Kalman">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoutingToDriveCommands" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="RoutingToDriveCommands" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="RoutingToDriveCommands">
+    <configuration name="Routing" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Routing" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Routing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Vision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Vision" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Vision">
+    <configuration name="RoutingToDriveCommands" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="RoutingToDriveCommands" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="RoutingToDriveCommands">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Vision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Vision" TARGET_NAME="Vision" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Vision" RUN_TARGET_NAME="Vision">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="CMake Application.Kalman" />
       <item itemvalue="CMake Application.Routing" />
       <item itemvalue="CMake Application.RoutingToDriveCommands" />
       <item itemvalue="CMake Application.Vision" />
@@ -107,7 +113,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d703d931-9037-418f-944a-58b35633efed" name="Changes" comment="" />
+      <changelist id="ef9e8af6-f6d2-4051-badb-ef3f5e892a6b" name="Changes" comment="add conversion from grid moves to drive commands" />
       <created>1655219364172</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -116,6 +122,9 @@
       <workItem from="1655223548201" duration="1995000" />
       <workItem from="1655232018273" duration="5756000" />
       <workItem from="1655667881162" duration="4120000" />
+      <workItem from="1656081372174" duration="1757000" />
+      <workItem from="1656094514886" duration="214000" />
+      <workItem from="1656111505043" duration="1472000" />
     </task>
     <task id="LOCAL-00001" summary="add test output to the A* algorithm">
       <created>1655670276573</created>
@@ -157,14 +166,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c</url>
-          <line>584</line>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/C_Conversion/CommandQueue.c</url>
+          <line>7</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/C_Conversion/AStartToDriveCommands.c</url>
-          <line>359</line>
-          <option name="timeStamp" value="33" />
+          <line>462</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
