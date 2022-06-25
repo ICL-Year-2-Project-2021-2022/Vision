@@ -87,8 +87,8 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
         float kalman_gain[state_size][2];
         computeKalmanGain(state_size, pred_var, jacobian, kalman_gain, measure_noise);
         if (seen){
-            getPredictedStateFromKalmanGain(state_size, land_list.item[seenLandmarkIndex].land_dist,
-                                        land_list.item[seenLandmarkIndex].land_ang, kalman_gain, exp_dis_ang,
+            getPredictedStateFromKalmanGain(state_size, land_list.item[i].land_dist,
+                                        land_list.item[i].land_ang, kalman_gain, exp_dis_ang,
                                         pred_state);
         }
         getPredictedVarFromKalmanGain(state_size, kalman_gain, jacobian, pred_var);
@@ -1027,7 +1027,7 @@ int main(){
     int successTestCounter = 0;
 
     
-    if (test_combined_ObserveNegAngDisplaceNegAng() == 0) {
+    /*if (test_combined_ObserveNegAngDisplaceNegAng() == 0) {
         printf("test_combined_ObserveNegAngDisplaceNegAng - PASS\n");
         successTestCounter++;
     } else {
@@ -1124,7 +1124,7 @@ int main(){
     } else {
         printf("test_combined_4Steps_convergenceTest - FAIL\n");
     }
-    testCounter++;
+    testCounter++;*/
     
     if (test_combined_4Steps_UpUp() == 0) {
         printf("test_combined_4Steps_UpUp - PASS\n");
