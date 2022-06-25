@@ -47,23 +47,23 @@ module Qsys_mm_interconnect_0_router_001_default_decode
      parameter DEFAULT_CHANNEL = 1,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 22 
+               DEFAULT_DESTID = 29 
    )
-  (output [84 - 80 : 0] default_destination_id,
-   output [30-1 : 0] default_wr_channel,
-   output [30-1 : 0] default_rd_channel,
-   output [30-1 : 0] default_src_channel
+  (output [86 - 81 : 0] default_destination_id,
+   output [37-1 : 0] default_wr_channel,
+   output [37-1 : 0] default_rd_channel,
+   output [37-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[84 - 80 : 0];
+    DEFAULT_DESTID[86 - 81 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 30'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 37'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module Qsys_mm_interconnect_0_router_001_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 30'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 30'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 37'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 37'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -93,7 +93,7 @@ module Qsys_mm_interconnect_0_router_001
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [98-1 : 0]    sink_data,
+    input  [100-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,8 +102,8 @@ module Qsys_mm_interconnect_0_router_001
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [98-1    : 0] src_data,
-    output reg [30-1 : 0] src_channel,
+    output reg [100-1    : 0] src_data,
+    output reg [37-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -114,12 +114,12 @@ module Qsys_mm_interconnect_0_router_001
     // -------------------------------------------------------
     localparam PKT_ADDR_H = 53;
     localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 84;
-    localparam PKT_DEST_ID_L = 80;
-    localparam PKT_PROTECTION_H = 88;
-    localparam PKT_PROTECTION_L = 86;
-    localparam ST_DATA_W = 98;
-    localparam ST_CHANNEL_W = 30;
+    localparam PKT_DEST_ID_H = 86;
+    localparam PKT_DEST_ID_L = 81;
+    localparam PKT_PROTECTION_H = 90;
+    localparam PKT_PROTECTION_L = 88;
+    localparam ST_DATA_W = 100;
+    localparam ST_CHANNEL_W = 37;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 56;
@@ -136,13 +136,13 @@ module Qsys_mm_interconnect_0_router_001
     // -------------------------------------------------------
     localparam PAD0 = log2ceil(64'h30000 - 64'h20000); 
     localparam PAD1 = log2ceil(64'h31800 - 64'h31000); 
-    localparam PAD2 = log2ceil(64'h32300 - 64'h322f0); 
+    localparam PAD2 = log2ceil(64'h33c00 - 64'h33bf0); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h32300;
+    localparam ADDR_RANGE = 64'h33c00;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -166,7 +166,7 @@ module Qsys_mm_interconnect_0_router_001
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [30-1 : 0] default_src_channel;
+    wire [37-1 : 0] default_src_channel;
 
 
 
@@ -192,20 +192,20 @@ module Qsys_mm_interconnect_0_router_001
 
     // ( 0x20000 .. 0x30000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 18'h20000   ) begin
-            src_channel = 30'b010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 22;
+            src_channel = 37'b010;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 29;
     end
 
     // ( 0x31000 .. 0x31800 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 18'h31000   ) begin
-            src_channel = 30'b001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 21;
+            src_channel = 37'b001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 28;
     end
 
-    // ( 0x322f0 .. 0x32300 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 18'h322f0   ) begin
-            src_channel = 30'b100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 23;
+    // ( 0x33bf0 .. 0x33c00 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 18'h33bf0   ) begin
+            src_channel = 37'b100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 30;
     end
 
 end

@@ -1,5 +1,5 @@
 Flow report for DE10_LITE_D8M_VIP
-Tue Jun 21 21:58:34 2022
+Fri Jun 24 19:07:00 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,21 +40,21 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 21 21:58:04 2022       ;
+; Flow Status                        ; Successful - Fri Jun 24 19:06:19 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; DE10_LITE_D8M_VIP                           ;
 ; Top-level Entity Name              ; DE10_LITE_D8M_VIP                           ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 20,433 / 49,760 ( 41 % )                    ;
-;     Total combinational functions  ; 15,740 / 49,760 ( 32 % )                    ;
-;     Dedicated logic registers      ; 14,448 / 49,760 ( 29 % )                    ;
-; Total registers                    ; 14515                                       ;
+; Total logic elements               ; 32,462 / 49,760 ( 65 % )                    ;
+;     Total combinational functions  ; 24,128 / 49,760 ( 48 % )                    ;
+;     Dedicated logic registers      ; 24,166 / 49,760 ( 49 % )                    ;
+; Total registers                    ; 24233                                       ;
 ; Total pins                         ; 171 / 360 ( 48 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 830,808 / 1,677,312 ( 50 % )                ;
-; Embedded Multiplier 9-bit elements ; 64 / 288 ( 22 % )                           ;
+; Total memory bits                  ; 882,872 / 1,677,312 ( 53 % )                ;
+; Embedded Multiplier 9-bit elements ; 154 / 288 ( 53 % )                          ;
 ; Total PLLs                         ; 3 / 4 ( 75 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
 ; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
@@ -66,34 +66,40 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/21/2022 21:45:12 ;
+; Start date & time ; 06/24/2022 18:47:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE10_LITE_D8M_VIP   ;
 +-------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                         ;
-+-------------------------------------+-----------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                   ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+-----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 963354592080.165584431112436            ; --            ; --          ; --         ;
-; ENABLE_SIGNALTAP                    ; Off                                     ; --            ; --          ; --         ;
-; FITTER_EFFORT                       ; Standard Fit                            ; Auto Fit      ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                      ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                       ; --            ; --          ; --         ;
-; MISC_FILE                           ; ip/PIXEL_BUFFER _WB/ram_wb_inst.v       ; --            ; --          ; --         ;
-; MISC_FILE                           ; ip/PIXEL_BUFFER _WB/ram_wb_bb.v         ; --            ; --          ; --         ;
-; MISC_FILE                           ; ip/PIXEL_BUFFER/pixel_buffer_ram_inst.v ; --            ; --          ; --         ;
-; MISC_FILE                           ; ip/PIXEL_BUFFER/pixel_buffer_ram_bb.v   ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                     ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW   ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                            ; --            ; --          ; --         ;
-; USE_SIGNALTAP_FILE                  ; stp1.stp                                ; --            ; --          ; --         ;
-+-------------------------------------+-----------------------------------------+---------------+-------------+------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                          ;
++--------------------------------------+-----------------------------------------+---------------+-------------+------------+
+; Assignment Name                      ; Value                                   ; Default Value ; Entity Name ; Section Id ;
++--------------------------------------+-----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID                ; 1098491043548.165609283717880           ; --            ; --          ; --         ;
+; ENABLE_SIGNALTAP                     ; Off                                     ; --            ; --          ; --         ;
+; FITTER_EFFORT                        ; Standard Fit                            ; Auto Fit      ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                      ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                       ; --            ; --          ; --         ;
+; MISC_FILE                            ; ip/PIXEL_BUFFER _WB/ram_wb_inst.v       ; --            ; --          ; --         ;
+; MISC_FILE                            ; ip/PIXEL_BUFFER _WB/ram_wb_bb.v         ; --            ; --          ; --         ;
+; MISC_FILE                            ; ip/PIXEL_BUFFER/pixel_buffer_ram_inst.v ; --            ; --          ; --         ;
+; MISC_FILE                            ; ip/PIXEL_BUFFER/pixel_buffer_ram_bb.v   ; --            ; --          ; --         ;
+; MUX_RESTRUCTURE                      ; Off                                     ; Auto          ; --          ; --         ;
+; OPTIMIZATION_MODE                    ; Aggressive Performance                  ; Balanced      ; --          ; --         ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)  ; --            ; --          ; Top        ;
+; PHYSICAL_SYNTHESIS_COMBO_LOGIC       ; On                                      ; Off           ; --          ; --         ;
+; PHYSICAL_SYNTHESIS_REGISTER_RETIMING ; On                                      ; Off           ; --          ; --         ;
+; PLACEMENT_EFFORT_MULTIPLIER          ; 4.0                                     ; 1.0           ; --          ; --         ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                     ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW   ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                            ; --            ; --          ; --         ;
+; ROUTER_TIMING_OPTIMIZATION_LEVEL     ; MAXIMUM                                 ; Normal        ; --          ; --         ;
+; USE_SIGNALTAP_FILE                   ; stp1.stp                                ; --            ; --          ; --         ;
++--------------------------------------+-----------------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -101,11 +107,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:07:40     ; 1.0                     ; 5360 MB             ; 00:08:39                           ;
-; Fitter               ; 00:04:17     ; 1.8                     ; 6316 MB             ; 00:11:11                           ;
-; Assembler            ; 00:00:08     ; 1.0                     ; 4770 MB             ; 00:00:08                           ;
-; Timing Analyzer      ; 00:00:28     ; 3.5                     ; 5116 MB             ; 00:01:28                           ;
-; Total                ; 00:12:33     ; --                      ; --                  ; 00:21:26                           ;
+; Analysis & Synthesis ; 00:09:09     ; 1.0                     ; 5567 MB             ; 00:10:20                           ;
+; Fitter               ; 00:08:48     ; 1.6                     ; 6538 MB             ; 00:29:26                           ;
+; Assembler            ; 00:00:09     ; 1.0                     ; 4814 MB             ; 00:00:09                           ;
+; Timing Analyzer      ; 00:00:39     ; 3.8                     ; 5240 MB             ; 00:02:16                           ;
+; Total                ; 00:18:45     ; --                      ; --                  ; 00:42:11                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

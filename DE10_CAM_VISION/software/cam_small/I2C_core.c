@@ -29,9 +29,8 @@
 //                     email: support@terasic.com
 //
 // --------------------------------------------------------------------
-#include "terasic_includes.h"
 #include "I2C_core.h"
-#include "io.h"
+
 // Note. Remember to reset device befroe acceess I2C interface
 #ifdef DEBUG_I2C
     #define I2C_DEBUG(x)    DEBUG(x)

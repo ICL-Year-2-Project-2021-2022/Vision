@@ -5,6 +5,9 @@
 #include "terasic_includes.h"
 #include "alt_types.h"
 #include "global.h"
+#include <stdio.h>
+#include "definitions.h"
+#include "system.h"
 
 int number_observations, frames_elapsed;
 struct observation;
@@ -16,7 +19,8 @@ void print_observations (struct observation* obs);
 void print_as_rgb(alt_u32 val, alt_u32 hsv);
 void frame_isr();
 void wait_frame(int number);
-
+void wait_sop();
+void wait_eop();
 
 
 

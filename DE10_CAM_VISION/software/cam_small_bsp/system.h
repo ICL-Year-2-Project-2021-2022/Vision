@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Wed Jun 22 17:01:29 BST 2022
+ * Generated: Fri Jun 24 19:14:26 BST 2022
  */
 
 /*
@@ -61,7 +61,7 @@
  */
 
 #define ALT_MODULE_CLASS_COLOR_FILTER_0 COLOR_FILTER
-#define COLOR_FILTER_0_BASE 0x321c0
+#define COLOR_FILTER_0_BASE 0x33ac0
 #define COLOR_FILTER_0_IRQ -1
 #define COLOR_FILTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define COLOR_FILTER_0_NAME "/dev/COLOR_FILTER_0"
@@ -70,17 +70,73 @@
 
 
 /*
+ * COLOR_FILTER_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_COLOR_FILTER_1 COLOR_FILTER
+#define COLOR_FILTER_1_BASE 0x33900
+#define COLOR_FILTER_1_IRQ -1
+#define COLOR_FILTER_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define COLOR_FILTER_1_NAME "/dev/COLOR_FILTER_1"
+#define COLOR_FILTER_1_SPAN 64
+#define COLOR_FILTER_1_TYPE "COLOR_FILTER"
+
+
+/*
+ * COLOR_FILTER_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_COLOR_FILTER_2 COLOR_FILTER
+#define COLOR_FILTER_2_BASE 0x338c0
+#define COLOR_FILTER_2_IRQ -1
+#define COLOR_FILTER_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define COLOR_FILTER_2_NAME "/dev/COLOR_FILTER_2"
+#define COLOR_FILTER_2_SPAN 64
+#define COLOR_FILTER_2_TYPE "COLOR_FILTER"
+
+
+/*
  * COM_COUNTER_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_COM_COUNTER_0 COM_COUNTER
-#define COM_COUNTER_0_BASE 0x32180
+#define COM_COUNTER_0_BASE 0x33a80
 #define COM_COUNTER_0_IRQ -1
 #define COM_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define COM_COUNTER_0_NAME "/dev/COM_COUNTER_0"
 #define COM_COUNTER_0_SPAN 64
 #define COM_COUNTER_0_TYPE "COM_COUNTER"
+
+
+/*
+ * COM_COUNTER_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_COM_COUNTER_1 COM_COUNTER
+#define COM_COUNTER_1_BASE 0x33940
+#define COM_COUNTER_1_IRQ -1
+#define COM_COUNTER_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define COM_COUNTER_1_NAME "/dev/COM_COUNTER_1"
+#define COM_COUNTER_1_SPAN 64
+#define COM_COUNTER_1_TYPE "COM_COUNTER"
+
+
+/*
+ * COM_COUNTER_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_COM_COUNTER_2 COM_COUNTER
+#define COM_COUNTER_2_BASE 0x33880
+#define COM_COUNTER_2_IRQ -1
+#define COM_COUNTER_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define COM_COUNTER_2_NAME "/dev/COM_COUNTER_2"
+#define COM_COUNTER_2_SPAN 64
+#define COM_COUNTER_2_TYPE "COM_COUNTER"
 
 
 /*
@@ -196,7 +252,7 @@
  */
 
 #define ALT_MODULE_CLASS_EDGE_BINS_0 EDGE_BINS
-#define EDGE_BINS_0_BASE 0x32000
+#define EDGE_BINS_0_BASE 0x33800
 #define EDGE_BINS_0_IRQ -1
 #define EDGE_BINS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define EDGE_BINS_0_NAME "/dev/EDGE_BINS_0"
@@ -210,7 +266,7 @@
  */
 
 #define ALT_MODULE_CLASS_OBSTACLE_DIST_0 OBSTACLE_DIST
-#define OBSTACLE_DIST_0_BASE 0x32080
+#define OBSTACLE_DIST_0_BASE 0x33980
 #define OBSTACLE_DIST_0_IRQ -1
 #define OBSTACLE_DIST_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define OBSTACLE_DIST_0_NAME "/dev/OBSTACLE_DIST_0"
@@ -238,7 +294,7 @@
  */
 
 #define ALT_MODULE_CLASS_PIXEL_BUFFER_WB_0 PIXEL_BUFFER_WB
-#define PIXEL_BUFFER_WB_0_BASE 0x30800
+#define PIXEL_BUFFER_WB_0_BASE 0x33000
 #define PIXEL_BUFFER_WB_0_IRQ -1
 #define PIXEL_BUFFER_WB_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PIXEL_BUFFER_WB_0_NAME "/dev/PIXEL_BUFFER_WB_0"
@@ -252,7 +308,7 @@
  */
 
 #define ALT_MODULE_CLASS_PIXEL_GRABBER_HSV PIXEL_GRABBER
-#define PIXEL_GRABBER_HSV_BASE 0x320c0
+#define PIXEL_GRABBER_HSV_BASE 0x339c0
 #define PIXEL_GRABBER_HSV_IRQ -1
 #define PIXEL_GRABBER_HSV_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PIXEL_GRABBER_HSV_NAME "/dev/PIXEL_GRABBER_HSV"
@@ -266,7 +322,7 @@
  */
 
 #define ALT_MODULE_CLASS_PIXEL_GRABBER_RGB PIXEL_GRABBER
-#define PIXEL_GRABBER_RGB_BASE 0x32100
+#define PIXEL_GRABBER_RGB_BASE 0x33a00
 #define PIXEL_GRABBER_RGB_IRQ -1
 #define PIXEL_GRABBER_RGB_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PIXEL_GRABBER_RGB_NAME "/dev/PIXEL_GRABBER_RGB"
@@ -280,7 +336,7 @@
  */
 
 #define ALT_MODULE_CLASS_RGB_TO_HSV RGB_TO_HSV
-#define RGB_TO_HSV_BASE 0x32140
+#define RGB_TO_HSV_BASE 0x33a40
 #define RGB_TO_HSV_IRQ -1
 #define RGB_TO_HSV_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define RGB_TO_HSV_NAME "/dev/RGB_TO_HSV"
@@ -303,24 +359,24 @@
 #define ALT_NUM_EXTERNAL_INTERRUPT_CONTROLLERS 0
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
-#define ALT_STDERR "/dev/uart_0"
-#define ALT_STDERR_BASE 0x32240
-#define ALT_STDERR_DEV uart_0
-#define ALT_STDERR_IS_UART
+#define ALT_STDERR "/dev/jtag_uart"
+#define ALT_STDERR_BASE 0x33c88
+#define ALT_STDERR_DEV jtag_uart
+#define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
-#define ALT_STDERR_TYPE "altera_avalon_uart"
-#define ALT_STDIN "/dev/uart_0"
-#define ALT_STDIN_BASE 0x32240
-#define ALT_STDIN_DEV uart_0
-#define ALT_STDIN_IS_UART
+#define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDIN "/dev/jtag_uart"
+#define ALT_STDIN_BASE 0x33c88
+#define ALT_STDIN_DEV jtag_uart
+#define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
-#define ALT_STDIN_TYPE "altera_avalon_uart"
-#define ALT_STDOUT "/dev/uart_0"
-#define ALT_STDOUT_BASE 0x32240
-#define ALT_STDOUT_DEV uart_0
-#define ALT_STDOUT_IS_UART
+#define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDOUT "/dev/jtag_uart"
+#define ALT_STDOUT_BASE 0x33c88
+#define ALT_STDOUT_DEV jtag_uart
+#define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
-#define ALT_STDOUT_TYPE "altera_avalon_uart"
+#define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "Qsys"
 
 
@@ -330,7 +386,7 @@
  */
 
 #define ALT_MODULE_CLASS_TERASIC_AUTO_FOCUS_0 TERASIC_AUTO_FOCUS
-#define TERASIC_AUTO_FOCUS_0_BASE 0x32280
+#define TERASIC_AUTO_FOCUS_0_BASE 0x33b80
 #define TERASIC_AUTO_FOCUS_0_IRQ -1
 #define TERASIC_AUTO_FOCUS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define TERASIC_AUTO_FOCUS_0_NAME "/dev/TERASIC_AUTO_FOCUS_0"
@@ -343,7 +399,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x32370
+#define ALTPLL_0_BASE 0x33c70
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -357,7 +413,7 @@
  *
  */
 
-#define ALTPLL_1_BASE 0x32360
+#define ALTPLL_1_BASE 0x33c60
 #define ALTPLL_1_IRQ -1
 #define ALTPLL_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_1_NAME "/dev/altpll_1"
@@ -371,7 +427,7 @@
  *
  */
 
-#define ALTPLL_2_BASE 0x32350
+#define ALTPLL_2_BASE 0x33c50
 #define ALTPLL_2_IRQ -1
 #define ALTPLL_2_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_2_NAME "/dev/altpll_2"
@@ -386,12 +442,54 @@
  */
 
 #define ALT_MODULE_CLASS_fir_0_0 alt_vip_cl_2dfir
-#define FIR_0_0_BASE 0x31800
+#define FIR_0_0_BASE 0x32800
 #define FIR_0_0_IRQ -1
 #define FIR_0_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIR_0_0_NAME "/dev/fir_0_0"
 #define FIR_0_0_SPAN 2048
 #define FIR_0_0_TYPE "alt_vip_cl_2dfir"
+
+
+/*
+ * fir_0_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fir_0_1 alt_vip_cl_2dfir
+#define FIR_0_1_BASE 0x31800
+#define FIR_0_1_IRQ -1
+#define FIR_0_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIR_0_1_NAME "/dev/fir_0_1"
+#define FIR_0_1_SPAN 2048
+#define FIR_0_1_TYPE "alt_vip_cl_2dfir"
+
+
+/*
+ * fir_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fir_1 alt_vip_cl_2dfir
+#define FIR_1_BASE 0x32000
+#define FIR_1_IRQ -1
+#define FIR_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIR_1_NAME "/dev/fir_1"
+#define FIR_1_SPAN 2048
+#define FIR_1_TYPE "alt_vip_cl_2dfir"
+
+
+/*
+ * fir_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_fir_2 alt_vip_cl_2dfir
+#define FIR_2_BASE 0x30800
+#define FIR_2_IRQ -1
+#define FIR_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define FIR_2_NAME "/dev/fir_2"
+#define FIR_2_SPAN 2048
+#define FIR_2_TYPE "alt_vip_cl_2dfir"
 
 
 /*
@@ -411,7 +509,7 @@
  */
 
 #define ALT_MODULE_CLASS_i2c_opencores_camera i2c_opencores
-#define I2C_OPENCORES_CAMERA_BASE 0x322a0
+#define I2C_OPENCORES_CAMERA_BASE 0x33ba0
 #define I2C_OPENCORES_CAMERA_IRQ 1
 #define I2C_OPENCORES_CAMERA_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define I2C_OPENCORES_CAMERA_NAME "/dev/i2c_opencores_camera"
@@ -425,7 +523,7 @@
  */
 
 #define ALT_MODULE_CLASS_i2c_opencores_mipi i2c_opencores
-#define I2C_OPENCORES_MIPI_BASE 0x322c0
+#define I2C_OPENCORES_MIPI_BASE 0x33bc0
 #define I2C_OPENCORES_MIPI_IRQ 0
 #define I2C_OPENCORES_MIPI_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define I2C_OPENCORES_MIPI_NAME "/dev/i2c_opencores_mipi"
@@ -439,7 +537,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x32388
+#define JTAG_UART_BASE 0x33c88
 #define JTAG_UART_IRQ 2
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -457,7 +555,7 @@
  */
 
 #define ALT_MODULE_CLASS_key altera_avalon_pio
-#define KEY_BASE 0x32320
+#define KEY_BASE 0x33c20
 #define KEY_BIT_CLEARING_EDGE_REGISTER 0
 #define KEY_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define KEY_CAPTURE 0
@@ -484,7 +582,7 @@
  */
 
 #define ALT_MODULE_CLASS_led altera_avalon_pio
-#define LED_BASE 0x32340
+#define LED_BASE 0x33c40
 #define LED_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_CAPTURE 0
@@ -511,7 +609,7 @@
  */
 
 #define ALT_MODULE_CLASS_mipi_pwdn_n altera_avalon_pio
-#define MIPI_PWDN_N_BASE 0x32300
+#define MIPI_PWDN_N_BASE 0x33c00
 #define MIPI_PWDN_N_BIT_CLEARING_EDGE_REGISTER 0
 #define MIPI_PWDN_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIPI_PWDN_N_CAPTURE 0
@@ -538,7 +636,7 @@
  */
 
 #define ALT_MODULE_CLASS_mipi_reset_n altera_avalon_pio
-#define MIPI_RESET_N_BASE 0x32310
+#define MIPI_RESET_N_BASE 0x33c10
 #define MIPI_RESET_N_BIT_CLEARING_EDGE_REGISTER 0
 #define MIPI_RESET_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIPI_RESET_N_CAPTURE 0
@@ -594,7 +692,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_0 altera_avalon_pio
-#define PIO_0_BASE 0x322f0
+#define PIO_0_BASE 0x33bf0
 #define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_0_CAPTURE 1
@@ -621,7 +719,7 @@
  */
 
 #define ALT_MODULE_CLASS_sw altera_avalon_pio
-#define SW_BASE 0x32330
+#define SW_BASE 0x33c30
 #define SW_BIT_CLEARING_EDGE_REGISTER 0
 #define SW_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SW_CAPTURE 0
@@ -648,13 +746,13 @@
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys altera_avalon_sysid_qsys
-#define SYSID_QSYS_BASE 0x32380
+#define SYSID_QSYS_BASE 0x33c80
 #define SYSID_QSYS_ID 0
 #define SYSID_QSYS_IRQ -1
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1655844362
+#define SYSID_QSYS_TIMESTAMP 1656092876
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -665,7 +763,7 @@
 
 #define ALT_MODULE_CLASS_timer altera_avalon_timer
 #define TIMER_ALWAYS_RUN 0
-#define TIMER_BASE 0x32260
+#define TIMER_BASE 0x33b60
 #define TIMER_COUNTER_SIZE 32
 #define TIMER_FIXED_PERIOD 0
 #define TIMER_FREQ 70000000
@@ -691,7 +789,7 @@
 
 #define ALT_MODULE_CLASS_timer_0 altera_avalon_timer
 #define TIMER_0_ALWAYS_RUN 1
-#define TIMER_0_BASE 0x32220
+#define TIMER_0_BASE 0x33b20
 #define TIMER_0_COUNTER_SIZE 32
 #define TIMER_0_FIXED_PERIOD 1
 #define TIMER_0_FREQ 70000000
@@ -717,7 +815,7 @@
 
 #define ALT_MODULE_CLASS_timer_1 altera_avalon_timer
 #define TIMER_1_ALWAYS_RUN 1
-#define TIMER_1_BASE 0x32200
+#define TIMER_1_BASE 0x33b00
 #define TIMER_1_COUNTER_SIZE 32
 #define TIMER_1_FIXED_PERIOD 1
 #define TIMER_1_FREQ 70000000
@@ -742,7 +840,7 @@
  */
 
 #define ALT_MODULE_CLASS_uart_0 altera_avalon_uart
-#define UART_0_BASE 0x32240
+#define UART_0_BASE 0x33b40
 #define UART_0_BAUD 115200
 #define UART_0_DATA_BITS 8
 #define UART_0_FIXED_BAUD 1

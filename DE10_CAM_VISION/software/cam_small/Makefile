@@ -152,6 +152,7 @@ C_SRCS += support.c
 C_SRCS += input.c
 C_SRCS += filters_buffers.c
 C_SRCS += auto.c
+C_SRCS += pipeline.c
 CXX_SRCS :=
 ASM_SRCS :=
 

@@ -1,15 +1,5 @@
 //Struct
-#include "system.h"
 #include "support.h"
-#include <stdio.h>
-#include "definitions.h"
-
-void wait_eop(){
-	usleep(100000);
-}
-void wait_sop(){
-	usleep(100000);
-}
 
 
 
@@ -137,6 +127,13 @@ void wait_frame(int number){
 	int current_frame = frames_elapsed;
 	while(current_frame > frames_elapsed - number){}
 	return;
+}
+
+void wait_sop(){
+	usleep(20000);
+}
+void wait_eop(){
+	usleep(20000);
 }
 
 

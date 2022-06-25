@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 22, 2022 5:01:27 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1655913687553</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 24, 2022 11:53:05 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1656111185014</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_small_bsp</BspGeneratedLocation>
-        <BspSettingsFile>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_small_bsp\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2</Cpu>
@@ -194,7 +194,7 @@
                 <SettingName>hal.stdin</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>uart_0</Value>
+                <Value>jtag_uart</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDIN character-mode device. This setting is used by the ALT_STDIN family of defines in system.h.</Description>
@@ -206,7 +206,7 @@
                 <SettingName>hal.stdout</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>uart_0</Value>
+                <Value>jtag_uart</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDOUT character-mode device. This setting is used by the ALT_STDOUT family of defines in system.h.</Description>
@@ -218,7 +218,7 @@
                 <SettingName>hal.stderr</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>uart_0</Value>
+                <Value>jtag_uart</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDERR character-mode device. This setting is used by the ALT_STDERR family of defines in system.h.</Description>
@@ -935,164 +935,206 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>PIXEL_BUFFER_WB_0</slaveDescriptor>
+                <slaveDescriptor>fir_2</slaveDescriptor>
                 <addressRange>0x00030800 - 0x00030FFF</addressRange>
                 <addressSpan>2048</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>fir_0_0</slaveDescriptor>
+                <slaveDescriptor>fir_0_1</slaveDescriptor>
                 <addressRange>0x00031800 - 0x00031FFF</addressRange>
                 <addressSpan>2048</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>fir_1</slaveDescriptor>
+                <addressRange>0x00032000 - 0x000327FF</addressRange>
+                <addressSpan>2048</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>fir_0_0</slaveDescriptor>
+                <addressRange>0x00032800 - 0x00032FFF</addressRange>
+                <addressSpan>2048</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>PIXEL_BUFFER_WB_0</slaveDescriptor>
+                <addressRange>0x00033000 - 0x000337FF</addressRange>
+                <addressSpan>2048</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>EDGE_BINS_0</slaveDescriptor>
-                <addressRange>0x00032000 - 0x0003207F</addressRange>
+                <addressRange>0x00033800 - 0x0003387F</addressRange>
                 <addressSpan>128</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>COM_COUNTER_2</slaveDescriptor>
+                <addressRange>0x00033880 - 0x000338BF</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>COLOR_FILTER_2</slaveDescriptor>
+                <addressRange>0x000338C0 - 0x000338FF</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>COLOR_FILTER_1</slaveDescriptor>
+                <addressRange>0x00033900 - 0x0003393F</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>COM_COUNTER_1</slaveDescriptor>
+                <addressRange>0x00033940 - 0x0003397F</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>OBSTACLE_DIST_0</slaveDescriptor>
-                <addressRange>0x00032080 - 0x000320BF</addressRange>
+                <addressRange>0x00033980 - 0x000339BF</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIXEL_GRABBER_HSV</slaveDescriptor>
-                <addressRange>0x000320C0 - 0x000320FF</addressRange>
+                <addressRange>0x000339C0 - 0x000339FF</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIXEL_GRABBER_RGB</slaveDescriptor>
-                <addressRange>0x00032100 - 0x0003213F</addressRange>
+                <addressRange>0x00033A00 - 0x00033A3F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>RGB_TO_HSV</slaveDescriptor>
-                <addressRange>0x00032140 - 0x0003217F</addressRange>
+                <addressRange>0x00033A40 - 0x00033A7F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>COM_COUNTER_0</slaveDescriptor>
-                <addressRange>0x00032180 - 0x000321BF</addressRange>
+                <addressRange>0x00033A80 - 0x00033ABF</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>COLOR_FILTER_0</slaveDescriptor>
-                <addressRange>0x000321C0 - 0x000321FF</addressRange>
+                <addressRange>0x00033AC0 - 0x00033AFF</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer_1</slaveDescriptor>
-                <addressRange>0x00032200 - 0x0003221F</addressRange>
+                <addressRange>0x00033B00 - 0x00033B1F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer_0</slaveDescriptor>
-                <addressRange>0x00032220 - 0x0003223F</addressRange>
+                <addressRange>0x00033B20 - 0x00033B3F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>uart_0</slaveDescriptor>
-                <addressRange>0x00032240 - 0x0003225F</addressRange>
+                <addressRange>0x00033B40 - 0x00033B5F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer</slaveDescriptor>
-                <addressRange>0x00032260 - 0x0003227F</addressRange>
+                <addressRange>0x00033B60 - 0x00033B7F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>TERASIC_AUTO_FOCUS_0</slaveDescriptor>
-                <addressRange>0x00032280 - 0x0003229F</addressRange>
+                <addressRange>0x00033B80 - 0x00033B9F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>i2c_opencores_camera</slaveDescriptor>
-                <addressRange>0x000322A0 - 0x000322BF</addressRange>
+                <addressRange>0x00033BA0 - 0x00033BBF</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>i2c_opencores_mipi</slaveDescriptor>
-                <addressRange>0x000322C0 - 0x000322DF</addressRange>
+                <addressRange>0x00033BC0 - 0x00033BDF</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>pio_0</slaveDescriptor>
-                <addressRange>0x000322F0 - 0x000322FF</addressRange>
+                <addressRange>0x00033BF0 - 0x00033BFF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mipi_pwdn_n</slaveDescriptor>
-                <addressRange>0x00032300 - 0x0003230F</addressRange>
+                <addressRange>0x00033C00 - 0x00033C0F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mipi_reset_n</slaveDescriptor>
-                <addressRange>0x00032310 - 0x0003231F</addressRange>
+                <addressRange>0x00033C10 - 0x00033C1F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>key</slaveDescriptor>
-                <addressRange>0x00032320 - 0x0003232F</addressRange>
+                <addressRange>0x00033C20 - 0x00033C2F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sw</slaveDescriptor>
-                <addressRange>0x00032330 - 0x0003233F</addressRange>
+                <addressRange>0x00033C30 - 0x00033C3F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>led</slaveDescriptor>
-                <addressRange>0x00032340 - 0x0003234F</addressRange>
+                <addressRange>0x00033C40 - 0x00033C4F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_2</slaveDescriptor>
-                <addressRange>0x00032350 - 0x0003235F</addressRange>
+                <addressRange>0x00033C50 - 0x00033C5F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_1</slaveDescriptor>
-                <addressRange>0x00032360 - 0x0003236F</addressRange>
+                <addressRange>0x00033C60 - 0x00033C6F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_0</slaveDescriptor>
-                <addressRange>0x00032370 - 0x0003237F</addressRange>
+                <addressRange>0x00033C70 - 0x00033C7F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid_qsys</slaveDescriptor>
-                <addressRange>0x00032380 - 0x00032387</addressRange>
+                <addressRange>0x00033C80 - 0x00033C87</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x00032388 - 0x0003238F</addressRange>
+                <addressRange>0x00033C88 - 0x00033C8F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

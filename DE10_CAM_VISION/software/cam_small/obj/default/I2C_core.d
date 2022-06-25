@@ -1,6 +1,6 @@
-obj/default/I2C_core.o: I2C_core.c terasic_includes.h \
+obj/default/I2C_core.o: I2C_core.c I2C_core.h \
+ ../cam_small_bsp//HAL/inc/alt_types.h terasic_includes.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash.h \
- ../cam_small_bsp//HAL/inc/alt_types.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash_types.h \
  ../cam_small_bsp//HAL/inc/sys/alt_flash_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_llist.h \
@@ -18,13 +18,15 @@ obj/default/I2C_core.o: I2C_core.c terasic_includes.h \
  ../cam_small_bsp//drivers/inc/altera_avalon_timer.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
- ../cam_small_bsp//HAL/inc/sys/alt_stdio.h I2C_core.h global.h
+ ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h
+
+I2C_core.h:
+
+../cam_small_bsp//HAL/inc/alt_types.h:
 
 terasic_includes.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_flash.h:
-
-../cam_small_bsp//HAL/inc/alt_types.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_flash_types.h:
 
@@ -67,7 +69,5 @@ terasic_includes.h:
 ../cam_small_bsp//HAL/inc/sys/alt_warning.h:
 
 ../cam_small_bsp//HAL/inc/sys/alt_stdio.h:
-
-I2C_core.h:
 
 global.h:

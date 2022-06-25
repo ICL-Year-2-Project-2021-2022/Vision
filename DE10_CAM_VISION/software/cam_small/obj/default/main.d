@@ -19,8 +19,8 @@ obj/default/main.o: main.c I2C_core.h \
  ../cam_small_bsp//HAL/inc/sys/alt_dev.h \
  ../cam_small_bsp//HAL/inc/sys/alt_warning.h \
  ../cam_small_bsp//HAL/inc/sys/alt_stdio.h global.h mipi_camera_config.h \
- mipi_bridge_config.h auto_focus.h mipi_setup.h definitions.h input.h \
- support.h filters_buffers.h auto.h
+ mipi_bridge_config.h auto_focus.h mipi_setup.h definitions.h pipeline.h \
+ input.h support.h filters_buffers.h auto.h
 
 I2C_core.h:
 
@@ -83,6 +83,8 @@ auto_focus.h:
 mipi_setup.h:
 
 definitions.h:
+
+pipeline.h:
 
 input.h:
 

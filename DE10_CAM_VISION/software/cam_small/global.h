@@ -6,10 +6,22 @@ int number_observations;
 int frames_elapsed;
 int histogram[20];
 int histogram_processed[20];
-int debug;
+//int debug;
 int print;
 int delay;
 int halt;
+int slow;
+
+
+int rgb, hsv;
+char code;
+
+int histogram[20];
+int histogram_processed[20];
+int number_observations ;
+int frames_elapsed;
+int observation_idx;
+int one;
 
 struct observation {
 	char code;
