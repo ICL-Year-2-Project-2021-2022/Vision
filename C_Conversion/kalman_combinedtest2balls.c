@@ -57,7 +57,7 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
     //6. Sub Kalman gain to obtain new state and variance matrix
     int i, j, k;
     for (i = 0; i < land_list.size; i++) {
-        printf("\n Land %d\n", i);
+        printf("\nLand %d\n", i);
         bool seen = false;
         int seenLandmarkIndex = 0;
         for (j = 0; j < seen_list->size; j++) {
@@ -73,13 +73,11 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
             //size_t state_size, float pred_state[state_size][1], struct Seen_Land_List seen_list, struct Observations observation, int itemIndex
             setPositionOfNeverSeenLandmark(state_size, pred_state, seen_list, land_list.item[i]);
             obtainExpectedObservation(state_size, pred_state, pred_state[2*color_num+3][0], pred_state[2*color_num+4][0], delta, exp_dis_ang, &q);
-            printf("\n\n Expected Obs %f %f\n\n", exp_dis_ang[0], exp_dis_ang[1]);
         } else {
             //obtain expected observation
             
             obtainExpectedObservation(state_size, pred_state, old_state[2*color_num+3][0],old_state[2*color_num+4][0] , delta, exp_dis_ang, &q);
         }    
-        printf("Expected Angle: %f\n" ,exp_dis_ang[1]);
         float jacobian[2][state_size];
         computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
 
@@ -114,6 +112,7 @@ void calculatePredictedState(size_t state_size, float old_state[state_size][1], 
     for (i=0; i<state_size; i++){
         printf("%f ", pred_state[i][0]);
     }
+    printf("\n");
 }
 
 void calculatePredictedVar(size_t state_size, float displacement[3][1], float var[state_size][state_size],
@@ -267,7 +266,6 @@ getPredictedStateFromKalmanGain(size_t state_size, float land_dist, float land_a
     z_diff[0][0] = land_dist - exp_dis_ang[0];
     z_diff[1][0] = land_ang - exp_dis_ang[1];
 
-    printf("\nz_diff %f %f\n", z_diff[0][0], z_diff[1][0]);
     float z_tmp[state_size][1];
     matrix_multi(state_size, 2, 2, 1, kalman_gain, z_diff, z_tmp);
     add_matrix(state_size, 1, pred_state, z_tmp, pred_state);
@@ -467,6 +465,465 @@ int test_combined_4Steps_2Balls() { //to test this, neee
 
 }
 
+
+
+int test_combined_5Steps_2Balls() { //to test this, neee
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{12500,0},{0, 0.007}}; //around 50cm 5 degree error
+    float state[7][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {0},
+                         {0},
+                         {0},
+                         {0}};
+
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[7][7] = {{10, 0, 0, 0, 0 , 0, 0},
+                       {0, 10, 0, 0, 0 , 0, 0},
+                       {0, 0, 0.03, 0, 0 ,0 ,0},
+                       {0, 0, 0, 10000000, 0 ,0,0},
+                       {0, 0, 0, 0, 10000000 ,0,0},
+                       {0,0 , 0, 0, 0, 10000000 , 0},
+                       {0,0, 0,0,0,0,10000000}};
+                        
+   float displacement1[3][1] = {{0},
+                                {0},
+                                {-0.785398}}; 
+    struct Observations landmark1 = {.land_dist = 1420, .land_ang =0.17467, .color="red"};//should be 1220
+    struct Observations landmark2 = {.land_dist = 1729, .land_ang = -0.588, .color="red"}; //should be 1529
+
+    struct Landmarks land_list1;
+    land_list1.size = 0;
+    land_list1.item[0] = landmark1;
+    land_list1.size++;
+    land_list1.item[land_list1.size] = landmark2;
+    int seen_len;
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    struct Kal_Res results, results1;
+    results1 = kalman_filter(state_size, state, var, displacement1, land_list1, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement2[3][1] = {{100}, {200}, {0.32175}};
+    struct Observations landmark3 = {.land_dist = 1100, .land_ang = -0.1798, .color="red"}; //should be 1000, 0
+    struct Observations landmark4 = {.land_dist = 1503, .land_ang = -1.036, .color="blue"}; //shoudl be 1403
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark3;
+    land_list2.size++;
+    land_list2.item[1] = landmark4;
+    land_list2.size++;
+    struct Kal_Res results2;
+    results2 = kalman_filter(state_size, results1.new_state, results1.new_var, displacement2, land_list2, &seen_land_list, control_noise, measure_noise);
+
+    float displacement3[3][1] = {{300}, {100}, {-0.785448}};
+    struct Observations landmark5 = {.land_dist = 800, .land_ang = 0.8442, .color="red"}; //should be 1250 0.64
+    struct Observations landmark6 = {.land_dist = 1200, .land_ang = -0.-0.3217, .color="blue"}; //should be 1700, 0.4636
+    struct Landmarks land_list3;
+    land_list3.size = 0;
+    land_list3.item[0] = landmark5;
+    land_list3.size++;
+    land_list3.item[1] = landmark6;
+    land_list3.size++;
+    struct Kal_Res results3;
+    results3 = kalman_filter(state_size, results2.new_state, results2.new_var, displacement3, land_list3, &seen_land_list, control_noise, measure_noise);
+
+    float displacement4[3][1] = {{100}, {300}, {0.927}};
+    struct Observations landmark7 = {.land_dist = 450, .land_ang = -0.14185, .color="red"}; //should be 761
+    struct Observations landmark8 = {.land_dist = 1150, .land_ang = -1.5404, .color="blue"}; //should be 1100
+    struct Landmarks land_list4;
+    land_list4.size = 0;
+    land_list4.item[0] = landmark7;
+    land_list4.size++;
+    land_list4.item[1] = landmark8;
+    land_list4.size++;
+    struct Kal_Res results4;
+    results4 = kalman_filter(state_size, results3.new_state, results3.new_var, displacement4, land_list4, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement5[3][1] = {{0}, {0}, {-0.549}};
+    struct Observations landmark9 = {.land_dist = 435, .land_ang = 0.407148, .color="red"}; //should be 761
+    struct Observations landmark10 = {.land_dist = 1052, .land_ang = -0.9914568, .color="blue"}; //should be 1100
+    struct Landmarks land_list5;
+    land_list5.size = 0;
+    land_list5.item[0] = landmark9;
+    land_list5.size++;
+    land_list5.item[1] = landmark10;
+    land_list5.size++;
+
+    results = kalman_filter(state_size, results4.new_state, results4.new_var, displacement5, land_list5, &seen_land_list, control_noise, measure_noise);
+
+
+    float precision= 0.2f; //accept 20% error
+    //change into measuring landmark accuracy
+    if (results.new_state[3][0]<700*(1+precision) && results.new_state[3][0]>700*(1-precision) ){
+        if (results.new_state[4][0]<1000*(1+precision) && results.new_state[4][0]>1000*(1-precision) ){
+            if (results.new_state[5][0]<1500*(1+precision) && results.new_state[5][0]>1500*(1-precision) ){
+                if (results.new_state[6][0]<300*(1+precision) && results.new_state[6][0]>300*(1-precision) ){
+           
+           
+                    return 0;
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+
+
+int test_combined_5Steps_2Balls_inaccurate() { //to test this, neee
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{200000,0},{0, 0.007}}; //around 450cm 5 degree error
+    float state[7][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {0},
+                         {0},
+                         {0},
+                         {0}};
+
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[7][7] = {{10, 0, 0, 0, 0 , 0, 0},
+                       {0, 10, 0, 0, 0 , 0, 0},
+                       {0, 0, 0.03, 0, 0 ,0 ,0},
+                       {0, 0, 0, 10000000, 0 ,0,0},
+                       {0, 0, 0, 0, 10000000 ,0,0},
+                       {0,0 , 0, 0, 0, 10000000 , 0},
+                       {0,0, 0,0,0,0,10000000}};
+                        
+   float displacement1[3][1] = {{0},
+                                {0},
+                                {-0.785398}}; 
+    struct Observations landmark1 = {.land_dist = 1520, .land_ang =0.17467, .color="red"};//should be 1220
+    struct Observations landmark2 = {.land_dist = 1929, .land_ang = -0.588, .color="red"}; //should be 1529
+
+    struct Landmarks land_list1;
+    land_list1.size = 0;
+    land_list1.item[0] = landmark1;
+    land_list1.size++;
+    land_list1.item[land_list1.size] = landmark2;
+    int seen_len;
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    struct Kal_Res results, results1;
+    results1 = kalman_filter(state_size, state, var, displacement1, land_list1, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement2[3][1] = {{100}, {200}, {0.32175}};
+    struct Observations landmark3 = {.land_dist = 1300, .land_ang = -0.1798, .color="red"}; // 1000, 0
+    struct Observations landmark4 = {.land_dist = 1503, .land_ang = -1.036, .color="blue"}; //1403
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark3;
+    land_list2.size++;
+    land_list2.item[1] =  landmark4;
+    land_list2.size++;
+    struct Kal_Res results2;
+    results2 = kalman_filter(state_size, results1.new_state, results1.new_var, displacement2, land_list2, &seen_land_list, control_noise, measure_noise);
+
+    float displacement3[3][1] = {{300}, {100}, {-0.785448}};
+    struct Observations landmark5 = {.land_dist = 800, .land_ang = 0.8442, .color="red"}; // 761
+    struct Observations landmark6 = {.land_dist = 1000, .land_ang = -0.-0.3217, .color="blue"}; // 1100
+    struct Landmarks land_list3;
+    land_list3.size = 0;
+    land_list3.item[0] = landmark5;
+    land_list3.size++;
+    land_list3.item[1] = landmark6;
+    land_list3.size++;
+    struct Kal_Res results3;
+    results3 = kalman_filter(state_size, results2.new_state, results2.new_var, displacement3, land_list3, &seen_land_list, control_noise, measure_noise);
+
+    float displacement4[3][1] = {{100}, {300}, {0.927}};
+    struct Observations landmark7 = {.land_dist = 550, .land_ang = -0.14185, .color="red"}; // 447
+    struct Observations landmark8 = {.land_dist = 1350, .land_ang = -1.5404, .color="blue"}; // 1044
+    struct Landmarks land_list4;
+    land_list4.size = 0;
+    land_list4.item[0] = landmark7;
+    land_list4.size++;
+    land_list4.item[1] = landmark8;
+    land_list4.size++;
+    struct Kal_Res results4;
+    results4 = kalman_filter(state_size, results3.new_state, results3.new_var, displacement4, land_list4, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement5[3][1] = {{0}, {0}, {-0.549}};
+    struct Observations landmark9 = {.land_dist = 325, .land_ang = 0.407148, .color="red"}; // 447
+    struct Observations landmark10 = {.land_dist = 822, .land_ang = -0.9914568, .color="blue"}; // 1100
+    struct Landmarks land_list5;
+    land_list5.size = 0;
+    land_list5.item[0] = landmark9;
+    land_list5.size++;
+    land_list5.item[1] = landmark10;
+    land_list5.size++;
+
+    results = kalman_filter(state_size, results4.new_state, results4.new_var, displacement5, land_list5, &seen_land_list, control_noise, measure_noise);
+
+
+    float precision= 0.2f; //accept 20% error
+    //change into measuring landmark accuracy
+    if (results.new_state[3][0]<700*(1+precision) && results.new_state[3][0]>700*(1-precision) ){
+        if (results.new_state[4][0]<1000*(1+precision) && results.new_state[4][0]>1000*(1-precision) ){
+            if (results.new_state[5][0]<1500*(1+precision) && results.new_state[5][0]>1500*(1-precision) ){
+                if (results.new_state[6][0]<300*(1+precision) && results.new_state[6][0]>300*(1-precision) ){
+           
+           
+                    return 0;
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+
+int test_combined_6Steps_2Balls () { //to test this, neee
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{200000,0},{0, 0.007}}; //around 450cm 5 degree error
+    float state[7][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {0},
+                         {0},
+                         {0},
+                         {0}};
+
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[7][7] = {{10, 0, 0, 0, 0 , 0, 0},
+                       {0, 10, 0, 0, 0 , 0, 0},
+                       {0, 0, 0.03, 0, 0 ,0 ,0},
+                       {0, 0, 0, 10000000, 0 ,0,0},
+                       {0, 0, 0, 0, 10000000 ,0,0},
+                       {0,0 , 0, 0, 0, 10000000 , 0},
+                       {0,0, 0,0,0,0,10000000}};
+                        
+   float displacement1[3][1] = {{0},
+                                {0},
+                                {-0.785398}}; 
+    struct Observations landmark1 = {.land_dist = 1520, .land_ang =0.17467, .color="red"};//should be 1220
+    struct Observations landmark2 = {.land_dist = 1929, .land_ang = -0.588, .color="red"}; //should be 1529
+
+    struct Landmarks land_list1;
+    land_list1.size = 0;
+    land_list1.item[0] = landmark1;
+    land_list1.size++;
+    land_list1.item[land_list1.size] = landmark2;
+    int seen_len;
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    struct Kal_Res results, results1;
+    results1 = kalman_filter(state_size, state, var, displacement1, land_list1, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement2[3][1] = {{100}, {200}, {0.32175}};
+    struct Observations landmark3 = {.land_dist = 1300, .land_ang = -0.1798, .color="red"}; // 1000, 0
+    struct Observations landmark4 = {.land_dist = 1503, .land_ang = -1.036, .color="blue"}; //1403
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark3;
+    land_list2.size++;
+    land_list2.item[1] =  landmark4;
+    land_list2.size++;
+    struct Kal_Res results2;
+    results2 = kalman_filter(state_size, results1.new_state, results1.new_var, displacement2, land_list2, &seen_land_list, control_noise, measure_noise);
+
+    float displacement3[3][1] = {{300}, {100}, {-0.785448}};
+    struct Observations landmark5 = {.land_dist = 800, .land_ang = 0.8442, .color="red"}; // 761
+    struct Observations landmark6 = {.land_dist = 1000, .land_ang = -0.-0.3217, .color="blue"}; // 1100
+    struct Landmarks land_list3;
+    land_list3.size = 0;
+    land_list3.item[0] = landmark5;
+    land_list3.size++;
+    land_list3.item[1] = landmark6;
+    land_list3.size++;
+    struct Kal_Res results3;
+    results3 = kalman_filter(state_size, results2.new_state, results2.new_var, displacement3, land_list3, &seen_land_list, control_noise, measure_noise);
+
+    float displacement4[3][1] = {{100}, {300}, {0.927}};
+    struct Observations landmark7 = {.land_dist = 550, .land_ang = -0.14185, .color="red"}; // 447
+    struct Observations landmark8 = {.land_dist = 1350, .land_ang = -1.5404, .color="blue"}; // 1044
+    struct Landmarks land_list4;
+    land_list4.size = 0;
+    land_list4.item[0] = landmark7;
+    land_list4.size++;
+    land_list4.item[1] = landmark8;
+    land_list4.size++;
+    struct Kal_Res results4;
+    results4 = kalman_filter(state_size, results3.new_state, results3.new_var, displacement4, land_list4, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement5[3][1] = {{0}, {0}, {-0.549}};
+    struct Observations landmark9 = {.land_dist = 325, .land_ang = 0.407148, .color="red"}; // 447
+    struct Observations landmark10 = {.land_dist = 822, .land_ang = -0.9914568, .color="blue"}; // 1100
+    struct Landmarks land_list5;
+    land_list5.size = 0;
+    land_list5.item[0] = landmark9;
+    land_list5.size++;
+    land_list5.item[1] = landmark10;
+    land_list5.size++;
+    struct Kal_Res results5;
+    results5 = kalman_filter(state_size, results4.new_state, results4.new_var, displacement5, land_list5, &seen_land_list, control_noise, measure_noise);
+
+    float displacement6[3][1] = {{50}, {100}, {0.407}};
+    struct Observations landmark11 = {.land_dist = 335, .land_ang = 0.0, .color="red"}; // 447
+    struct Observations landmark12 = {.land_dist = 1020, .land_ang = -1.5057, .color="blue"}; // 1100
+    struct Landmarks land_list6;
+    land_list6.size = 0;
+    land_list6.item[0] = landmark11;
+    land_list6.size++;
+    land_list6.item[1] = landmark12;
+    land_list6.size++;
+
+    results = kalman_filter(state_size, results5.new_state, results5.new_var, displacement6, land_list6, &seen_land_list, control_noise, measure_noise);
+
+
+    float precision= 0.2f; //accept 20% error
+    //change into measuring landmark accuracy
+    if (results.new_state[3][0]<700*(1+precision) && results.new_state[3][0]>700*(1-precision) ){
+        if (results.new_state[4][0]<1000*(1+precision) && results.new_state[4][0]>1000*(1-precision) ){
+            if (results.new_state[5][0]<1500*(1+precision) && results.new_state[5][0]>1500*(1-precision) ){
+                if (results.new_state[6][0]<300*(1+precision) && results.new_state[6][0]>300*(1-precision) ){
+           
+           
+                    return 0;
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+
+
+int test_combined_7Steps_2Balls () { //to test this, neee
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
+    float measure_noise[2][2] = {{200000,0},{0, 0.007}}; //around 450cm 5 degree error
+    float state[7][1] = {{0},
+                         {0},
+                         {M_PI_2},
+                         {0},
+                         {0},
+                         {0},
+                         {0}};
+
+    int state_size = sizeof(state) / sizeof(state[0]);
+    float var[7][7] = {{10, 0, 0, 0, 0 , 0, 0},
+                       {0, 10, 0, 0, 0 , 0, 0},
+                       {0, 0, 0.03, 0, 0 ,0 ,0},
+                       {0, 0, 0, 10000000, 0 ,0,0},
+                       {0, 0, 0, 0, 10000000 ,0,0},
+                       {0,0 , 0, 0, 0, 10000000 , 0},
+                       {0,0, 0,0,0,0,10000000}};
+                        
+   float displacement1[3][1] = {{0},
+                                {0},
+                                {-0.785398}}; 
+    struct Observations landmark1 = {.land_dist = 1520, .land_ang =0.17467, .color="red"};//should be 1220
+    struct Observations landmark2 = {.land_dist = 1929, .land_ang = -0.588, .color="red"}; //should be 1529
+
+    struct Landmarks land_list1;
+    land_list1.size = 0;
+    land_list1.item[0] = landmark1;
+    land_list1.size++;
+    land_list1.item[land_list1.size] = landmark2;
+    int seen_len;
+    struct Seen_Land_List seen_land_list;
+    seen_land_list.size = 0;
+    struct Kal_Res results, results1;
+    results1 = kalman_filter(state_size, state, var, displacement1, land_list1, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement2[3][1] = {{100}, {200}, {0.32175}};
+    struct Observations landmark3 = {.land_dist = 1300, .land_ang = -0.1798, .color="red"}; // 1000, 0
+    struct Observations landmark4 = {.land_dist = 1503, .land_ang = -1.036, .color="blue"}; //1403
+    struct Landmarks land_list2;
+    land_list2.size = 0;
+    land_list2.item[0] = landmark3;
+    land_list2.size++;
+    land_list2.item[1] =  landmark4;
+    land_list2.size++;
+    struct Kal_Res results2;
+    results2 = kalman_filter(state_size, results1.new_state, results1.new_var, displacement2, land_list2, &seen_land_list, control_noise, measure_noise);
+
+    float displacement3[3][1] = {{300}, {100}, {-0.785448}};
+    struct Observations landmark5 = {.land_dist = 800, .land_ang = 0.8442, .color="red"}; // 761
+    struct Observations landmark6 = {.land_dist = 1000, .land_ang = -0.-0.3217, .color="blue"}; // 1100
+    struct Landmarks land_list3;
+    land_list3.size = 0;
+    land_list3.item[0] = landmark5;
+    land_list3.size++;
+    land_list3.item[1] = landmark6;
+    land_list3.size++;
+    struct Kal_Res results3;
+    results3 = kalman_filter(state_size, results2.new_state, results2.new_var, displacement3, land_list3, &seen_land_list, control_noise, measure_noise);
+
+    float displacement4[3][1] = {{100}, {300}, {0.927}};
+    struct Observations landmark7 = {.land_dist = 550, .land_ang = -0.14185, .color="red"}; // 447
+    struct Observations landmark8 = {.land_dist = 1350, .land_ang = -1.5404, .color="blue"}; // 1044
+    struct Landmarks land_list4;
+    land_list4.size = 0;
+    land_list4.item[0] = landmark7;
+    land_list4.size++;
+    land_list4.item[1] = landmark8;
+    land_list4.size++;
+    struct Kal_Res results4;
+    results4 = kalman_filter(state_size, results3.new_state, results3.new_var, displacement4, land_list4, &seen_land_list, control_noise, measure_noise);
+
+
+    float displacement5[3][1] = {{0}, {0}, {-0.549}};
+    struct Observations landmark9 = {.land_dist = 325, .land_ang = 0.407148, .color="red"}; // 447
+    struct Observations landmark10 = {.land_dist = 822, .land_ang = -0.9914568, .color="blue"}; // 1100
+    struct Landmarks land_list5;
+    land_list5.size = 0;
+    land_list5.item[0] = landmark9;
+    land_list5.size++;
+    land_list5.item[1] = landmark10;
+    land_list5.size++;
+    struct Kal_Res results5;
+    results5 = kalman_filter(state_size, results4.new_state, results4.new_var, displacement5, land_list5, &seen_land_list, control_noise, measure_noise);
+
+    float displacement6[3][1] = {{50}, {100}, {0.407}};
+    struct Observations landmark11 = {.land_dist = 335, .land_ang = 0.0, .color="red"}; // 335
+    struct Observations landmark12 = {.land_dist = 1020, .land_ang = -1.5057, .color="blue"}; // 1030
+    struct Landmarks land_list6;
+    land_list6.size = 0;
+    land_list6.item[0] = landmark11;
+    land_list6.size++;
+    land_list6.item[1] = landmark12;
+    land_list6.size++;
+    struct Kal_Res results6;
+    results6 = kalman_filter(state_size, results5.new_state, results5.new_var, displacement6, land_list6, &seen_land_list, control_noise, measure_noise);
+
+    float displacement7[3][1] = {{0}, {0}, {-0.70714}};
+    struct Observations landmark13 = {.land_dist = 335, .land_ang = 0.707, .color="red"}; // 335
+    struct Observations landmark14 = {.land_dist = 1010, .land_ang = -0.798, .color="blue"}; // 1030
+    struct Landmarks land_list7;
+    land_list7.size = 0;
+    land_list7.item[0] = landmark13;
+    land_list7.size++;
+    land_list7.item[1] = landmark14;
+    land_list7.size++;
+
+    results = kalman_filter(state_size, results6.new_state, results6.new_var, displacement7, land_list7, &seen_land_list, control_noise, measure_noise);
+
+
+    float precision= 0.2f; //accept 20% error
+    //change into measuring landmark accuracy
+    if (results.new_state[3][0]<700*(1+precision) && results.new_state[3][0]>700*(1-precision) ){
+        if (results.new_state[4][0]<1000*(1+precision) && results.new_state[4][0]>1000*(1-precision) ){
+            if (results.new_state[5][0]<1500*(1+precision) && results.new_state[5][0]>1500*(1-precision) ){
+                if (results.new_state[6][0]<300*(1+precision) && results.new_state[6][0]>300*(1-precision) ){
+           
+           
+                    return 0;
+                }
+            }
+        }
+    }
+    return -1;
+}
+
 int main(){
     //testVariance();
     //test_combined1();
@@ -485,6 +942,40 @@ int main(){
         successTestCounter++;
     } else {
         printf("test_combined_4Steps_2Balls - FAIL\n");
+    }
+    testCounter++;
+
+     if (test_combined_5Steps_2Balls() == 0) {
+        printf("test_combined_5Steps_2Balls - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_5Steps_2Balls - FAIL\n");
+    }
+    testCounter++;
+
+    if (test_combined_5Steps_2Balls_inaccurate() == 0) {
+        printf("test_combined_5Steps_2Balls_inaccurate - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_5Steps_2Balls_inaccurate - FAIL\n");
+    }
+    testCounter++;
+
+
+    if (test_combined_6Steps_2Balls() == 0) {
+        printf("test_combined_6Steps_2Balls - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_6Steps_2Balls - FAIL\n");
+    }
+    testCounter++;
+
+
+    if (test_combined_7Steps_2Balls() == 0) {
+        printf("test_combined_7Steps_2Balls - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_combined_7Steps_2Balls - FAIL\n");
     }
     testCounter++;
     

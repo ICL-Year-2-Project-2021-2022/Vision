@@ -803,7 +803,7 @@ int test_combined_3Steps_RightUpRight_Covariance_Initlialisation() {
     land_list.size++;
     int seen_len;
     struct Seen_Land_List seen_land_list;
-    seen_land_list.size = 0;
+    seen_land_list.size = 0; 
     struct Kal_Res results, results_tmp;
     results_tmp = kalman_filter(state_size, state, var, displacement_tmp, land_list, &seen_land_list, control_noise, measure_noise);
 
