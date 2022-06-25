@@ -341,12 +341,17 @@ float floatAbs(float a) {
 
 // this needs to be tested with more angles
 float angleOfSmallestRotation(float start, float end) {
-    float first = floatAbs(end - start);
-    float second = floatAbs(end - (start + 2 * M_PI));
-    if (first < second) {
-        return end - start;
-    } else {
-        return end - (start + M_2_PI);
+    if (end-start>0 && end-start<=M_PI){
+        return end-start;
+    }
+    else if (end-start>0 && end-start>M_PI){
+        return start-end + M_PI;
+    }
+    else if (end-start<0 && end-start>-M_PI){
+        return end-start;
+    }
+    else{
+        return start-end-M_PI;
     }
 }
 
