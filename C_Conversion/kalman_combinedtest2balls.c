@@ -85,7 +85,7 @@ void correctionStep(size_t state_size, float old_state[state_size][1], float pre
         }
     
         float jacobian[2][state_size];
-        computeJacobianHMatrix(state_size, jacobian, seenLandmarkIndex, q, delta);
+        computeJacobianHMatrix(state_size, jacobian, color_num, q, delta);
 
         float kalman_gain[state_size][2];
         computeKalmanGain(state_size, pred_var, jacobian, kalman_gain, measure_noise);
@@ -233,6 +233,13 @@ void computeJacobianHMatrix(size_t state_size, float jacobian[2][state_size], in
                 F_matrix[i][j] = 0;
             }
         }
+    }
+    printf("F_matrix\n");
+    for (int i=0; i<5; i++){
+        for (j=0; j<state_size; j++){
+            printf("%f ", F_matrix[i][j]);
+        }
+        printf("\n");
     }
     //should optimise this line, too many divisions.
     float jacobian_low[2][5] = {{-delta[0] / sqrt(q), -delta[1] / sqrt(q), 0,  delta[0] / sqrt(q),
@@ -1403,7 +1410,7 @@ int test_combined_12Steps_2Balls_FuckedDistance () { //to test this, neee
 
 
     float displacement2[3][1] = {{0}, {0}, {-0.523598776}};
-    struct Observations landmark3 = {.land_dist = 100, .land_ang = -0.087127189, .color="red"}; // 1000, 0
+    struct Observations landmark3 = {.land_dist = 1500, .land_ang = -0.087127189, .color="red"}; // 1000, 0
     struct Observations landmark4 = {.land_dist = 1800, .land_ang = -0.849801991, .color="blue"}; //1403
     struct Landmarks land_list2;
     land_list2.size = 0;
