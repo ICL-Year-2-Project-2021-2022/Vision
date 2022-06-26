@@ -56,7 +56,7 @@ logic[12:0] wraddress, rdaddress, s_address_d;
 
 always @(*) begin	
 	grab_px = x_pixel[clog_sub_factor -1 :0] == 7 && y_pixel[ clog_sub_factor -1 : 0] == 7 && ~halt_current && packet_video;
-	compressed = {red[7:6], green[7:5], blue[7:5]};
+	compressed = {1'b1, red[7:6], green[7:5], blue[7:6]};
 	//compressed = {red, green, blue};
 	wraddress = {x_pixel[9:3], y_pixel[8:3]};
 	rdaddress = s_address;

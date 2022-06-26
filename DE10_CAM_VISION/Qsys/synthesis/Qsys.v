@@ -95,6 +95,16 @@ module Qsys (
 	wire         com_counter_1_avalon_streaming_source_ready;                       // PIXEL_GRABBER_RGB_4:sink_ready -> COM_COUNTER_1:source_ready
 	wire         com_counter_1_avalon_streaming_source_startofpacket;               // COM_COUNTER_1:source_sop -> PIXEL_GRABBER_RGB_4:sink_sop
 	wire         com_counter_1_avalon_streaming_source_endofpacket;                 // COM_COUNTER_1:source_eop -> PIXEL_GRABBER_RGB_4:sink_eop
+	wire         pixel_grabber_rgb_4_avalon_streaming_source_valid;                 // PIXEL_GRABBER_RGB_4:source_valid -> ST_TERMINATOR_0:sink_valid
+	wire  [23:0] pixel_grabber_rgb_4_avalon_streaming_source_data;                  // PIXEL_GRABBER_RGB_4:source_data -> ST_TERMINATOR_0:sink_data
+	wire         pixel_grabber_rgb_4_avalon_streaming_source_ready;                 // ST_TERMINATOR_0:sink_ready -> PIXEL_GRABBER_RGB_4:source_ready
+	wire         pixel_grabber_rgb_4_avalon_streaming_source_startofpacket;         // PIXEL_GRABBER_RGB_4:source_sop -> ST_TERMINATOR_0:sink_sop
+	wire         pixel_grabber_rgb_4_avalon_streaming_source_endofpacket;           // PIXEL_GRABBER_RGB_4:source_eop -> ST_TERMINATOR_0:sink_eop
+	wire         com_counter_2_avalon_streaming_source_valid;                       // COM_COUNTER_2:source_valid -> ST_TERMINATOR_1:sink_valid
+	wire  [23:0] com_counter_2_avalon_streaming_source_data;                        // COM_COUNTER_2:source_data -> ST_TERMINATOR_1:sink_data
+	wire         com_counter_2_avalon_streaming_source_ready;                       // ST_TERMINATOR_1:sink_ready -> COM_COUNTER_2:source_ready
+	wire         com_counter_2_avalon_streaming_source_startofpacket;               // COM_COUNTER_2:source_sop -> ST_TERMINATOR_1:sink_sop
+	wire         com_counter_2_avalon_streaming_source_endofpacket;                 // COM_COUNTER_2:source_eop -> ST_TERMINATOR_1:sink_eop
 	wire         terasic_camera_0_avalon_streaming_source_valid;                    // TERASIC_CAMERA_0:st_valid -> alt_vip_vfb_0:din_valid
 	wire  [23:0] terasic_camera_0_avalon_streaming_source_data;                     // TERASIC_CAMERA_0:st_data -> alt_vip_vfb_0:din_data
 	wire         terasic_camera_0_avalon_streaming_source_ready;                    // alt_vip_vfb_0:din_ready -> TERASIC_CAMERA_0:st_ready
@@ -115,16 +125,6 @@ module Qsys (
 	wire         pixel_grabber_rgb_2_avalon_streaming_source_ready;                 // fir_1:din_ready -> PIXEL_GRABBER_RGB_2:source_ready
 	wire         pixel_grabber_rgb_2_avalon_streaming_source_startofpacket;         // PIXEL_GRABBER_RGB_2:source_sop -> fir_1:din_startofpacket
 	wire         pixel_grabber_rgb_2_avalon_streaming_source_endofpacket;           // PIXEL_GRABBER_RGB_2:source_eop -> fir_1:din_endofpacket
-	wire         com_counter_2_avalon_streaming_source_valid;                       // COM_COUNTER_2:source_valid -> st_sink_bfm_0:sink_valid
-	wire  [23:0] com_counter_2_avalon_streaming_source_data;                        // COM_COUNTER_2:source_data -> st_sink_bfm_0:sink_data
-	wire         com_counter_2_avalon_streaming_source_ready;                       // st_sink_bfm_0:sink_ready -> COM_COUNTER_2:source_ready
-	wire         com_counter_2_avalon_streaming_source_startofpacket;               // COM_COUNTER_2:source_sop -> st_sink_bfm_0:sink_startofpacket
-	wire         com_counter_2_avalon_streaming_source_endofpacket;                 // COM_COUNTER_2:source_eop -> st_sink_bfm_0:sink_endofpacket
-	wire         pixel_grabber_rgb_4_avalon_streaming_source_valid;                 // PIXEL_GRABBER_RGB_4:source_valid -> st_sink_bfm_1:sink_valid
-	wire  [23:0] pixel_grabber_rgb_4_avalon_streaming_source_data;                  // PIXEL_GRABBER_RGB_4:source_data -> st_sink_bfm_1:sink_data
-	wire         pixel_grabber_rgb_4_avalon_streaming_source_ready;                 // st_sink_bfm_1:sink_ready -> PIXEL_GRABBER_RGB_4:source_ready
-	wire         pixel_grabber_rgb_4_avalon_streaming_source_startofpacket;         // PIXEL_GRABBER_RGB_4:source_sop -> st_sink_bfm_1:sink_startofpacket
-	wire         pixel_grabber_rgb_4_avalon_streaming_source_endofpacket;           // PIXEL_GRABBER_RGB_4:source_eop -> st_sink_bfm_1:sink_endofpacket
 	wire         pixel_buffer_0_avalon_streaming_source_1_valid;                    // PIXEL_BUFFER_0:source_valid -> PIXEL_BUFFER_WB_0:sink_valid
 	wire  [23:0] pixel_buffer_0_avalon_streaming_source_1_data;                     // PIXEL_BUFFER_0:source_data -> PIXEL_BUFFER_WB_0:sink_data
 	wire         pixel_buffer_0_avalon_streaming_source_1_ready;                    // PIXEL_BUFFER_WB_0:sink_ready -> PIXEL_BUFFER_0:source_ready
@@ -176,7 +176,7 @@ module Qsys (
 	wire         st_pipeline_stage_1_source0_startofpacket;                         // st_pipeline_stage_1:out_startofpacket -> st_pipeline_stage_2:in_startofpacket
 	wire         st_pipeline_stage_1_source0_endofpacket;                           // st_pipeline_stage_1:out_endofpacket -> st_pipeline_stage_2:in_endofpacket
 	wire         altpll_2_c0_clk;                                                   // altpll_2:c0 -> [irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, irq_synchronizer_002:sender_clk, irq_synchronizer_003:sender_clk, mm_interconnect_0:altpll_2_c0_clk, nios2_gen2:clk, onchip_memory2_0:clk, pio_0:clk, rst_controller_004:clk, rst_controller_005:clk, timer:clk, timer_0:clk, timer_1:clk]
-	wire         altpll_1_c0_clk;                                                   // altpll_1:c0 -> [COLOR_FILTER_0:clk, COLOR_FILTER_1:clk, COLOR_FILTER_2:clk, COM_COUNTER_0:clk, COM_COUNTER_1:clk, COM_COUNTER_2:clk, EDGE_BINS_0:clk, OBSTACLE_DIST_0:clk, PIXEL_BUFFER_0:clk, PIXEL_BUFFER_WB_0:clk, PIXEL_GRABBER_HSV:clk, PIXEL_GRABBER_RGB:clk, PIXEL_GRABBER_RGB_0:clk, PIXEL_GRABBER_RGB_1:clk, PIXEL_GRABBER_RGB_2:clk, PIXEL_GRABBER_RGB_3:clk, PIXEL_GRABBER_RGB_4:clk, RGB_TO_HSV:clk, avalon_st_adapter:in_clk_0_clk, avalon_st_adapter_001:in_clk_0_clk, avalon_st_adapter_002:in_clk_0_clk, avalon_st_adapter_004:in_clk_0_clk, avalon_st_adapter_006:in_clk_0_clk, avalon_st_adapter_007:in_clk_0_clk, avalon_st_adapter_008:in_clk_0_clk, avalon_st_adapter_009:in_clk_0_clk, avalon_st_adapter_010:in_clk_0_clk, avalon_st_adapter_011:in_clk_0_clk, dc_fifo_0:out_clk, dc_fifo_1:in_clk, fir_0_0:main_clock, fir_0_1:main_clock, fir_1:main_clock, fir_2:main_clock, mm_interconnect_0:altpll_1_c0_clk, rst_controller:clk, st_pipeline_stage_0:clk, st_pipeline_stage_0_1:clk, st_pipeline_stage_1:clk, st_pipeline_stage_2:clk, st_pipeline_stage_3:clk, st_pipeline_stage_4:clk, st_sink_bfm_0:clk, st_sink_bfm_1:clk, st_splitter_0:clk]
+	wire         altpll_1_c0_clk;                                                   // altpll_1:c0 -> [COLOR_FILTER_0:clk, COLOR_FILTER_1:clk, COLOR_FILTER_2:clk, COM_COUNTER_0:clk, COM_COUNTER_1:clk, COM_COUNTER_2:clk, EDGE_BINS_0:clk, OBSTACLE_DIST_0:clk, PIXEL_BUFFER_0:clk, PIXEL_BUFFER_WB_0:clk, PIXEL_GRABBER_HSV:clk, PIXEL_GRABBER_RGB:clk, PIXEL_GRABBER_RGB_0:clk, PIXEL_GRABBER_RGB_1:clk, PIXEL_GRABBER_RGB_2:clk, PIXEL_GRABBER_RGB_3:clk, PIXEL_GRABBER_RGB_4:clk, RGB_TO_HSV:clk, ST_TERMINATOR_0:clk, ST_TERMINATOR_1:clk, avalon_st_adapter:in_clk_0_clk, avalon_st_adapter_001:in_clk_0_clk, avalon_st_adapter_002:in_clk_0_clk, avalon_st_adapter_004:in_clk_0_clk, avalon_st_adapter_006:in_clk_0_clk, avalon_st_adapter_007:in_clk_0_clk, avalon_st_adapter_008:in_clk_0_clk, avalon_st_adapter_009:in_clk_0_clk, avalon_st_adapter_010:in_clk_0_clk, avalon_st_adapter_011:in_clk_0_clk, dc_fifo_0:out_clk, dc_fifo_1:in_clk, fir_0_0:main_clock, fir_0_1:main_clock, fir_1:main_clock, fir_2:main_clock, mm_interconnect_0:altpll_1_c0_clk, rst_controller:clk, st_pipeline_stage_0:clk, st_pipeline_stage_0_1:clk, st_pipeline_stage_1:clk, st_pipeline_stage_2:clk, st_pipeline_stage_3:clk, st_pipeline_stage_4:clk, st_splitter_0:clk]
 	wire         altpll_0_c2_clk;                                                   // altpll_0:c2 -> [TERASIC_AUTO_FOCUS_0:clk, TERASIC_CAMERA_0:clk, alt_vip_itc_0:is_clk, alt_vip_vfb_0:clock, avalon_st_adapter_003:in_clk_0_clk, avalon_st_adapter_005:in_clk_0_clk, data_format_adapter_0:clk, dc_fifo_0:in_clk, dc_fifo_1:out_clk, mm_interconnect_0:altpll_0_c2_clk, mm_interconnect_1:altpll_0_c2_clk, rst_controller_001:clk, sdram:clk]
 	wire  [31:0] nios2_gen2_data_master_readdata;                                   // mm_interconnect_0:nios2_gen2_data_master_readdata -> nios2_gen2:d_readdata
 	wire         nios2_gen2_data_master_waitrequest;                                // mm_interconnect_0:nios2_gen2_data_master_waitrequest -> nios2_gen2:d_waitrequest
@@ -597,7 +597,7 @@ module Qsys (
 	wire         avalon_st_adapter_011_out_0_ready;                                 // PIXEL_GRABBER_RGB_1:sink_ready -> avalon_st_adapter_011:out_0_ready
 	wire         avalon_st_adapter_011_out_0_startofpacket;                         // avalon_st_adapter_011:out_0_startofpacket -> PIXEL_GRABBER_RGB_1:sink_sop
 	wire         avalon_st_adapter_011_out_0_endofpacket;                           // avalon_st_adapter_011:out_0_endofpacket -> PIXEL_GRABBER_RGB_1:sink_eop
-	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [COLOR_FILTER_0:reset_n, COLOR_FILTER_1:reset_n, COLOR_FILTER_2:reset_n, COM_COUNTER_0:reset_n, COM_COUNTER_1:reset_n, COM_COUNTER_2:reset_n, EDGE_BINS_0:reset_n, OBSTACLE_DIST_0:reset_n, PIXEL_BUFFER_0:reset_n, PIXEL_BUFFER_WB_0:reset_n, PIXEL_GRABBER_HSV:reset_n, PIXEL_GRABBER_RGB:reset_n, PIXEL_GRABBER_RGB_0:reset_n, PIXEL_GRABBER_RGB_1:reset_n, PIXEL_GRABBER_RGB_2:reset_n, PIXEL_GRABBER_RGB_3:reset_n, PIXEL_GRABBER_RGB_4:reset_n, RGB_TO_HSV:reset_n, avalon_st_adapter:in_rst_0_reset, avalon_st_adapter_001:in_rst_0_reset, avalon_st_adapter_002:in_rst_0_reset, avalon_st_adapter_004:in_rst_0_reset, avalon_st_adapter_006:in_rst_0_reset, avalon_st_adapter_007:in_rst_0_reset, avalon_st_adapter_008:in_rst_0_reset, avalon_st_adapter_009:in_rst_0_reset, avalon_st_adapter_010:in_rst_0_reset, avalon_st_adapter_011:in_rst_0_reset, dc_fifo_0:out_reset_n, dc_fifo_1:in_reset_n, fir_0_0:main_reset, fir_0_1:main_reset, fir_1:main_reset, fir_2:main_reset, mm_interconnect_0:COLOR_FILTER_0_reset_reset_bridge_in_reset_reset, st_pipeline_stage_0:reset, st_pipeline_stage_0_1:reset, st_pipeline_stage_1:reset, st_pipeline_stage_2:reset, st_pipeline_stage_3:reset, st_pipeline_stage_4:reset, st_sink_bfm_0:reset, st_sink_bfm_1:reset, st_splitter_0:reset]
+	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [COLOR_FILTER_0:reset_n, COLOR_FILTER_1:reset_n, COLOR_FILTER_2:reset_n, COM_COUNTER_0:reset_n, COM_COUNTER_1:reset_n, COM_COUNTER_2:reset_n, EDGE_BINS_0:reset_n, OBSTACLE_DIST_0:reset_n, PIXEL_BUFFER_0:reset_n, PIXEL_BUFFER_WB_0:reset_n, PIXEL_GRABBER_HSV:reset_n, PIXEL_GRABBER_RGB:reset_n, PIXEL_GRABBER_RGB_0:reset_n, PIXEL_GRABBER_RGB_1:reset_n, PIXEL_GRABBER_RGB_2:reset_n, PIXEL_GRABBER_RGB_3:reset_n, PIXEL_GRABBER_RGB_4:reset_n, RGB_TO_HSV:reset_n, ST_TERMINATOR_0:reset_n, ST_TERMINATOR_1:reset_n, avalon_st_adapter:in_rst_0_reset, avalon_st_adapter_001:in_rst_0_reset, avalon_st_adapter_002:in_rst_0_reset, avalon_st_adapter_004:in_rst_0_reset, avalon_st_adapter_006:in_rst_0_reset, avalon_st_adapter_007:in_rst_0_reset, avalon_st_adapter_008:in_rst_0_reset, avalon_st_adapter_009:in_rst_0_reset, avalon_st_adapter_010:in_rst_0_reset, avalon_st_adapter_011:in_rst_0_reset, dc_fifo_0:out_reset_n, dc_fifo_1:in_reset_n, fir_0_0:main_reset, fir_0_1:main_reset, fir_1:main_reset, fir_2:main_reset, mm_interconnect_0:COLOR_FILTER_0_reset_reset_bridge_in_reset_reset, st_pipeline_stage_0:reset, st_pipeline_stage_0_1:reset, st_pipeline_stage_1:reset, st_pipeline_stage_2:reset, st_pipeline_stage_3:reset, st_pipeline_stage_4:reset, st_splitter_0:reset]
 	wire         nios2_gen2_debug_reset_request_reset;                              // nios2_gen2:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [TERASIC_AUTO_FOCUS_0:reset_n, TERASIC_CAMERA_0:reset_n, alt_vip_itc_0:rst, alt_vip_vfb_0:reset, avalon_st_adapter_003:in_rst_0_reset, avalon_st_adapter_005:in_rst_0_reset, data_format_adapter_0:reset_n, dc_fifo_0:in_reset_n, dc_fifo_1:out_reset_n, mm_interconnect_0:TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:alt_vip_vfb_0_reset_reset_bridge_in_reset_reset, sdram:reset_n]
 	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [altpll_0:reset, altpll_2:reset, mm_interconnect_0:altpll_2_inclk_interface_reset_reset_bridge_in_reset_reset]
@@ -1028,6 +1028,26 @@ module Qsys (
 		.s_readdata   (mm_interconnect_0_rgb_to_hsv_avalon_mm_slave_readdata),   //                        .readdata
 		.s_writedata  (mm_interconnect_0_rgb_to_hsv_avalon_mm_slave_writedata),  //                        .writedata
 		.s_address    (mm_interconnect_0_rgb_to_hsv_avalon_mm_slave_address)     //                        .address
+	);
+
+	ST_TERMINATOR st_terminator_0 (
+		.clk        (altpll_1_c0_clk),                                           //                 clock.clk
+		.reset_n    (~rst_controller_reset_out_reset),                           //                 reset.reset_n
+		.sink_data  (pixel_grabber_rgb_4_avalon_streaming_source_data),          // avalon_streaming_sink.data
+		.sink_valid (pixel_grabber_rgb_4_avalon_streaming_source_valid),         //                      .valid
+		.sink_ready (pixel_grabber_rgb_4_avalon_streaming_source_ready),         //                      .ready
+		.sink_sop   (pixel_grabber_rgb_4_avalon_streaming_source_startofpacket), //                      .startofpacket
+		.sink_eop   (pixel_grabber_rgb_4_avalon_streaming_source_endofpacket)    //                      .endofpacket
+	);
+
+	ST_TERMINATOR st_terminator_1 (
+		.clk        (altpll_1_c0_clk),                                     //                 clock.clk
+		.reset_n    (~rst_controller_reset_out_reset),                     //                 reset.reset_n
+		.sink_data  (com_counter_2_avalon_streaming_source_data),          // avalon_streaming_sink.data
+		.sink_valid (com_counter_2_avalon_streaming_source_valid),         //                      .valid
+		.sink_ready (com_counter_2_avalon_streaming_source_ready),         //                      .ready
+		.sink_sop   (com_counter_2_avalon_streaming_source_startofpacket), //                      .startofpacket
+		.sink_eop   (com_counter_2_avalon_streaming_source_endofpacket)    //                      .endofpacket
 	);
 
 	TERASIC_AUTO_FOCUS #(
@@ -1778,64 +1798,6 @@ module Qsys (
 		.in_error          (1'b0),                                      // (terminated)
 		.out_channel       (),                                          // (terminated)
 		.in_channel        (1'b0)                                       // (terminated)
-	);
-
-	altera_avalon_st_sink_bfm #(
-		.USE_PACKET       (1),
-		.USE_CHANNEL      (0),
-		.USE_ERROR        (0),
-		.USE_READY        (1),
-		.USE_VALID        (1),
-		.USE_EMPTY        (0),
-		.ST_SYMBOL_W      (8),
-		.ST_NUMSYMBOLS    (3),
-		.ST_CHANNEL_W     (1),
-		.ST_ERROR_W       (1),
-		.ST_EMPTY_W       (2),
-		.ST_READY_LATENCY (1),
-		.ST_BEATSPERCYCLE (1),
-		.ST_MAX_CHANNELS  (1),
-		.VHDL_ID          (0)
-	) st_sink_bfm_0 (
-		.clk                (altpll_1_c0_clk),                                     //       clk.clk
-		.reset              (rst_controller_reset_out_reset),                      // clk_reset.reset
-		.sink_data          (com_counter_2_avalon_streaming_source_data),          //      sink.data
-		.sink_valid         (com_counter_2_avalon_streaming_source_valid),         //          .valid
-		.sink_ready         (com_counter_2_avalon_streaming_source_ready),         //          .ready
-		.sink_startofpacket (com_counter_2_avalon_streaming_source_startofpacket), //          .startofpacket
-		.sink_endofpacket   (com_counter_2_avalon_streaming_source_endofpacket),   //          .endofpacket
-		.sink_empty         (2'b00),                                               // (terminated)
-		.sink_channel       (1'b0),                                                // (terminated)
-		.sink_error         (1'b0)                                                 // (terminated)
-	);
-
-	altera_avalon_st_sink_bfm #(
-		.USE_PACKET       (1),
-		.USE_CHANNEL      (0),
-		.USE_ERROR        (0),
-		.USE_READY        (1),
-		.USE_VALID        (1),
-		.USE_EMPTY        (0),
-		.ST_SYMBOL_W      (8),
-		.ST_NUMSYMBOLS    (3),
-		.ST_CHANNEL_W     (1),
-		.ST_ERROR_W       (1),
-		.ST_EMPTY_W       (2),
-		.ST_READY_LATENCY (1),
-		.ST_BEATSPERCYCLE (1),
-		.ST_MAX_CHANNELS  (1),
-		.VHDL_ID          (0)
-	) st_sink_bfm_1 (
-		.clk                (altpll_1_c0_clk),                                           //       clk.clk
-		.reset              (rst_controller_reset_out_reset),                            // clk_reset.reset
-		.sink_data          (pixel_grabber_rgb_4_avalon_streaming_source_data),          //      sink.data
-		.sink_valid         (pixel_grabber_rgb_4_avalon_streaming_source_valid),         //          .valid
-		.sink_ready         (pixel_grabber_rgb_4_avalon_streaming_source_ready),         //          .ready
-		.sink_startofpacket (pixel_grabber_rgb_4_avalon_streaming_source_startofpacket), //          .startofpacket
-		.sink_endofpacket   (pixel_grabber_rgb_4_avalon_streaming_source_endofpacket),   //          .endofpacket
-		.sink_empty         (2'b00),                                                     // (terminated)
-		.sink_channel       (1'b0),                                                      // (terminated)
-		.sink_error         (1'b0)                                                       // (terminated)
 	);
 
 	altera_avalon_st_splitter #(

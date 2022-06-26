@@ -310,6 +310,78 @@
    {
       datum _originalDeviceFamily
       {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
+   element Qsys
+   {
+      datum _originalDeviceFamily
+      {
          value = "Cyclone V";
          type = "String";
       }
@@ -343,78 +415,6 @@
       datum _originalDeviceFamily
       {
          value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Cyclone V";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
-   element Qsys
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Cyclone V";
          type = "String";
       }
    }
@@ -908,7 +908,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -2398,8 +2398,8 @@
   <parameter name="ecc_enabled" value="false" />
   <parameter name="enPRInitMode" value="false" />
   <parameter name="enableDiffWidth" value="false" />
-  <parameter name="initMemContent" value="false" />
-  <parameter name="initializationFileName" value="onchip_mem.hex" />
+  <parameter name="initMemContent" value="true" />
+  <parameter name="initializationFileName">/home/mp3120/nfshome/SmallVision/DE10_CAM_VISION/software/cam_vision2/mem_init/Qsys_onchip_memory2_0.hex</parameter>
   <parameter name="instanceID" value="NONE" />
   <parameter name="memorySize" value="60000" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
@@ -2409,7 +2409,7 @@
   <parameter name="singleClockOperation" value="false" />
   <parameter name="slave1Latency" value="1" />
   <parameter name="slave2Latency" value="1" />
-  <parameter name="useNonDefaultInitFile" value="false" />
+  <parameter name="useNonDefaultInitFile" value="true" />
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>

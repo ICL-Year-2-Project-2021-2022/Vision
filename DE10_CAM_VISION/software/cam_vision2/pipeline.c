@@ -31,7 +31,7 @@ void one_pipeline(){
 
 
 					//Wait two frame times
-						usleep(100000);
+						usleep(delay);
 
 
 					//Collect results

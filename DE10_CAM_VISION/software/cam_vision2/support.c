@@ -53,14 +53,14 @@ struct observation* initialize_observations(){
 	arr[6].code = 'W';
 	arr[6].mask_bottom = to_hex_code(0,00,0);
 	arr[6].mask_top = to_hex_code(255, 255, 255);
-	arr[6].threshold = 64;
+	arr[6].threshold = 80;
 
 
 	//Initialize Building 2 parameters --
 	arr[7].code = 'X';
 	arr[7].mask_bottom = to_hex_code(0,0,0);
 	arr[7].mask_top = to_hex_code(255, 255, 255);
-	arr[7].threshold = 64;
+	arr[7].threshold = 80;
 
 	return arr;
 }

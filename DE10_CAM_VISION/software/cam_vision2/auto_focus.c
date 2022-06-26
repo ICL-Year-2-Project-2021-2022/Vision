@@ -94,7 +94,7 @@ int Focus_Released(void){
   while((IORD(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x8000) ==0 && alt_nticks() < TimeOut ); // waiting for VCM release I2C bus
 
   if(alt_nticks() < TimeOut ) Released = TRUE;
-  else if (print) printf("\n =>¡¡Released check TimeOut!\n");
+  //else if (print) printf("\n =>¡¡Released check TimeOut!\n");
 
   usleep(10000);
 

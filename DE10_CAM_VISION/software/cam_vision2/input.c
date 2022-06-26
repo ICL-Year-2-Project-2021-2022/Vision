@@ -2,7 +2,7 @@
 
 
 void process_input(){
-	static alt_u8  manual_focus_step = 10;
+	static alt_u8  manual_focus_step = 50;
 	static alt_u16  current_focus = 300;
 	alt_u32 exposureTime = EXPOSURE_INIT;
 	alt_u16 gain = GAIN_INIT;
@@ -16,54 +16,56 @@ void process_input(){
 		   // touch KEY1 with selected routine to run
 		   else if ((IORD(KEY_BASE,0)&0x03) == 0x01){
 	    	   int sw = (IORD(SW_BASE, 0)& 0x03FF);
-	    	   usleep(1000000);
+	    	   IOWR(LED_BASE,0,511);
+	    	   usleep(500000);
+	    	   IOWR(LED_BASE,0,0);
+	    	   usleep(500000);
 
 	    	   switch(sw){
 				   case 1 : {
-					   auto_gain(140 , 2);
+					   auto_gain(120 , 2);
 					   break;
 				   }case 2: {
-					   auto_wb(140 , 3);
+					   auto_wb(120 , 3);
 					   break;
 				   }case 4: {
-					   IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, ~IORD(RGB_TO_HSV_BASE, HSV_ENABLED));
+					   IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, ~(IORD(RGB_TO_HSV_BASE, HSV_ENABLED)&0x1));
 					   if(print){
 						   printf("HSV: %x\n", IORD(RGB_TO_HSV_BASE, HSV_ENABLED));
 					   }
 					   break;
 				   }case 8: {
-					    IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, ~IORD(COM_COUNTER_0_BASE, THRESH_ENABLED));
-
+					   IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, ~(IORD(COLOR_FILTER_0_BASE, APPLY_MASK)&0x1));
 					   if(print){
 						   printf("MASK:  %x\n", IORD(COLOR_FILTER_0_BASE, APPLY_MASK));
 					   }
 					   break;
 				   }case 16: {
+					    IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, ~(IORD(COM_COUNTER_0_BASE, THRESH_ENABLED)&0x1));
+
+					   if(print){
+						   printf("Thresh:  %x\n", IORD(COLOR_FILTER_0_BASE, THRESH_ENABLED));
+					   }
+					   break;
+				   }case 256: {
+					   halt = !halt;
+					   break;
+				   }case 512: {
+					   slow = !slow;
+					   break;
+				   }case 3: {
 					   fir_load_unit(FIR_0_0_BASE);
 					   fir_load_unit(FIR_0_1_BASE);
 					   break;
-				   }case 32: {
+				   }case 5: {
 					   fir_load_avg(FIR_0_0_BASE);
 					   fir_load_unit(FIR_0_1_BASE);
 					   break;
-				   }case 64: {
+				   }case 6: {
 					   fir_load_sobel(FIR_0_0_BASE);
 					   fir_load_unit(FIR_0_1_BASE);
 					   break;
-				   }case 128: {
-					   halt = !halt;
-					   break;
-				   }case 256: {
-					   slow = !slow;
-					   break;
-				   }case 512: {
-					   IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, ~IORD(COLOR_FILTER_0_BASE, APPLY_MASK));
-					   if(print){
-						   printf("THRESH:  %x\n", IORD(COM_COUNTER_0_BASE, THRESH_ENABLED));
-					   }
-
-					   break;
-				   }case 768: {
+				   } case 768: {
 					   one = !one;
 					   break;
 				   }
@@ -96,20 +98,21 @@ void process_input(){
 					   }
 				   break;}
 			   case 'D': {
-				   if(one){
+				   	   IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
 					   fir_load_sobel(FIR_0_0_BASE);
 					   fir_load_vertical(FIR_0_1_BASE);
 					   //COM counter setup
 					   IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
 					   IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
 					   IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
-					   IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, 220);
+					   IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, 80);
 
-				   } else{
+					   usleep(delay);
+					   //printf("D\n");
+
 					   printf("%x %x %x %x", IORD(OBSTACLE_DIST_0_BASE, STRIPE_COUNT),
 							   IORD(OBSTACLE_DIST_0_BASE, STRIPE_DIST), IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MIN),
 							   IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MAX));
-				   }
 				   break;}
 			   case 'S': {
 				   halt = !halt;

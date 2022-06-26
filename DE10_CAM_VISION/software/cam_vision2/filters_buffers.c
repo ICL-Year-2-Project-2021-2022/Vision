@@ -77,7 +77,7 @@ void print_image(){
 	for(int y = 0; y <60; y++){
 		for (int x = 0; x < 80; x++){
 			alt_u32 pixel =(IORD(PIXEL_BUFFER_0_BASE, 64*x + y));
-			alt_u8 chr = (alt_u8) ((pixel)& 0x000000ff);
+			alt_u8 chr = (alt_u8) ((pixel)& 0x0000007f);
 
 			if (chr == '\n') chr--;
 			if(chr == ',') chr--;

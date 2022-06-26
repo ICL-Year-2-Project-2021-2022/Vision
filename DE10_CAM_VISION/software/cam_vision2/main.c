@@ -44,7 +44,7 @@ void get_building_hist(){
 
 int main(){
 
-	print = 1;
+	print = 0;
 	IOWR(LED_BASE, 0, 0);
 
 	//Sets stdin to nonblocking
@@ -92,7 +92,8 @@ int main(){
 	OV8865SetBlueGain(1222);
 
 //	//Autocalibration
-//	Focus_Init();
+
+
 //	auto_gain(160,2);
 //	auto_wb(128 ,2);
 //	auto_gain(160,2);
@@ -122,6 +123,10 @@ int main(){
 
 	fir_load_unit(FIR_0_0_BASE);
 
+	//Focus initialization
+	Focus_Init();
+	OV8865_FOCUS_Move_to(300);
+
 	usleep(100000);
 
 	//Initialize observation data structures
@@ -133,7 +138,7 @@ int main(){
 	//alt_ic_irq_enable (0, 2);
 	//alt_ic_isr_register(0,2, frame_isr,0,0);
 	//print_wb_buffer();
-
+	//printf("Focus: %x", Focus_Window(320,240));
 
 	delay = 50000;
 	halt = 0;
@@ -145,10 +150,11 @@ int main(){
 
   while(1){
 //	  	  IOWR(COLOR_FILTER_1_BASE, APPLY_MASK, 0);
-
-	  	  printf("Pre-pipe: %x\n", IORD(PIXEL_GRABBER_RGB_0_BASE,1));
-	  	  printf("Post mask: %x\n", IORD(PIXEL_GRABBER_RGB_2_BASE,1));
-	  	  printf("Post filter: %x\n", IORD(PIXEL_GRABBER_RGB_3_BASE,1));
+	  	  if (print){
+	  		  //printf("Pre-pipe: %x\n", IORD(PIXEL_GRABBER_RGB_0_BASE,1));
+	  		  //printf("Post mask: %x\n", IORD(PIXEL_GRABBER_RGB_2_BASE,1));
+	  		 // printf("Post filter: %x\n", IORD(PIXEL_GRABBER_RGB_3_BASE,1));
+	  	  }
 
 	  	  process_input();
 
@@ -156,9 +162,9 @@ int main(){
 				//Read Pixel Grab
 			   rgb = IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE);
 			   hsv = IORD(PIXEL_GRABBER_HSV_BASE, GRAB_VALUE);
-			   print_as_rgb(rgb, hsv);
+			   //print_as_rgb(rgb, hsv);
 
-				printf("Collecting %c \n", observations[observation_idx].code );
+				//printf("Collecting %c \n", observations[observation_idx].code );
 			}
 
 	  	if (one) one_pipeline();
