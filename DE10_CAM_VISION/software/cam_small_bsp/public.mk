@@ -86,7 +86,7 @@ ACDS_VERSION := 18.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../Qsys.sopcinfo
+SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../../../SmallVision/DE10_CAM_VISION/Qsys.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -152,14 +152,14 @@ SOPC_SYSID_FLAG += --id=0
 ELF_PATCH_FLAG  += --id 0
 
 # The SOPC System ID Base Address 
-# setting SOPC_SYSID_BASE_ADDRESS is 0x33c80
-SOPC_SYSID_FLAG += --sidp=0x33c80
-ELF_PATCH_FLAG  += --sidp 0x33c80
+# setting SOPC_SYSID_BASE_ADDRESS is 0x33dc0
+SOPC_SYSID_FLAG += --sidp=0x33dc0
+ELF_PATCH_FLAG  += --sidp 0x33dc0
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1656092876
-SOPC_SYSID_FLAG += --timestamp=1656092876
-ELF_PATCH_FLAG  += --timestamp 1656092876
+# setting SOPC_TIMESTAMP is 1656176846
+SOPC_SYSID_FLAG += --timestamp=1656176846
+ELF_PATCH_FLAG  += --timestamp 1656176846
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 
@@ -360,18 +360,18 @@ ALT_CFLAGS += -mgpopt=global
 
 # Slave descriptor of STDERR character-mode device. This setting is used by the 
 # ALT_STDERR family of defines in system.h. none 
-# setting hal.stderr is jtag_uart
-ELF_PATCH_FLAG  += --stderr_dev jtag_uart
+# setting hal.stderr is uart_0
+ELF_PATCH_FLAG  += --stderr_dev uart_0
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 
-# setting hal.stdin is jtag_uart
-ELF_PATCH_FLAG  += --stdin_dev jtag_uart
+# setting hal.stdin is uart_0
+ELF_PATCH_FLAG  += --stdin_dev uart_0
 
 # Slave descriptor of STDOUT character-mode device. This setting is used by the 
 # ALT_STDOUT family of defines in system.h. none 
-# setting hal.stdout is jtag_uart
-ELF_PATCH_FLAG  += --stdout_dev jtag_uart
+# setting hal.stdout is uart_0
+ELF_PATCH_FLAG  += --stdout_dev uart_0
 
 
 #------------------------------------------------------------------------------

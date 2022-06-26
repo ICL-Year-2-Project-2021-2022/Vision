@@ -100,8 +100,8 @@ ACDS_VERSION := 18.1
 # used to generate this makefile. 
 # BUILD_NUMBER: 625
 
-SETTINGS_FILE := settings.bsp
-SOPC_FILE := ../../Qsys.sopcinfo
+SETTINGS_FILE := ../../../../SmallVision/DE10_CAM_VISION/software/cam_small_bsp/settings.bsp
+SOPC_FILE := ../../../../SmallVision/DE10_CAM_VISION/Qsys.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

@@ -1,9 +1,9 @@
 # memory.gdb - GDB memory region definitions
 #
 # Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
-# SOPC Builder design path: ../../Qsys.sopcinfo
+# SOPC Builder design path: ../../../../SmallVision/DE10_CAM_VISION/Qsys.sopcinfo
 #
-# Generated: Tue Jun 21 17:18:40 BST 2022
+# Generated: Sun Jun 26 09:04:35 BST 2022
 
 # DO NOT MODIFY THIS FILE
 #

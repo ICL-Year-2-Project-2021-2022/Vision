@@ -396,7 +396,7 @@ refer to the applicable agreement for further details.
 		(text "uart_0_rx_tx" (rect 166 1051 404 2115)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "rxd" (rect 245 1075 508 2160)(font "Arial" (color 0 0 0)))
 		(text "txd" (rect 245 1091 508 2192)(font "Arial" (color 0 0 0)))
-		(text " Qsys " (rect 550 1112 1136 2234)(font "Arial" ))
+		(text " system " (rect 541 1112 1130 2234)(font "Arial" ))
 		(line (pt 240 32)(pt 336 32)(line_width 1))
 		(line (pt 336 32)(pt 336 1112)(line_width 1))
 		(line (pt 240 1112)(pt 336 1112)(line_width 1))

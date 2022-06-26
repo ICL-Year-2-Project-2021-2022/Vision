@@ -17,10 +17,10 @@ void one_pipeline(){
 
 					if (observations[observation_idx].code == 'W' ){
 						fir_load_sobel(FIR_0_0_BASE);
-						//fir_load_vertical(FIR_0_1_BASE);
+						fir_load_vertical(FIR_0_1_BASE);
 					}else if (observations[observation_idx].code == 'X'){
 						fir_load_inv_sobel(FIR_0_0_BASE);
-						//fir_load_vertical(FIR_0_1_BASE);
+						fir_load_vertical(FIR_0_1_BASE);
 					}
 
 					//COM counter setup
@@ -31,7 +31,7 @@ void one_pipeline(){
 
 
 					//Wait two frame times
-						usleep(delay);
+						usleep(100000);
 
 
 					//Collect results
@@ -99,12 +99,12 @@ void one_pipeline(){
 void three_pipelines(){
 	if (slow == 1) usleep(1000000);
 		  	  if (!halt){
-		  		int pipe0[3] = {6, 7};
-		  		int pipe0_idx = 0;
-		  		int pipe1[3] = {0, 1, 2};
-		  		int pipe1_idx = 0;
-		  		int pipe2[3] = {3, 4, 5};
-		  		int pipe2_idx = 0;
+		  		static const int pipe0[2] = {6, 7};
+		  		static int pipe0_idx = 0;
+		  		static const int pipe1[3] = {3, 4, 5};
+		  		static int pipe1_idx = 0;
+		  		static const int pipe2[3] = {0, 1, 2};
+		  		static int pipe2_idx = 0;
 
 
 				//Apply HSV transform no matter what
@@ -132,10 +132,13 @@ void three_pipelines(){
 
 				//Pipeline 1 setup
 				IOWR(COLOR_FILTER_1_BASE, APPLY_MASK, 1);
-				IOWR(COLOR_FILTER_1_BASE, THRESHOLD_LOW, observations[pipe1[pipe1_idx]].mask_bottom);
-				IOWR(COLOR_FILTER_1_BASE, THRESHOLD_HIGH, observations[pipe1[pipe1_idx]].mask_top);
+				//IOWR(COLOR_FILTER_1_BASE, THRESHOLD_LOW, observations[pipe1[pipe1_idx]].mask_bottom);
+				//IOWR(COLOR_FILTER_1_BASE, THRESHOLD_HIGH, observations[pipe1[pipe1_idx]].mask_top);
 
-				fir_load_avg(FIR_1_BASE);
+				IOWR(COLOR_FILTER_1_BASE, THRESHOLD_LOW, 0);
+				IOWR(COLOR_FILTER_1_BASE, THRESHOLD_HIGH, 255);
+
+				fir_load_unit(FIR_1_BASE);
 
 				IOWR(COM_COUNTER_1_BASE, THRESH_ENABLED, 1);
 				IOWR(COM_COUNTER_1_BASE, THRESH_Y, 200);
@@ -160,9 +163,8 @@ void three_pipelines(){
 				IOWR(COM_COUNTER_2_BASE, THRESHOLD_GATE, observations[pipe2[pipe2_idx]].threshold);
 
 
-
 				//Wait two frame times
-			  	usleep(delay);
+			  	usleep(1000000);
 
 
 			   //Pipeline 0 collect
@@ -191,7 +193,7 @@ void three_pipelines(){
 
 				//Increment pipe0 idx
 				pipe0_idx++;
-				if(pipe0_idx >= (sizeof(pipe0_idx)/sizeof(int))) pipe0_idx = 0;
+				if(pipe0_idx >= (sizeof(pipe0)/sizeof(int))) pipe0_idx = 0;
 
 				//Pipeline 1 collect
 				observations[pipe1[pipe1_idx]].mass = IORD(COM_COUNTER_1_BASE, COM_MASS);
@@ -204,7 +206,7 @@ void three_pipelines(){
 				observations[pipe1[pipe1_idx]].bb_bottom = IORD(COM_COUNTER_1_BASE, BB_HIGH_Y);
 
 				pipe1_idx++;
-				if(pipe1_idx >= (sizeof(pipe1_idx)/sizeof(int))) pipe1_idx = 0;
+				if(pipe1_idx >= (sizeof(pipe1)/sizeof(int))) pipe1_idx = 0;
 
 
 				//Pipeline 2 collect
@@ -218,7 +220,7 @@ void three_pipelines(){
 				observations[pipe2[pipe2_idx]].bb_bottom = IORD(COM_COUNTER_2_BASE, BB_HIGH_Y);
 
 				pipe2_idx++;
-				if(pipe2_idx >= (sizeof(pipe2_idx)/sizeof(int))) pipe2_idx = 0;
+				if(pipe2_idx >= (sizeof(pipe2)/sizeof(int))) pipe2_idx = 0;
 
 
 

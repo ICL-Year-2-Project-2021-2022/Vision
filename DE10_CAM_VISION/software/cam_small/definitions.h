@@ -37,9 +37,7 @@
 #define THRESHOLD_HIGH 1
 #define APPLY_MASK 2
 
-
-//Linear Blur
-#define BLUR_ENABLED 0
+#define LED_BASE 0x33c40
 
 //Com counter
 #define THRESHOLD_GATE 0
@@ -61,6 +59,14 @@
 #define GRAB_VALUE 1
 #define GRAB_INDICATOR 2
 
+
+//Obstacle dist measurer
+#define Y_LEVEL					0
+#define STRIPE_COUNT				1
+#define STRIPE_DIST				2
+#define STRIPE_POS_MIN				3
+#define STRIPE_POS_MAX			4
+#define DEAD_ZONE 					5
 
 
 

@@ -44,9 +44,8 @@ void get_building_hist(){
 
 int main(){
 
-	IOWR(LED_BASE, 0, 1);
-
 	print = 1;
+	IOWR(LED_BASE, 0, 0);
 
 	//Sets stdin to nonblocking
 	fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
@@ -147,7 +146,7 @@ int main(){
 	slow = 0;
 	observation_idx = 0;
 	number_observations = 8;
-	one = 1;
+	one = 0;
 	frames_elapsed  = 0;
   while(1){
 
