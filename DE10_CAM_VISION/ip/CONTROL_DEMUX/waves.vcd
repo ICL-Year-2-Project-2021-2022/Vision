@@ -1,0 +1,477 @@
+$date
+	Wed Jun 15 22:56:25 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module CONTROL_DEMUX_TB $end
+$var wire 1 ! sink_ready $end
+$var reg 1 " clk $end
+$var reg 1 # reset $end
+$var reg 24 $ sink_data [23:0] $end
+$var reg 1 % sink_eop $end
+$var reg 1 & sink_sop $end
+$var reg 1 ' sink_valid $end
+$var reg 1 ( source_ready $end
+$scope module dut $end
+$var wire 1 " clk $end
+$var wire 1 # reset_n $end
+$var wire 24 ) sink_data [23:0] $end
+$var wire 1 % sink_eop $end
+$var wire 1 & sink_sop $end
+$var wire 1 ' sink_valid $end
+$var wire 1 * source_ready $end
+$var wire 1 + source_ready2 $end
+$var wire 1 , source_valid2 $end
+$var wire 1 - source_valid $end
+$var wire 1 . source_sop2 $end
+$var wire 1 / source_sop $end
+$var wire 1 0 source_eop2 $end
+$var wire 1 1 source_eop $end
+$var wire 24 2 source_data2 [23:0] $end
+$var wire 24 3 source_data [23:0] $end
+$var wire 1 4 sop $end
+$var wire 1 ! sink_ready $end
+$var wire 8 5 red [7:0] $end
+$var wire 1 6 out_ready2 $end
+$var wire 1 7 out_ready $end
+$var wire 1 8 in_valid $end
+$var wire 8 9 green [7:0] $end
+$var wire 1 : eop $end
+$var wire 8 ; blue [7:0] $end
+$var reg 1 < out_valid $end
+$var reg 1 = out_valid2 $end
+$var reg 1 > packet_video $end
+$var reg 1 ? ready $end
+$scope module in_reg $end
+$var wire 1 " clk $end
+$var wire 26 @ data_in [25:0] $end
+$var wire 1 ? ready_in $end
+$var wire 1 ! ready_out $end
+$var wire 1 # rst_n $end
+$var wire 1 ' valid_in $end
+$var wire 1 8 valid_out $end
+$var reg 26 A data_out [25:0] $end
+$var reg 1 B data_valid $end
+$var reg 1 C ready_in_d $end
+$upscope $end
+$scope module out_reg $end
+$var wire 1 " clk $end
+$var wire 26 D data_in [25:0] $end
+$var wire 1 * ready_in $end
+$var wire 1 7 ready_out $end
+$var wire 1 # rst_n $end
+$var wire 1 < valid_in $end
+$var wire 1 - valid_out $end
+$var reg 26 E data_out [25:0] $end
+$var reg 1 F data_valid $end
+$var reg 1 G ready_in_d $end
+$upscope $end
+$scope module out_reg2 $end
+$var wire 1 " clk $end
+$var wire 26 H data_in [25:0] $end
+$var wire 1 + ready_in $end
+$var wire 1 6 ready_out $end
+$var wire 1 # rst_n $end
+$var wire 1 = valid_in $end
+$var wire 1 , valid_out $end
+$var reg 26 I data_out [25:0] $end
+$var reg 1 J data_valid $end
+$var reg 1 K ready_in_d $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+xK
+xJ
+bx I
+bx H
+xG
+xF
+bx E
+bx D
+xC
+xB
+bx A
+bx @
+1?
+x>
+x=
+0<
+bx ;
+x:
+bx 9
+x8
+17
+16
+bx 5
+x4
+bx 3
+bx 2
+x1
+x0
+x/
+x.
+x-
+x,
+1+
+1*
+bx )
+x(
+x'
+x&
+x%
+bx $
+0#
+0"
+1!
+$end
+#1
+0=
+08
+0:
+04
+b0 ;
+b0 9
+b0 D
+b0 H
+b0 5
+0-
+01
+0/
+b0 3
+0,
+00
+0.
+b0 2
+0C
+0B
+b0 A
+0G
+0F
+b0 E
+0K
+0J
+b0 I
+1"
+#2
+0"
+1(
+0%
+0&
+0'
+b0 @
+b0 $
+b0 )
+1#
+#3
+1K
+1G
+1C
+1"
+#4
+0"
+b10 @
+1&
+1'
+#5
+1<
+18
+b10 D
+b10 H
+14
+1B
+b10 A
+1"
+#6
+0"
+0&
+b1000000100000001100 @
+b10000001000000011 $
+b10000001000000011 )
+#7
+1-
+1/
+04
+b11 ;
+b10 9
+b1000000100000001100 D
+b1000000100000001100 H
+b1 5
+1>
+1F
+b10 E
+b1000000100000001100 A
+1"
+#8
+0"
+1%
+b10000001000000011000001 @
+b100000010000000110000 $
+b100000010000000110000 )
+#9
+1:
+b110000 ;
+b100000 9
+b10000001000000011000001 D
+b10000001000000011000001 H
+b10000 5
+0/
+b10000001000000011 3
+b10000001000000011000001 A
+b1000000100000001100 E
+1"
+#10
+0"
+0(
+0%
+0'
+b0 @
+b0 $
+b0 )
+#11
+0<
+11
+b100000010000000110000 3
+08
+0>
+b10000001000000011000001 E
+0B
+1"
+#12
+0"
+#13
+0-
+0F
+1"
+#14
+0"
+#15
+1"
+#16
+0"
+1(
+1&
+1'
+b110 @
+b1 $
+b1 )
+#17
+1=
+18
+0:
+14
+b1 ;
+b0 9
+b110 D
+b110 H
+b0 5
+1B
+b110 A
+1"
+#18
+0"
+0&
+b10000001000000011000000 @
+b100000010000000110000 $
+b100000010000000110000 )
+#19
+1,
+1.
+b1 2
+04
+b110000 ;
+b100000 9
+b10000001000000011000000 D
+b10000001000000011000000 H
+b10000 5
+1J
+b110 I
+b10000001000000011000000 A
+1"
+#20
+0"
+b10000001000000011000001 @
+1%
+#21
+b10000001000000011000001 D
+b10000001000000011000001 H
+1:
+0.
+b100000010000000110000 2
+b10000001000000011000001 A
+b10000001000000011000000 I
+1"
+#22
+0"
+0'
+b10000001000000011000000 @
+0%
+#23
+0=
+10
+08
+b10000001000000011000001 I
+0B
+1"
+#24
+0"
+#25
+0,
+0J
+1"
+#26
+0"
+#27
+1"
+#28
+0"
+#29
+1"
+#30
+0"
+#31
+1"
+#32
+0"
+#33
+1"
+#34
+0"
+#35
+1"
+#36
+0"
+#37
+1"
+#38
+0"
+#39
+1"
+#40
+0"
+#41
+1"
+#42
+0"
+#43
+1"
+#44
+0"
+#45
+1"
+#46
+0"
+#47
+1"
+#48
+0"
+#49
+1"
+#50
+0"
+#51
+1"
+#52
+0"
+#53
+1"
+#54
+0"
+#55
+1"
+#56
+0"
+#57
+1"
+#58
+0"
+#59
+1"
+#60
+0"
+#61
+1"
+#62
+0"
+#63
+1"
+#64
+0"
+#65
+1"
+#66
+0"
+#67
+1"
+#68
+0"
+#69
+1"
+#70
+0"
+#71
+1"
+#72
+0"
+#73
+1"
+#74
+0"
+#75
+1"
+#76
+0"
+#77
+1"
+#78
+0"
+#79
+1"
+#80
+0"
+#81
+1"
+#82
+0"
+#83
+1"
+#84
+0"
+#85
+1"
+#86
+0"
+#87
+1"
+#88
+0"
+#89
+1"
+#90
+0"
+#91
+1"
+#92
+0"
+#93
+1"
+#94
+0"
+#95
+1"
+#96
+0"
+#97
+1"
+#98
+0"
+#99
+1"
+#100
+0"
