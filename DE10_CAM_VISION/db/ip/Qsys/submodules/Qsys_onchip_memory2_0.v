@@ -36,7 +36,7 @@ module Qsys_onchip_memory2_0 (
                              )
 ;
 
-  parameter INIT_FILE = "/home/mp3120/nfshome/SmallVision/DE10_CAM_VISION/software/cam_vision2/mem_init/Qsys_onchip_memory2_0.hex";
+  parameter INIT_FILE = "/home/mp3120/nfshome/DE10_CAM_VISION/software/cam_vision2/mem_init/Qsys_onchip_memory2_0.hex";
 
 
   output  [ 31: 0] readdata;
