@@ -386,9 +386,9 @@ int test_combined_12Steps_3Balls() { //to test this, neee
     land_list2.size = 0;
     land_list2.item[0] = landmark4;
     land_list2.size++;
-    land_list2.item[land_list2.size] = landmark5;
-    land_list2.size++;
     land_list2.item[land_list2.size] = landmark6;
+    land_list2.size++;
+    land_list2.item[land_list2.size] = landmark5;
     land_list2.size++;
     struct Kal_Res results2;
     results2 = kalman_filter(state_size, results1.new_state, results1.new_var, displacement2, land_list2, &seen_land_list, control_noise, measure_noise);
@@ -433,9 +433,9 @@ int test_combined_12Steps_3Balls() { //to test this, neee
     land_list5.size = 0;
     land_list5.item[0] = landmark13;
     land_list5.size++;
-    land_list5.item[land_list5.size] = landmark14;
-    land_list5.size++;
     land_list5.item[land_list5.size] = landmark15;
+    land_list5.size++;
+    land_list5.item[land_list5.size] = landmark14;
     land_list5.size++;
     struct Kal_Res results5;
     results5 = kalman_filter(state_size, results4.new_state, results4.new_var, displacement5, land_list5, &seen_land_list, control_noise, measure_noise);
@@ -448,9 +448,9 @@ int test_combined_12Steps_3Balls() { //to test this, neee
     land_list6.size = 0;
     // land_list1.item[0] = landmark1;
     // land_list1.size++;
-    land_list6.item[land_list6.size] = landmark17;
-    land_list6.size++;
     land_list6.item[land_list6.size] = landmark18;
+    land_list6.size++;
+    land_list6.item[land_list6.size] = landmark17;
     land_list6.size++;
     struct Kal_Res results6;
     results6 = kalman_filter(state_size, results5.new_state, results5.new_var, displacement6, land_list6, &seen_land_list, control_noise, measure_noise);

@@ -418,11 +418,48 @@ int test_Maze(){
     printQueue(&path);
 }
 
+
+int test_Maze(){
+    int grid[6][11] = {{0,1,0,1,0,1,0,0,0,0,0},
+                       {0,1,0,0,1,1,0,1,1,1,0},
+                       {0,1,0,1,0,1,0,1,0,0,1},
+                       {0,0,1,1,0,1,0,1,1,1,0},
+                       {0,1,1,0,1,1,0,1,0,0,1},
+                       {0,1,0,0,0,0,1,1,0,1,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 10;
+    int goal_y = 5;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+}
+
+
+int test_real_life(){
+    int grid[6][11] = {{0,1,0,1,0,1,0,0,0,0,0},
+                       {0,1,0,0,1,1,0,1,1,1,0},
+                       {0,1,0,1,0,1,0,1,0,0,1},
+                       {0,0,1,1,0,1,0,1,1,1,0},
+                       {0,1,1,0,1,1,0,1,0,0,1},
+                       {0,1,0,0,0,0,1,1,0,1,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 10;
+    int goal_y = 5;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    printQueue(&path);
+}
+
+
+
+
  
 int main(){
-    test_noObstacles();
-    test_withObstacles();
-    test_cannotReach();
-    test_hardToReach();
-    test_Maze();
+    // test_noObstacles();
+    // test_withObstacles();
+    // test_cannotReach();
+    // test_hardToReach();
+    // test_Maze();
 }
