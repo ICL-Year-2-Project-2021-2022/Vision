@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sat Jun 25 18:55:44 BST 2022
+ * Generated: Sun Jun 26 13:03:13 BST 2022
  */
 
 /*
@@ -429,24 +429,24 @@
 #define ALT_NUM_EXTERNAL_INTERRUPT_CONTROLLERS 0
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
-#define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x33dc8
-#define ALT_STDERR_DEV jtag_uart
-#define ALT_STDERR_IS_JTAG_UART
+#define ALT_STDERR "/dev/uart_0"
+#define ALT_STDERR_BASE 0x33c80
+#define ALT_STDERR_DEV uart_0
+#define ALT_STDERR_IS_UART
 #define ALT_STDERR_PRESENT
-#define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
-#define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x33dc8
-#define ALT_STDIN_DEV jtag_uart
-#define ALT_STDIN_IS_JTAG_UART
+#define ALT_STDERR_TYPE "altera_avalon_uart"
+#define ALT_STDIN "/dev/uart_0"
+#define ALT_STDIN_BASE 0x33c80
+#define ALT_STDIN_DEV uart_0
+#define ALT_STDIN_IS_UART
 #define ALT_STDIN_PRESENT
-#define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
-#define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x33dc8
-#define ALT_STDOUT_DEV jtag_uart
-#define ALT_STDOUT_IS_JTAG_UART
+#define ALT_STDIN_TYPE "altera_avalon_uart"
+#define ALT_STDOUT "/dev/uart_0"
+#define ALT_STDOUT_BASE 0x33c80
+#define ALT_STDOUT_DEV uart_0
+#define ALT_STDOUT_IS_UART
 #define ALT_STDOUT_PRESENT
-#define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDOUT_TYPE "altera_avalon_uart"
 #define ALT_SYSTEM_NAME "Qsys"
 
 
@@ -740,12 +740,12 @@
 #define ONCHIP_MEMORY2_0_DUAL_PORT 0
 #define ONCHIP_MEMORY2_0_GUI_RAM_BLOCK_TYPE "AUTO"
 #define ONCHIP_MEMORY2_0_INIT_CONTENTS_FILE "Qsys_onchip_memory2_0"
-#define ONCHIP_MEMORY2_0_INIT_MEM_CONTENT 0
+#define ONCHIP_MEMORY2_0_INIT_MEM_CONTENT 1
 #define ONCHIP_MEMORY2_0_INSTANCE_ID "NONE"
 #define ONCHIP_MEMORY2_0_IRQ -1
 #define ONCHIP_MEMORY2_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ONCHIP_MEMORY2_0_NAME "/dev/onchip_memory2_0"
-#define ONCHIP_MEMORY2_0_NON_DEFAULT_INIT_FILE_ENABLED 0
+#define ONCHIP_MEMORY2_0_NON_DEFAULT_INIT_FILE_ENABLED 1
 #define ONCHIP_MEMORY2_0_RAM_BLOCK_TYPE "AUTO"
 #define ONCHIP_MEMORY2_0_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEMORY2_0_SINGLE_CLOCK_OP 0
@@ -822,7 +822,7 @@
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1656176846
+#define SYSID_QSYS_TIMESTAMP 1656236721
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 

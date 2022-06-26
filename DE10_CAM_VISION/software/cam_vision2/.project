@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>smallvision</name>
+	<name>cam_vision</name>
 	<comment></comment>
 	<projects>
-		<project>smallvision_bsp</project>
+		<project>cam_vision_bsp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
