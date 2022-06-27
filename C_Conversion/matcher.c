@@ -36,7 +36,7 @@ struct Angles_Param map_pixel_to_angle(struct Object ball_param , int rows, int 
     float position[2];
     position[0] = ball_param.com_x;
     position[1] = ball_param.com_y; 
-    float HORIZONTAL_FOV = (50.0/180.0*M_PI); //Rad 
+    float HORIZONTAL_FOV = (52.0/180.0*M_PI); //Rad 
     //int row = sizeof(images)/ sizeof(images[0]);
     //int column = sizeof(images[0][])/sizeof(images[0][0]);
     float VERTICAL_FOV = (float) rows/ (float)cols * HORIZONTAL_FOV;
@@ -48,10 +48,69 @@ struct Angles_Param map_pixel_to_angle(struct Object ball_param , int rows, int 
     //size estimation
     results.vertical_angle = -(position[1]/(float)rows-0.5)*VERTICAL_FOV;
 
-    float comMassWeighting, angDepressionWeighting;
-    if (ball_param.color == 'L'){
-        comMassWeighting = 0.8;
-        angDepressionWeighting = 0.2;
+    float comMassWeighting = 0.33, angDepressionWeighting = 0.33, trigoWeighting = 0.34;
+
+
+    float distanceFromCOM = 12071* pow(ball_param.mass, -0.42);
+
+    float distanceFromAngDepression = 5000000 * pow(results.vertical_angle , 4) + 1000000 * pow(results.vertical_angle , 3) + 99442 *pow(results.vertical_angle ,2) + 7395.7 *results.vertical_angle  + 656.57;
+    
+    if (strcmp(ball_param.color , "L") ==0){
+        comMassWeighting = 1;
+        angDepressionWeighting = 0;
+        trigoWeighting = 0;
+        distanceFromCOM = 19508* pow(ball_param.mass, -0.494);
+        distanceFromAngDepression = 2000000 * pow(results.vertical_angle , 4) +  721910 * pow(results.vertical_angle , 3) + 89813 *pow(results.vertical_angle ,2) + 6744.8 *results.vertical_angle  + 603.91;
+    }
+
+    else if ( strcmp(ball_param.color , "R")==0)
+    {
+        comMassWeighting = 0.4;
+        angDepressionWeighting = 0.6;
+        trigoWeighting = 0;
+        distanceFromCOM = 46235* pow(ball_param.mass, -0.605);
+        distanceFromAngDepression = 18194 * pow(results.vertical_angle , 2) + 5651.4 * pow(results.vertical_angle , 1) + 648.12;
+
+    }
+
+    else if ( strcmp(ball_param.color , "Y")==0)
+    {
+        comMassWeighting = 0.4;
+        angDepressionWeighting = 0.6;
+        trigoWeighting = 0;
+        distanceFromCOM = 17000* pow(ball_param.mass, -0.494);
+        distanceFromAngDepression =  106106 * pow(results.vertical_angle , 3) + 42739 *pow(results.vertical_angle ,2) + 6507 *results.vertical_angle  + 677.06;
+
+    }
+
+    else if ( strcmp(ball_param.color , "G")==0)
+    {
+        comMassWeighting = 1;
+        angDepressionWeighting = 0;
+        trigoWeighting = 0;
+        distanceFromCOM = 20495* pow(ball_param.mass, -0.506);
+        distanceFromAngDepression =  50000000 * pow(results.vertical_angle , 4) - 2000000 * pow(results.vertical_angle , 3) + 42169 *pow(results.vertical_angle ,2) +4365.1 *results.vertical_angle  + 246.85;
+
+    }
+
+    else if ( strcmp(ball_param.color , "P")==0)
+    {
+        comMassWeighting = 1;
+        angDepressionWeighting = 0;
+        trigoWeighting = 0;
+        distanceFromCOM = 9291.6* pow(ball_param.mass, -0.419);
+        distanceFromAngDepression =  132960 * pow(results.vertical_angle , 3) - 49685 * pow(results.vertical_angle , 2) + 6696.4 *pow(results.vertical_angle ,1) +591.47;
+
+    }
+
+    else if ( strcmp(ball_param.color , "B")==0)
+    {
+        comMassWeighting = 1;
+        angDepressionWeighting = 0;
+        trigoWeighting = 0;
+        distanceFromCOM = 25121* pow(ball_param.mass, -0.544);
+        distanceFromAngDepression =  20683* pow(results.vertical_angle , 2) - 5838.5 * pow(results.vertical_angle , 1) + 605.13;
+
     }
 
     //first way size estimation based on veritical angle
@@ -64,11 +123,11 @@ struct Angles_Param map_pixel_to_angle(struct Object ball_param , int rows, int 
     float est_occupied_angle = ((float)est_pixel_diameter/(float)cols*HORIZONTAL_FOV);
     float est_distance_size = (float)BALL_RADIUS/(tan((float)est_occupied_angle/2));
 
-
-    float distanceFromCOM = 12071* pow(ball_param.mass, 
+    
+    results.est_distance = (distanceFromCOM *comMassWeighting +  distanceFromAngDepression * angDepressionWeighting + est_distance_angle * trigoWeighting);
     //Average heuristics
     // results {horizontal_angle, vertical_angle, est_distance}
-    results.est_distance = (est_distance_size + est_distance_angle)/2;
+    //results.est_distance = (est_distance_size + est_distance_angle)/2;
     return results;
 
 }
@@ -587,6 +646,327 @@ void oldtest_map_pixel_to_angle_30cm_20deg(){
 }
 
 
+void test_limeGoodLighting_map_pixel_to_angle_140cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 320, .com_y =201,.mass= 181,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1400 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1400)/14);
+}
+
+
+void test_limeGoodLighting_map_pixel_to_angle_130cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 320, .com_y =203,.mass= 219,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1300 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1300)/13);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_120cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 323, .com_y =204,.mass= 311,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1200 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1200)/12);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_110cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 319, .com_y =209,.mass= 347,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1100 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1100)/11);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_100cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 324, .com_y =214,.mass= 412,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1000 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1000)/10);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_90cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 323, .com_y =219,.mass= 512,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 900 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 900)/9);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_80cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 323, .com_y =226,.mass= 624,.color ="R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 800 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 800)/8);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_70cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 326, .com_y =233,.mass= 824,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 700 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 700)/7);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_60cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 322, .com_y =244,.mass= 1024,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 600 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 600)/6);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_50cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 322, .com_y =260,.mass= 1808,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 500 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 500)/5);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_40cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 322, .com_y =260,.mass= 1808,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 400 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 400)/4);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_30cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 320, .com_y =317,.mass= 5307,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 300 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 300)/3);
+}
+
+void test_limeGoodLighting_map_pixel_to_angle_20cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 330, .com_y =387,.mass= 13156,.color ="L"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 200 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 200)/2);
+}
+
+
+
+void test_red_map_pixel_to_angle_140cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 322, .com_y =201,.mass= 96,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1400 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1400)/14);
+}
+
+
+void test_red_map_pixel_to_angle_130cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 318, .com_y =202,.mass= 107,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1300 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1300)/13);
+}
+
+void test_red_map_pixel_to_angle_120cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 319, .com_y =205,.mass= 161,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1200 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1200)/12);
+}
+
+void test_red_map_pixel_to_angle_110cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 316, .com_y =209,.mass= 228,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1100 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1100)/11);
+}
+
+void test_red_map_pixel_to_angle_100cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 317, .com_y =214,.mass= 256,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 1000 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 1000)/10);
+}
+
+void test_red_map_pixel_to_angle_90cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 320, .com_y =220,.mass= 328,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 900 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 900)/9);
+}
+
+void test_red_map_pixel_to_angle_80cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 327, .com_y =227,.mass= 467,.color ="R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 800 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 800)/8);
+}
+
+void test_red_map_pixel_to_angle_70cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 327, .com_y =234,.mass= 581,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 700 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 700)/7);
+}
+
+void test_red_map_pixel_to_angle_60cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 318, .com_y =246,.mass= 814,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 600 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 600)/6);
+}
+
+void test_red_map_pixel_to_angle_50cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 323, .com_y =261,.mass= 1400,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 500 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 500)/5);
+}
+
+void test_red_map_pixel_to_angle_40cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 316, .com_y =284,.mass= 2094,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 400 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 400)/4);
+}
+
+void test_red_map_pixel_to_angle_30cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 320, .com_y =319,.mass= 3391,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 300 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 300)/3);
+}
+
+void test_red_map_pixel_to_angle_20cm(){
+    float precision= 0.0001;
+    int row = 480;
+    int col = 640;
+    struct Object ball= { .com_x = 323, .com_y =363,.mass= 2584,.color = "R"};
+    struct Angles_Param result;
+    result  = map_pixel_to_angle(ball, row, col);
+    printf("Actual : 200 0  ");
+    printf("Results: %f %f  ",result.est_distance, result.horizontal_angle);
+    printf("Percent Error: %f\n", (result.est_distance - 200)/2);
+}
+
+
+
+
+
+
 
 
 
@@ -635,6 +1015,45 @@ int main(){
     oldtest_map_pixel_to_angle_40cm_20deg();
     oldtest_map_pixel_to_angle_35cm_20deg();
     oldtest_map_pixel_to_angle_30cm_20deg();
+
+
+    test_limeGoodLighting_map_pixel_to_angle_140cm();
+    test_limeGoodLighting_map_pixel_to_angle_130cm();
+    test_limeGoodLighting_map_pixel_to_angle_120cm();
+    test_limeGoodLighting_map_pixel_to_angle_110cm();
+    test_limeGoodLighting_map_pixel_to_angle_100cm();
+    test_limeGoodLighting_map_pixel_to_angle_90cm();
+    test_limeGoodLighting_map_pixel_to_angle_80cm();
+    test_limeGoodLighting_map_pixel_to_angle_70cm();
+    test_limeGoodLighting_map_pixel_to_angle_60cm();
+    test_limeGoodLighting_map_pixel_to_angle_50cm();
+    test_limeGoodLighting_map_pixel_to_angle_40cm();
+    test_limeGoodLighting_map_pixel_to_angle_30cm();
+    test_limeGoodLighting_map_pixel_to_angle_20cm();
+
+    test_red_map_pixel_to_angle_140cm();
+    test_red_map_pixel_to_angle_130cm();
+    test_red_map_pixel_to_angle_120cm();
+    test_red_map_pixel_to_angle_110cm();
+    test_red_map_pixel_to_angle_100cm();
+    test_red_map_pixel_to_angle_90cm();
+    test_red_map_pixel_to_angle_80cm();
+    test_red_map_pixel_to_angle_70cm();
+    test_red_map_pixel_to_angle_60cm();
+    test_red_map_pixel_to_angle_50cm();
+    test_red_map_pixel_to_angle_40cm();
+    test_red_map_pixel_to_angle_30cm();
+    test_red_map_pixel_to_angle_20cm();
+
+
+
+
+
+
+
+
+
+
 
 
     
