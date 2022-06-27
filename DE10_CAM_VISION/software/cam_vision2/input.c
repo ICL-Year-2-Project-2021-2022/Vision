@@ -98,21 +98,7 @@ void process_input(){
 					   }
 				   break;}
 			   case 'D': {
-				   	   IOWR(COLOR_FILTER_0_BASE, APPLY_MASK, 0);
-					   fir_load_sobel(FIR_0_0_BASE);
-					   fir_load_vertical(FIR_0_1_BASE);
-					   //COM counter setup
-					   IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
-					   IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
-					   IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
-					   IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, 80);
-
-					   usleep(delay);
-					   //printf("D\n");
-
-					   printf("%x %x %x %x", IORD(OBSTACLE_DIST_0_BASE, STRIPE_COUNT),
-							   IORD(OBSTACLE_DIST_0_BASE, STRIPE_DIST), IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MIN),
-							   IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MAX));
+					   printf("%x %x %x %x\n", stripe_count,  stripe_dist, stripe_pos_min, stripe_pos_max);
 				   break;}
 			   case 'S': {
 				   halt = !halt;

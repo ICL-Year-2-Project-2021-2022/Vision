@@ -12,19 +12,19 @@ struct observation* initialize_observations(){
 
 	struct observation* arr = malloc(number_observations * sizeof(struct observation));
 
-//Initialize Red low ball parameters --
+//Initialize Red low ball parameters
 	arr[0].code = 'R';
-	arr[0].mask_bottom = to_hex_code(1,130,130);
+	arr[0].mask_bottom = to_hex_code(2,130,130);
 	arr[0].mask_top = to_hex_code(8,255,240);
-	arr[0].threshold = 192;
+	arr[0].threshold = 220;
 
-	//Initialize lime ball parameters +
+	//Initialize lime ball parameters
 	arr[1].code = 'L';
 	arr[1].mask_bottom = to_hex_code(55,60,100);
 	arr[1].mask_top = to_hex_code(75,160,240);
 	arr[1].threshold = 192;
 
-	//Initialize blue ball parameters --
+	//Initialize blue ball parameters
 	arr[2].code = 'B';
 	arr[2].mask_bottom = to_hex_code(105,80,50);
 	arr[2].mask_top = to_hex_code(125,255,128);
@@ -32,8 +32,8 @@ struct observation* initialize_observations(){
 
 	//Initialize yellow ball parameters
 	arr[3].code = 'Y';
-	arr[3].mask_bottom = to_hex_code(10,100,160);
-	arr[3].mask_top = to_hex_code(30,140,240);
+	arr[3].mask_bottom = to_hex_code(15,100,160);
+	arr[3].mask_top = to_hex_code(30,255,245);
 	arr[3].threshold = 192;
 
 	//Initialize green ball parameters
@@ -42,11 +42,72 @@ struct observation* initialize_observations(){
 	arr[4].mask_top = to_hex_code(93,140, 140);
 	arr[4].threshold = 192;
 
+	//Initialize pink ball parameters
+	arr[5].code = 'P';
+	arr[5].mask_bottom = to_hex_code(170,80,100);
+	arr[5].mask_top = to_hex_code(179,255,255);
+	arr[5].threshold = 64;
+
+	//Initialize Building 1 parameters
+	arr[6].code = 'W';
+	arr[6].mask_bottom = to_hex_code(0,00,0);
+	arr[6].mask_top = to_hex_code(255, 255, 255);
+	arr[6].threshold = 80;
+
+	//Initialize Building 2 parameters
+	arr[7].code = 'X';
+	arr[7].mask_bottom = to_hex_code(0,0,0);
+	arr[7].mask_top = to_hex_code(255, 255, 255);
+	arr[7].threshold = 80;
+
+	//Initialize pink ball parameters
+	arr[8].code = 'Q';
+	arr[8].mask_bottom = to_hex_code(0,80,160);
+	arr[8].mask_top = to_hex_code(3,110,255);
+	arr[8].threshold = 192;
+
+	return arr;
+}
+
+
+struct observation* initialize_observations_marco(){
+
+	struct observation* arr = malloc(number_observations * sizeof(struct observation));
+
+	arr[0].code = 'R';
+	arr[0].mask_bottom = to_hex_code(0,70,50);
+	arr[0].mask_top = to_hex_code(10,255,245);
+	arr[0].threshold = 192;
+
+	//Initialize lime ball parameters +
+	arr[1].code = 'L';
+	arr[1].mask_bottom = to_hex_code(70,60,100);
+	arr[1].mask_top = to_hex_code(82,160,240);
+	arr[1].threshold = 192;
+
+	//Initialize blue ball parameters --
+	arr[2].code = 'B';
+	arr[2].mask_bottom = to_hex_code(115,80,40);
+	arr[2].mask_top = to_hex_code(130,255,250);
+	arr[2].threshold = 192;
+
+	//Initialize yellow ball parameters
+	arr[3].code = 'Y';
+	arr[3].mask_bottom = to_hex_code(255,255,255);
+	arr[3].mask_top = to_hex_code(0,0,0);
+	arr[3].threshold = 192;
+
+	//Initialize green ball parameters
+	arr[4].code = 'G';
+	arr[4].mask_bottom = to_hex_code(90,64,25);
+	arr[4].mask_top = to_hex_code(110,250, 250);
+	arr[4].threshold = 192;
+
 
 	//Initialize pink ball parameters +
 	arr[5].code = 'P';
 	arr[5].mask_bottom = to_hex_code(170,80,150);
-	arr[5].mask_top = to_hex_code(180,160,240);
+	arr[5].mask_top = to_hex_code(180,170,240);
 	arr[5].threshold = 192;
 
 	//Initialize Building 1 parameters
@@ -62,6 +123,11 @@ struct observation* initialize_observations(){
 	arr[7].mask_top = to_hex_code(255, 255, 255);
 	arr[7].threshold = 80;
 
+	//Initialize pink ball parameters
+	arr[8].code = 'Q';
+	arr[8].mask_bottom = to_hex_code(0,80,160);
+	arr[8].mask_top = to_hex_code(3,110,255);
+	arr[8].threshold = 192;
 	return arr;
 }
 
@@ -80,7 +146,7 @@ void merge_observations (struct observation* base, struct observation* merge){
 void print_observations (struct observation* obs) {
 	static char observation_buf[64];
 
-	for (int i = 0; i < number_observations-1 ; i++){
+	for (int i = 0; i < number_observations-2 ; i++){
 
 
 		sprintf(observation_buf, "%c %01x %x %x %x %x %x %x", obs[i].code, obs[i].com_x,

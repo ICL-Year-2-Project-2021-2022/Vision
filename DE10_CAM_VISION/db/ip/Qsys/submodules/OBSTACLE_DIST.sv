@@ -42,8 +42,9 @@ logic grab_indicator;
 logic packet_video, y_indicator;
 
 logic [10:0] y_level, stripe_count, stripe_pos_min, stripe_pos_max, potential_stripe_pos_min;
-logic [10:0] stripe_count_d, stripe_dist_d, stripe_pos_min_d, stripe_pos_max_d, dead_zone;
+logic [10:0] stripe_count_d, stripe_dist_d, stripe_pos_min_d, stripe_pos_max_d, dead_zone, max_allowable, delta;
 logic on_stripe, last_mask, mask;
+logic greater_ok;
 
 
 always @(*) begin
@@ -55,6 +56,10 @@ always @(*) begin
 	
 
 	stripe_dist_d = stripe_pos_max_d - stripe_pos_min_d;
+	greater_ok = (delta) > (stripe_pos_max - stripe_pos_min);
+	//max_allowable =(((stripe_pos_max - stripe_pos_min) + (stripe_pos_max - stripe_pos_min)>>1) +10);
+	max_allowable =((stripe_pos_max - stripe_pos_min)+(stripe_pos_max - stripe_pos_min)/2 + 10 );
+	delta = (x_pixel - potential_stripe_pos_min);
 	
 	
 end
@@ -110,13 +115,14 @@ always @ (posedge clk) begin
 		stripe_count <= stripe_count + 1;
 		potential_stripe_pos_min <= x_pixel;
 		
+		
 		if((stripe_pos_min == 0) && (stripe_pos_max == 0))begin
 			stripe_pos_min<= x_pixel;
 			stripe_pos_max<= x_pixel;
 		end else if (stripe_pos_min == stripe_pos_max)begin
 			stripe_pos_max<= x_pixel;
 			
-		end else if((x_pixel - potential_stripe_pos_min) < (stripe_pos_max - stripe_pos_min) ) begin
+		end else if(greater_ok && (delta < max_allowable)) begin
 			stripe_pos_min <= potential_stripe_pos_min;
 			stripe_pos_max <= x_pixel;
 		end
@@ -137,7 +143,7 @@ always @ (posedge clk) begin
 	   stripe_pos_max <= 0;
 	   stripe_pos_max_d <= 0;
 	   potential_stripe_pos_min <= 0;
-	   dead_zone <= 10;
+	   dead_zone <= 7;
 	end
 	
 	else if (s_chipselect & s_read) begin
