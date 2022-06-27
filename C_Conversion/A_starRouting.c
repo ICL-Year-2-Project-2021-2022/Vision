@@ -237,8 +237,8 @@ void printQueue(Node** head){
 
 
 //IMPORTANT: Keep in mind that Distance to Start and goal is according to path, not euclidian.
-
-Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int goal_y, int grid[row][col]) {
+//canReach: 1 = can be reached; -1 = cannot be reached; -2 = cannot even move
+Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int goal_y, int grid[row][col], int *canReach) {
     Node *open = newNode(start_x, start_y, 0, distanceToGoal(start_x, start_y, goal_x, goal_y), NULL);//start at (0,0)
     Node *close = newNode(start_x, start_y, 0, distanceToGoal(start_x, start_y, goal_x, goal_y), NULL);
     int neighbour_x, neighbour_y;
@@ -246,6 +246,7 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
     float distanceStart;
     Node *current = NULL;
     Node *neighbour_node = NULL;
+    Node *closestToGoal;
     int initial = 1;
     current = copyNode(open);
 
@@ -253,21 +254,35 @@ Node *A_star(size_t row, size_t col, int start_x, int start_y, int goal_x, int g
         if (initial) {
             current = copyNode(open);
             initial=0;
+            closestToGoal = current;
         }
         else{
             if (isEmpty(&open)){
+                Node *result= getPathNodes(&closestToGoal);
+                if (closestToGoal->x_coor == start_x && closestToGoal->y_coor == start_y){
+                    *canReach = -2;
+                }
+                else{
+                    *canReach=-1;
+                }
+               
                 printf("Cannot reach target\n");
+                printf("Going to Closest Point %d %d\n", closestToGoal->x_coor,closestToGoal->y_coor);
                 freeList(&close);
                 freeList(&open);
-                return NULL;
+                return result;
             }
             current = popGet(&open);
             pushNode(&close, current);
+            if ((current->priority-current->distance_start)< (closestToGoal->priority - closestToGoal->distance_start)){
+                closestToGoal = current;
+            }
         }
 
         if (isReachedObj(current->x_coor, current->y_coor, goal_x, goal_y)) {
             Node *result= getPathNodes(&current);
             //printPathToGoal(current);
+            *canReach = 1;
             freeList(&open);
             freeList(&close);
             return result;
@@ -349,8 +364,15 @@ int test_noObstacles(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    Node *path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int canReach = 0;
+    Node *path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
     printQueue(&path);
+    if (canReach ==1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
 
 int test_withObstacles(){
@@ -365,8 +387,15 @@ int test_withObstacles(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
     printQueue(&path);
+    if (canReach ==1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
 
 
@@ -382,8 +411,15 @@ int test_cannotReach(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
     printQueue(&path);
+    if (canReach ==-1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
 
 int test_hardToReach(){
@@ -398,8 +434,15 @@ int test_hardToReach(){
     int start_y = 1;
     int goal_x = 4;
     int goal_y = 4;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
     printQueue(&path);
+    if (canReach ==-1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
 
 int test_Maze(){
@@ -414,15 +457,90 @@ int test_Maze(){
     int start_y = 0;
     int goal_x = 10;
     int goal_y = 5;
-    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid);
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
     printQueue(&path);
+    if (canReach ==1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
+
+
+
+int test_real_life(){
+    int grid[6][11] = {{0,1,0,1,0,1,0,0,0,0,0},
+                       {0,1,0,0,1,1,0,1,1,1,0},
+                       {0,1,0,1,0,1,0,1,0,0,1},
+                       {0,0,1,1,0,1,0,1,1,1,0},
+                       {0,1,1,0,1,1,0,1,0,0,1},
+                       {0,1,0,0,0,0,1,1,0,1,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 10;
+    int goal_y = 5;
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
+    printQueue(&path);
+    if (canReach ==1){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+}
+
+
+int test_cannotReachAndMove(){
+    int grid[6][11] = {{1,1,0,1,0,1,0,0,0,0,0},
+                       {1,1,0,1,1,1,0,1,1,1,0},
+                       {0,1,1,1,1,1,0,1,0,0,1},
+                       {0,0,0,1,1,1,1,1,1,1,0},
+                       {0,0,0,1,1,1,1,1,0,0,1},
+                       {0,0,0,1,1,1,1,1,0,1,0}};
+    //int grid[5][5]= {{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+    int start_x = 0;
+    int start_y = 0;
+    int goal_x = 5;
+    int goal_y = 4;
+    int canReach = 0;
+    Node* path = A_star(6, 11,start_x, start_y, goal_x, goal_y, grid, &canReach);
+    printQueue(&path);
+    if (canReach ==-2){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+}
+
+
+
 
  
 int main(){
-    test_noObstacles();
-    test_withObstacles();
-    test_cannotReach();
-    test_hardToReach();
-    test_Maze();
+    // test_noObstacles();
+    // test_withObstacles();
+    int testCounter = 0;
+    int successTestCounter = 0;
+    if (test_cannotReach() == 0) {
+        printf("test_cannotReach() - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_cannotReach() - FAIL\n");
+    }
+    testCounter++;
+    if (test_cannotReachAndMove() == 0) {
+        printf("test_cannotReachAndMove() - PASS\n");
+        successTestCounter++;
+    } else {
+        printf("test_cannotReachAndMove() - FAIL\n");
+    }
+    testCounter++;
+    printf("Total tests: %d, passed: %d", testCounter, successTestCounter);
+    // test_hardToReach();
+    // test_Maze();
 }

@@ -916,8 +916,8 @@ int test_combined_4Steps_convergenceTest() {
 
 
 int test_combined_4Steps_UpUp() {
-    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.005}};
-    float measure_noise[2][2] = {{250000,0},{0, 0.007}}; //around 50cm 5 degree error
+    float control_noise[3][3] = {{100, 0, 0,},{0,100,0},{0,0,0.003}}; //3 degree error
+    float measure_noise[2][2] = {{1000000,0},{0, 0.0012}}; //around 50cm 2 degree error
     float state[5][1] = {{0},
                          {0},
                          {M_PI_2},
