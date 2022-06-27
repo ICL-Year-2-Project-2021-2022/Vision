@@ -82,23 +82,36 @@ int main(){
 
 //Camera parameters initialization
 //////////////////////////////////////////////////////////
-
 	OV8865SetExposure(EXPOSURE_INIT);
 
-//	//Manual calibration
-	OV8865SetGain(910);
-	OV8865SetRedGain(930);
-	OV8865SetGreenGain(760);
-	OV8865SetBlueGain(1222);
+	//Selective initialization
+	int sw = (IORD(SW_BASE, 0)& 0x03FF);
+	if(sw == 1){
+		//Marco's place calibration
+		OV8865SetGain(603);
+		OV8865SetRedGain(1000);
+		OV8865SetGreenGain(894);
+		OV8865SetBlueGain(1927);
 
-//	//Autocalibration
+		//Initialize observation data structures
+		observations = initialize_observations_marco();
+	}else if(sw == 2){
+			auto_gain(160,2);
+			auto_wb(128 ,2);
+			auto_gain(160,2);
+			Focus_Init();
+			//Initialize observation data structures
+			observations = initialize_observations();
+	}else{
+		//Lab calibration
+		OV8865SetGain(1224);
+		OV8865SetRedGain(930);
+		OV8865SetGreenGain(760);
+		OV8865SetBlueGain(1222);
 
-
-//	auto_gain(160,2);
-//	auto_wb(128 ,2);
-//	auto_gain(160,2);
-//	Focus_Init();
-
+		//Initialize observation data structures
+		observations = initialize_observations();
+	}
 
 ////////////////////////////////////////////////////////////////
 
@@ -111,10 +124,10 @@ int main(){
 
 	//COM counter setup
 	IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 0);
-	IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+	IOWR(COM_COUNTER_0_BASE, THRESH_Y, 140);
 	IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
 	IOWR(COM_COUNTER_0_BASE, THRESH_Y_MAX, 470);
-	IOWR(COM_COUNTER_0_BASE, THRESH_X_MAX, 620);
+	IOWR(COM_COUNTER_0_BASE, THRESH_X_MAX, 630);
 
 	//Force disable center dots
 	IOWR(PIXEL_GRABBER_HSV_BASE, GRAB_INDICATOR, 0);
@@ -129,18 +142,7 @@ int main(){
 
 	usleep(100000);
 
-	//Initialize observation data structures
-	observations = initialize_observations();
-
-	//Register frame interrupt
-	//alt_irq_register(2, 0, frame_isr);
-	//alt_ic_isr_register(2, 0, frame_isr, 0, 0);
-	//alt_ic_irq_enable (0, 2);
-	//alt_ic_isr_register(0,2, frame_isr,0,0);
-	//print_wb_buffer();
-	//printf("Focus: %x", Focus_Window(320,240));
-
-	delay = 50000;
+	delay = 40000;
 	halt = 0;
 	slow = 0;
 	observation_idx = 0;
@@ -162,9 +164,9 @@ int main(){
 				//Read Pixel Grab
 			   rgb = IORD(PIXEL_GRABBER_RGB_BASE, GRAB_VALUE);
 			   hsv = IORD(PIXEL_GRABBER_HSV_BASE, GRAB_VALUE);
-			   //print_as_rgb(rgb, hsv);
+			   print_as_rgb(rgb, hsv);
 
-				//printf("Collecting %c \n", observations[observation_idx].code );
+			printf("Collecting %c \n", observations[observation_idx].code );
 			}
 
 	  	if (one) one_pipeline();

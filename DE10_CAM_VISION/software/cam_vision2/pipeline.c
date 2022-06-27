@@ -5,6 +5,7 @@ void one_pipeline(){
 		  	  if (!halt){
 
 				code = observations[observation_idx].code;
+				//printf("Code: %c", code);
 
 				//Apply HSV transform
 				IOWR(RGB_TO_HSV_BASE, HSV_ENABLED, 0x1);
@@ -18,6 +19,7 @@ void one_pipeline(){
 					if (observations[observation_idx].code == 'W' ){
 						fir_load_sobel(FIR_0_0_BASE);
 						fir_load_vertical(FIR_0_1_BASE);
+
 					}else if (observations[observation_idx].code == 'X'){
 						fir_load_inv_sobel(FIR_0_0_BASE);
 						fir_load_vertical(FIR_0_1_BASE);
@@ -25,7 +27,7 @@ void one_pipeline(){
 
 					//COM counter setup
 					IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
-					IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+					IOWR(COM_COUNTER_0_BASE, THRESH_Y, 100);
 					IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
 					IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, observations[observation_idx].threshold);
 
@@ -48,6 +50,12 @@ void one_pipeline(){
 						for (int i = 0; i < 20; i++){
 							histogram[i] = IORD(EDGE_BINS_0_BASE, i);
 						}
+
+						stripe_count = IORD(OBSTACLE_DIST_0_BASE, STRIPE_COUNT);
+						stripe_dist = IORD(OBSTACLE_DIST_0_BASE, STRIPE_DIST);
+						stripe_pos_min = IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MIN);
+						stripe_pos_max = IORD(OBSTACLE_DIST_0_BASE, STRIPE_POS_MAX);
+
 					}else if (observations[observation_idx].code == 'X'){
 						for (int i = 0; i < 20; i++){
 							histogram_processed[i] = histogram + IORD(EDGE_BINS_0_BASE, i);
@@ -68,8 +76,10 @@ void one_pipeline(){
 
 					//COM counter setup
 					IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
-					IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+					IOWR(COM_COUNTER_0_BASE, THRESH_Y, 100);
 					IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
+					IOWR(COM_COUNTER_0_BASE, THRESH_Y_MAX, 470);
+					IOWR(COM_COUNTER_0_BASE, THRESH_X_MAX, 630);
 					IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, observations[observation_idx].threshold);
 
 					//Wait two frame times
@@ -125,7 +135,7 @@ void three_pipelines(){
 
 				//COM counter setup
 				IOWR(COM_COUNTER_0_BASE, THRESH_ENABLED, 1);
-				IOWR(COM_COUNTER_0_BASE, THRESH_Y, 200);
+				IOWR(COM_COUNTER_0_BASE, THRESH_Y, 100);
 				IOWR(COM_COUNTER_0_BASE, THRESH_X, 10);
 				IOWR(COM_COUNTER_0_BASE, THRESHOLD_GATE, observations[pipe0[pipe0_idx]].threshold);
 				usleep(100000);
@@ -173,7 +183,7 @@ void three_pipelines(){
 				fir_load_unit(FIR_1_BASE);
 
 				IOWR(COM_COUNTER_1_BASE, THRESH_ENABLED, 1);
-				IOWR(COM_COUNTER_1_BASE, THRESH_Y, 200);
+				IOWR(COM_COUNTER_1_BASE, THRESH_Y, 100);
 				IOWR(COM_COUNTER_1_BASE, THRESH_X, 10);
 				IOWR(COM_COUNTER_1_BASE, THRESHOLD_GATE, observations[pipe1[pipe1_idx]].threshold);
 
@@ -206,7 +216,7 @@ void three_pipelines(){
 
 				//COM counter setup
 				IOWR(COM_COUNTER_2_BASE, THRESH_ENABLED, 1);
-				IOWR(COM_COUNTER_2_BASE, THRESH_Y, 200);
+				IOWR(COM_COUNTER_2_BASE, THRESH_Y, 100);
 				IOWR(COM_COUNTER_2_BASE, THRESH_X, 10);
 				IOWR(COM_COUNTER_2_BASE, THRESHOLD_GATE, observations[pipe2[pipe2_idx]].threshold);
 

@@ -36,6 +36,9 @@
 #define PIXEL_GRABBER_RGB_4_BASE 0x33880
 #define LED_BASE 0x33d80
 
+//Bodges
+#define KEY_BASE 0x33d60
+
 //HSV converter
 #define HSV_ENABLED 0
 
@@ -81,5 +84,7 @@
 #define GAIN_INIT 0x180
 #define GAIN_STEP 0x040
 #define DEFAULT_LEVEL 3
+
+
 
 

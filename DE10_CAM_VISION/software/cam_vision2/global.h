@@ -22,6 +22,11 @@ int number_observations ;
 int frames_elapsed;
 int observation_idx;
 int one;
+int stripe_count;
+int stripe_dist;
+int stripe_pos_min;
+int stripe_pos_max;
+
 
 struct observation {
 	char code;

@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 26, 2022 1:03:11 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1656244991195</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 27, 2022 7:32:50 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1656354770991</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_vision2_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspSettingsFile>C:\Users\micha\Desktop\Vision\DE10_CAM_VISION\software\cam_vision2_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2</Cpu>
